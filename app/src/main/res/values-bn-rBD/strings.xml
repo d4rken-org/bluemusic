@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">আপডেটের সময় কিছু ফিচার বদলে গেছে। সবকিছু সঠিকভাবে কনফিগার করা আছে কিনা তা নিশ্চিত করতে আপনার ডিভাইস সেটিংস দেখুন।</string>
     <string name="onboarding_rewrite_action">চালিয়ে যান</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">কোনো অপরিচালিত ডিভাইস পাওয়া যায়নি</string>
     <string name="discover_all_devices_managed_msg">আপনার সব পেয়ার করা ডিভাইস পরিচালিত! নতুন একটি দরকার?</string>
     <string name="discover_pair_new_device_action">নতুন ডিভাইস পেয়ার করুন</string>
     <string name="discover_device_speaker_desc">এই ফোনের নিজস্ব স্পিকার। যখন অডিও ফোনে ফিরে আসে তখন এর ভলিউম প্রয়োগ করা হয়, যেমন আপনার Bluetooth ডিভাইস সংযোগ বিচ্ছিন্ন হওয়ার পরে।</string>
     <!-- Devices -->
     <string name="devices_device_config_label">ডিভাইস কনফিগারেশন</string>
-    <string name="devices_device_config_section_general_label">সাধারণ</string>
     <string name="devices_device_config_remove_device_label">ডিভাইস ভুলে যান</string>
-    <string name="devices_device_config_remove_device_desc">এই অ্যাপ থেকে ডিভাইসটি ভুলে যায় এবং এর কনফিগারেশন মুছে দেয়। এটি ডিভাইসটি আনপেয়ার করে না।</string>
     <string name="devices_device_config_remove_device_action">ভুলে যান</string>
     <string name="devices_device_config_remove_device_confirmation">পরিচালিত ডিভাইস থেকে %s ভুলে যাবেন?</string>
-    <string name="devices_device_config_rename_device_label">ডিভাইস নাম পরিবর্তন করুন</string>
-    <string name="devices_device_config_rename_device_desc">এই অ্যাপের মধ্যে এবং সম্ভব হলে সিস্টেমে, ডিভাইসটির নাম পরিবর্তন করুন।</string>
     <string name="devices_device_config_rename_device_action">নাম পরিবর্তন</string>
     <string name="devices_device_config_enabled_label">সক্রিয়</string>
     <string name="devices_device_config_enabled_desc">ডিভাইস সংযুক্ত হলে রিয়াক্ট করুন</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">অটোপ্লে কমান্ড</string>
     <string name="devices_device_config_autoplay_keycodes_order">কমান্ড ক্রম</string>
     <string name="devices_device_config_autoplay_keycodes_label">কমান্ড</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">কোন কমান্ড পাঠাতে হবে এবং কোন ক্রমে তা কনফিগার করুন</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">কোনো কমান্ড কনফিগার করা হয়নি</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">কমান্ড যোগ করুন</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">সর্বোচ্চ %1$d কমান্ড</string>
@@ -121,7 +115,6 @@
     <string name="cd_autoplay_keycode_move_up">উপরে সরান</string>
     <string name="cd_autoplay_keycode_move_down">নিচে সরান</string>
     <string name="cd_autoplay_keycode_remove">অপসারণ করুন</string>
-    <string name="devices_device_config_section_volumes_label">ভলিউমসমূহ</string>
     <string name="devices_device_config_section_volume_label">ভলিউম</string>
     <string name="devices_device_config_alarm_volume_label">অ্যালার্ম ভলিউম</string>
     <string name="devices_device_config_alarm_volume_desc">কিছু অ্যালার্ম অ্যাপ পরিবর্তে মিউজিক ভলিউম ব্যবহার করে।</string>
@@ -155,8 +148,6 @@
     <string name="devices_audio_stream_ring_label">রিং</string>
     <string name="devices_audio_stream_notification_label">নোটিফিকেশন</string>
     <string name="devices_audio_stream_alarm_label">অ্যালার্ম</string>
-    <string name="devices_neverseen_label">কখনো দেখা যায়নি</string>
-    <string name="devices_state_connected_label">সংযুক্ত</string>
     <string name="devices_last_connected_label">শেষ সংযোগ: %s</string>
     <string name="devices_currently_connected_label">এখন সংযুক্ত</string>
     <string name="devices_device_disabled_label">ডিভাইস নিষ্ক্রিয়</string>
@@ -191,10 +182,7 @@
     <string name="devices_settings_desc">সমস্ত পরিচালিত ডিভাইসের ুপর প্রভাবিত সেটিংস।</string>
     <string name="label_app_enabled">অ্যাপ সক্রিয়</string>
     <string name="description_app_enabled">ভলিউম এবং ব্লুটুথ ইভেন্টে প্রতিক্রিয়া করার অ্যাপের ক্ষমতা টোগল করে।</string>
-    <string name="label_visible_volume_adjustments">দৃশ্যমান সমন্বয়</string>
-    <string name="description_visible_volume_adjustments">এই অ্যাপ সমন্বয় করার সময় সিস্টেমের ভলিউম উইন্ডো দেখান।</string>
     <string name="label_volume_listener">পরিবর্তন লক্ষ্য করুন</string>
-    <string name="description_volume_listener">ডিভাইস সংযুক্ত থাকাকালীন সক্রিয় থাকুন এবং এই অ্যাপ দ্বারা হয়নি এমন ভলিউম পরিবর্তন সরিয়ে রাখুন।</string>
     <string name="label_boot_restore">বুটে পুনরুদ্ধার</string>
     <string name="description_boot_restore">ব্লুটুথ ডিভাইস সংযুক্ত থাকলে বুট/রিবুটের পরে ভলিউম পুনরুদ্ধার করুন।</string>
     <!-- Settings/Support-->
@@ -204,22 +192,11 @@
     <string name="settings_support_wiki_description">BVM কার্যকরভাবে ব্যবহার শিখুন</string>
     <string name="settings_support_issue_tracker_description">বাগ রিপোর্ট এবং ফিচার রিকোয়েস্টের জন্য একটি সর্বজনীন সমস্যা ট্র্যাকার।</string>
     <string name="settings_support_issue_tracker_label">সমস্যা শনাক্তকারী</string>
-    <string name="settings_support_debuglog_label">ডিবাগ লগ</string>
     <string name="settings_support_debuglog_desc">অ্যাপটি কী করছে তা একটি টেক্সট ফাইলে রেকর্ড করুন যাতে আপনি শেয়ার করতে পারেন।</string>
-    <string name="settings_support_debuglog_recording_desc">বর্তমানে ডিবাগ তথ্য রেকর্ড হচ্ছে। রেকর্ডিং বন্ধ করতে ট্যাপ করুন।</string>
-    <string name="settings_support_debuglog_path">লগ পাথ: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">অতি স্বল্প রেকর্ডিং</string>
     <string name="settings_support_debuglog_short_recording_msg">রেকর্ডিং অতি স্বল্প সময়ের ছিল। ডিবাগ লগ হলো রেকর্ডিং, স্ন্যাপশট নয় — লগ উপদকারী হতে রেকর্ডিং সক্রিয় থাকাকালীন সমস্যা পুনরায় ঘটান।</string>
     <string name="settings_support_debuglog_short_recording_continue">রেকর্ডিং জারি রাখুন</string>
     <string name="settings_support_debuglog_short_recording_stop">যাইহোক বন্ধ করুন</string>
-    <string name="settings_support_debuglog_folder_label">ডিবাগ লগ ফোল্ডার</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$dটি সেশন %2$s ব্যবহার করছে</item>
-        <item quantity="other">%1$dটি সেশন %2$s ব্যবহার করছে</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">কোনো ডিবাগ লগ সংরক্ষিত নেই</string>
-    <string name="settings_support_debuglog_folder_delete_title">সব ডিবাগ লগ মুছে দেবেন?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">এটি সব সংরক্ষিত ডিবাগ লগ সেশন স্থায়ীভাবে মুছে দেবে।</string>
     <string name="settings_support_discord_label">ডিসকর্ড</string>
     <string name="settings_support_discord_description">আড্ডা দেওয়ার এবং প্রশ্ন করার জায়গা।</string>
     <!-- Settings/Acks-->
@@ -228,16 +205,12 @@
     <string name="settings_acks_translation_header">অনুবাদ</string>
     <string name="settings_acks_translators_title">অনুবাদক</string>
     <string name="settings_acks_translators_people">Fattain Naime(iamnaime@builderhall.com);মোরশেদুল আলম(morshedintouch@gmail.com)</string>
-    <string name="settings_acks_translate_title">BVM অনুবাদ করুন</string>
-    <string name="settings_acks_translate_desc">BVM আপনার ভাষায় অনুবাদ করতে সাহায্য করুন</string>
     <string name="settings_acks_thanks_header">ধন্যবাদ</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">ওপেন-সোর্স প্রকল্পের অনুবাদ সমর্থন করার জন্য</string>
     <string name="settings_licenses_label">লাইসেন্সসমূহ</string>
     <string name="settings_translation_label">অনুবাদ</string>
     <string name="settings_translation_desc">আপনার পছন্দের ভাষায় অ্যাপটি অনুবাদ করতে সাহায্য করুন</string>
-    <string name="settings_sponsor_development_title">স্পনসর ডেভলপমেন্ট</string>
-    <string name="settings_sponsor_development_summary">একজন পৃষ্ঠপোষক হয়ে উঠুন এবং অব্যাহত উন্নয়ন সম্ভবপর করে তুলুন।</string>
     <string name="settings_privacy_policy_label">গোপনীয়তার নীতিমালা</string>
     <string name="settings_privacy_policy_desc">দায়িত্বের সাথে ডেটা পরিচালনা করা।</string>
     <string name="changelog_label">পরিবর্তনসূচী</string>
@@ -259,10 +232,8 @@
     <string name="backup_restore_success_restore">পুনরুদ্ধার সম্পন্ন — %1$d টি ডিভাইস পুনরুদ্ধার করা হয়েছে, %2$d টি এড়িয়ে যাওয়া হয়েছে।</string>
     <string name="backup_restore_version_warning">এই ব্যাকআপটি %1$s সংস্করণ দিয়ে তৈরি করা হয়েছিল। তুমি %2$s চালাচ্ছো। কিছু সেটিংস সঠিকভাবে পুনরুদ্ধার নাও হতে পারে।</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">ডিবাগ নোটিফিকেশন</string>
     <string name="debug_log_consent_title">ডিবাগ লগ</string>
     <string name="debug_log_consent_explanation">এই বৈশিষ্ট্যটি অ্যাপটি যা করছে তা একটি শেয়ারযোগ্য ফাইলে রেকর্ড করে। তৈরি হওয়া ফাইলটিতে সংবেদনশীল তথ্য থাকে (যেমন ফাইলের নাম এবং ইনস্টল করা অ্যাপ)। এটি শুধুমাত্র বিশ্বস্ত পক্ষের সাথেই শেয়ার করুন (যেমন, কোনও ডেভেলপার কোনও সমস্যার সমাধান করছেন)।</string>
-    <string name="debug_log_recording_progress">রেকর্ডিং ডিবাগ লগ</string>
     <string name="debug_log_record_action">রেকর্ড</string>
     <string name="debug_log_stop_action">রেকর্ডিং বন্ধ করুন</string>
     <string name="debug_log_screen_title">ডিবাগ লগ রেকর্ডার</string>
@@ -277,7 +248,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">বাতিল করুন</string>
     <string name="debug_log_screen_keep_action">রাখুন</string>
-    <string name="debug_log_compressing_label">সংকুচিত হচ্ছে…</string>
     <string name="debug_log_file_label">রেকর্ড করা লগ ফাইল</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">লগ পাঠানো হয়েছে?</string>
@@ -305,7 +275,6 @@
     <string name="contact_description_question_hint">আপনার প্রশ্নটি বিস্তারিতভাবে বর্ণনা করুন।</string>
     <string name="contact_category_section_label">বিভাগ</string>
     <string name="contact_debug_log_label">ডিবাগ লগ</string>
-    <string name="contact_debug_log_select_hint">সংযুক্ত করতে ডিবাগ লগ নির্বাচন করুন</string>
     <string name="contact_debug_log_picker_hint">সমস্যা দ্রুতর সনাক্ত করতে ডিবাগ লগ সংযুক্ত করুন।</string>
     <string name="contact_debug_log_picker_empty">কোনো ডিবাগ লগ পাওয়া যাচ্ছে না। প্রথমে একটি রেকর্ড করুন।</string>
     <string name="contact_expected_behavior_label">প্রত্যাশিত আচরণ</string>
@@ -319,82 +288,32 @@
     <string name="contact_welcome_msg">আমি নিজেই প্রতিটি বার্তা পড়ি এবং রিপ্লাই দেওয়ার যথাসাধ্য চেষ্টা করি, তবে একা কাজ করার কারণে সময় লাগতে পারে। ধৈর্যের জন্য ধন্যবাদ।</string>
     <string name="contact_footer_msg">আপনার বার্তা ইমেইলে পাঠানো হবে। ডিভাইস এবং সেটআপ তথ্য স্বয়ংক্রিয়ভাবে সংযুক্ত থাকে।</string>
     <string name="contact_no_email_app_msg">এই ডিভাইসে কোনো ইমেইল অ্যাপ পাওয়া যায়নি।</string>
-    <string name="contact_attachment_missing_msg">ডিবাগ লগ ফাইল আর বিদ্যমান নেই</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">সংরক্ষিত ডিবাগ লগ</string>
     <string name="settings_support_stored_logs_desc">%1$dটি সেশন (%2$s)</string>
     <string name="settings_support_stored_logs_empty">কোনো সংরক্ষিত ডিবাগ লগ নেই</string>
-    <string name="settings_support_stored_logs_delete_title">সংরক্ষিত লগ মুছে দেবেন?</string>
-    <string name="settings_support_stored_logs_delete_msg">এটি সব %1$dটি সংরক্ষিত ডিবাগ লগ সেশন মুছে দেবে।</string>
-    <string name="settings_support_stored_logs_deleted_msg">সংরক্ষিত ডিবাগ লগ মুছে গেছে</string>
-    <string name="label_bug_reports">বাগ রিপোর্ট</string>
-    <string name="description_bug_reports">স্বয়ংক্রিয় বাগ সে ক্র্যাশ রিপোর্টিং।</string>
     <string name="label_add_device">ডিভাইস যোগ করুন</string>
-    <string name="label_just_a_moment_please">একটু অপেক্ষা করুন।</string>
     <string name="label_notification_channel_status">অবস্থা</string>
     <string name="label_notification_channel_setup">সেটআপ প্রয়োজন</string>
     <string name="monitor_notification_starting">চালু হচ্ছে…</string>
     <string name="action_set">সেট</string>
     <string name="action_cancel">বাতিল করুন</string>
-    <string name="label_invalid_input">অবৈধ ইনপুট</string>
     <string name="action_reset">রিসেট করুন</string>
     <string name="label_no_connected_devices">কোনো ডিভাইস সংযুক্ত নেই</string>
-    <string name="label_status_idle">নিষ্ক্রিয়</string>
-    <string name="label_status_adjusting_volumes">ভলিউম সমন্বয় করা হচ্ছে</string>
-    <string name="label_premium_version">প্রিমিয়াম সংস্করণ</string>
     <string name="general_upgrade_action">আপগ্রেড করুন</string>
     <string name="common_upgrade_required_label">আপগ্রেড প্রয়োজন</string>
-    <string name="label_premium_version_required">প্রিমিয়াম সংস্করণ প্রয়োজন</string>
-    <string name="description_intro_purpose">এই অ্যাপ আপনার আন্ড্রয়েড ডিভাইসকে বিভিন্ন ব্লুটুথ ডিভাইসের ভলিউম মনে রাখতে দেয়।</string>
-    <string name="upgrade_benefit_unlimited_devices">সীমাহীন ডিভাইস প্রোফাইল</string>
-    <string name="upgrade_benefit_connection_actions">অটোপ্লে, অ্যাপ লঞ্চ এবং কানেকশন অ্যালার্ট</string>
-    <string name="upgrade_benefit_theme_customization">থিম, স্টাইল এবং রঙ কাস্টমাইজেশন</string>
-    <string name="upgrade_benefit_power_controls">ভলিউম লক এবং রেট লিমিটিং</string>
-    <string name="upgrade_benefit_support">স্বতন্ত্র ডেভেলপমেন্ট সমর্থন করো</string>
     <string name="upgrade_benefit_equalizer">• প্রতি-ডিভাইস ইকুয়ালাইজার (সিস্টেম ইকুয়ালাইজার সাপোর্ট সহ সঙ্গীত অ্যাপের জন্য)</string>
-    <string name="description_intro_tap_the_button">আপনার প্রথম ডিভাইস যোগ করে শুরু করুন।</string>
     <string name="description_bluetooth_is_disabled">ব্লুটুথ বন্ধ আছে।</string>
     <string name="title_bluetooth_is_off">ব্লুটুথ বন্ধ</string>
     <string name="action_enable_bluetooth">ব্লুটুথ চালু করুন</string>
     <string name="title_bluetooth_permission_required">ব্লুটুথ অনুমতি প্রয়োজন</string>
     <string name="description_bluetooth_permission_required">আপনার ডিভাইসের ভলিউম পরিচালনা করতে এই অ্যাপের ব্লুটুথ অনুমতি দরকার।</string>
     <string name="action_grant_permission">অনুমতি দিন</string>
-    <string name="label_status_listening_for_changes">ভলিউম পরিবর্তন শুনছে</string>
     <string name="action_exit">বাহির</string>
-    <string name="action_start">শুরু</string>
-    <string name="label_welcome">স্বাগত</string>
-    <string name="description_intro_contact">প্রশ্ন থাকলে বা নতুন ফিচারের আইডিয়া থাকলে যোগাযোগ করতে কুণ্ঠিত হবেন না।</string>
-    <string name="label_translation">অনুবাদ</string>
-    <string name="description_help_translate">অ্যাপটি অন্য ভাষায় পাওয়া যাবে অনুগ্রহ করে সাহায্য করুন।</string>
     <string name="label_device_speaker">ডিভাইস স্পিকার</string>
-    <string name="label_keyevent_playpause">প্লে-প্যানেল</string>
-    <string name="label_keyevent_play">প্লে</string>
-    <string name="label_keyevent_next">পরবর্তী</string>
-    <string name="label_install_id">ইনস্টল আইডি</string>
     <string name="message_copied_to_clipboard">ক্লিপবোর্ডে কপি হয়েছে</string>
-    <string name="label_thanks">ধন্যবাদ</string>
-    <string name="label_licenses">লাইসেন্স</string>
-    <string name="description_ring_volume_additional_permission">রিং ভলিউম পরিবর্তন করতে অতিরিক্ত অনুমতি প্রয়োজন।</string>
-    <string name="label_missing_permissions">অনুপস্থিত অনুমতি</string>
-    <string name="action_grant">মতা দিন</string>
-    <string name="label_advanced">উন্নত</string>
-    <string name="label_exclude_health">স্বাস্থ্য প্রোফাইল বাদ দিন</string>
-    <string name="description_exclude_health">কিছু আন্ড্রয়েড ডিভাইস \'হেলথ ডিভাইস\' ব্লুটুথ প্রোফাইল (HDP, 0x1400) খোঁজার সময় হ্যাং হয়ে যায়।</string>
-    <string name="label_exclude_gattserver">GATT সার্ভার প্রোফাইল বাদ দিন</string>
-    <string name="label_exclude_gatt">GATT প্রোফাইল বাদ দিন</string>
-    <string name="description_exclude_gattserver">\'Generic Attribute\' (GATT) সার্ভার ধরনের ব্লুটুথ প্রোফাইল ক্যুয়েরি করবেন না।</string>
-    <string name="description_exclude_gatt">\'Generic Attribute\' (GATT) ক্লায়েন্ট ধরনের ব্লুটুথ প্রোফাইল ক্যুয়েরি করবেন না।</string>
-    <string name="description_waiting_for_devicex">%s সংযোগ সম্পূর্ণ হওয়ার জন্য অপেক্ষা করা হচ্ছে</string>
-    <string name="action_undo">পূর্বাবস্থায় ফিরিয়ে আনুন</string>
-    <string name="action_show">দেখান</string>
     <string name="action_dismiss">খারিজ করুন</string>
-    <string name="action_fix">ঠিক করুন</string>
-    <string name="battery_optimizations_issue_description">এই অ্যাপের জন্য ব্যাটারি অপ্টিমাইজেশন সক্রিয় এবং ব্লুটুথ ইভেন্ট গ্রহণ থেকে বিরত রাখতে পারে। সমস্যা হলে অপ্টিমাইজেশন নিষ্ক্রিয় করুন।</string>
     <string name="label_bluetooth_settings">ব্লুটুথ সেটিংস</string>
-    <string name="android10_applaunch_issue_description">Android 10 ব্যাকগ্রাউন্ড থেকে অ্যাপ চালু করা সীমিত করে। ব্লুটুথ ডিভাইস সংযুক্ত হলে অ্যাপ খুলতে দিতে, \"Display over other apps\" (SYSTEM_ALERT_WINDOW) অনুমতি দিন।</string>
-    <string name="label_opensource">সোর্স কোড</string>
-    <string name="android13_notification_permission_description">নোটিফিকেশন পোস্ট করতে এই অ্যাপকে অনুমতি দিন। এটি এই অ্যাপ সক্রিয় থাকাকালীন এবং ভলিউম সমন্বয়ের সময় নোটিফিকেশন দেখাতে সক্ষম করে।</string>
-    <string name="privacy_policy_label">গোপনীয়তার নীতিমালা</string>
     <string name="managed_devices_empty_message">কোনো ব্লুটুথ ডিভাইস কনফিগার নেই।\nপ্রথম ডিভাইস যোগ করতে + বাটন ট্যাপ করুন।</string>
     <string name="label_pro_feature">প্রিমিয়াম ফিচার</string>
     <plurals name="discover_device_limit_banner">
@@ -425,21 +344,15 @@
     <string name="review_app_review_action">পর্যালোচনা করুন</string>
     <string name="review_app_dismiss_action">হয়তো পরে</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">কেনাকাটা বাতিল</string>
-    <string name="error_iap_unavailable_message">ইন-অ্যাপ কেনাকাটা পাওয়া যাচ্ছে না</string>
-    <string name="error_generic_message">ভুল হয়েছে। আবার চেষ্টা করুন।</string>
-    <string name="error_iap_owned_message">আপনি ইতোমধ্যে এটি কিনে ফেলেছেন</string>
     <string name="label_no_devices_title">কোনো ডিভাইস নেই</string>
     <string name="bluemusic_mascot_description">অ্যাপ আইকন</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">অ্যাপ নির্বাচন করুন</string>
     <string name="devices_app_selection_search_hint">অ্যাপ খুঁজুন…</string>
-    <string name="devices_app_selection_currently_selected">বর্তমানে নির্বাচিত</string>
     <string name="devices_app_selection_selected_count">%dটি অ্যাপ নির্বাচন করা হয়েছে</string>
     <string name="general_navigate_back_action">পিছনে যান</string>
     <string name="general_reset_action">রিসেট করুন</string>
     <string name="general_clear_action">মুছে দিন</string>
-    <string name="general_save_action">সংরক্ষণ করুন</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">লক</string>
     <string name="devices_indicator_awake">জাগ্রত</string>
@@ -449,7 +362,6 @@
     <string name="devices_indicator_limit">সীমা</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">বুস্ট</string>
-    <string name="devices_indicator_launch">চালু</string>
     <string name="devices_indicator_home">হোম</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">সতর্কতা</string>

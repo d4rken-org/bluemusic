@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">Yangilanish jarayonida ba\'zi funksiyalar o\'zgardi. Hamma narsa to\'g\'ri sozlanganligini tekshirish uchun qurilma sozlamalarini ko\'rib chiqing.</string>
     <string name="onboarding_rewrite_action">Davom etish</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">Boshqarilmagan qurilmalar topilmadi</string>
     <string name="discover_all_devices_managed_msg">Barcha juftlashtirilgan qurilmalaringiz boshqarilmoqda! Yangi qurilma kerakmi?</string>
     <string name="discover_pair_new_device_action">Yangi qurilma juftlashtirish</string>
     <string name="discover_device_speaker_desc">Telefonning o\'z karnaysi. Uning ovoz darajalari audio telefonga qaytganda qo\'llaniladi, masalan, Bluetooth qurilmangiz uzilgandan keyin.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Qurilma sozlamalari</string>
-    <string name="devices_device_config_section_general_label">Umumiy</string>
     <string name="devices_device_config_remove_device_label">Qurilmani unutish</string>
-    <string name="devices_device_config_remove_device_desc">Qurilmani ushbu ilovadan o\'chirib, uning sozlamalarini o\'chiradi. Bu qurilmani juftlashtirishdan chiqarmaydi.</string>
     <string name="devices_device_config_remove_device_action">Unutish</string>
     <string name="devices_device_config_remove_device_confirmation">%s ni boshqariladigan qurilmalardan unutasizmi?</string>
-    <string name="devices_device_config_rename_device_label">Qurilmani qayta nomlash</string>
-    <string name="devices_device_config_rename_device_desc">Bu qurilmani ushbu ilovada va iloji bo\'lsa tizimda ham qayta nomlaydi.</string>
     <string name="devices_device_config_rename_device_action">Qayta nomlash</string>
     <string name="devices_device_config_enabled_label">Yoqilgan</string>
     <string name="devices_device_config_enabled_desc">Bu qurilma ulanganda munosabat bildirish</string>
@@ -93,7 +88,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">Avtomatik ijro buyruqlari</string>
     <string name="devices_device_config_autoplay_keycodes_order">Buyruqlar ketma-ketligi</string>
     <string name="devices_device_config_autoplay_keycodes_label">Buyruqlar</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Qaysi buyruqlarni va qanday tartibda yuborishni sozlang</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">Hech qanday buyruq sozlanmagan</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">Buyruq qo\'shish</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">Maksimal %1$d ta buyruq</string>
@@ -120,7 +114,6 @@
     <string name="cd_autoplay_keycode_move_up">Yuqoriga ko\'chirish</string>
     <string name="cd_autoplay_keycode_move_down">Pastga ko\'chirish</string>
     <string name="cd_autoplay_keycode_remove">Olib tashlash</string>
-    <string name="devices_device_config_section_volumes_label">Ovozlar</string>
     <string name="devices_device_config_section_volume_label">Ovoz</string>
     <string name="devices_device_config_alarm_volume_label">Signal ovozi</string>
     <string name="devices_device_config_alarm_volume_desc">Ba\'zi signal ilovalari musiqa ovozidan foydalanadi.</string>
@@ -154,8 +147,6 @@
     <string name="devices_audio_stream_ring_label">Jiringlash</string>
     <string name="devices_audio_stream_notification_label">Bildirishnoma</string>
     <string name="devices_audio_stream_alarm_label">Signal</string>
-    <string name="devices_neverseen_label">Hech qachon ko\'rilmagan</string>
-    <string name="devices_state_connected_label">Ulangan</string>
     <string name="devices_last_connected_label">Oxirgi ulanish: %s</string>
     <string name="devices_currently_connected_label">Hozirda ulangan</string>
     <string name="devices_device_disabled_label">Qurilma o\'chirilgan</string>
@@ -190,10 +181,7 @@
     <string name="devices_settings_desc">Barcha boshqariladigan qurilmalarga ta\'sir qiluvchi sozlamalar.</string>
     <string name="label_app_enabled">Ilova yoqilgan</string>
     <string name="description_app_enabled">Ilovaning ovoz va Bluetooth voqealariga munosabat bildirish qobiliyatini yoqadi/o\'chiradi.</string>
-    <string name="label_visible_volume_adjustments">Ko\'rinadigan sozlamalar</string>
-    <string name="description_visible_volume_adjustments">Bu ilova sozlamalar amalga oshirayotganda tizimning ovoz oynasini ko\'rsatish.</string>
     <string name="label_volume_listener">O\'zgarishlarni kuzatish</string>
-    <string name="description_volume_listener">Qurilma ulanganda faol bo\'lib turib, ushbu ilova tomonidan amalga oshirilmagan ovoz o\'zgarishlarini saqlash.</string>
     <string name="label_boot_restore">Yuklanganda tiklash</string>
     <string name="description_boot_restore">Bluetooth qurilma ulangan bo\'lsa, yuklash/qayta yuklashdan keyin ovozni tiklash.</string>
     <!-- Settings/Support-->
@@ -203,22 +191,11 @@
     <string name="settings_support_wiki_description">BVM dan samarali foydalanishni o\'rganing</string>
     <string name="settings_support_issue_tracker_description">Xato hisobotlari va yangi xususiyat so\'rovlari uchun ommaviy muammo kuzatuvchisi.</string>
     <string name="settings_support_issue_tracker_label">Muammo kuzatuvchisi</string>
-    <string name="settings_support_debuglog_label">Debug jurnal</string>
     <string name="settings_support_debuglog_desc">Ilovaning barcha harakatlarini ulashishingiz mumkin bo\'lgan matn fayliga yozish.</string>
-    <string name="settings_support_debuglog_recording_desc">Hozir nosozlik ma\'lumotlarini yozib olmoqda. To\'xtatish uchun bosing.</string>
-    <string name="settings_support_debuglog_path">Jurnal yo\'li: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">Juda qisqa yozuv</string>
     <string name="settings_support_debuglog_short_recording_msg">Bu juda qisqa yozuv edi. Nosozlik jurnallari tasvirlar emas, yozuvlardir — jurnal foydali bo\'lishi uchun yozuv faol bo\'lgan vaqtda muammoni qayta yarating.</string>
     <string name="settings_support_debuglog_short_recording_continue">Yozishni davom ettirish</string>
     <string name="settings_support_debuglog_short_recording_stop">Baribir to\'xtatish</string>
-    <string name="settings_support_debuglog_folder_label">Nosozlik jurnali papkasi</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d ta sessiya %2$s ishlatmoqda</item>
-        <item quantity="other">%1$d ta sessiya %2$s ishlatmoqda</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Nosozlik jurnallari yo\'q</string>
-    <string name="settings_support_debuglog_folder_delete_title">Barcha nosozlik jurnallarini o\'chirasizmi?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Bu barcha saqlangan nosozlik jurnal sessiyalarini doimiy ravishda o\'chiradi.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Muloqot qilish va savollar berish uchun joy.</string>
     <!-- Settings/Acks-->
@@ -227,16 +204,12 @@
     <string name="settings_acks_translation_header">Tarjima</string>
     <string name="settings_acks_translators_title">Tarjimonlar</string>
     <string name="settings_acks_translators_people">Shaxs1;Shaxs2(ixtiyoriy@email.com)</string>
-    <string name="settings_acks_translate_title">BVM ni tarjima qilish</string>
-    <string name="settings_acks_translate_desc">BVM ni o\'z tilingizga tarjima qilishda yordam bering</string>
     <string name="settings_acks_thanks_header">Rahmat</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Ochiq kodli loyihalar tarjimasini qo\'llab-quvvatgani uchun</string>
     <string name="settings_licenses_label">Litsenziyalar</string>
     <string name="settings_translation_label">Tarjima</string>
     <string name="settings_translation_desc">Ilovani sevimli tilingizga tarjima qilishda yordam bering</string>
-    <string name="settings_sponsor_development_title">Rivojlanishni homiylik qilish</string>
-    <string name="settings_sponsor_development_summary">Homiy bo\'ling va davomiy rivojlanishni davom ettirishga yordam bering.</string>
     <string name="settings_privacy_policy_label">Maxfiylik siyosati</string>
     <string name="settings_privacy_policy_desc">Ma\'lumotlar bilan mas\'uliyat bilan ishlash.</string>
     <string name="changelog_label">O\'zgarishlar jurnali</string>
@@ -258,10 +231,8 @@
     <string name="backup_restore_success_restore">Tiklash tugadi — %1$d ta qurilma tiklandi, %2$d tasi o\'tkazib yuborildi.</string>
     <string name="backup_restore_version_warning">Bu zaxira %1$s versiyasida yaratilgan. Siz %2$s versiyasini ishlatyapsiz. Ba\'zi sozlamalar to\'g\'ri tiklanmasligi mumkin.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">Nosozliklarni tuzatish bildirishlari</string>
     <string name="debug_log_consent_title">Debug jurnal</string>
     <string name="debug_log_consent_explanation">Bu xususiyat ilovaning barcha faoliyatini baham ko\'rish mumkin bo\'lgan faylga yozadi. Yaratilgan fayl maxfiy ma\'lumotlarni o\'z ichiga oladi (masalan, fayl nomlari va o\'rnatilgan ilovalar). Uni faqat ishonchli tomonlar bilan baham ko\'ring (masalan, muammoni hal qilayotgan ishlab chiqaruvchi).</string>
-    <string name="debug_log_recording_progress">Nosozliklarni tuzatish jurnali yozilmoqda</string>
     <string name="debug_log_record_action">Yozish</string>
     <string name="debug_log_stop_action">Yozishni to\'xtatish</string>
     <string name="debug_log_screen_title">Nosozlik jurnali yozib oluvchi</string>
@@ -276,7 +247,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">Rad etish</string>
     <string name="debug_log_screen_keep_action">Saqlash</string>
-    <string name="debug_log_compressing_label">Siqilmoqda…</string>
     <string name="debug_log_file_label">Yozib olingan jurnal fayli</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Jurnal yuborildi?</string>
@@ -304,7 +274,6 @@
     <string name="contact_description_question_hint">Savolingizni batafsil tasvirlab bering.</string>
     <string name="contact_category_section_label">Kategoriya</string>
     <string name="contact_debug_log_label">Debug jurnal</string>
-    <string name="contact_debug_log_select_hint">Biriktirish uchun nosozlik jurnalini tanlash</string>
     <string name="contact_debug_log_picker_hint">Muammoni tezroq tashxislash uchun nosozlik jurnalini biriktiring.</string>
     <string name="contact_debug_log_picker_empty">Nosozlik jurnallari mavjud emas. Avval birini yozib oling.</string>
     <string name="contact_expected_behavior_label">Kutilgan xatti-harakat</string>
@@ -318,82 +287,32 @@
     <string name="contact_welcome_msg">Har bir xabarni o\'zim o\'qiyman va javob berishga harakat qilaman, lekin bu ishni yolg\'iz qilayotganimda, biroz vaqt ketishi mumkin. Sabringiz uchun rahmat.</string>
     <string name="contact_footer_msg">Xabaringiz elektron pochta orqali yuboriladi. Qurilma va sozlash ma\'lumotlari avtomatik biriktiriladi.</string>
     <string name="contact_no_email_app_msg">Bu qurilmada elektron pochta ilovasi topilmadi.</string>
-    <string name="contact_attachment_missing_msg">Nosozlik jurnal fayli endi mavjud emas</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Saqlangan nosozlik jurnallari</string>
     <string name="settings_support_stored_logs_desc">%1$d ta sessiya (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Saqlangan nosozlik jurnallari yo\'q</string>
-    <string name="settings_support_stored_logs_delete_title">Saqlangan jurnallarni o\'chirasizmi?</string>
-    <string name="settings_support_stored_logs_delete_msg">Bu barcha %1$d ta saqlangan nosozlik jurnal sessiyasini o\'chiradi.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Saqlangan nosozlik jurnallari o\'chirildi</string>
-    <string name="label_bug_reports">Xato hisobotlari</string>
-    <string name="description_bug_reports">Avtomatik xato va nosozlik hisoboti.</string>
     <string name="label_add_device">Qurilma qo\'shish</string>
-    <string name="label_just_a_moment_please">Bir lahza, iltimos.</string>
     <string name="label_notification_channel_status">Holat</string>
     <string name="label_notification_channel_setup">Sozlash talab qilinadi</string>
     <string name="monitor_notification_starting">Ishga tushmoqda…</string>
     <string name="action_set">O\'rnatish</string>
     <string name="action_cancel">Bekor qilish</string>
-    <string name="label_invalid_input">Noto\'g\'ri ma\'lumot</string>
     <string name="action_reset">Qayta o\'rnatish</string>
     <string name="label_no_connected_devices">Ulangan qurilmalar yo\'q</string>
-    <string name="label_status_idle">Faoliyatsiz</string>
-    <string name="label_status_adjusting_volumes">Ovozlarni sozlash</string>
-    <string name="label_premium_version">Premium versiya</string>
     <string name="general_upgrade_action">Yangilash</string>
     <string name="common_upgrade_required_label">Yangilash talab qilinadi</string>
-    <string name="label_premium_version_required">Premium versiya talab qilinadi</string>
-    <string name="description_intro_purpose">Bu ilova Android qurilmangizga turli Bluetooth qurilmalar uchun ovoz darajasini eslab qolish imkonini beradi.</string>
-    <string name="upgrade_benefit_unlimited_devices">Cheklanmagan qurilma profillari</string>
-    <string name="upgrade_benefit_connection_actions">Avtomatik ijro, ilova ishga tushirish va ulanish ogohlantirishlari</string>
-    <string name="upgrade_benefit_theme_customization">Mavzu, uslub va rang sozlamalari</string>
-    <string name="upgrade_benefit_power_controls">Ovoz qulfi va tezlik cheklash</string>
-    <string name="upgrade_benefit_support">Mustaqil rivojlanishni qo\'llab-quvvatlash</string>
     <string name="upgrade_benefit_equalizer">• Har bir qurilma uchun ekvalayzer (tizim ekvalayzerini qo\'llab-quvvatlaydigan musiqa ilovalari uchun)</string>
-    <string name="description_intro_tap_the_button">Birinchi qurilmangizni qo\'shib boshlang.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth o\'chirilgan.</string>
     <string name="title_bluetooth_is_off">Bluetooth o\'chiq</string>
     <string name="action_enable_bluetooth">Bluetoothni yoqish</string>
     <string name="title_bluetooth_permission_required">Bluetooth ruxsati talab qilinadi</string>
     <string name="description_bluetooth_permission_required">Bu ilova qurilma ovozlarini boshqarish uchun Bluetooth ruxsatiga muhtoj.</string>
     <string name="action_grant_permission">Ruxsat berish</string>
-    <string name="label_status_listening_for_changes">Ovoz o\'zgarishlarini tinglash</string>
     <string name="action_exit">Chiqish</string>
-    <string name="action_start">Boshlash</string>
-    <string name="label_welcome">Xush kelibsiz</string>
-    <string name="description_intro_contact">Savollaringiz yoki yangi funksiya uchun g\'oyangiz bo\'lsa, mendan so\'rashdan tortinmang.</string>
-    <string name="label_translation">Tarjima</string>
-    <string name="description_help_translate">Ilovani boshqa tillarda mavjud qilishimga yordam bering.</string>
     <string name="label_device_speaker">Qurilma dinamigi</string>
-    <string name="label_keyevent_playpause">O\'ynash-To\'xtatish</string>
-    <string name="label_keyevent_play">O\'ynash</string>
-    <string name="label_keyevent_next">Keyingisi</string>
-    <string name="label_install_id">O\'rnatish identifikatori</string>
     <string name="message_copied_to_clipboard">Vaqtinchalik xotiraga nusxalandi</string>
-    <string name="label_thanks">Rahmat</string>
-    <string name="label_licenses">Litsenziyalar</string>
-    <string name="description_ring_volume_additional_permission">Jiringlash ovozini o\'zgartirish uchun qo\'shimcha ruxsatlar talab qilinadi.</string>
-    <string name="label_missing_permissions">Ruxsatlar yetishmaydi</string>
-    <string name="action_grant">Berish</string>
-    <string name="label_advanced">Kengaytirilgan</string>
-    <string name="label_exclude_health">Sog\'liq profillarini istisno qilish</string>
-    <string name="description_exclude_health">Ba\'zi Android qurilmalari \"Sog\'liq qurilmasi\" Bluetooth profillarini (HDP, 0x1400) qidirishda qotib qoladi.</string>
-    <string name="label_exclude_gattserver">GATT server profillarini istisno qilish</string>
-    <string name="label_exclude_gatt">GATT profillarini istisno qilish</string>
-    <string name="description_exclude_gattserver">\'Umumiy atribut\' (GATT) serveri turidagi Bluetooth profillarini so\'ramaslik.</string>
-    <string name="description_exclude_gatt">\'Umumiy atribut\' (GATT) mijozi turidagi Bluetooth profillarini so\'ramaslik.</string>
-    <string name="description_waiting_for_devicex">%s ulanishni yakunlashini kutish</string>
-    <string name="action_undo">Bekor qilish</string>
-    <string name="action_show">Ko\'rsatish</string>
     <string name="action_dismiss">Yopish</string>
-    <string name="action_fix">Tuzatish</string>
-    <string name="battery_optimizations_issue_description">Bu ilova uchun batareya optimallashtirishlari yoqilgan va bu ilovaning Bluetooth voqealarini olishiga to\'sqinlik qilishi mumkin. Agar muammolar yuzaga kelsa, optimallashtirishlarni o\'chirishni ko\'ring.</string>
     <string name="label_bluetooth_settings">Bluetooth sozlamalari</string>
-    <string name="android10_applaunch_issue_description">Android 10 ilovalarni fonda ishga tushirishni cheklaydi. Bluetooth qurilmasi ulanganda ilovalarni ochishga ruxsat berish uchun \"Boshqa ilovalar ustida ko\'rsatish\" (SYSTEM_ALERT_WINDOW) ruxsatini bering.</string>
-    <string name="label_opensource">Manba kodi</string>
-    <string name="android13_notification_permission_description">Bu ilova bildirishnomalar yuborish ruxsatini bering. Bu ilova faol bo\'lganda va ovoz sozlamalari amalga oshirilayotganda bildirishnoma ko\'rsatishni ta\'minlaydi.</string>
-    <string name="privacy_policy_label">Maxfiylik siyosati</string>
     <string name="managed_devices_empty_message">Bluetooth qurilmalar sozlanmagan.\nBirinchi qurilmangizni qo\'shish uchun + tugmasini bosing.</string>
     <string name="label_pro_feature">Premium funksiya</string>
     <plurals name="discover_device_limit_banner">
@@ -424,21 +343,15 @@
     <string name="review_app_review_action">Ko\'rib chiqish</string>
     <string name="review_app_dismiss_action">Balki keyinroq</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">Xarid bekor qilindi</string>
-    <string name="error_iap_unavailable_message">Ilovadagi xaridlar mavjud emas</string>
-    <string name="error_generic_message">Xato yuz berdi. Iltimos, qayta urinib ko\'ring.</string>
-    <string name="error_iap_owned_message">Siz allaqachon bu narsaga egasiz</string>
     <string name="label_no_devices_title">Qurilmalar yo\'q</string>
     <string name="bluemusic_mascot_description">Ilova belgisi</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">Ilovalarni tanlash</string>
     <string name="devices_app_selection_search_hint">Ilovalarni qidirish…</string>
-    <string name="devices_app_selection_currently_selected">Hozir tanlangan</string>
     <string name="devices_app_selection_selected_count">%d ta ilova tanlangan</string>
     <string name="general_navigate_back_action">Orqaga o\'tish</string>
     <string name="general_reset_action">Qayta o\'rnatish</string>
     <string name="general_clear_action">Tozalash</string>
-    <string name="general_save_action">Saqlash</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">Qulflash</string>
     <string name="devices_indicator_awake">Uyg\'oq</string>
@@ -448,7 +361,6 @@
     <string name="devices_indicator_limit">Cheklash</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Kuchaytirish</string>
-    <string name="devices_indicator_launch">Ishga tushirish</string>
     <string name="devices_indicator_home">Uy</string>
     <string name="devices_indicator_dnd">BQQ</string>
     <string name="devices_indicator_alert">Ogohlantirish</string>

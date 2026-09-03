@@ -5,7 +5,6 @@
     <string name="upgrade_feature_requires_pro">ຕ້ອງການ BVM Pro</string>
     <string name="upgrade_prompt_title">ອັບເກຣດເປັນ BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro ໃຫ້ຜ໏ລໍບທີ່ດີກວ່າ, ມີຄຸນສົມແລະຕັວເລືອກເພິ່ມເຕີມສຳຫຣັບຜູ້ໃຊ້ທີ່ເພີບ.</string>
-    <string name="upgrade_prompt_upgrade_action">ອັບເກຣດ</string>
     <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
     <string name="upgrade_screen_title_template">ອັບເກຣດເປັນ %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager ບ່ມີໂຆສນາເກ໭ນແລະບ່ຂາຍຂ້ອມູນຜູ້ໃຊ້. ງານຂອງຂ້ອນສະຫນັບສນຸນໂດຍທ່ານ ❤️.</string>
@@ -56,7 +55,6 @@
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager ໂຊ່ມຕ່ອກັບ Google Play ໄດ້. ໂດຍຕິດຕັ້ງ Google Play ແລະອັດເດທໄດ້ບ່? ເຂົ້າລັອກ Google ໄດ້ບ່? ລອງລ້າງແຄຊແລະຊົກເລີ່ມອຸປກອນຂອງທ່ານໃຫມ່.</string>
     <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
     <string name="upgrades_gplay_not_installed_message">ບໍ່ສາມາດເປີດ Google Play ໄດ້. ມັນອາດຈະຫາຍໄປ, ປິດໃຊ້ງານ, ຫຼື ຖືກຈໍາກັດໃນອຸປະກອນນີ້.</string>
-    <string name="upgrades_no_purchases_found_check_account">ບໍ່ພົບການຊື້. ທ່ານກຳລັງໃຊ້ບັນຊີທີ່ຖືກຕ້ອງບໍ?</string>
     <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
     <string name="upgrade_screen_offers_title">ຕົວເລືອກການອັບເກຣດ</string>
     <string name="upgrade_screen_offers_body">ທັງສອງຕົວເລືອກຈະປົ່ອຍໃຫ້ຟີເຈີ Pro ແບບດຽວກັນ — ເລືອກອັນໃດກໍ່ໄດ້ທີ່ເໝາະສົມກັບທ່ານ.</string>

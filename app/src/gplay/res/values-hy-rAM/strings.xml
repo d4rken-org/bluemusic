@@ -5,7 +5,6 @@
     <string name="upgrade_feature_requires_pro">Պահանջվում է BVM Pro</string>
     <string name="upgrade_prompt_title">Անցնել BVM Pro-ին</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro ավելի լավ արդյունքներ՝ գորունակություններ և հնարավորություններ հզոր ուժղատություն ունեցողների համար։</string>
-    <string name="upgrade_prompt_upgrade_action">Թարմացնել</string>
     <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
     <string name="upgrade_screen_title_template">Արդիացեք %1$s-ին</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager-ում գովազդներ չկան և ուժղատության տվյալներ չի վարարկում։ Մեր աշխատանքե ժղարգարվում ե դզեր կողմից։</string>
@@ -56,7 +55,6 @@
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager-ե հնարավորություն չունի կապուտվել Google Play-ին։ Google Play տեղադրված և արդիականացված ե՞ Կիրարնեք Google հաշվիե մուտքագրված ե՞ Պորդեք մաքրել Google Play տվյալե և վերագնել սարքե։</string>
     <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
     <string name="upgrades_gplay_not_installed_message">Չհաջողվեց Google Play բացել: Հնարավոր է, որ այն բացակա, անջատված կամ սահմանափակված է այս սարքում:</string>
-    <string name="upgrades_no_purchases_found_check_account">Գնումներ չեն գտնվել: Օգտագործում եք ճիշտ հաշիվը:</string>
     <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
     <string name="upgrade_screen_offers_title">Արդիացման տարբերակներ</string>
     <string name="upgrade_screen_offers_body">Երկու տարբերակներն էլ մեկնում են Pro-ի նույն հատկանիշները — ընտրեք որը հարմար է ձեզ համար։</string>

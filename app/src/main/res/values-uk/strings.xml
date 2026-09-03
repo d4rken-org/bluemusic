@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">Деякі налаштування пристроїв могли бути скинуті під час цього оновлення. Будь ласка, перевір конфігурації своїх пристроїв.</string>
     <string name="onboarding_rewrite_action">Продовжити</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">Не знайдено некерованих пристроїв</string>
     <string name="discover_all_devices_managed_msg">Усі твої спарені пристрої вже керуються! Потрібен новий?</string>
     <string name="discover_pair_new_device_action">Спарити новий пристрій</string>
     <string name="discover_device_speaker_desc">Вбудований динамік телефону. Його гучність застосовується, коли звук переключається назад на телефон, наприклад, після відключення пристрою Bluetooth.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Конфігурація пристрою</string>
-    <string name="devices_device_config_section_general_label">Загальні</string>
     <string name="devices_device_config_remove_device_label">Забути пристрій</string>
-    <string name="devices_device_config_remove_device_desc">Забуває пристрій з цього додатку і видаляє його конфігурацію. Це не скасовує спарювання пристрою.</string>
     <string name="devices_device_config_remove_device_action">Забути</string>
     <string name="devices_device_config_remove_device_confirmation">Забути %s з керованих пристроїв?</string>
-    <string name="devices_device_config_rename_device_label">Перейменувати пристрій</string>
-    <string name="devices_device_config_rename_device_desc">Перейменувати цей пристрій в додатку і, якщо можливо, в системі.</string>
     <string name="devices_device_config_rename_device_action">Перейменувати</string>
     <string name="devices_device_config_enabled_label">Увімкнено</string>
     <string name="devices_device_config_enabled_desc">Реагувати на цей пристрій при підключенні</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">Команди автовідтворення</string>
     <string name="devices_device_config_autoplay_keycodes_order">Послідовність команд</string>
     <string name="devices_device_config_autoplay_keycodes_label">Команди</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Налаштуйте, які команди надсилати та в якому порядку</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">Команди не налаштовано</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">Додати команду</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">Максимум %1$d команд</string>
@@ -123,7 +117,6 @@
     <string name="cd_autoplay_keycode_move_up">Перемістити вгору</string>
     <string name="cd_autoplay_keycode_move_down">Перемістити вниз</string>
     <string name="cd_autoplay_keycode_remove">Видалити</string>
-    <string name="devices_device_config_section_volumes_label">Гучності</string>
     <string name="devices_device_config_section_volume_label">Гучність</string>
     <string name="devices_device_config_alarm_volume_label">Гучність будильника</string>
     <string name="devices_device_config_alarm_volume_desc">Деякі додатки будильника використовують гучність музики замість цього.</string>
@@ -157,8 +150,6 @@
     <string name="devices_audio_stream_ring_label">Дзвінок</string>
     <string name="devices_audio_stream_notification_label">Сповіщення</string>
     <string name="devices_audio_stream_alarm_label">Будильник</string>
-    <string name="devices_neverseen_label">Незнайомий пристрій</string>
-    <string name="devices_state_connected_label">Під\'єднано</string>
     <string name="devices_last_connected_label">Останнє під\'єднання: %s</string>
     <string name="devices_currently_connected_label">Зараз під\'єднано</string>
     <string name="devices_device_disabled_label">Пристрій вимкнено</string>
@@ -193,10 +184,7 @@
     <string name="devices_settings_desc">Налаштування, які впливають на всі керовані пристрої.</string>
     <string name="label_app_enabled">Додаток увімкнено</string>
     <string name="description_app_enabled">Вмикає здатнісь додатку реагувати на події, пов\'язані з гучністю та bluetooth.</string>
-    <string name="label_visible_volume_adjustments">Візуалізація налаштувань</string>
-    <string name="description_visible_volume_adjustments">Виводити вікно системної гучності при налаштуваннях цим додатком.</string>
     <string name="label_volume_listener">Відстеження змін</string>
-    <string name="description_volume_listener">Залишатись активним доки пристрій приєднаний та зберігати зміни гучності, внесені іншими додатками.</string>
     <string name="label_boot_restore">Відновити при завантаженні</string>
     <string name="description_boot_restore">Відновлення гучності після завантаження/перезавантаження, якщо пристрій Bluetooth під\'єднано.</string>
     <!-- Settings/Support-->
@@ -206,24 +194,11 @@
     <string name="settings_support_wiki_description">Дізнайся, як ефективно використовувати BVM</string>
     <string name="settings_support_issue_tracker_description">Публічний трекер проблем для звітів про помилки і запитів на нові функції.</string>
     <string name="settings_support_issue_tracker_label">Трекер проблем</string>
-    <string name="settings_support_debuglog_label">Лог налагодження</string>
     <string name="settings_support_debuglog_desc">Записує все, що робить додаток, у текстовий файл, яким можна поділитися.</string>
-    <string name="settings_support_debuglog_recording_desc">Зараз записується інформація для налагодження. Натисні, щоб припинити запис.</string>
-    <string name="settings_support_debuglog_path">Шлях до логу: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">Дуже короткий запис</string>
     <string name="settings_support_debuglog_short_recording_msg">Це був дуже короткий запис. Логи налагодження — це записи, а не знімки — відтвори проблему під час активного запису, щоб лог був корисним.</string>
     <string name="settings_support_debuglog_short_recording_continue">Продовжити запис</string>
     <string name="settings_support_debuglog_short_recording_stop">Зупинити все одно</string>
-    <string name="settings_support_debuglog_folder_label">Папка логів налагодження</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d сесія використовує %2$s</item>
-        <item quantity="few">%1$d сесії використовують %2$s</item>
-        <item quantity="many">%1$d сесій використовують %2$s</item>
-        <item quantity="other">%1$d сесії використовують %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Немає збережених логів налагодження</string>
-    <string name="settings_support_debuglog_folder_delete_title">Видалити всі логи налагодження?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Це назавжди видалить усі збережені сесії логів налагодження.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Місце, де можна поспілкуватися і поставити питання.</string>
     <!-- Settings/Acks-->
@@ -232,16 +207,12 @@
     <string name="settings_acks_translation_header">Переклад</string>
     <string name="settings_acks_translators_title">Перекладачі</string>
     <string name="settings_acks_translators_people">Особа1;Особа2(опція@email.com)</string>
-    <string name="settings_acks_translate_title">Переклад BVM</string>
-    <string name="settings_acks_translate_desc">Допоможи перекласти BVM на свою мову</string>
     <string name="settings_acks_thanks_header">Подяка</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">За підтримку перекладу проєктів з відкритим кодом</string>
     <string name="settings_licenses_label">Ліцензії</string>
     <string name="settings_translation_label">Переклад</string>
     <string name="settings_translation_desc">Допоможіть перекласти застосунок вашою улюбленою мовою</string>
-    <string name="settings_sponsor_development_title">Спонсор розробки</string>
-    <string name="settings_sponsor_development_summary">Стань патроном і зроби подальшу розробку можливою.</string>
     <string name="settings_privacy_policy_label">Політика конфіденційності</string>
     <string name="settings_privacy_policy_desc">Відповідальне поводження з даними.</string>
     <string name="changelog_label">Список змін</string>
@@ -263,10 +234,8 @@
     <string name="backup_restore_success_restore">Відновлення завершено — відновлено %1$d пристроїв, %2$d пропущено.</string>
     <string name="backup_restore_version_warning">Цю резервну копію створено у версії %1$s. Ви використовуєте %2$s. Деякі налаштування можуть не відновитися коректно.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">Сповіщення налагодження</string>
     <string name="debug_log_consent_title">Лог налагодження</string>
     <string name="debug_log_consent_explanation">Ця функція записує все, що робить додаток, у файл, яким можна поділитися. Створений файл містить чутливу інформацію (наприклад, назви файлів і встановлені додатки). Ділися ним лише з надійними особами (наприклад, з розробником, який вирішує проблему).</string>
-    <string name="debug_log_recording_progress">Запис лога налагодження</string>
     <string name="debug_log_record_action">Записати</string>
     <string name="debug_log_stop_action">Припинити запис</string>
     <string name="debug_log_screen_title">Рекордер логів налагодження</string>
@@ -283,7 +252,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">Відмінити</string>
     <string name="debug_log_screen_keep_action">Зберегти</string>
-    <string name="debug_log_compressing_label">Стискання…</string>
     <string name="debug_log_file_label">Записаний лог-файл</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Лог відправлено?</string>
@@ -311,7 +279,6 @@
     <string name="contact_description_question_hint">Опиши своє питання детально.</string>
     <string name="contact_category_section_label">Категорія</string>
     <string name="contact_debug_log_label">Лог налагодження</string>
-    <string name="contact_debug_log_select_hint">Вибери лог налагодження для прикріплення</string>
     <string name="contact_debug_log_picker_hint">Прикріпи лог налагодження, щоб допомогти діагностувати проблему швидше.</string>
     <string name="contact_debug_log_picker_empty">Немає доступних логів налагодження. Спочатку запиши один.</string>
     <string name="contact_expected_behavior_label">Очікувана поведінка</string>
@@ -327,82 +294,32 @@
     <string name="contact_welcome_msg">Я читаю кожне повідомлення особисто і намагаюся відповісти, але оскільки я працюю над цим один, це може зайняти трохи часу. Дякую за терпіння.</string>
     <string name="contact_footer_msg">Твоє повідомлення буде відправлено електронною поштою. Інформація про пристрій та налаштування прикріплюється автоматично.</string>
     <string name="contact_no_email_app_msg">На цьому пристрої не знайдено поштового додатку.</string>
-    <string name="contact_attachment_missing_msg">Файл логу налагодження більше не існує</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Збережені логи налагодження</string>
     <string name="settings_support_stored_logs_desc">%1$d сесій (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Немає збережених логів налагодження</string>
-    <string name="settings_support_stored_logs_delete_title">Видалити збережені логи?</string>
-    <string name="settings_support_stored_logs_delete_msg">Це видалить усі %1$d збережених сесій логів налагодження.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Збережені логи налагодження видалено</string>
-    <string name="label_bug_reports">Звіти про збої</string>
-    <string name="description_bug_reports">Авто-надсилання звітів про збої та аварії.</string>
     <string name="label_add_device">Додати пристрій</string>
-    <string name="label_just_a_moment_please">Хвилинку...</string>
     <string name="label_notification_channel_status">Стан</string>
     <string name="label_notification_channel_setup">Потрібно налаштування</string>
     <string name="monitor_notification_starting">Запуск…</string>
     <string name="action_set">Налаштувати</string>
     <string name="action_cancel">Скасувати</string>
-    <string name="label_invalid_input">Невірний ввід</string>
     <string name="action_reset">Скинути</string>
     <string name="label_no_connected_devices">Пристроїв не під\'єднано</string>
-    <string name="label_status_idle">Бездіяльність</string>
-    <string name="label_status_adjusting_volumes">Налаштування гучності</string>
-    <string name="label_premium_version">Преміум-версія</string>
     <string name="general_upgrade_action">Підвищити статус</string>
     <string name="common_upgrade_required_label">Потрібне оновлення</string>
-    <string name="label_premium_version_required">Потрібна преміум-версія</string>
-    <string name="description_intro_purpose">Додаток дозволяє вашому Android запам\'ятовувати гучність різних пристроїв Bluetooth.</string>
-    <string name="upgrade_benefit_unlimited_devices">Необмежена кількість профілів пристроїв</string>
-    <string name="upgrade_benefit_connection_actions">Автовідтворення, запуск програм та сповіщення про підключення</string>
-    <string name="upgrade_benefit_theme_customization">Налаштування теми, стилю та кольорів</string>
-    <string name="upgrade_benefit_power_controls">Блокування гучності та обмеження частоти</string>
-    <string name="upgrade_benefit_support">Підтримати незалежну розробку</string>
     <string name="upgrade_benefit_equalizer">• Еквалайзер для кожного пристрою (для музичних програм з підтримкою системного еквалайзера)</string>
-    <string name="description_intro_tap_the_button">Розпочнімо з додавання Вашого першого пристрою.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth вимкнений.</string>
     <string name="title_bluetooth_is_off">Bluetooth вимкнено</string>
     <string name="action_enable_bluetooth">Увімкнути Bluetooth</string>
     <string name="title_bluetooth_permission_required">Потрібен дозвіл Bluetooth</string>
     <string name="description_bluetooth_permission_required">Цей додаток потребує дозволу Bluetooth для керування гучністю твоїх пристроїв.</string>
     <string name="action_grant_permission">Надати дозвіл</string>
-    <string name="label_status_listening_for_changes">Прослуховування змін гучності</string>
     <string name="action_exit">Вихід</string>
-    <string name="action_start">Почати</string>
-    <string name="label_welcome">Вітаємо</string>
-    <string name="description_intro_contact">Не соромтеся зв\'затись зі мною, якщо маєте питання чи навіть пропозиції нових функцій.</string>
-    <string name="label_translation">Переклад</string>
-    <string name="description_help_translate">Допоможіть зробити цей додаток доступним на інших мовах.</string>
     <string name="label_device_speaker">Динамік пристрою</string>
-    <string name="label_keyevent_playpause">Грати-Пауза</string>
-    <string name="label_keyevent_play">Грати</string>
-    <string name="label_keyevent_next">Наступне</string>
-    <string name="label_install_id">ID Установки</string>
     <string name="message_copied_to_clipboard">Збережено у буфері</string>
-    <string name="label_thanks">Спасибі</string>
-    <string name="label_licenses">Ліцензії</string>
-    <string name="description_ring_volume_additional_permission">Для зміни гучності дзвінка потрібні додаткові дозволи.</string>
-    <string name="label_missing_permissions">Немає дозволів</string>
-    <string name="action_grant">Надати</string>
-    <string name="label_advanced">Розширені</string>
-    <string name="label_exclude_health">Виключити профілі здоров’я</string>
-    <string name="description_exclude_health">Деякі Android-пристрої зависають при пошуку профілів Bluetooth \'Health Device\' (HDP, 0x1400).</string>
-    <string name="label_exclude_gattserver">Виключити профілі GATT server</string>
-    <string name="label_exclude_gatt">Виключити GATT профілі</string>
-    <string name="description_exclude_gattserver">Не пропувати профілі Bluetooth типу \'Generic Attribute\' (GATT) server.</string>
-    <string name="description_exclude_gatt">Не пропувати профілі Bluetooth типу \'Generic Attribute\' (GATT) client.</string>
-    <string name="description_waiting_for_devicex">Очікування завершення підключення %s</string>
-    <string name="action_undo">Скасувати</string>
-    <string name="action_show">Показати</string>
     <string name="action_dismiss">Приховати</string>
-    <string name="action_fix">Виправити</string>
-    <string name="battery_optimizations_issue_description">Оптимізації батареї увімкнені для цього додатку і можуть завадити отриманню подій Bluetooth. Розглянь можливість вимкнення оптимізацій, якщо виникають проблеми.</string>
     <string name="label_bluetooth_settings">Налаштування Bluetooth</string>
-    <string name="android10_applaunch_issue_description">Android 10 обмежує, як додатки можуть запускатися з фону. Каб дозволити відкривання додатків при підключенні Bluetooth-пристрою, надай дозвіл &quot;Показ поверх інших додатків&quot; (SYSTEM_ALERT_WINDOW).</string>
-    <string name="label_opensource">Код джерела</string>
-    <string name="android13_notification_permission_description">Надай цьому додатку дозвіл на публікацію сповіщень. Це дозволяє показувати сповіщення, коли додаток активний і відбувається регулювання гучності.</string>
-    <string name="privacy_policy_label">Політика приватності</string>
     <string name="managed_devices_empty_message">Немає налаштованих Bluetooth-пристроїв.\nНатисні кнопку +, щоб додати перший пристрій.</string>
     <string name="label_pro_feature">Преміум функція</string>
     <plurals name="discover_device_limit_banner">
@@ -435,21 +352,15 @@
     <string name="review_app_review_action">Огляд</string>
     <string name="review_app_dismiss_action">Можливо пізніше</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">Покупку скасовано</string>
-    <string name="error_iap_unavailable_message">Покупки в додатку недоступні</string>
-    <string name="error_generic_message">Сталася помилка. Будь ласка, спробуй ще раз.</string>
-    <string name="error_iap_owned_message">Цей товар уже в тебе є</string>
     <string name="label_no_devices_title">Немає пристроїв</string>
     <string name="bluemusic_mascot_description">Іконка додатку</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">Вибрати додатки</string>
     <string name="devices_app_selection_search_hint">Пошук додатків…</string>
-    <string name="devices_app_selection_currently_selected">Наразі вибрано</string>
     <string name="devices_app_selection_selected_count">Вибрано %d додатків</string>
     <string name="general_navigate_back_action">Повернутися назад</string>
     <string name="general_reset_action">Скинути</string>
     <string name="general_clear_action">Очистити</string>
-    <string name="general_save_action">Зберегти</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">Блокування</string>
     <string name="devices_indicator_awake">Активний</string>
@@ -459,7 +370,6 @@
     <string name="devices_indicator_limit">Обмеження</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Підсилення</string>
-    <string name="devices_indicator_launch">Запуск</string>
     <string name="devices_indicator_home">Головна</string>
     <string name="devices_indicator_dnd">НТ</string>
     <string name="devices_indicator_alert">Сповіщення</string>

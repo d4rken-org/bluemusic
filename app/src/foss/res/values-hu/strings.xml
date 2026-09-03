@@ -3,7 +3,6 @@
     <string name="upgrade_feature_requires_pro">BVM FOSS szükséges</string>
     <string name="upgrade_prompt_title">Frissítés BVM FOSS-ra</string>
     <string name="upgrade_prompt_body">Fedezze fel a további funkciókat, és legyen patron támogató, hogy támogassa a folyamatos fejlesztést!</string>
-    <string name="upgrade_prompt_upgrade_action">Frissítés</string>
     <string name="upgrade_screen_title">Frissítés BVM FOSS-ra</string>
     <string name="upgrade_screen_preamble">A Bluetooth Volume Manager nem tartalmaz hirdetéseket, és nem értékesít felhasználói adatokat. A folyamatos fejlesztést csak te teszed lehetővé.</string>
     <string name="upgrade_screen_how_title">Hogyan lehet segíteni</string>

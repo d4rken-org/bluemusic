@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">برخی ویژگی‌ها در طول به‌روزرسانی تغییر کرده‌اند. لطفاً تنظیمات دستگاه خود را بررسی کنید تا همه چیز درست پیکربندی شده باشد.</string>
     <string name="onboarding_rewrite_action">ادامه</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">دستگاه مدیریت‌نشده‌ای یافت نشد</string>
     <string name="discover_all_devices_managed_msg">همه دستگاه‌های جفت‌شده شما مدیریت می‌شوند! به یکی جدید نیاز دارید؟</string>
     <string name="discover_pair_new_device_action">جفت کردن دستگاه جدید</string>
     <string name="discover_device_speaker_desc">بلندگوی خود این تلفن. صدای آن زمانی اعمال می‌شود که صدا به تلفن بازگردد، مثلاً بعد از قطع اتصال دستگاه بلوتوث شما.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">پیکربندی دستگاه</string>
-    <string name="devices_device_config_section_general_label">عمومی</string>
     <string name="devices_device_config_remove_device_label">فراموش کردن دستگاه</string>
-    <string name="devices_device_config_remove_device_desc">دستگاه را از این برنامه فراموش کرده و تنظیمات آن را حذف می‌کند. این کار جفت دستگاه را لغو نمی‌کند.</string>
     <string name="devices_device_config_remove_device_action">فراموش کن</string>
     <string name="devices_device_config_remove_device_confirmation">آیا %s از دستگاه‌های مدیریت‌شده حذف شود؟</string>
-    <string name="devices_device_config_rename_device_label">تغییر نام دستگاه</string>
-    <string name="devices_device_config_rename_device_desc">نام این دستگاه را در این برنامه و در صورت امکان در سیستم تغییر دهید.</string>
     <string name="devices_device_config_rename_device_action">تغییر نام</string>
     <string name="devices_device_config_enabled_label">فعال</string>
     <string name="devices_device_config_enabled_desc">هنگام اتصال این دستگاه واکنش نشان بده</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">دستورهای پخش خودکار</string>
     <string name="devices_device_config_autoplay_keycodes_order">ترتیب دستورها</string>
     <string name="devices_device_config_autoplay_keycodes_label">دستورها</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">تنظیم کن کدام دستورها و به چه ترتیبی ارسال شوند</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">هیچ دستوری پیکربندی نشده</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">افزودن دستور</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">حداکثر %1$d دستور</string>
@@ -121,7 +115,6 @@
     <string name="cd_autoplay_keycode_move_up">انتقال به بالا</string>
     <string name="cd_autoplay_keycode_move_down">انتقال به پایین</string>
     <string name="cd_autoplay_keycode_remove">حذف</string>
-    <string name="devices_device_config_section_volumes_label">صداها</string>
     <string name="devices_device_config_section_volume_label">صدا</string>
     <string name="devices_device_config_alarm_volume_label">صدای هشدار</string>
     <string name="devices_device_config_alarm_volume_desc">برخی برنامه‌های هشدار به جای آن از صدای موزیک استفاده می‌کنند.</string>
@@ -155,8 +148,6 @@
     <string name="devices_audio_stream_ring_label">زنگ</string>
     <string name="devices_audio_stream_notification_label">اعلان</string>
     <string name="devices_audio_stream_alarm_label">هشدار</string>
-    <string name="devices_neverseen_label">هرگز دیده نشده</string>
-    <string name="devices_state_connected_label">متصل</string>
     <string name="devices_last_connected_label">آخرین اتصال: %s</string>
     <string name="devices_currently_connected_label">در حال اتصال</string>
     <string name="devices_device_disabled_label">دستگاه غیرفعال</string>
@@ -191,10 +182,7 @@
     <string name="devices_settings_desc">تنظیماتی که بر همه دستگاه‌های مدیریت‌شده تأثیر می‌گذارد.</string>
     <string name="label_app_enabled">برنامه فعال</string>
     <string name="description_app_enabled">توانایی برنامه برای واکنش به رویدادهای صدا و بلوتوث را روشن/خاموش می‌کند.</string>
-    <string name="label_visible_volume_adjustments">تنظیمات قابل مشاهده</string>
-    <string name="description_visible_volume_adjustments">نمایش پنجره صدای سیستم حین اعمال تنظیمات برنامه.</string>
     <string name="label_volume_listener">پایش تغییرات</string>
-    <string name="description_volume_listener">حین اتصال دستگاه فعال بمان و تغییرات صدایی که توسط این برنامه ایجاد نشده را ذخیره کن.</string>
     <string name="label_boot_restore">بازیابی پس از راه‌اندازی</string>
     <string name="description_boot_restore">بازیابی صدا پس از راه‌اندازی/راه‌اندازی مجدد در صورت اتصال دستگاه بلوتوث.</string>
     <!-- Settings/Support-->
@@ -204,22 +192,11 @@
     <string name="settings_support_wiki_description">یادبگیر استفاده مؤثر از BVM</string>
     <string name="settings_support_issue_tracker_description">یک ردیاب عمومی مشکلات برای گزارش اشکالات و درخواست‌های ویژگی‌های جدید.</string>
     <string name="settings_support_issue_tracker_label">رهگیری مشکل</string>
-    <string name="settings_support_debuglog_label">گزارش خطاء</string>
     <string name="settings_support_debuglog_desc">ضبط همه چیزهایی که برنامه انجام می‌دهد در یک فایل متنی که می‌توانید به اشتراک بگذارید.</string>
-    <string name="settings_support_debuglog_recording_desc">در حال یادداشت اطلاعات باگشناسی. برای توقف ضربه بزنید.</string>
-    <string name="settings_support_debuglog_path">مسیر گزارش: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">یادداشت خیلی کوتاه</string>
     <string name="settings_support_debuglog_short_recording_msg">یادداشت خیلی کوتاه بود. گزارش‌های باگشناسی یادداشت هستند، نه عکس گرفته — برای مفید بودن گزارش، مشکل را حین یادداشت فعال دوباره تکرار کنید.</string>
     <string name="settings_support_debuglog_short_recording_continue">ادامه یادداشت</string>
     <string name="settings_support_debuglog_short_recording_stop">هرحال توقف</string>
-    <string name="settings_support_debuglog_folder_label">پوشه گزارش باگشناسی</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d جلسه که %2$s استفاده می‌کند</item>
-        <item quantity="other">%1$d جلسه که %2$s استفاده می‌کنند</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">گزارش باگشناسی ذخیره نشده</string>
-    <string name="settings_support_debuglog_folder_delete_title">حذف همه گزارش‌های باگشناسی؟</string>
-    <string name="settings_support_debuglog_folder_delete_msg">این کار همه جلسات گزارش باگشناسی ذخیره‌شده را به طور دائمی حذف خواهد کرد.</string>
     <string name="settings_support_discord_label">دیسکورد</string>
     <string name="settings_support_discord_description">یک مکان برای وقت گذرانی و پرسش سوالات.</string>
     <!-- Settings/Acks-->
@@ -228,16 +205,12 @@
     <string name="settings_acks_translation_header">ترجمه</string>
     <string name="settings_acks_translators_title">مترجمان</string>
     <string name="settings_acks_translators_people">شخص1؛شخص2(optional@email.com)</string>
-    <string name="settings_acks_translate_title">ترجمه BVM</string>
-    <string name="settings_acks_translate_desc">در ترجمه BVM به زبانت کمک کن</string>
     <string name="settings_acks_thanks_header">ممنون</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">برای پشتیبانی از ترجمه پروژه‌های متن‌باز</string>
     <string name="settings_licenses_label">مجوزها</string>
     <string name="settings_translation_label">ترجمه</string>
     <string name="settings_translation_desc">در ترجمه برنامه به زبان مورد علاقهت کمک کن</string>
-    <string name="settings_sponsor_development_title">حامی توسعه دهنده</string>
-    <string name="settings_sponsor_development_summary">به حامی تبدیل شوید و توسعه مداوم را ممکن کنید.</string>
     <string name="settings_privacy_policy_label">سیاست حفظ حریم خصوصی</string>
     <string name="settings_privacy_policy_desc">رعایت مسئولانه داده‌ها.</string>
     <string name="changelog_label">گزارش تغییرات</string>
@@ -259,10 +232,8 @@
     <string name="backup_restore_success_restore">بازیابی کامل شد — %1$d دستگاه بازیابی شد، %2$d نادیده گرفته شد.</string>
     <string name="backup_restore_version_warning">این پشتیبان با نسخه %1$s ایجاد شده. شما نسخه %2$s را اجرا می‌کنید. ممکن است برخی تنظیمات به درستی بازیابی نشوند.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">اعلانهای اشکال زدایی</string>
     <string name="debug_log_consent_title">گزارش خطاء</string>
     <string name="debug_log_consent_explanation">این ویژگی هر کاری را که برنامه انجام می دهد در یک فایل قابل اشتراک گذاری ثبت می کند. فایل تولید شده حاوی اطلاعات حساس است (مانند نام فایل ها و برنامه های نصب شده). آن را فقط با اشخاص مورد اعتماد به اشتراک بگذارید (مثلاً برنامه‌نویسی که در حال عیب‌یابی یک مشکل است).</string>
-    <string name="debug_log_recording_progress">در حال ظبط کردن گزارش خطا</string>
     <string name="debug_log_record_action">یادداشت</string>
     <string name="debug_log_stop_action">توقف ضبط کردن</string>
     <string name="debug_log_screen_title">یادداشتگر گزارش باگشناسی</string>
@@ -277,7 +248,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">صرف‌نظر کردن</string>
     <string name="debug_log_screen_keep_action">نگه دار</string>
-    <string name="debug_log_compressing_label">در حال فشرده‌سازی…</string>
     <string name="debug_log_file_label">فایل گزارش خطا ظبط شده</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">گزارش فرستاده شد؟</string>
@@ -305,7 +275,6 @@
     <string name="contact_description_question_hint">سوالت را با جزئیات توضیح دهید.</string>
     <string name="contact_category_section_label">دسته</string>
     <string name="contact_debug_log_label">گزارش خطاء</string>
-    <string name="contact_debug_log_select_hint">یک گزارش باگشناسی برای پیوست کردن انتخاب کنید</string>
     <string name="contact_debug_log_picker_hint">برای تشخیص سریعتر مشکل، گزارش باگشناسی پیوست کنید.</string>
     <string name="contact_debug_log_picker_empty">گزارش باگشناسی موجود نیست. اول یکی یادداشت کنید.</string>
     <string name="contact_expected_behavior_label">رفتار مورد انتظار</string>
@@ -319,82 +288,32 @@
     <string name="contact_welcome_msg">هر پیامی را خودم می‌خوانم و تمام تلاشم را می‌کنم جواب بدهم، اما چون تنها کار می‌کنم، ممکنه کمی طول بکشه. ممنون صبرت.</string>
     <string name="contact_footer_msg">پیام شما از طریق ایمیل فرستاده خواهد شد. اطلاعات دستگاه و تنظیمات به صورت خودکار پیوست می‌شوند.</string>
     <string name="contact_no_email_app_msg">هیچ برنامه ایمیلی روی این دستگاه یافت نشد.</string>
-    <string name="contact_attachment_missing_msg">فایل گزارش باگشناسی دیگر وجود ندارد</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">گزارش‌های باگشناسی ذخیره‌شده</string>
     <string name="settings_support_stored_logs_desc">%1$d جلسه (%2$s)</string>
     <string name="settings_support_stored_logs_empty">گزارش باگشناسی ذخیره‌شده‌ای وجود ندارد</string>
-    <string name="settings_support_stored_logs_delete_title">حذف گزارش‌های ذخیره‌شده؟</string>
-    <string name="settings_support_stored_logs_delete_msg">این کار همه %1$d جلسه گزارش باگشناسی ذخیره‌شده را حذف خواهد کرد.</string>
-    <string name="settings_support_stored_logs_deleted_msg">گزارش‌های باگشناسی ذخیره‌شده حذف شدند</string>
-    <string name="label_bug_reports">گزارش اشکالات</string>
-    <string name="description_bug_reports">گزارش خودکار اشکال و کرش.</string>
     <string name="label_add_device">افزودن دستگاه</string>
-    <string name="label_just_a_moment_please">یه لحظه صبر کن.</string>
     <string name="label_notification_channel_status">وضعیت</string>
     <string name="label_notification_channel_setup">نیاز به راه‌اندازی</string>
     <string name="monitor_notification_starting">در حال شروع…</string>
     <string name="action_set">تنظیم</string>
     <string name="action_cancel">لفو</string>
-    <string name="label_invalid_input">ورودی نامعتبر</string>
     <string name="action_reset">بازنشانی</string>
     <string name="label_no_connected_devices">هیچ دستگاهی متصل نیست</string>
-    <string name="label_status_idle">بیکار</string>
-    <string name="label_status_adjusting_volumes">در حال تنظیم صداها</string>
-    <string name="label_premium_version">نسخه پریمیوم</string>
     <string name="general_upgrade_action">ارتقاء</string>
     <string name="common_upgrade_required_label">ارتقا لازم است</string>
-    <string name="label_premium_version_required">نسخه پریمیوم لازم است</string>
-    <string name="description_intro_purpose">این برنامه به دستگاه اندروید شما امکان می‌دهد صدای دستگاه‌های بلوتوث مختلف را به خاطر بسپارد.</string>
-    <string name="upgrade_benefit_unlimited_devices">پروفایل‌های دستگاه نامحدود</string>
-    <string name="upgrade_benefit_connection_actions">پخش خودکار، راه‌اندازی برنامه و هشدارهای اتصال</string>
-    <string name="upgrade_benefit_theme_customization">شخصی‌سازی تم، سبک و رنگ</string>
-    <string name="upgrade_benefit_power_controls">قفل صدا و محدودسازی نرخ</string>
-    <string name="upgrade_benefit_support">حمایت از توسعه مستقل</string>
     <string name="upgrade_benefit_equalizer">• اکولایزر مخصوص هر دستگاه (برای برنامه‌های موسیقی دارای پشتیبانی از اکولایزر سیستمی)</string>
-    <string name="description_intro_tap_the_button">با اضافه کردن اولین دستگاهت شروع کن.</string>
     <string name="description_bluetooth_is_disabled">بلوتوث غیرفعال است.</string>
     <string name="title_bluetooth_is_off">بلوتوث خاموش است</string>
     <string name="action_enable_bluetooth">فعال‌سازی بلوتوث</string>
     <string name="title_bluetooth_permission_required">نیاز به مجوز بلوتوث</string>
     <string name="description_bluetooth_permission_required">این برنامه برای مدیریت صدای دستگاه‌ها به مجوز بلوتوث نیاز دارد.</string>
     <string name="action_grant_permission">اعطای مجوز</string>
-    <string name="label_status_listening_for_changes">در حال گوش دادن به تغییرات صدا</string>
     <string name="action_exit">خروج</string>
-    <string name="action_start">شروع</string>
-    <string name="label_welcome">خوش آمدید</string>
-    <string name="description_intro_contact">هرتیموقت سوال داری یا حتی ایده‌ای برای ویژگی جدید، خجالت نکش با من تماس بگیر.</string>
-    <string name="label_translation">ترجمه</string>
-    <string name="description_help_translate">در دسترس بودن برنامه به زبان‌های دیگر کمک کن.</string>
     <string name="label_device_speaker">بلندگوی دستگاه</string>
-    <string name="label_keyevent_playpause">پخش-مکث</string>
-    <string name="label_keyevent_play">پخش</string>
-    <string name="label_keyevent_next">بعدی</string>
-    <string name="label_install_id">شناسه نصب</string>
     <string name="message_copied_to_clipboard">کپی شد</string>
-    <string name="label_thanks">ممنون</string>
-    <string name="label_licenses">مجوزها</string>
-    <string name="description_ring_volume_additional_permission">برای تغییر صدای زنگ مجوزهای اضافی لازم است.</string>
-    <string name="label_missing_permissions">مجوزهای لازم وجود ندارد</string>
-    <string name="action_grant">اعطا</string>
-    <string name="label_advanced">پیشرفته</string>
-    <string name="label_exclude_health">حذف پروفایل‌های سلامت</string>
-    <string name="description_exclude_health">برخی دستگاه‌های اندروید هنگام جستجوی پروفایل بلوتوث سلامت (پروتکل HDP، 0x1400) آویز می‌کنند.</string>
-    <string name="label_exclude_gattserver">حذف پروفایل‌های GATT سرور</string>
-    <string name="label_exclude_gatt">حذف پروفایل‌های GATT</string>
-    <string name="description_exclude_gattserver">پروفایل‌های بلوتوث نوع \'ویژگی عمومی\' (GATT) سرور را جستجو نکن.</string>
-    <string name="description_exclude_gatt">پروفایل‌های بلوتوث نوع \'ویژگی عمومی\' (GATT) کلاینت را جستجو نکن.</string>
-    <string name="description_waiting_for_devicex">در انتظار اتمام اتصال %s</string>
-    <string name="action_undo">واگرد</string>
-    <string name="action_show">نمایش</string>
     <string name="action_dismiss">نادیده گرفتن</string>
-    <string name="action_fix">اصلاح</string>
-    <string name="battery_optimizations_issue_description">بهینه‌سازی باتری برای این برنامه فعال است و می‌تواند دریافت رویداده‌های بلوتوث را مختل کند. اگر مشکل دارید، غیرفعال‌سازی آن را بررسی کنید.</string>
     <string name="label_bluetooth_settings">تنظیمات بلوتوث</string>
-    <string name="android10_applaunch_issue_description">اندروید 10 محدودیتی بر راه‌اندازی برنامه‌ها از پس‌زمینه دارد. برای اجازه باز کردن برنامه‌ها هنگام اتصال دستگاه بلوتوث، مجوز «نمایش روی برنامه‌های دیگر» (مجوز SYSTEM_ALERT_WINDOW) را اعطا کنید.</string>
-    <string name="label_opensource">کد منبع</string>
-    <string name="android13_notification_permission_description">به این برنامه مجوز ارسال اعلان بدهید. این امکان نمایش اعلان هنگام فعال بودن برنامه و تنظیم صدا را فراهم می‌کند.</string>
-    <string name="privacy_policy_label">سیاست حفظ حریم خصوصی</string>
     <string name="managed_devices_empty_message">هیچ دستگاه بلوتوثی تنظیم نشده.\nبرای افزودن اولین دستگاهت روی دکمه + ضربه بزنید.</string>
     <string name="label_pro_feature">ویژگی پریمیوم</string>
     <plurals name="discover_device_limit_banner">
@@ -425,21 +344,15 @@
     <string name="review_app_review_action">مرور</string>
     <string name="review_app_dismiss_action">شاید بعداً</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">خرید لغو شد</string>
-    <string name="error_iap_unavailable_message">خرید درون‌برنامهای در دسترس نیست</string>
-    <string name="error_generic_message">خطایی رخ داد. لطفاً دوباره امتحان کنید.</string>
-    <string name="error_iap_owned_message">شما قبلاً این آیتم را خریدید</string>
     <string name="label_no_devices_title">هیچ دستگاهی</string>
     <string name="bluemusic_mascot_description">آیکون برنامه</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">انتخاب برنامه‌ها</string>
     <string name="devices_app_selection_search_hint">جستجوی برنامه‌ها…</string>
-    <string name="devices_app_selection_currently_selected">در حال حاضر</string>
     <string name="devices_app_selection_selected_count">%d برنامه انتخاب شده</string>
     <string name="general_navigate_back_action">بازگشت</string>
     <string name="general_reset_action">بازنشانی</string>
     <string name="general_clear_action">پاک کردن</string>
-    <string name="general_save_action">ذخيره</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">قفل</string>
     <string name="devices_indicator_awake">بیدار</string>
@@ -449,7 +362,6 @@
     <string name="devices_indicator_limit">محدودیت</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">افزایش</string>
-    <string name="devices_indicator_launch">راه‌اندازی</string>
     <string name="devices_indicator_home">خانه</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">هشدار</string>

@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">ບາງຟີເຈີໄດ້ປ່ຽນແປງໃນລະຫວ່າງການອັບເດດ. ກະລຸນາກວດສອບການຕັ້ງຄ່າອຸປະກອນຂອງທ່ານເພື່ອໃຫ້ທຸກຢ່າງຖືກຕັ້ງຄ່າຢ່າງຖືກຕ້ອງ.</string>
     <string name="onboarding_rewrite_action">ສືບຕໍ່</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">ບໍ່ພົບອຸປະກອນທີ່ບໍ່ໄດ້ຈັດການ</string>
     <string name="discover_all_devices_managed_msg">ອຸປະກອນທີ່ຈັບຄູ່ທັງໝົດຂອງທ່ານຖືກຈັດການແລ້ວ! ຕ້ອງການໃໝ່ບໍ?</string>
     <string name="discover_pair_new_device_action">ຈັບຄູ່ອຸປະກອນໃໝ່</string>
     <string name="discover_device_speaker_desc">ລຳໂພງຂອງໂທລະສັບນີ້ເອງ. ລະດັບສຽງຂອງມັນຖືກໃຊ້ໃນເວລາທີ່ສຽງກັບຄືນສູ່ໂທລະສັບ, ຕົວຍ່າງ ໜຼັງຈາກທີ່ອຸປະກອນ Bluetooth ຂອງທ່ານຕັດການເຊື່ອມຕໍ່.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">ການຕັ້ງຄ່າອຸປະກອນ</string>
-    <string name="devices_device_config_section_general_label">ທົ່ວໄປ</string>
     <string name="devices_device_config_remove_device_label">ລືມອຸປະກອນ</string>
-    <string name="devices_device_config_remove_device_desc">ລືມອຸປະກອນຈາກແອັບນີ້ ແລະລົບການຕັ້ງຄ່າຂອງມັນ. ການນີ້ບໍ່ໄດ້ຖອດການຈັບຄູ່ອຸປະກອນ.</string>
     <string name="devices_device_config_remove_device_action">ລືມ</string>
     <string name="devices_device_config_remove_device_confirmation">ລືມ %s ຈາກອຸປະກອນທີ່ຈັດການບໍ?</string>
-    <string name="devices_device_config_rename_device_label">ເປລີ່ຍຊື່ອຸປະກອນ</string>
-    <string name="devices_device_config_rename_device_desc">ເປລີ່ຍຊື່ອຸປະກອນນີ້ພາຍໃນແອັບນີ້ ແລະຖ້າເປັນໄປໄດ້ ເພື່ອໃນລະບົບດ້ວຍ.</string>
     <string name="devices_device_config_rename_device_action">ເປລີ່ຍຊື່</string>
     <string name="devices_device_config_enabled_label">ເອີນໃຊ້ງານ</string>
     <string name="devices_device_config_enabled_desc">ຕອບສນອງຕ່ອອຸປະກອນນີ້ເມື່ອຕ່ອ</string>
@@ -93,7 +88,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">ຄຳສັ່ງຫຼິ້ນອັດຕະໂນມັດ</string>
     <string name="devices_device_config_autoplay_keycodes_order">ລຳດັບຄຳສັ່ງ</string>
     <string name="devices_device_config_autoplay_keycodes_label">ຄຳສັ່ງ</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">ຕັ້ງຄ່າວ່າຈະສົ່ງຄຳສັ່ງໃດ ແລະ ລຳດັບໃດ</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">ຍັງບໍ່ໄດ້ຕັ້ງຄ່າຄຳສັ່ງ</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">ເພີ່ມຄຳສັ່ງ</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">ສູງສຸດ %1$d ຄຳສັ່ງ</string>
@@ -119,7 +113,6 @@
     <string name="cd_autoplay_keycode_move_up">ຍ້າຍຂຶ້ນ</string>
     <string name="cd_autoplay_keycode_move_down">ຍ້າຍລົງ</string>
     <string name="cd_autoplay_keycode_remove">ເອົາອອກ</string>
-    <string name="devices_device_config_section_volumes_label">ລະດັບສຽງ</string>
     <string name="devices_device_config_section_volume_label">ລະດັບສຽງ</string>
     <string name="devices_device_config_alarm_volume_label">ລະດັບສຽງເຕືອນ</string>
     <string name="devices_device_config_alarm_volume_desc">ແອັບເຕືອນບາງອັນໃຊ້ລະດັບສຽງດນຕຳແທນ.</string>
@@ -153,8 +146,6 @@
     <string name="devices_audio_stream_ring_label">ເວົ້າ</string>
     <string name="devices_audio_stream_notification_label">ການແຈ້ງ</string>
     <string name="devices_audio_stream_alarm_label">ເຕືອນ</string>
-    <string name="devices_neverseen_label">ບໍ່ເຄີຍພົບເຫັນ</string>
-    <string name="devices_state_connected_label">ຕ່ອອຍູ່</string>
     <string name="devices_last_connected_label">ຕ່ອລ່າສຸດ: %s</string>
     <string name="devices_currently_connected_label">ຕ່ອອຍູ່ໃນຂະນີ້</string>
     <string name="devices_device_disabled_label">ອຸປະກອນຖືກປິດໃຊ້ງານ</string>
@@ -189,10 +180,7 @@
     <string name="devices_settings_desc">ການຕັ້ງຄ່າທີ່ສ່ງຜລຕ່ອທຸກອຸປະກອນທີ່ຈັດການ.</string>
     <string name="label_app_enabled">ເອີນໃຊ້ງານແອັບ</string>
     <string name="description_app_enabled">ໂຕໂກ້ການຕອບສນອງຕ່ອລະດັບສຽງ ແລະເຫດການ Bluetooth ຂອງແອັບ.</string>
-    <string name="label_visible_volume_adjustments">ການປັບແບບແສດງຜລ</string>
-    <string name="description_visible_volume_adjustments">ແສດງຫນ້າຕ່າງລະດັບສຽງຂອງລະບົບໃນຂະທີ່ແອັບນີ້ປັບ.</string>
     <string name="label_volume_listener">ສັງເກດການປ່ຽນແປງ</string>
-    <string name="description_volume_listener">ສັກກະວະໃນຂະທີ່ອຸປະກອນຕ່ອ ແລະບັນທຶກການປ່ຽນແປງລະດັບສຽງທີ່ບໍ່ໄດ້ເກີດຈາກແອັບນີ້.</string>
     <string name="label_boot_restore">ຄືນຄ່າຕອນເປີດເຣືອນ</string>
     <string name="description_boot_restore">ຄືນຄ່າລະດັບສຽງຫລັງຈາກການເປີດເຣືອນ/ເປີດເຣືອນໃໝ່ ຖ້າອຸປະກອນ Bluetooth ຕ່ອອຍູ່.</string>
     <!-- Settings/Support-->
@@ -202,21 +190,11 @@
     <string name="settings_support_wiki_description">ເລີຍນຮູ້ການໃຊ້ BVM ຢ່າງມີປຶຜລ</string>
     <string name="settings_support_issue_tracker_description">ຕົວຕິດຕາມບັນຫາສາທາລະນະສໍາລັບການລາຍງານຂໍ້ຜິດພາດ ແລະ ການຮ້ອງຂໍ feature.</string>
     <string name="settings_support_issue_tracker_label">ຕົວຕິດຕາມບັນຫາ</string>
-    <string name="settings_support_debuglog_label">ບັນທຶກ debug</string>
     <string name="settings_support_debuglog_desc">ບັນທຶກທຸກສິ່ງທີ່ແອັບກໍາລັງເຮັດໃສ່ໄຟລ໌ຂໍ້ຄວາມທີ່ທ່ານສາມາດແບ່ງປັນໄດ້.</string>
-    <string name="settings_support_debuglog_recording_desc">ກຳລັງບັນທຶກຂໍ້ມູນການແກ້ບັດ. ກດເພື່ອຫຍຸດການບັນທຶກ.</string>
-    <string name="settings_support_debuglog_path">ເສ້ນທາງລຶກ: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">ການບັນທຶກສັ້ນຫລາຍ</string>
     <string name="settings_support_debuglog_short_recording_msg">ນັ້ນເປັນການບັນທຶກສັ້ນຫລາຍ. ລຶກການແກ້ບັດເປັນການບັນທຳ6ກ ບໍ່ໃຊ້ເປັນອີກພາບ ເພຳ7່ອໃຫ້ລຳ6ກມີປຳ6ຟລ ໃຫ້ສຳ6ບປັຍຫາຂະທຳ5່ການບັນທຳ6ກຍັງທຳງານຢູ່.</string>
     <string name="settings_support_debuglog_short_recording_continue">ບັນທຶກຕໍ່ໄປ</string>
     <string name="settings_support_debuglog_short_recording_stop">ຢຸດເທົ່ານັ້ນ</string>
-    <string name="settings_support_debuglog_folder_label">ໂຟລເດີລຶກ debug</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="other">%1$d ເຊດຊັ່ນ ໃຊ້ %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">ບໍ່ມີລຶກ debug ຖືກບັນທຶກໄວ້</string>
-    <string name="settings_support_debuglog_folder_delete_title">ລຶບລຶກ debug ທັງໝົດບໍ?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">ອັນນີ້ຈະລຶບລະບົບລຶກ debug ທີ່ຖືກບັນທຶກໄວ້ທັງໝົດຢ່າງຖາວອນ.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">ສະຖານທີ່ສໍາລັບພັກຜ່ອນແລະຖາມຄໍາຖາມ.</string>
     <!-- Settings/Acks-->
@@ -225,16 +203,12 @@
     <string name="settings_acks_translation_header">ການແປພາສາ</string>
     <string name="settings_acks_translators_title">ຜູ້ແປ</string>
     <string name="settings_acks_translators_people">Person1;Person2(optional@email.com)</string>
-    <string name="settings_acks_translate_title">ແປວ BVM</string>
-    <string name="settings_acks_translate_desc">ຊ່ວຍແປວ BVM ໃຫ້ເປັນພາສາຂອງທ່ານ</string>
     <string name="settings_acks_thanks_header">ຂອບໃຈ</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">ສຳຫລັບການສນັບສະນູນການແປວ່2ຄງການພຶງດ້ວຍການໄ1ປວຂອງໄ2ຄງການພຶງ open-source</string>
     <string name="settings_licenses_label">ໃບອະນຸຍາດ</string>
     <string name="settings_translation_label">ການແປພາສາ</string>
     <string name="settings_translation_desc">ຊ່ວຍແປວແອັບໃຫ້ເປັນພາສາທີ່ທ່ານຊອບ</string>
-    <string name="settings_sponsor_development_title">ສະໜັບສະໜູນການພັດທະນາ</string>
-    <string name="settings_sponsor_development_summary">ເປັນຜູ້ອຸປະຖໍາແລະເຮັດໃຫ້ການພັດທະນາສືບຕໍ່ໄດ້.</string>
     <string name="settings_privacy_policy_label">ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ</string>
     <string name="settings_privacy_policy_desc">ການຈັດການຂໍ້ມູນຢ່າງມີຄວາມຮັບຜິດຊອບ.</string>
     <string name="changelog_label">ບັນຊີການປ່ຽນແປງ</string>
@@ -256,10 +230,8 @@
     <string name="backup_restore_success_restore">ກູ້ຄືນສຳເລັດ — ກູ້ %1$d ອຸປະກອນ, ຂ້າມ %2$d.</string>
     <string name="backup_restore_version_warning">ການສຳຮອງນີ້ຖືກສ້າງດ້ວຍເວີຊັນ %1$s. ທ່ານກຳລັງໃຊ້ %2$s. ການຕັ້ງຄ່າບາງຢ່າງອາດກູ້ຄືນໄດ້ບໍ່ຖືກຕ້ອງ.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">ການແຈ້ງເຕືອນດີບັກ</string>
     <string name="debug_log_consent_title">ບັນທຶກ debug</string>
     <string name="debug_log_consent_explanation">ຄຸນສົມບັດນີ້ບັນທຶກທຸກສິ່ງທີ່ແອັບກຳລັງເຮັດໃສ່ໄຟລ໌ທີ່ສາມາດແບ່ງປັນໄດ້. ໄຟລ໌ທີ່ສ້າງຂຶ້ນມີຂໍ້ມູນທີ່ລະອຽດອ່ອນ (ເຊັ່ນ: ຊື່ໄຟລ໌ ແລະ ແອັບທີ່ຕິດຕັ້ງ). ແບ່ງປັນກັບພາກສ່ວນທີ່ເຊື່ອຖືໄດ້ເທົ່ານັ້ນ (ເຊັ່ນ: ນັກພັດທະນາທີ່ແກ້ໄຂບັນຫາ).</string>
-    <string name="debug_log_recording_progress">ກຳລັງບັນທຶກບັນທຶກດີບັກ</string>
     <string name="debug_log_record_action">ບັນທຳ6ກ</string>
     <string name="debug_log_stop_action">ຢຸດການບັນທຶກ</string>
     <string name="debug_log_screen_title">ຕັວບັນທຳ6ກລຳ6ກ debug</string>
@@ -273,7 +245,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">ທິ້ງ</string>
     <string name="debug_log_screen_keep_action">ເກັບໄວ້</string>
-    <string name="debug_log_compressing_label">ກຳລັງອັດອານສຶປສຶບ...</string>
     <string name="debug_log_file_label">ໄຟລ໌ບັນທຶກທີ່ບັນທຶກໄວ້</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">ສ່ງລຳ6ກແລ້ວບໍ?</string>
@@ -301,7 +272,6 @@
     <string name="contact_description_question_hint">ອິບາຍຄຳຖາມຂອງທ່ານແບບລະອີຍດ.</string>
     <string name="contact_category_section_label">ຫມວດຫມູ່</string>
     <string name="contact_debug_log_label">ບັນທຶກ debug</string>
-    <string name="contact_debug_log_select_hint">ເລືອກລຳ6ກ debug ເພື່ອແນບ</string>
     <string name="contact_debug_log_picker_hint">ແນບລຳ6ກ debug ເພື່ອຊ່ວຍຕວຜນພ່ອງທີ່ໄວຂຶ້ນ.</string>
     <string name="contact_debug_log_picker_empty">ບໍ່ມີລຳ6ກ debug ພອ້ມ. ບັນທຳ6ກອັນໝຶ່ງກ່ອນ.</string>
     <string name="contact_expected_behavior_label">ພະຕິການທີ່ຄາດຫວັງ</string>
@@ -314,82 +284,32 @@
     <string name="contact_welcome_msg">ຂ້ອຍອ່ານທຸກຂໍ້ຄວາມດ້ວຍຕັວເອງ ແລະພະຍາຍຕອບສນອງເທົາທີ່ເປັນໄປໄດ້ ແຕ່เນື່ອງຂ້ອຍທຳງານຜູ້ເດີຍວ ມັນອາດໃຊ້ເວລາພອສມ. ຂອບຄຸນສଳຫລັບຄວາມເຂົ້າໃຈຂອງທ່ານ.</string>
     <string name="contact_footer_msg">ຂໍ້ຄວາມຂອງທ່ານຈະຖືກສ່ງຜ່ານອີເມລ. ຂໍ້ມູນອຸປະກອນແລະການຕັ້ງຄ່າຖືກແນບອັດຕາ.</string>
     <string name="contact_no_email_app_msg">ບໍ່ພົບແອັບອີເມລບນອຸປະກອນນີ້.</string>
-    <string name="contact_attachment_missing_msg">ໄຟລລຳ6ກ debug ບໍ່ມີອຍູ່ອີກເລີ່ຍ</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">ລຳ6ກ debug ทີ່ບັນທຳ6ກໄ4ວ້</string>
     <string name="settings_support_stored_logs_desc">%1$d ເຊດຊັ່ນ (%2$s)</string>
     <string name="settings_support_stored_logs_empty">ບໍ່ມີລຳ6ກ debug ທີ່ບັນທຳ6ກໄ4ວ້</string>
-    <string name="settings_support_stored_logs_delete_title">ລົບລຳ6ກທີ່ບັນທຳ6ກໄ4ວ້ບໍ?</string>
-    <string name="settings_support_stored_logs_delete_msg">ອັນນີ້ຈະລົບເຊດຊັ່ນລຳ6ກ debug ທີ່ບັນທຳ6ກໄ4ວ້ທັງ %1$d.</string>
-    <string name="settings_support_stored_logs_deleted_msg">ລຳ6ກ debug ทີ່ບັນທຳ6ກໄ4ວ້ຖືກລົບແລ້ວ</string>
-    <string name="label_bug_reports">ຣາຍງານຂໍ້ບົກພົບ</string>
-    <string name="description_bug_reports">ການຣາຍງານຂໍ້ບົກພົບແລະການກາກເຫລວອັດຕາ.</string>
     <string name="label_add_device">ເພີ່ມອຸປະກອນ</string>
-    <string name="label_just_a_moment_please">ສ଱ກຄູ່ ກະລຸນາ.</string>
     <string name="label_notification_channel_status">ສະຖານະ</string>
     <string name="label_notification_channel_setup">ຕ້ອງຕັ້ງຄ່າ</string>
     <string name="monitor_notification_starting">ກຳລັງເລີ່ມຕົ້ນ...</string>
     <string name="action_set">ຕັ້ງ</string>
     <string name="action_cancel">ຍົກເລີກ</string>
-    <string name="label_invalid_input">ຂໍ້ມູນທີ່ປ້ອນບໍ່ຖືກຕ້ອງ</string>
     <string name="action_reset">ຣີເຊັດ</string>
     <string name="label_no_connected_devices">ບໍ່ມີອຸປະກອນຕ່ອ</string>
-    <string name="label_status_idle">ວ່າງ</string>
-    <string name="label_status_adjusting_volumes">ກຳລັງປັບລະດັບສຽງ</string>
-    <string name="label_premium_version">ເວີຊັນພຣີເມີຍມ</string>
     <string name="general_upgrade_action">ອັບເກຣດ</string>
     <string name="common_upgrade_required_label">ຕ້ອງການອັບເກຣດ</string>
-    <string name="label_premium_version_required">ຕ້ອງການໄ0ວີຊັນພຣີໄ0ມີຍມ</string>
-    <string name="description_intro_purpose">ແອັບນີ້ອະນຸຍາດໃຫ້ອຸປະກອນ Android ຂອງທ່ານຈດຈຳລະດັບສຽງຂອງອຸປະກອນ Bluetooth ຕ່າງๆ</string>
-    <string name="upgrade_benefit_unlimited_devices">ໂປຣໄຟລ໌ອຸປະກອນບໍ່ຈຳກັດ</string>
-    <string name="upgrade_benefit_connection_actions">ຫຼິ້ນອັດຕະໂນມັດ, ເປີດແອັບ ແລະ ການແຈ້ງເຕືອນການເຊື່ອມຕໍ່</string>
-    <string name="upgrade_benefit_theme_customization">ການປັບແຕ່ໝົດໂຖກ, ສໄຕລ໌ ແລະ ສີ</string>
-    <string name="upgrade_benefit_power_controls">ການລັອກລະດັບສຽງ ແລະ ການຈຳກັດອັດຕະ</string>
-    <string name="upgrade_benefit_support">ສະໝັບສະໝູນການພັດທະນາອິດສະຫຼະ</string>
     <string name="upgrade_benefit_equalizer">• ອີຄິວອລາຍເຊີສະເພາະແຕ່ລະອຸປະກອນ (ສຳລັບແອັບເພງທີ່ຮອງຮັບອີຄິວອລາຍເຊີລະບົບ)</string>
-    <string name="description_intro_tap_the_button">ເລີ່ມດ້ວຍການໄ0ພີ່ມອຸປະກອນໄ1ລກຂອງທ່ານ.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth ຖືກປິດ.</string>
     <string name="title_bluetooth_is_off">Bluetooth ປິດອຍູ່</string>
     <string name="action_enable_bluetooth">ໄ0ອີນ Bluetooth</string>
     <string name="title_bluetooth_permission_required">ຕ້ອງການສິດທິ່ Bluetooth</string>
     <string name="description_bluetooth_permission_required">ແອັບນີ້ຕ້ອງການສິດທິ່ Bluetooth ໄ0ພື່ອຈັດການລະດັບສຽງຂອງອຸປະກອນຂອງທ່ານ.</string>
     <string name="action_grant_permission">ມອບສິດທິ່</string>
-    <string name="label_status_listening_for_changes">ກຳລັງ໺ັງການປ່ຽນແປງລະດັບສຽງ</string>
     <string name="action_exit">ອອກ</string>
-    <string name="action_start">ເລີ່ມ</string>
-    <string name="label_welcome">ຍິນດີຕ້ອນຮັບ</string>
-    <string name="description_intro_contact">ອຍ່າລັງເລ່ອມຕິດຕ່ອຂ້ອຍ ຖ້າທ່ານມີຄຳຖາມຫລືອໄ1ມ່ນໄອະອີບາຍໄ0ຜືອການຟີໄ0ຈີໃໝ່.</string>
-    <string name="label_translation">ການແປພາສາ</string>
-    <string name="description_help_translate">ຊ່ວຍຂ້ອຍໄ1ປວແອັບນີ້ໄ3ຫ້ໄ0ປັນພາສາອື່ນๆ.</string>
     <string name="label_device_speaker">ລຳໄ2ພງອຸປະກອນ</string>
-    <string name="label_keyevent_playpause">ໄ0ລຯນ-ຫຍຸດ</string>
-    <string name="label_keyevent_play">ໄ0ລຯນ</string>
-    <string name="label_keyevent_next">ຖັດໄປ</string>
-    <string name="label_install_id">ID ຕິດຕັ້ງ</string>
     <string name="message_copied_to_clipboard">ຄັດລອກໄ1ປ່ clipboard ໄ1ລ້ວ</string>
-    <string name="label_thanks">ຂອບໃຈ</string>
-    <string name="label_licenses">ໃບອະນຸຍາດ</string>
-    <string name="description_ring_volume_additional_permission">ຕ້ອງການສິດທິ່ໄ0ພິ່ມໄ0ຕີມໄ0ພື່ອໄ0ປລີ່ຍໄ1ປງລະດັບສຽງໄ0ວົ້າ.</string>
-    <string name="label_missing_permissions">ສິດທິ່ຫາຍໄ4ປ</string>
-    <string name="action_grant">ມອບສິດທິ່</string>
-    <string name="label_advanced">ໄ2ກນໄ1ກ່ນ</string>
-    <string name="label_exclude_health">ໄ1ລກປໄ2ຟລ Health</string>
-    <string name="description_exclude_health">ອຸປະກອນ Android ບານອັນຄໂນຕວ່າໄ0ງົ່ອງໄ0ມື່ອຄໂນປໄ2ຟລ Bluetooth \'Health Device\' (HDP, 0x1400).</string>
-    <string name="label_exclude_gattserver">ໄ1ລກປໄ2ຟລໄ0ວີຊາ GATT server</string>
-    <string name="label_exclude_gatt">ໄ1ລກປໄ2ຟລ GATT</string>
-    <string name="description_exclude_gattserver">ບໍ່ສອບຖາມປໄ2ຟລ Bluetooth ປະໄ0ພດ \'Generic Attribute\' (GATT) server.</string>
-    <string name="description_exclude_gatt">ບໍ່ສອບຖາມປໄ2ຟລ Bluetooth ປະໄ0ພດ \'Generic Attribute\' (GATT) client.</string>
-    <string name="description_waiting_for_devicex">ກຳລັງຣອກອຍູ່ %s ໄ0ພື່ອສຳໄ0ລະການຕ່ອ</string>
-    <string name="action_undo">ຍົກເລີກ</string>
-    <string name="action_show">ໄ1ສດງ</string>
     <string name="action_dismiss">ປະຕິເສດ</string>
-    <string name="action_fix">ແກ້ໄຂ</string>
-    <string name="battery_optimizations_issue_description">ການອຫນຸໄ0ທບັດໄ0ຕຣີ່ມຖືກໄ0ອີນໃຊ້ງານສଳຫລັບໄ1ອັບນີ້ ໄ1ລະອາດໄ0ປີດກັ້ນໄ1ອັບຈາກການຮັບໄ0ຫດການ Bluetooth. ກະລຸນາປິດການອຫນຸໄ0ທບັດຖ້າທ່ານພົບປັຍຫາ.</string>
     <string name="label_bluetooth_settings">ການຕັ້ງຄ່າ Bluetooth</string>
-    <string name="android10_applaunch_issue_description">Android 10 ຈຳກັດວິທີທີ່ໄ1ອັບສາມາຖໄ0ປີດຈາກພື້ນຫລັງ. ໄ0ພື່ອອະນຸຍາດໄ0ປີດໄ1ອັບໄ0ມື່ອອຸປະກອນ Bluetooth ຕ່ອ ໄ3ຫ້ມອບສິດທິ່ \"Display over other apps\" (SYSTEM_ALERT_WINDOW).</string>
-    <string name="label_opensource">ໄ2ຄດຕ້ນເຄິດ</string>
-    <string name="android13_notification_permission_description">ມອບສິດທິ່ສଳຫລັບໄ1ອັບນີ້ໄ3ຫ້ຂຽນການໄ1ຈ້ງ. ທີ່ໄ0ອີນໄ3ຫ້ໄ1ສດງການໄ1ຈ້ງໄ0ມື່ອໄ1ອັບໄ0ງິນໄ1ລະກຳລັງປັບລະດັບສຽງ.</string>
-    <string name="privacy_policy_label">ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ</string>
     <string name="managed_devices_empty_message">ບໍ່ມີອຸປະກອນ Bluetooth ຖືກຕັ້ງຄ່າ.\nກດປົ່ມ + ໄ0ພື່ອໄ0ພີ່ມອຸປະກອນໄ1ລກຂອງທ່ານ.</string>
     <string name="label_pro_feature">ຟີໄ0ຈີພຣີໄ0ມີຍມ</string>
     <plurals name="discover_device_limit_banner">
@@ -419,21 +339,15 @@
     <string name="review_app_review_action">ຄຳເຫັນ</string>
     <string name="review_app_dismiss_action">ບາງທີພາຍຫຼັງ</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">ການຊື້ຖືກຍກເລີກ</string>
-    <string name="error_iap_unavailable_message">ການຊື້ພາຍໃນແອັບບໍ່ພອ້ມໃຊ້ງານ</string>
-    <string name="error_generic_message">ເກີດຂໍ້ຜິດພຫລາດ. ກະລຸນາລອງໃໝ່ອີກຄັ້ງ.</string>
-    <string name="error_iap_owned_message">ທ່ານມີສິ່ງນີ້ໄ1ລ້ວ</string>
     <string name="label_no_devices_title">ບໍ່ມີອຸປະກອນ</string>
     <string name="bluemusic_mascot_description">ໄອຄອນແອັບ</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">ໄ0ລືອກໄ1ອັບ</string>
     <string name="devices_app_selection_search_hint">ຄ້ນຫາໄ1ອັບ...</string>
-    <string name="devices_app_selection_currently_selected">ໄ0ລືອກອຍູ່ປັຈຈຸບັນ</string>
     <string name="devices_app_selection_selected_count">ໄ0ລືອກ %d ໄ1ອັບໄ1ລ້ວ</string>
     <string name="general_navigate_back_action">ນຳທາງກັບຄືນ</string>
     <string name="general_reset_action">ຣີເຊັດ</string>
     <string name="general_clear_action">ລົບລ້າງ</string>
-    <string name="general_save_action">ບັນທຶກ</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">ຖົງ</string>
     <string name="devices_indicator_awake">ຕື່ນຕ຺ພົນ</string>
@@ -443,7 +357,6 @@
     <string name="devices_indicator_limit">ຈຳກັດ</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">ເພີ່ມສຽງ</string>
-    <string name="devices_indicator_launch">ເປີດ</string>
     <string name="devices_indicator_home">ຫນ້າຫລັກ</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">ການແຈ້ເຕືອນ</string>

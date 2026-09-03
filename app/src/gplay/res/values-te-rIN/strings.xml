@@ -5,7 +5,6 @@
     <string name="upgrade_feature_requires_pro">BVM Pro అవసరం</string>
     <string name="upgrade_prompt_title">BVM Pro కి అప్‌గ్రేడ్ చేయండి</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro మెరుగైన ఫలితాలు, మరిన్ని ఫీచర్లు మరియు పవర్ యూజర్ల కోసం ఆప్షన్లను అందిస్తుంది.</string>
-    <string name="upgrade_prompt_upgrade_action">అప్‌గ్రేడ్ చేయండి</string>
     <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
     <string name="upgrade_screen_title_template">%1$s కు అప్‌గ్రేడ్ చేయండి</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager కి ప్రకటనలు లేవు మరియు వినియోగదారు డేటాను విక్రయించదు. నా పని మీరు ఆర్థిక సహాయం చేస్తున్నారు ❤️.</string>
@@ -56,7 +55,6 @@
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager Google Play కి కనెక్ట్ కాలేకపోతోంది. Google Play ఇన్‌స్టాల్ చేయబడి అప్-టు-డేట్‌గా ఉందా? మీ Google అకౌంట్ లాగిన్ అయి ఉందా? Google Play యాప్ యొక్క కాష్‌ని క్లియర్ చేసి మీ పరికరాన్ని రీబూట్ చేయడానికి ప్రయత్నించండి.</string>
     <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
     <string name="upgrades_gplay_not_installed_message">Google Playని తెరవలేకపోయాము. ఇది ఈ పరికరంపై లేకపోవచ్చు, నిష్క్రియం చేయబడవచ్చు లేదా నిషేధించబడవచ్చు.</string>
-    <string name="upgrades_no_purchases_found_check_account">కొనుగోళ్లు కనుగొనబడలేదు. మీరు సరైన ఖాతాను ఉపయోగిస్తున్నారా?</string>
     <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
     <string name="upgrade_screen_offers_title">అప్‌గ్రేడ్ ఎంపికలు</string>
     <string name="upgrade_screen_offers_body">రెండు ఎంపికలు ఖచ్చితంగా ఒకే Pro ఫీచర్‌లను అన్‌లాక్ చేస్తాయి — మీకు సరిపోయే దానిని ఎంచుకోండి.</string>

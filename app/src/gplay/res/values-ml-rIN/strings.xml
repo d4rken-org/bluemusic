@@ -5,7 +5,6 @@
     <string name="upgrade_feature_requires_pro">BVM Pro ആവശ്യമാണ്</string>
     <string name="upgrade_prompt_title">BVM Pro യിലേക്ക് അപ്ഗ്രേഡ് ചെയ്യുക</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro മികക്കല് മിക്ക ഫലം, പവർ ഉപയോക്താക്കൾക്ക് കൂടുതൽ ഫീച്ചർം ഓപ്ഷനുകളും നൽകുന്നു.</string>
-    <string name="upgrade_prompt_upgrade_action">അപ്ഗ്രേഡുചെയ്യുക</string>
     <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
     <string name="upgrade_screen_title_template">%1$s-ലേക്ക് അപ്ഗ്രേഡ് ചെയ്യുക</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager പ്രജ്ഞാപനങ്ങൾ ഇല്ല, ഉപയോക്തൃ ഡേറ്റ വിൽക്കുന്നില്ല. എന്റെ ജോലി നിങ്ങൾ വഴി ധനസഹായം കിട്ടുന്നു ❤️.</string>
@@ -56,7 +55,6 @@
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager ക്ക് Google Play യുമായ് ബന്ധപ്പെടാൻ കഴിയുന്നില്ല. Google Play ഇൻസ്റ്റൽ ചെയ്ത് അപ്ഡേറ്റ് ചെയ്തിട്ടുണ്ടോ? നിങ്ങളുടെ Google അക്കൗൺട് ലോഗിൻ ചെയ്തിട്ടുണ്ടോ? Google Play ആപ്പിന്റെ ക്യാഷ് മാർജിക്കുകയും ഉപകരണം രീബൂട്ട് ചെയ്യുകയും ശ്രമിക്കുക.</string>
     <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
     <string name="upgrades_gplay_not_installed_message">Google Play തുറക്കാൻ കഴിഞ്ഞില്ല. ഈ ഉപകരണത്തിൽ ഇത് നഷ്ടപ്പെട്ടതോ നിഷ്ക്രിയമാക്കപ്പെട്ടതോ നിയന്ത്രിതമാക്കപ്പെട്ടതോ ആയിരിക്കാം.</string>
-    <string name="upgrades_no_purchases_found_check_account">വാങ്ങലുകളൊന്നും കണ്ടെത്തിയില്ല. നിങ്ങൾ ശരിയായ അക്കൗണ്ട് തന്നെയാണോ ഉപയോഗിക്കുന്നത്?</string>
     <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
     <string name="upgrade_screen_offers_title">അപ്ഗ്രേഡ് ഐച്ഛികതകൾ</string>
     <string name="upgrade_screen_offers_body">രണ്ട് ഐച്ഛികതകളും ഒരേപോലെ Pro സവിശേഷതകൾ അൺലോക്ക് ചെയ്യുന്നു — നിങ്ങൾക്ക് ഇഷ്ടപ്പെട്ടത് തിരഞ്ഞെടുക്കുക.</string>

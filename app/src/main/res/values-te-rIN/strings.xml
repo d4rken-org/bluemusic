@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">అప్‌డేట్ సమయంలో కొన్ని లక్షణాలు మారాయి. అన్నీ సరిగ్గా కాన్ఫిగర్ చేయబడ్డాయని నిర్ధారించడానికి దయచేసి మీ పరికర సెట్టింగ్‌లను తనిఖీ చేయండి.</string>
     <string name="onboarding_rewrite_action">కొనసాగించు</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">నిర్వహించబడని పరికరాలు కనుగొనబడలేదు</string>
     <string name="discover_all_devices_managed_msg">మీ అన్ని జోడించిన పరికరాలు నిర్వహించబడుతున్నాయి! కొత్తది కావాలా?</string>
     <string name="discover_pair_new_device_action">కొత్త పరికరాన్ని జత చేయండి</string>
     <string name="discover_device_speaker_desc">ఈ ఫోన్ యొక్క స్వంత స్పీకర్. ఆడియో ఫోన్‌కు తిరిగి మారినప్పుడు దాని వాల్యూమ్‌లు వర్తించబడతాయి, ఉదా. మీ Bluetooth పరికరం డిస్‌కనెక్ట్ చేయబడిన తరువాత.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">పరికర కాన్ఫిగరేషన్</string>
-    <string name="devices_device_config_section_general_label">సాధారణ</string>
     <string name="devices_device_config_remove_device_label">పరికరాన్ని మరచిపో</string>
-    <string name="devices_device_config_remove_device_desc">ఈ యాప్ నుండి పరికరాన్ని మరచిపోయి దాని కాన్ఫిగరేషన్‌ను తొలగిస్తుంది. ఇది పరికరాన్ని అన్‌పేర్ చేయదు.</string>
     <string name="devices_device_config_remove_device_action">మరచిపో</string>
     <string name="devices_device_config_remove_device_confirmation">నిర్వహించిన పరికరాల నుండి %s ని మరచిపోవాలా?</string>
-    <string name="devices_device_config_rename_device_label">పరికరాన్ని పేరు మార్చు</string>
-    <string name="devices_device_config_rename_device_desc">ఈ యాప్‌లో మరియు సాధ్యమైతే సిస్టమ్‌లో కూడా ఈ పరికరాన్ని పేరు మార్చండి.</string>
     <string name="devices_device_config_rename_device_action">పేరు మార్చు</string>
     <string name="devices_device_config_enabled_label">ప్రారంభించబడిన</string>
     <string name="devices_device_config_enabled_desc">కనెక్ట్ అయినప్పుడు ఈ పరికరానికి స్పందించు</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">ఆటోప్లే కమాండ్‌లు</string>
     <string name="devices_device_config_autoplay_keycodes_order">కమాండ్ సీక్వెన్స్</string>
     <string name="devices_device_config_autoplay_keycodes_label">కమాండ్‌లు</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">ఏ కమాండ్‌లను ఏ క్రమంలో పంపించాలో కాన్ఫిగర్ చేయండి</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">ఏ కమాండ్‌లూ కాన్ఫిగర్ చేయలేదు</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">కమాండ్ జోడించు</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">గరిష్ఠంగా %1$d కమాండ్‌లు</string>
@@ -121,7 +115,6 @@
     <string name="cd_autoplay_keycode_move_up">పైకి జరుపు</string>
     <string name="cd_autoplay_keycode_move_down">కిందకు జరుపు</string>
     <string name="cd_autoplay_keycode_remove">తీసివేయండి</string>
-    <string name="devices_device_config_section_volumes_label">వాల్యూమ్‌లు</string>
     <string name="devices_device_config_section_volume_label">వాల్యూమ్</string>
     <string name="devices_device_config_alarm_volume_label">అలారం వాల్యూమ్</string>
     <string name="devices_device_config_alarm_volume_desc">కొన్ని అలారం యాప్‌లు బదులుగా మ్యూజిక్ వాల్యూమ్ ఉపయోగిస్తాయి.</string>
@@ -155,8 +148,6 @@
     <string name="devices_audio_stream_ring_label">రింగ్</string>
     <string name="devices_audio_stream_notification_label">నోటిఫికేషన్</string>
     <string name="devices_audio_stream_alarm_label">అలారం</string>
-    <string name="devices_neverseen_label">ఎప్పుడూ కనుగొనబడలేదు</string>
-    <string name="devices_state_connected_label">కనెక్ట్ అయింది</string>
     <string name="devices_last_connected_label">చివరిగా కనెక్ట్ అయింది: %s</string>
     <string name="devices_currently_connected_label">ప్రస్తుతం కనెక్ట్ అయింది</string>
     <string name="devices_device_disabled_label">పరికరం నిలిపివేయబడింది</string>
@@ -191,10 +182,7 @@
     <string name="devices_settings_desc">అన్ని నిర్వహించిన పరికరాలను ప్రభావితం చేసే సెట్టింగ్‌లు.</string>
     <string name="label_app_enabled">యాప్ ఎనేబుల్ చేయబడింది</string>
     <string name="description_app_enabled">వాల్యూమ్ మరియు Bluetooth ఈవెంట్‌లకు స్పందించే యాప్ సామర్ధ్యాన్ని టోగుల్ చేస్తుంది.</string>
-    <string name="label_visible_volume_adjustments">కనిపించే సర్దుబాట్లు</string>
-    <string name="description_visible_volume_adjustments">ఈ యాప్ సర్దుబాట్లు చేస్తున్నప్పుడు సిస్టమ్ వాల్యూమ్ విండో చూపించు.</string>
     <string name="label_volume_listener">మార్పులను గమనించు</string>
-    <string name="description_volume_listener">పరికరం కనెక్ట్ అయి ఉన్నప్పుడు చురుగ్గా ఉండి, ఈ యాప్ వల్ల కాని వాల్యూమ్ మార్పులను సేవ్ చేయండి.</string>
     <string name="label_boot_restore">బూట్ చేసేటప్పుడు పునరుద్ధరించు</string>
     <string name="description_boot_restore">Bluetooth పరికరం కనెక్ట్ అయి ఉంటే బూట్/రీబూట్ తర్వాత వాల్యూమ్ పునరుద్ధరించండి.</string>
     <!-- Settings/Support-->
@@ -204,22 +192,11 @@
     <string name="settings_support_wiki_description">BVM ని సమర్ధంగా ఎలా ఉపయోగించాలో నేర్చుకోండి</string>
     <string name="settings_support_issue_tracker_description">బగ్ రిపోర్ట్స్ మరియు ఫీచర్ రిక్వెస్టుల కోసం పబ్లిక్ ఇమేజ్ ట్రాకర్.</string>
     <string name="settings_support_issue_tracker_label">ఇస్లూ ట్రాకర్</string>
-    <string name="settings_support_debuglog_label">డిబగ్ లాగ్</string>
     <string name="settings_support_debuglog_desc">ఎప్లికేషన్ చేస్తున్న ప్రత్యేక పనిని మీరు శేర్ చేయగల టెక్స్ట్ ఫైల్‌లో రెకార్డ్ చేయండి.</string>
-    <string name="settings_support_debuglog_recording_desc">ప్రస్తుతం డీబగ్ సమాచారం రికార్డ్ చేస్తోంది. రికార్డింగ్ ఆపడానికి నొక్కండి.</string>
-    <string name="settings_support_debuglog_path">లాగ్ పాత్: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">చాలా తక్కువ రికార్డింగ్</string>
     <string name="settings_support_debuglog_short_recording_msg">అది చాలా తక్కువ రికార్డింగ్. డీబగ్ లాగ్‌లు స్నాప్‌షాట్‌లు కాదు, రికార్డింగ్‌లు — లాగ్ ఉపయోగపడాలంటే రికార్డింగ్ యాక్టివ్‌గా ఉన్నప్పుడు సమస్యను పునరుత్పత్తి చేయండి.</string>
     <string name="settings_support_debuglog_short_recording_continue">రికార్డింగ్ కొనసాగించు</string>
     <string name="settings_support_debuglog_short_recording_stop">ఏదైనా ఆపు</string>
-    <string name="settings_support_debuglog_folder_label">డీబగ్ లాగ్ ఫోల్డర్</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d సెషన్ %2$s ఉపయ౏గిస్తోంది</item>
-        <item quantity="other">%1$d సెషన్‌లు %2$s ఉపయ౏గిస్తున్నాయి</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">డీబగ్ లాగ్‌లు సేవ్ చేయబడలేదు</string>
-    <string name="settings_support_debuglog_folder_delete_title">అన్ని డీబగ్ లాగ్‌లు తొలగించాలా?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">ఇది నిల్వ చేసిన అన్ని డీబగ్ లాగ్ సెషన్‌లను శాశ్వతంగా తొలగిస్తుంది.</string>
     <string name="settings_support_discord_label">డిస్కార్డ్</string>
     <string name="settings_support_discord_description">ప్రశ్నలు అడగడానికి మరియు సమయం గడపడానికి స్థలం.</string>
     <!-- Settings/Acks-->
@@ -228,16 +205,12 @@
     <string name="settings_acks_translation_header">అనువాదం</string>
     <string name="settings_acks_translators_title">అనువాదకులు</string>
     <string name="settings_acks_translators_people">వ్యక్తి1;వ్యక్తి2(optional@email.com)</string>
-    <string name="settings_acks_translate_title">BVM అనువదించు</string>
-    <string name="settings_acks_translate_desc">BVM ని మీ భాషలోకి అనువదించడానికి సహాయపడండి</string>
     <string name="settings_acks_thanks_header">ధన్యవాదాలు</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">ఓపెన్-సోర్స్ ప్రాజెక్టుల అనువాదానికి మద్దతు ఇవ్వడానికి</string>
     <string name="settings_licenses_label">లైసెన్సులు</string>
     <string name="settings_translation_label">అనువాదం</string>
     <string name="settings_translation_desc">యాప్‌ను మీ ఇష్టమైన భాషలోకి అనువదించడానికి సహాయపడండి</string>
-    <string name="settings_sponsor_development_title">అభివృద్ధికు మద్దతు</string>
-    <string name="settings_sponsor_development_summary">పాట్రన్ అవ్వండి మరియు నిరంతర అభివృద్ధిని సాధ్యం చేయండి.</string>
     <string name="settings_privacy_policy_label">గోప్యతా విధానం</string>
     <string name="settings_privacy_policy_desc">డేటాను బాధ్యతగా నిర్వహించడం.</string>
     <string name="changelog_label">మార్పుల లాగ్</string>
@@ -259,10 +232,8 @@
     <string name="backup_restore_success_restore">పునరుద్ధరణ పూర్తైంది — %1$d పరికరాలు పునరుద్ధరించబడ్డాయి, %2$d దాటవేయబడ్డాయి.</string>
     <string name="backup_restore_version_warning">ఈ బ్యాకప్ వర్షన్ %1$s తో తయారు చేయబడింది. మీరు %2$s నడుపుతున్నారు. కొన్ని సెట్టింగ్‌లు సరిగా పునరుద్ధరించబడకపోవచ్చు.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">డీబగ్ నోటిఫికేషన్లు</string>
     <string name="debug_log_consent_title">డిబగ్ లాగ్</string>
     <string name="debug_log_consent_explanation">ఈ ఫీచర్ యాప్ చేస్తున్న ప్రతిదీ పంచుకోగల ఫైల్‌లో రికార్డ్ చేస్తుంది. సృష్టించబడిన ఫైల్‌లో సున్నితమైన సమాచారం ఉంది (ఉదా. ఫైల్ పేర్లు మరియు ఇన్‌స్టాల్ చేయబడిన యాప్‌లు). దీన్ని విశ్వసనీయ పక్షాలతో మాత్రమే పంచుకోండి (ఉదా. సమస్యను పరిష్కరించే డెవలపర్).</string>
-    <string name="debug_log_recording_progress">డీబగ్ లాగ్ రికార్డ్ చేస్తోంది</string>
     <string name="debug_log_record_action">రికార్డ్ చేయి</string>
     <string name="debug_log_stop_action">రికార్డింగ్ ఆపండి</string>
     <string name="debug_log_screen_title">డీబగ్ లాగ్ రికార్డర్</string>
@@ -277,7 +248,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">విస్మరించండి</string>
     <string name="debug_log_screen_keep_action">ఉంచు</string>
-    <string name="debug_log_compressing_label">కుదిస్తోంది…</string>
     <string name="debug_log_file_label">రికార్డ్ చేయబడిన లాగ్ ఫైల్</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">లాగ్ పంపారా?</string>
@@ -305,7 +275,6 @@
     <string name="contact_description_question_hint">మీ ప్రశ్నను వివరంగా వివరించండి.</string>
     <string name="contact_category_section_label">వర్గం</string>
     <string name="contact_debug_log_label">డిబగ్ లాగ్</string>
-    <string name="contact_debug_log_select_hint">జతచేయడానికి ఒక డీబగ్ లాగ్ ఎంచుకోండి</string>
     <string name="contact_debug_log_picker_hint">సమస్యను వేగంగా నిర్ధారించడానికి ఒక డీబగ్ లాగ్ జతచేయండి.</string>
     <string name="contact_debug_log_picker_empty">డీబగ్ లాగ్‌లు అందుబాటులో లేవు. ముందు ఒకదాన్ని రికార్డ్ చేయండి.</string>
     <string name="contact_expected_behavior_label">అంచనా ప్రవర్తన</string>
@@ -319,82 +288,32 @@
     <string name="contact_welcome_msg">నేను ప్రతి సందేశాన్ని స్వయంగా చదువుతాను మరియు సమాధానం ఇవ్వడానికి నా వంతు ప్రయత్నం చేస్తాను, కాని నేను ఒంటరిగా పని చేస్తున్నాను కావున కొంచెం సమయం పట్టవచ్చు. మీ సహనానికి ధన్యవాదాలు.</string>
     <string name="contact_footer_msg">మీ సందేశం ఇమేయిల్ ద్వారా పంపబడుతుంది. పరికర మరియు సెటప్ సమాచారం స్వయంచాలకంగా జతచేయబడుతుంది.</string>
     <string name="contact_no_email_app_msg">ఈ పరికరంలో ఇమేయిల్ యాప్ కనుగొనబడలేదు.</string>
-    <string name="contact_attachment_missing_msg">డీబగ్ లాగ్ ఫైల్ ఇకపుడు లేదు</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">నిల్వ చేసిన డీబగ్ లాగ్‌లు</string>
     <string name="settings_support_stored_logs_desc">%1$d సెషన్‌లు (%2$s)</string>
     <string name="settings_support_stored_logs_empty">నిల్వ చేసిన డీబగ్ లాగ్‌లు లేవు</string>
-    <string name="settings_support_stored_logs_delete_title">నిల్వ చేసిన లాగ్‌లు తొలగించాలా?</string>
-    <string name="settings_support_stored_logs_delete_msg">ఇది అన్ని %1$d నిల్వ చేసిన డీబగ్ లాగ్ సెషన్‌లను తొలగిస్తుంది.</string>
-    <string name="settings_support_stored_logs_deleted_msg">నిల్వ చేసిన డీబగ్ లాగ్‌లు తొలగించబడ్డాయి</string>
-    <string name="label_bug_reports">బగ్ రిపోర్ట్‌లు</string>
-    <string name="description_bug_reports">స్వయంచాలక బగ్ మరియు క్రాష్ రిపోర్టింగ్.</string>
     <string name="label_add_device">పరికరం జోడించు</string>
-    <string name="label_just_a_moment_please">ఒక్క క్షణం, దయచేసి.</string>
     <string name="label_notification_channel_status">స్థితి</string>
     <string name="label_notification_channel_setup">సెటప్ అవసరం</string>
     <string name="monitor_notification_starting">ప్రారంభిస్తోంది…</string>
     <string name="action_set">సెట్ చేయి</string>
     <string name="action_cancel">రద్దు చేయండి</string>
-    <string name="label_invalid_input">చెల్లని ఇన్‌పుట్</string>
     <string name="action_reset">రీసెట్ చేయండి</string>
     <string name="label_no_connected_devices">పరికరాలు కనెక్ట్ అవ్వలేదు</string>
-    <string name="label_status_idle">విరామంలో</string>
-    <string name="label_status_adjusting_volumes">వాల్యూమ్‌లు సర్దుబాటు చేస్తోంది</string>
-    <string name="label_premium_version">ప్రీమియం వెర్షన్</string>
     <string name="general_upgrade_action">అప్‌గ్రేడ్ చేయండి</string>
     <string name="common_upgrade_required_label">అప్‌గ్రేడ్ అవసరం</string>
-    <string name="label_premium_version_required">ప్రీమియం వెర్షన్ అవసరం</string>
-    <string name="description_intro_purpose">ఈ యాప్ మీ Android పరికరం వేర్వేరు Bluetooth పరికరాల వాల్యూమ్‌ను గుర్తుంచుకోవడానికి అనుమతిస్తుంది.</string>
-    <string name="upgrade_benefit_unlimited_devices">అపరిమిత పరికర ప్రొఫైల్‌లు</string>
-    <string name="upgrade_benefit_connection_actions">ఆటోప్లే, యాప్ లాంచ్ మరియు కనెక్షన్ అలర్ట్‌లు</string>
-    <string name="upgrade_benefit_theme_customization">థీమ్, స్టైల్ మరియు రంగు కస్టమైజేషన్</string>
-    <string name="upgrade_benefit_power_controls">వాల్యూమ్ లాక్ మరియు రేట్ లిమిటింగ్</string>
-    <string name="upgrade_benefit_support">స్వతంత్ర అభివృద్ధికి మద్దతు ఇవ్వండి</string>
     <string name="upgrade_benefit_equalizer">• ప్రతి పరికరానికి ఈక్వలైజర్ (సిస్టమ్ ఈక్వలైజర్ సపోర్ట్‌ కలిగిన సంగీత అనువర్తనాల కోసం)</string>
-    <string name="description_intro_tap_the_button">మీ మొదటి పరికరాన్ని జోడించడం ద్వారా ప్రారంభించండి.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth నిలిపివేయబడింది.</string>
     <string name="title_bluetooth_is_off">Bluetooth ఆఫ్‌లో ఉంది</string>
     <string name="action_enable_bluetooth">Bluetooth ఎనేబుల్ చేయి</string>
     <string name="title_bluetooth_permission_required">Bluetooth అనుమతి అవసరం</string>
     <string name="description_bluetooth_permission_required">మీ పరికర వాల్యూమ్‌లను నిర్వహించడానికి ఈ యాప్‌కు Bluetooth అనుమతి అవసరం.</string>
     <string name="action_grant_permission">అనుమతి మంజూరు చేయి</string>
-    <string name="label_status_listening_for_changes">వాల్యూమ్ మార్పుల కోసం వింటోంది</string>
     <string name="action_exit">నిష్క్రమించు</string>
-    <string name="action_start">ప్రారంభించు</string>
-    <string name="label_welcome">స్వాగతం</string>
-    <string name="description_intro_contact">మీకు ప్రశ్నలు ఉంటే లేదా కొత్త ఫీచర్ కోసం ఆలోచన ఉంటే నన్ను సంప్రదించడానికి వెనుకాడకండి.</string>
-    <string name="label_translation">అనువాదం</string>
-    <string name="description_help_translate">ఈ యాప్‌ను ఇతర భాషలలో అందుబాటులో ఉంచడానికి నాకు సహాయపడండి.</string>
     <string name="label_device_speaker">పరికర స్పీకర్</string>
-    <string name="label_keyevent_playpause">ప్లే-పాజ్</string>
-    <string name="label_keyevent_play">ప్లే</string>
-    <string name="label_keyevent_next">తదుపరి</string>
-    <string name="label_install_id">ఇన్స్టాల్ ID</string>
     <string name="message_copied_to_clipboard">క్లిప్‌బోర్డ్‌కు కాపీ చేయబడింది</string>
-    <string name="label_thanks">ధన్యవాదాలు</string>
-    <string name="label_licenses">లైసెన్సులు</string>
-    <string name="description_ring_volume_additional_permission">రింగ్ వాల్యూమ్ మార్చడానికి అదనపు అనుమతులు అవసరం.</string>
-    <string name="label_missing_permissions">అనుమతులు లేవు</string>
-    <string name="action_grant">మంజూరు చేయి</string>
-    <string name="label_advanced">అధునాతన</string>
-    <string name="label_exclude_health">ఆరోగ్య ప్రొఫైల్‌లను మినహాయించు</string>
-    <string name="description_exclude_health">కొన్ని Android పరికరాలు \'Health Device\' Bluetooth ప్రొఫైల్‌లను (HDP, 0x1400) చూస్తున్నప్పుడు హ్యాంగ్ అవుతాయి.</string>
-    <string name="label_exclude_gattserver">GATT సర్వర్ ప్రొఫైల్‌లను మినహాయించు</string>
-    <string name="label_exclude_gatt">GATT ప్రొఫైల్‌లను మినహాయించు</string>
-    <string name="description_exclude_gattserver">\'Generic Attribute\' (GATT) సర్వర్ రకం Bluetooth ప్రొఫైల్‌లను క్వెరీ చేయవద్దు.</string>
-    <string name="description_exclude_gatt">\'Generic Attribute\' (GATT) క్లయింట్ రకం Bluetooth ప్రొఫైల్‌లను క్వెరీ చేయవద్దు.</string>
-    <string name="description_waiting_for_devicex">కనెక్షన్ పూర్తి చేయడానికి %s కోసం వేచి ఉంది</string>
-    <string name="action_undo">రద్దుచేయండి</string>
-    <string name="action_show">చూపించు</string>
     <string name="action_dismiss">తీసివేయండి</string>
-    <string name="action_fix">పరిష్కరించండి</string>
-    <string name="battery_optimizations_issue_description">ఈ యాప్‌కు బ్యాటరీ ఆప్టిమైజేషన్‌లు ప్రారంభించబడ్డాయి మరియు ఇవి Bluetooth ఈవెంట్‌లను స్వీకరించడాన్ని నిరోధించవచ్చు. మీకు సమస్యలు ఎదురవుతున్నట్లయితే ఆప్టిమైజేషన్‌లను నిలిపివేయడాన్ని పరిగణించండి.</string>
     <string name="label_bluetooth_settings">Bluetooth సెట్టింగ్‌లు</string>
-    <string name="android10_applaunch_issue_description">Android 10 యాప్‌లను బ్యాక్‌గ్రౌండ్ నుండి ప్రారంభించే విధానాన్ని పరిమితం చేస్తుంది. Bluetooth పరికరం కనెక్ట్ అయినప్పుడు యాప్‌లు తెరవడానికి అనుమతించడానికి, \"ఇతర యాప్‌లపై ప్రదర్శించు\" (SYSTEM_ALERT_WINDOW) అనుమతిని మంజూరు చేయండి.</string>
-    <string name="label_opensource">సోర్స్ కోడ్</string>
-    <string name="android13_notification_permission_description">నోటిఫికేషన్‌లు పోస్ట్ చేయడానికి ఈ యాప్‌కు అనుమతి ఇవ్వండి. ఈ యాప్ యాక్టివ్‌గా ఉన్నప్పుడు మరియు వాల్యూమ్ సర్దుబాట్లు చేస్తున్నప్పుడు నోటిఫికేషన్ ప్రదర్శించడాన్ని ఇది అనుమతిస్తుంది.</string>
-    <string name="privacy_policy_label">గోప్యతా విధానం</string>
     <string name="managed_devices_empty_message">Bluetooth పరికరాలు కాన్ఫిగర్ చేయబడలేదు.\nమీ మొదటి పరికరాన్ని జోడించడానికి + బటన్‌ను నొక్కండి.</string>
     <string name="label_pro_feature">ప్రీమియం ఫీచర్</string>
     <plurals name="discover_device_limit_banner">
@@ -425,21 +344,15 @@
     <string name="review_app_review_action">సమీక్ష</string>
     <string name="review_app_dismiss_action">తరువాత ఆగామి</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">కొనుగోలు రద్దు చేయబడింది</string>
-    <string name="error_iap_unavailable_message">యాప్-లో కొనుగోళ్ళు అందుబాటులో లేవు</string>
-    <string name="error_generic_message">లోపం సంభవించింది. దయచేసి మళ్ళీ ప్రయత్నించండి.</string>
-    <string name="error_iap_owned_message">మీరు ఈ అంశాన్ని ఇప్పటికే కలిగి ఉన్నారు</string>
     <string name="label_no_devices_title">పరికరాలు లేవు</string>
     <string name="bluemusic_mascot_description">యాప్ చిహ్నం</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">యాప్‌లను ఎంచుకొండి</string>
     <string name="devices_app_selection_search_hint">యాప్‌లను శోధించండి…</string>
-    <string name="devices_app_selection_currently_selected">ప్రస్తుతం ఎంచుకున్నది</string>
     <string name="devices_app_selection_selected_count">%d యాప్‌లు ఎంచుకొబడ్డాయి</string>
     <string name="general_navigate_back_action">వెనక్కు నావిగేట్ చేయి</string>
     <string name="general_reset_action">రీసెట్ చేయండి</string>
     <string name="general_clear_action">క్లియర్ చేయి</string>
-    <string name="general_save_action">సేవ్ చేయండి</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">లాక్</string>
     <string name="devices_indicator_awake">మేల్కొని</string>
@@ -449,7 +362,6 @@
     <string name="devices_indicator_limit">పరిమితి</string>
     <string name="devices_indicator_eq">ఈక్యూ</string>
     <string name="devices_indicator_boost">బూస్ట్</string>
-    <string name="devices_indicator_launch">ప్రారంభించు</string>
     <string name="devices_indicator_home">హోమ్</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">హెచ్చరిక</string>

@@ -3,7 +3,6 @@
     <string name="upgrade_feature_requires_pro">Nepieciešams BSP FOSS</string>
     <string name="upgrade_prompt_title">Jaunināt uz BSP FOSS</string>
     <string name="upgrade_prompt_body">Atslēdz papildu iespējas un kļūsti par aizbildni, lai atbalstītu izstrādes nepārtrauktību!</string>
-    <string name="upgrade_prompt_upgrade_action">Jaunināt</string>
     <string name="upgrade_screen_title">Jaunināt uz BSP FOSS</string>
     <string name="upgrade_screen_preamble">Bluetooth skaļuma pārvaldniekā nav reklāmu, un tas nepārdod lietotāju datus. Izstrādes nepārtrauktība ir iespējama tikai pateicoties jums.</string>
     <string name="upgrade_screen_how_title">Kā palīdzēt</string>

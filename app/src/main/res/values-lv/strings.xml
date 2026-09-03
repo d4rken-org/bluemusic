@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">Dažas funkcijas tika maintas atjaunināšanas laikā. Lūdzu pārbaudiet ierīces iestatījumus, lai pārliecinātos, ka viss ir pareizi konfigurēts.</string>
     <string name="onboarding_rewrite_action">Turpināt</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">Nav atrasts neviena nepārvalditā ierīce</string>
     <string name="discover_all_devices_managed_msg">Visas jūsu savienotās ierīces tiek pārvaldītas! Vajag jaunu?</string>
     <string name="discover_pair_new_device_action">Savienot jaunu ierīci</string>
     <string name="discover_device_speaker_desc">Tālruņa savs skaļrunis. Tā skaļumi tiek piemēroti, kad audio pārslēdzas atpakaļ uz tālruni, piemēram, pēc Bluetooth ierīces atvienošanas.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Ierīces konfigurācija</string>
-    <string name="devices_device_config_section_general_label">Vispārīgi</string>
     <string name="devices_device_config_remove_device_label">Aizmirst ierīci</string>
-    <string name="devices_device_config_remove_device_desc">Aizmirst šo ierīci no šīs lietotnes un dzēst tās konfigurāciju. Tas neatvieno ierīces pāri.</string>
     <string name="devices_device_config_remove_device_action">Aizmirst</string>
     <string name="devices_device_config_remove_device_confirmation">Aizmirst %s no pārvaldītajām ierīcēm?</string>
-    <string name="devices_device_config_rename_device_label">Pārdēvēt ierīci</string>
-    <string name="devices_device_config_rename_device_desc">Pārdēvēt šo ierīci šajā lietotnē un, ja iespējams, sistēmā.</string>
     <string name="devices_device_config_rename_device_action">Pārdēvēt</string>
     <string name="devices_device_config_enabled_label">Iespējots</string>
     <string name="devices_device_config_enabled_desc">Reģģēt uz šo ierīci, kad tā ir pievienota</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">Automātiskās atskaņošanas komandas</string>
     <string name="devices_device_config_autoplay_keycodes_order">Komandu secība</string>
     <string name="devices_device_config_autoplay_keycodes_label">Komandas</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Konfigurēt, kuras komandas nosūtīt un kādā secībā</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">Nav konfigurētu komandu</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">Pievienot komandu</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">Maksimums %1$d komandas</string>
@@ -122,7 +116,6 @@
     <string name="cd_autoplay_keycode_move_up">Pārvietot uz augšu</string>
     <string name="cd_autoplay_keycode_move_down">Pārvietot uz leju</string>
     <string name="cd_autoplay_keycode_remove">Noņemt</string>
-    <string name="devices_device_config_section_volumes_label">Skaļumi</string>
     <string name="devices_device_config_section_volume_label">Skaļums</string>
     <string name="devices_device_config_alarm_volume_label">Traċsigņāla skaļums</string>
     <string name="devices_device_config_alarm_volume_desc">Dažas traċsigņālu lietotnes tā vietā izmanto mūzikas skaļumu.</string>
@@ -156,8 +149,6 @@
     <string name="devices_audio_stream_ring_label">Zvanīšana</string>
     <string name="devices_audio_stream_notification_label">Paziņojums</string>
     <string name="devices_audio_stream_alarm_label">Trauksme</string>
-    <string name="devices_neverseen_label">Nekad nav redzets</string>
-    <string name="devices_state_connected_label">Pievienots</string>
     <string name="devices_last_connected_label">Pēdējā reize pievienots: %s</string>
     <string name="devices_currently_connected_label">Pašlaik pievienots</string>
     <string name="devices_device_disabled_label">Ierīce atspējota</string>
@@ -192,10 +183,7 @@
     <string name="devices_settings_desc">Iestatījumi, kas ietekmē visas pārvaldītās ierīces.</string>
     <string name="label_app_enabled">Lietotne iespējota</string>
     <string name="description_app_enabled">Pārslēdz lietotnes spēju reaģēt uz skaļuma un Bluetooth notikumiem.</string>
-    <string name="label_visible_volume_adjustments">Redzamas pielāgošanas</string>
-    <string name="description_visible_volume_adjustments">Rādīt sistēmas skaļuma logu, kamēr šī lietotne veic pielāgošanas.</string>
     <string name="label_volume_listener">Novērot izmaiņas</string>
-    <string name="description_volume_listener">Palikt aktīvam, kamēr ierīce ir pievienota, un saglabāt skaļuma izmaiņas, kas nav radusās no šīs lietotnes.</string>
     <string name="label_boot_restore">Atjaunot pēc startēšanas</string>
     <string name="description_boot_restore">Atjaunot skaļumu pēc ieslēgšanas/pārslēgšanas, ja ir pievienota Bluetooth ierīce.</string>
     <!-- Settings/Support-->
@@ -205,23 +193,11 @@
     <string name="settings_support_wiki_description">Uzziniet, kā efektīvi izmantot BSP</string>
     <string name="settings_support_issue_tracker_description">Publiskais problēmu izsekotājs kļūdu ziņojumiem un funkciju pieprasījumiem.</string>
     <string name="settings_support_issue_tracker_label">Problēmu izsekotājs</string>
-    <string name="settings_support_debuglog_label">Atkļūdošanas žurnāls</string>
     <string name="settings_support_debuglog_desc">Ierakstiet visu, ko lietotne dara, teksta failā, ko varat kopīgot.</string>
-    <string name="settings_support_debuglog_recording_desc">Pašlaik tiek reģistrēta atklājumā informācija. Pieskarieties, lai apturētu reģistrēšanu.</string>
-    <string name="settings_support_debuglog_path">Journala ceļs: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">ļoti īsa reģistrēšana</string>
     <string name="settings_support_debuglog_short_recording_msg">Tā bija ļoti īsa reģistrēšana. Atklājumu journali ir reģistrēšanas, nevis momentuzstādi - reproduciet problēmu reģistrēšanas laikā, lai journali būtu noderīgi.</string>
     <string name="settings_support_debuglog_short_recording_continue">Turpināt reģistrēšanu</string>
     <string name="settings_support_debuglog_short_recording_stop">Apturēt jebkurā gadījumā</string>
-    <string name="settings_support_debuglog_folder_label">Atklājumu log failu mape</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="zero">%1$d sesijas izmantojot %2$s</item>
-        <item quantity="one">%1$d sesija izmantojot %2$s</item>
-        <item quantity="other">%1$d sesijas izmantojot %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Nav saglabātu atklājumu log failu</string>
-    <string name="settings_support_debuglog_folder_delete_title">Dzēst visus atklājumu logus?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Tās neatgriezeniski dzēs visas saglabātās atklājumu log sesijas.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Vieta, kur pavadīt laiku un uzdot jautājumus.</string>
     <!-- Settings/Acks-->
@@ -230,16 +206,12 @@
     <string name="settings_acks_translation_header">Tulkošana</string>
     <string name="settings_acks_translators_title">Tulkotāji</string>
     <string name="settings_acks_translators_people">Person1;Person2(optional@email.com)</string>
-    <string name="settings_acks_translate_title">Tulkot BSP</string>
-    <string name="settings_acks_translate_desc">Palīdzēt tulkot BSP jūsu valodā</string>
     <string name="settings_acks_thanks_header">Paldies</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Par atbalstu atvērtā pirmkoda projektu tulkošanai</string>
     <string name="settings_licenses_label">Licences</string>
     <string name="settings_translation_label">Tulkošana</string>
     <string name="settings_translation_desc">Palīdzēt tulkot lietotni jūsu mīlākajā valodā</string>
-    <string name="settings_sponsor_development_title">Sponsorēt izstrādi</string>
-    <string name="settings_sponsor_development_summary">Kļūstiet par patronu un padariet turpmāku izstrādi iespējamu.</string>
     <string name="settings_privacy_policy_label">Privātuma politika</string>
     <string name="settings_privacy_policy_desc">Atbildīga datu apstrāde.</string>
     <string name="changelog_label">Izmaiņu žurnāls</string>
@@ -261,10 +233,8 @@
     <string name="backup_restore_success_restore">Atjaunošana pabeigta — atjaunotas %1$d ierīces, izlaistas %2$d.</string>
     <string name="backup_restore_version_warning">Šis dublējums tika izveidots ar versiju %1$s. Jūs izmantojat %2$s. Daži iestatījumi var netikt atjaunoti pareizi.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">Atkļūdošanas paziņojumi</string>
     <string name="debug_log_consent_title">Atkļūdošanas žurnāls</string>
     <string name="debug_log_consent_explanation">Šī funkcija ieraksta visu, ko lietotne dara, koplietojamā failā. Izveidotais fails satur sensitīvu informāciju (piem. failu nosaukumus un instalētās lietotnes). Dalieties tikai ar uzticamām pusēm (piem. izstrādātāju, kas risina problēmu).</string>
-    <string name="debug_log_recording_progress">Ieraksta atkļūdošanas žurnālu</string>
     <string name="debug_log_record_action">Reģistrēt</string>
     <string name="debug_log_stop_action">Apturēt ierakstīšanu</string>
     <string name="debug_log_screen_title">Atklājumu log reģistrētājs</string>
@@ -280,7 +250,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">Atmest</string>
     <string name="debug_log_screen_keep_action">Saglabāt</string>
-    <string name="debug_log_compressing_label">Kompresē...</string>
     <string name="debug_log_file_label">Ierakstītais žurnāla fails</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Logs nosūtīts?</string>
@@ -308,7 +277,6 @@
     <string name="contact_description_question_hint">Aprakstiet savu jautājumu sīkāk.</string>
     <string name="contact_category_section_label">Kategorija</string>
     <string name="contact_debug_log_label">Atkļūdošanas žurnāls</string>
-    <string name="contact_debug_log_select_hint">Izvēlēties atklājumu log, ko pievienot</string>
     <string name="contact_debug_log_picker_hint">Pievienojiet atklājumu log, lai palīdzētu ātrāk diagnosticmēt problēmu.</string>
     <string name="contact_debug_log_picker_empty">Nav pieejamu atklājumu logu. Vispirms reģistrējiet vienu.</string>
     <string name="contact_expected_behavior_label">Gaidītā uzvedība</string>
@@ -323,82 +291,32 @@
     <string name="contact_welcome_msg">Es pats lasu katru ziņojumu un dari visu iespējamo, lai atbildetu, taču tkā es stradāju viens, tas var aizņemt nedēvedu laiku. Paldies par pacietbu!</string>
     <string name="contact_footer_msg">Jūsu ziņojums tiks nosūtīts pa e-pastu. Ierīces un iestatījumu informācija tiek pievienota automātiski.</string>
     <string name="contact_no_email_app_msg">Šajā ierīcē nav atrasts e-pasta klients.</string>
-    <string name="contact_attachment_missing_msg">Atklājumu log fails vairs nepastāv</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Saglabātie atklājumu logi</string>
     <string name="settings_support_stored_logs_desc">%1$d sesijas (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Nav saglabātu atklājumu logu</string>
-    <string name="settings_support_stored_logs_delete_title">Dzēst saglabātos logus?</string>
-    <string name="settings_support_stored_logs_delete_msg">Tās dzēs visas %1$d saglabātās atklājumu log sesijas.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Saglabātie atklājumu logi izdzēsti</string>
-    <string name="label_bug_reports">Kļūdu ziņojumi</string>
-    <string name="description_bug_reports">Automātiska kļūdu un avāriju ziņošana.</string>
     <string name="label_add_device">Pievienot ierīci</string>
-    <string name="label_just_a_moment_please">Uzgaņiet, lūdzu.</string>
     <string name="label_notification_channel_status">Stāvoklis</string>
     <string name="label_notification_channel_setup">Nepieciešama iestatīšana</string>
     <string name="monitor_notification_starting">Uzsāk...</string>
     <string name="action_set">Iestatīt</string>
     <string name="action_cancel">Atcelt</string>
-    <string name="label_invalid_input">Nederīga ievade</string>
     <string name="action_reset">Atiestatīt</string>
     <string name="label_no_connected_devices">Nav pievienotu ierīču</string>
-    <string name="label_status_idle">Gaida</string>
-    <string name="label_status_adjusting_volumes">Skaļumu pielāgošana</string>
-    <string name="label_premium_version">Premium versija</string>
     <string name="general_upgrade_action">Jaunināt</string>
     <string name="common_upgrade_required_label">Nepieciešams jauninājums</string>
-    <string name="label_premium_version_required">Nepieciešama premium versija</string>
-    <string name="description_intro_purpose">Šī lietotne ļauj jūsu Android ierīcei atcerēties dažādu Bluetooth ierīču skaļumus.</string>
-    <string name="upgrade_benefit_unlimited_devices">Neierobežots ierīcī profilu skaits</string>
-    <string name="upgrade_benefit_connection_actions">Automātiskā atskaņošana, lietotnes palaist un savienojuma brīdinājumi</string>
-    <string name="upgrade_benefit_theme_customization">Temāta, stila un krāsu pielāgošana</string>
-    <string name="upgrade_benefit_power_controls">Skaļuma bloķēšana un ātruma ierobežošana</string>
-    <string name="upgrade_benefit_support">Atbalstīt neatkarīgu izstrādi</string>
     <string name="upgrade_benefit_equalizer">• Katrai ierīcei individuāls ekvaizeris (mūzikas lietotnēm ar sistēmas ekvaizera atbalstu)</string>
-    <string name="description_intro_tap_the_button">Sāciet, pievienojot savu pirmo ierīci.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth ir atspējots.</string>
     <string name="title_bluetooth_is_off">Bluetooth ir izslēgts</string>
     <string name="action_enable_bluetooth">Ieslegt Bluetooth</string>
     <string name="title_bluetooth_permission_required">Nepieciešama Bluetooth atļauja</string>
     <string name="description_bluetooth_permission_required">Šai lietotnei nepieciešama Bluetooth atļauja, lai pārvaldītu jūsu ierīču skaļumus.</string>
     <string name="action_grant_permission">Piešķirt atļauju</string>
-    <string name="label_status_listening_for_changes">Uzklausā skaļuma izmaiņas</string>
     <string name="action_exit">Iziet</string>
-    <string name="action_start">Sākt</string>
-    <string name="label_welcome">Laipni lūdzam</string>
-    <string name="description_intro_contact">Nebaidieties sazināties ar mani, ja jums ir jautājumi vai pat jauna funkcija ideja.</string>
-    <string name="label_translation">Tulkošana</string>
-    <string name="description_help_translate">Palīdzējiet man padarīt šo lietotni pieejamu citās valodās.</string>
     <string name="label_device_speaker">Ierīces skairuņis</string>
-    <string name="label_keyevent_playpause">Atskanēt/Apturēt</string>
-    <string name="label_keyevent_play">Atskanēt</string>
-    <string name="label_keyevent_next">Nākamais</string>
-    <string name="label_install_id">Instalācijas ID</string>
     <string name="message_copied_to_clipboard">Kopēts starplīktnī</string>
-    <string name="label_thanks">Paldies</string>
-    <string name="label_licenses">Licences</string>
-    <string name="description_ring_volume_additional_permission">Lai mainītu zvanīšanas skaļumu, nepieciešamas papildu atļaujas.</string>
-    <string name="label_missing_permissions">Trūkstošas atļaujas</string>
-    <string name="action_grant">Piešķirt</string>
-    <string name="label_advanced">Papildu</string>
-    <string name="label_exclude_health">Izslēgt vesēlības profilus</string>
-    <string name="description_exclude_health">Dažas Android ierīces iestrēgst, meklējot Bluetooth profilus \'Health Device\' (HDP, 0x1400).</string>
-    <string name="label_exclude_gattserver">Izslēgt GATT servera profilus</string>
-    <string name="label_exclude_gatt">Izslēgt GATT profilus</string>
-    <string name="description_exclude_gattserver">Nevaicajāt \'Generic Attribute\' (GATT) servera tipa Bluetooth profilus.</string>
-    <string name="description_exclude_gatt">Nevaicajāt \'Generic Attribute\' (GATT) klienta tipa Bluetooth profilus.</string>
-    <string name="description_waiting_for_devicex">Gaida, līdz %s pabeig savienojumu</string>
-    <string name="action_undo">Atsaukt</string>
-    <string name="action_show">Rādīt</string>
     <string name="action_dismiss">Noraidīt</string>
-    <string name="action_fix">Labot</string>
-    <string name="battery_optimizations_issue_description">Šai lietotnei ir iespējotas akumlatora optimizācijas, kas var liegt tai saņemt Bluetooth notikumus. Apsveriet optimizāciju atspējošanu, ja radusies problēmas.</string>
     <string name="label_bluetooth_settings">Bluetooth iestatījumi</string>
-    <string name="android10_applaunch_issue_description">Android 10 ierobežo, kā lietotnes var tikt palaistas fonā. Lai atļautu lietotņu atvēršanu, kad pievienojas Bluetooth ierīce, piešķiriet atļauju \"Attēlošana virs citām lietotnēm\" (SYSTEM_ALERT_WINDOW).</string>
-    <string name="label_opensource">Pirmkods</string>
-    <string name="android13_notification_permission_description">Piešķiriet šai lietotnei atļauju ievietot paziņojumus. Tas ļauj parādīt paziņojumu, kad šī lietotne ir aktīva un tiek veikta skaļuma pielāgošana.</string>
-    <string name="privacy_policy_label">Privātuma politika</string>
     <string name="managed_devices_empty_message">Nav konfigurētu Bluetooth ierīču.\nPieskarieties pogai +, lai pievienotu savu pirmo ierīci.</string>
     <string name="label_pro_feature">Maksas funkcija</string>
     <plurals name="discover_device_limit_banner">
@@ -430,21 +348,15 @@
     <string name="review_app_review_action">Atsauksme</string>
     <string name="review_app_dismiss_action">Varbūt vēlāk</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">Pirkums atcelts</string>
-    <string name="error_iap_unavailable_message">Pirkumi lietotnē nav pieejami</string>
-    <string name="error_generic_message">Radusās kļūda. Lūdzu mēģiniet vēlreiz.</string>
-    <string name="error_iap_owned_message">Jums jau pieder šis elements</string>
     <string name="label_no_devices_title">Nav ierīču</string>
     <string name="bluemusic_mascot_description">Lietotnes ikona</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">Izvēlēties lietotnes</string>
     <string name="devices_app_selection_search_hint">Meklēt lietotnes...</string>
-    <string name="devices_app_selection_currently_selected">Pašlaik izvēlēts</string>
     <string name="devices_app_selection_selected_count">Izvēlētas %d lietotnes</string>
     <string name="general_navigate_back_action">Pārvietoties atpakaļ</string>
     <string name="general_reset_action">Atiestatīt</string>
     <string name="general_clear_action">Notīrīt</string>
-    <string name="general_save_action">Saglabāt</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">Bloktāze</string>
     <string name="devices_indicator_awake">Nomods</string>
@@ -454,7 +366,6 @@
     <string name="devices_indicator_limit">Ierobežot</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Pastiprinājums</string>
-    <string name="devices_indicator_launch">Palaist</string>
     <string name="devices_indicator_home">Sākums</string>
     <string name="devices_indicator_dnd">NTR</string>
     <string name="devices_indicator_alert">Brīdinājums</string>

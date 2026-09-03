@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">Some features don change during di update. Abeg check your device settings to make sure everything set correctly.</string>
     <string name="onboarding_rewrite_action">Continue</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">No unmanaged devices found</string>
     <string name="discover_all_devices_managed_msg">All your paired devices dey managed! You need new one?</string>
     <string name="discover_pair_new_device_action">Pair new device</string>
     <string name="discover_device_speaker_desc">Di phone speaker. E apply di volumes when audio switch back to phone, like afta your Bluetooth device disconnect.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Device configuration</string>
-    <string name="devices_device_config_section_general_label">General</string>
     <string name="devices_device_config_remove_device_label">Forget device</string>
-    <string name="devices_device_config_remove_device_desc">Forget dis device from dis app and delete im configuration. Dis no go unpair di device.</string>
     <string name="devices_device_config_remove_device_action">Forget</string>
     <string name="devices_device_config_remove_device_confirmation">Forget %s from managed devices?</string>
-    <string name="devices_device_config_rename_device_label">Rename device</string>
-    <string name="devices_device_config_rename_device_desc">Rename dis device inside dis app, and if possible, inside di system.</string>
     <string name="devices_device_config_rename_device_action">Rename</string>
     <string name="devices_device_config_enabled_label">Enabled</string>
     <string name="devices_device_config_enabled_desc">React to dis device when e connect</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">Autoplay commands</string>
     <string name="devices_device_config_autoplay_keycodes_order">Command sequence</string>
     <string name="devices_device_config_autoplay_keycodes_label">Commands</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Configure which commands to send and how dem go follow each other</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">No commands configure yet</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">Add command</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">Maximum %1$d commands</string>
@@ -121,7 +115,6 @@
     <string name="cd_autoplay_keycode_move_up">Move up</string>
     <string name="cd_autoplay_keycode_move_down">Move down</string>
     <string name="cd_autoplay_keycode_remove">Remove</string>
-    <string name="devices_device_config_section_volumes_label">Volumes</string>
     <string name="devices_device_config_section_volume_label">Volume</string>
     <string name="devices_device_config_alarm_volume_label">Alarm volume</string>
     <string name="devices_device_config_alarm_volume_desc">Some alarm apps dey use music volume instead.</string>
@@ -155,8 +148,6 @@
     <string name="devices_audio_stream_ring_label">Ring</string>
     <string name="devices_audio_stream_notification_label">Notification</string>
     <string name="devices_audio_stream_alarm_label">Alarm</string>
-    <string name="devices_neverseen_label">Never seen</string>
-    <string name="devices_state_connected_label">Connected</string>
     <string name="devices_last_connected_label">Last connected: %s</string>
     <string name="devices_currently_connected_label">Currently connected</string>
     <string name="devices_device_disabled_label">Device disabled</string>
@@ -191,10 +182,7 @@
     <string name="devices_settings_desc">Settings wey affect all managed devices.</string>
     <string name="label_app_enabled">App enabled</string>
     <string name="description_app_enabled">Toggle di app ability to react to volume and Bluetooth events.</string>
-    <string name="label_visible_volume_adjustments">Visible adjustments</string>
-    <string name="description_visible_volume_adjustments">Show di system volume window while dis app dey make adjustments.</string>
     <string name="label_volume_listener">Observe changes</string>
-    <string name="description_volume_listener">Stay active while device dey connected and save volume changes wey dis app no cause.</string>
     <string name="label_boot_restore">Restore on boot</string>
     <string name="description_boot_restore">Restore volume afta booting/rebooting if Bluetooth device dey connected.</string>
     <!-- Settings/Support-->
@@ -204,22 +192,11 @@
     <string name="settings_support_wiki_description">Learn how to use BVM well well</string>
     <string name="settings_support_issue_tracker_description">Public issue tracker for bug reports and feature requests.</string>
     <string name="settings_support_issue_tracker_label">Issue tracker</string>
-    <string name="settings_support_debuglog_label">Debug log</string>
     <string name="settings_support_debuglog_desc">Record everything di app dey do into text file wey you fit share.</string>
-    <string name="settings_support_debuglog_recording_desc">E dey record debug information now. Tap to stop recording.</string>
-    <string name="settings_support_debuglog_path">Log path: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">Very short recording</string>
     <string name="settings_support_debuglog_short_recording_msg">Dat recording was very short. Debug logs na recordings, not snapshots — reproduce di issue while recording dey active for di log to be useful.</string>
     <string name="settings_support_debuglog_short_recording_continue">Continue recording</string>
     <string name="settings_support_debuglog_short_recording_stop">Stop anyway</string>
-    <string name="settings_support_debuglog_folder_label">Debug log folder</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d session using %2$s</item>
-        <item quantity="other">%1$d sessions using %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">No debug logs stored</string>
-    <string name="settings_support_debuglog_folder_delete_title">Delete all debug logs?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Dis go permanently delete all stored debug log sessions.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Place to chill and ask questions.</string>
     <!-- Settings/Acks-->
@@ -228,16 +205,12 @@
     <string name="settings_acks_translation_header">Translation</string>
     <string name="settings_acks_translators_title">Translators</string>
     <string name="settings_acks_translators_people">Person1;Person2(optional@email.com)</string>
-    <string name="settings_acks_translate_title">Translate BVM</string>
-    <string name="settings_acks_translate_desc">Help translate BVM to your language</string>
     <string name="settings_acks_thanks_header">Thanks</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">For supporting translation of open-source projects</string>
     <string name="settings_licenses_label">Licenses</string>
     <string name="settings_translation_label">Translation</string>
     <string name="settings_translation_desc">Help translate di app to your favorite language</string>
-    <string name="settings_sponsor_development_title">Sponsor development</string>
-    <string name="settings_sponsor_development_summary">Become patron and make continued development possible.</string>
     <string name="settings_privacy_policy_label">Privacy policy</string>
     <string name="settings_privacy_policy_desc">Handling data responsibly.</string>
     <string name="changelog_label">Changelog</string>
@@ -259,10 +232,8 @@
     <string name="backup_restore_success_restore">Restore don finish — %1$d devices restored, %2$d skipped.</string>
     <string name="backup_restore_version_warning">Dem create dis backup with version %1$s. You dey run %2$s. Some settings fit no restore well.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">Debug notifications</string>
     <string name="debug_log_consent_title">Debug log</string>
     <string name="debug_log_consent_explanation">Dis feature dey record everything di app dey do into shareable file. Di file wey dem generate get sensitive information (e.g. file names and installed apps). Only share am with people wey you trust (e.g. developer wey dey troubleshoot issue).</string>
-    <string name="debug_log_recording_progress">Recording debug log</string>
     <string name="debug_log_record_action">Record</string>
     <string name="debug_log_stop_action">Stop recording</string>
     <string name="debug_log_screen_title">Debug Log Recorder</string>
@@ -277,7 +248,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">Discard</string>
     <string name="debug_log_screen_keep_action">Keep</string>
-    <string name="debug_log_compressing_label">Compressing...</string>
     <string name="debug_log_file_label">Recorded log file</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Log sent?</string>
@@ -305,7 +275,6 @@
     <string name="contact_description_question_hint">Describe your question well well.</string>
     <string name="contact_category_section_label">Category</string>
     <string name="contact_debug_log_label">Debug log</string>
-    <string name="contact_debug_log_select_hint">Select debug log to attach</string>
     <string name="contact_debug_log_picker_hint">Attach debug log to help diagnose di issue faster.</string>
     <string name="contact_debug_log_picker_empty">No debug logs available. Record one first.</string>
     <string name="contact_expected_behavior_label">Expected behavior</string>
@@ -319,82 +288,32 @@
     <string name="contact_welcome_msg">I dey read every message myself and I try my best to reply, but since I dey work alone on dis, e fit take small time. Thanks for your patience.</string>
     <string name="contact_footer_msg">Your message go send via email. Device and setup information go attach automatically.</string>
     <string name="contact_no_email_app_msg">No email app found on dis device.</string>
-    <string name="contact_attachment_missing_msg">Debug log file no dey exist again</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Stored debug logs</string>
     <string name="settings_support_stored_logs_desc">%1$d sessions (%2$s)</string>
     <string name="settings_support_stored_logs_empty">No stored debug logs</string>
-    <string name="settings_support_stored_logs_delete_title">Delete stored logs?</string>
-    <string name="settings_support_stored_logs_delete_msg">Dis go delete all %1$d stored debug log sessions.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Stored debug logs deleted</string>
-    <string name="label_bug_reports">Bug reports</string>
-    <string name="description_bug_reports">Automatic bug and crash reporting.</string>
     <string name="label_add_device">Add device</string>
-    <string name="label_just_a_moment_please">Wait small, abeg.</string>
     <string name="label_notification_channel_status">Status</string>
     <string name="label_notification_channel_setup">Setup dey required</string>
     <string name="monitor_notification_starting">Dey start…</string>
     <string name="action_set">Set</string>
     <string name="action_cancel">Cancel</string>
-    <string name="label_invalid_input">Invalid input</string>
     <string name="action_reset">Reset</string>
     <string name="label_no_connected_devices">No devices connected</string>
-    <string name="label_status_idle">Idle</string>
-    <string name="label_status_adjusting_volumes">Adjusting volumes</string>
-    <string name="label_premium_version">Premium version</string>
     <string name="general_upgrade_action">Upgrade</string>
     <string name="common_upgrade_required_label">You need upgrade</string>
-    <string name="label_premium_version_required">Premium version required</string>
-    <string name="description_intro_purpose">Dis app go allow your Android device remember di volume of different Bluetooth devices.</string>
-    <string name="upgrade_benefit_unlimited_devices">Unlimited device profiles</string>
-    <string name="upgrade_benefit_connection_actions">Autoplay, app launch and connection alerts</string>
-    <string name="upgrade_benefit_theme_customization">Theme, style and color customization</string>
-    <string name="upgrade_benefit_power_controls">Volume lock and rate limiting</string>
-    <string name="upgrade_benefit_support">Support independent development</string>
     <string name="upgrade_benefit_equalizer">• Equalizer for each device (for music apps wey support system equalizer)</string>
-    <string name="description_intro_tap_the_button">Start by adding your first device.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth don off.</string>
     <string name="title_bluetooth_is_off">Bluetooth dey Off</string>
     <string name="action_enable_bluetooth">Enable Bluetooth</string>
     <string name="title_bluetooth_permission_required">Bluetooth Permission Required</string>
     <string name="description_bluetooth_permission_required">Dis app need Bluetooth permission to manage your device volumes.</string>
     <string name="action_grant_permission">Grant Permission</string>
-    <string name="label_status_listening_for_changes">Dey listen for volume changes</string>
     <string name="action_exit">Exit</string>
-    <string name="action_start">Start</string>
-    <string name="label_welcome">Welcome</string>
-    <string name="description_intro_contact">No hesitate to contact me if you get questions or even idea for new feature.</string>
-    <string name="label_translation">Translation</string>
-    <string name="description_help_translate">Help me make dis app available for other languages.</string>
     <string name="label_device_speaker">Device speaker</string>
-    <string name="label_keyevent_playpause">Play-Pause</string>
-    <string name="label_keyevent_play">Play</string>
-    <string name="label_keyevent_next">Next</string>
-    <string name="label_install_id">Install ID</string>
     <string name="message_copied_to_clipboard">Copied to clipboard</string>
-    <string name="label_thanks">Thanks</string>
-    <string name="label_licenses">Licenses</string>
-    <string name="description_ring_volume_additional_permission">Additional permissions dey necessary to change di ring volume.</string>
-    <string name="label_missing_permissions">Missing permissions</string>
-    <string name="action_grant">Grant</string>
-    <string name="label_advanced">Advanced</string>
-    <string name="label_exclude_health">Exclude health profiles</string>
-    <string name="description_exclude_health">Some Android devices dey hang when dem dey look up \'Health Device\' Bluetooth profiles (HDP, 0x1400).</string>
-    <string name="label_exclude_gattserver">Exclude GATT server profiles</string>
-    <string name="label_exclude_gatt">Exclude GATT profiles</string>
-    <string name="description_exclude_gattserver">No query Bluetooth profiles of type \'Generic Attribute\' (GATT) server.</string>
-    <string name="description_exclude_gatt">No query Bluetooth profiles of type \'Generic Attribute\' (GATT) client.</string>
-    <string name="description_waiting_for_devicex">Dey wait for %s to complete connection</string>
-    <string name="action_undo">Undo</string>
-    <string name="action_show">Show</string>
     <string name="action_dismiss">Dismiss</string>
-    <string name="action_fix">Fix</string>
-    <string name="battery_optimizations_issue_description">Battery optimizations dey enabled for dis app and e fit prevent am from receiving Bluetooth events. Consider disable di optimizations if you dey experience issues.</string>
     <string name="label_bluetooth_settings">Bluetooth settings</string>
-    <string name="android10_applaunch_issue_description">Android 10 dey restrict how apps fit launch from background. To allow opening apps when Bluetooth device connect, grant di permission \"Display over other apps\" (SYSTEM_ALERT_WINDOW).</string>
-    <string name="label_opensource">Source code</string>
-    <string name="android13_notification_permission_description">Grant dis app permission to post notifications. Dis go allow di app show notification when e dey active and volume adjustments dey happen.</string>
-    <string name="privacy_policy_label">Privacy policy</string>
     <string name="managed_devices_empty_message">No Bluetooth devices configured.\nTap di + button to add your first device.</string>
     <string name="label_pro_feature">Premium feature</string>
     <plurals name="discover_device_limit_banner">
@@ -425,21 +344,15 @@
     <string name="review_app_review_action">Review</string>
     <string name="review_app_dismiss_action">Later nau</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">Purchase cancelled</string>
-    <string name="error_iap_unavailable_message">In-app purchases no dey available</string>
-    <string name="error_generic_message">Error don happen. Abeg try again.</string>
-    <string name="error_iap_owned_message">You don already get dis item</string>
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">Select Apps</string>
     <string name="devices_app_selection_search_hint">Search apps...</string>
-    <string name="devices_app_selection_currently_selected">Currently selected</string>
     <string name="devices_app_selection_selected_count">%d apps selected</string>
     <string name="general_navigate_back_action">Navigate back</string>
     <string name="general_reset_action">Reset</string>
     <string name="general_clear_action">Clear</string>
-    <string name="general_save_action">Save</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">Lock</string>
     <string name="devices_indicator_awake">Awake</string>
@@ -449,7 +362,6 @@
     <string name="devices_indicator_limit">Limit</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Boost</string>
-    <string name="devices_indicator_launch">Launch</string>
     <string name="devices_indicator_home">Home</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Alert</string>

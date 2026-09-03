@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">အပ်ဒိတ်တစ်လျှောက် အချို့ လုပ်ဆောင်ချက်များ ပြောင်းလဲသွားနိုင်သည်။ အရာအားလုံး မှန်ကန်စွာ သတ်မှတ်ထားကြောင်း ကိရိယာ ဆက်တင်များကို စစ်ဆေးပါ။</string>
     <string name="onboarding_rewrite_action">ဆက်သွားမည်</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">စီမံမထားသော ကိရိယာ မတွေ့ပါ</string>
     <string name="discover_all_devices_managed_msg">ချိတ်ဆက်ထားသည့် ကိရိယာ အားလုံး စီမံပြီးပါပြီ! အသစ်တစ်ခု လိုပါသလား?</string>
     <string name="discover_pair_new_device_action">ကိရိယာ အသစ် တွဲချိတ်မည်</string>
     <string name="discover_device_speaker_desc">ဤဖုန်း၏ကိုယ်ပိုင်စပီကာ။ အသံသည် ဖုန်းသို့ပြန်ပြောင်းလဲသောအခါ ၎င်း၏အသံအတိုးအကျယ်များ အသုံးချထားသည်၊ ဥပမာ၊ သင်၏Bluetooth စက်ပစ္စည်း ချိတ်ဆက်မှုအဆုံးသတ်ပြီးနောက်။</string>
     <!-- Devices -->
     <string name="devices_device_config_label">ကိရိယာ ဖွဲ့စည်းမှု</string>
-    <string name="devices_device_config_section_general_label">အထွေထွေ</string>
     <string name="devices_device_config_remove_device_label">ကိရိယာ မေ့မည်</string>
-    <string name="devices_device_config_remove_device_desc">ဤအပ်မှ ကိရိယာကို မေ့ပြီး ၎င်း၏ ဖွဲ့စည်းမှုကို ဖျက်မည်။ ကိရိယာကို တွဲချိတ်မှု ဖြတ်မည် မဟုတ်ပါ။</string>
     <string name="devices_device_config_remove_device_action">မေ့မည်</string>
     <string name="devices_device_config_remove_device_confirmation">%s ကို စီမံထားသော ကိရိယာများမှ မေ့မည်လား?</string>
-    <string name="devices_device_config_rename_device_label">ကိရိယာ အမည်ပြောင်းမည်</string>
-    <string name="devices_device_config_rename_device_desc">ဤအပ်အတွင်း ကိရိယာ အမည် ပြောင်းပြီး ဖြစ်နိုင်လျှင် စနစ်အတွင်းပါ ပြောင်းမည်။</string>
     <string name="devices_device_config_rename_device_action">အမည်ပြောင်းမည်</string>
     <string name="devices_device_config_enabled_label">ဖွင့်ထားသည်</string>
     <string name="devices_device_config_enabled_desc">ဤကိရိယာ ချိတ်ဆက်သောအခါ တုံ့ပြန်မည်</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">အလိုအလျောက်ဖွင့်ခြင်း အမိန့်များ</string>
     <string name="devices_device_config_autoplay_keycodes_order">အမိန့်အစီအစဉ်</string>
     <string name="devices_device_config_autoplay_keycodes_label">အမိန့်များ</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">မည်သည့်အမိန့်များကို မည်သည့်အစီအစဉ်ဖြင့် ပေးပို့မည်ကို သတ်မှတ်ပါ</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">အမိန့်များ မသတ်မှတ်ရသေး</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">အမိန့်ထည့်သွင်းပါ</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">အများဆုံး %1$d အမိန့်</string>
@@ -120,7 +114,6 @@
     <string name="cd_autoplay_keycode_move_up">အပေါ်သို့ ရွှေ့ပါ</string>
     <string name="cd_autoplay_keycode_move_down">အောက်သို့ ရွှေ့ပါ</string>
     <string name="cd_autoplay_keycode_remove">ဖယ်ရှားပါ</string>
-    <string name="devices_device_config_section_volumes_label">အသံများ</string>
     <string name="devices_device_config_section_volume_label">အသံ</string>
     <string name="devices_device_config_alarm_volume_label">နှိုးစက် အသံ</string>
     <string name="devices_device_config_alarm_volume_desc">အချို့ နှိုးစက် အပ်များသည် အစား music အသံ သုံးသည်။</string>
@@ -154,8 +147,6 @@
     <string name="devices_audio_stream_ring_label">မြည်သံ</string>
     <string name="devices_audio_stream_notification_label">အကြောင်းကြားချက်</string>
     <string name="devices_audio_stream_alarm_label">နှိုးစက်</string>
-    <string name="devices_neverseen_label">မတွေ့ဖူးသေး</string>
-    <string name="devices_state_connected_label">ချိတ်ဆက်ထားသည်</string>
     <string name="devices_last_connected_label">နောက်ဆုံး ချိတ်ဆက်: %s</string>
     <string name="devices_currently_connected_label">လောလောဆယ် ချိတ်ဆက်နေသည်</string>
     <string name="devices_device_disabled_label">ကိရိယာ ပိတ်ထားသည်</string>
@@ -190,10 +181,7 @@
     <string name="devices_settings_desc">စီမံခန့်ခွဲထားသော ကိရိယာ အားလုံးကို အကျိုးသက်ရောက်သော ဆက်တင်များ</string>
     <string name="label_app_enabled">အပ် ဖွင့်ထားသည်</string>
     <string name="description_app_enabled">အသံနှင့် Bluetooth ဖြစ်ရပ်များကို တုံ့ပြန်ရန် အပ်၏ စွမ်းရည်ကို ပြောင်းလဲသည်</string>
-    <string name="label_visible_volume_adjustments">မြင်သာသော ချိန်ညှိမှုများ</string>
-    <string name="description_visible_volume_adjustments">ဤအပ် ချိန်ညှိမှုများ ပြုလုပ်နေစဉ် စနစ်၏ အသံ ဝင်းဒိုး ပြသမည်။</string>
     <string name="label_volume_listener">ပြောင်းလဲမှုများ စောင့်ကြည့်မည်</string>
-    <string name="description_volume_listener">ကိရိယာ ချိတ်ဆက်နေစဉ် အသက်ဝင်နေ၍ ဤအပ် မဖြစ်ပေါ် စေသော အသံ ပြောင်းလဲမှုများ သိမ်းဆည်းမည်။</string>
     <string name="label_boot_restore">ဖွင့်လှစ်သောအခါ ပြန်လည်ရယူမည်</string>
     <string name="description_boot_restore">Bluetooth ကိရိယာ ချိတ်ဆက်ထားလျှင် ဖွင့်/ပြန်ဖွင့်ပြီးနောက် အသံ ပြန်လည်ရယူမည်။</string>
     <!-- Settings/Support-->
@@ -203,21 +191,11 @@
     <string name="settings_support_wiki_description">BVM ကို ထိရောက်စွာ သုံးနည်း သင်ယူပါ</string>
     <string name="settings_support_issue_tracker_description">ချို့ယွင်းချက် အစီရင်ခံစာများနှင့် အင်္ဂါရပ် တောင်းဆိုမှုများအတွက် အများသုံး ပြဿနာ ခြေရာခံကိရိယာ</string>
     <string name="settings_support_issue_tracker_label">ပြဿနာ ခြေရာခံ</string>
-    <string name="settings_support_debuglog_label">Debug မှတ်တမ်း</string>
     <string name="settings_support_debuglog_desc">အပ် လုပ်ဆောင်မှု အားလုံးကို မျှဝေနိုင်သော စာသားဖိုင်တစ်ခုတွင် ရိုက်ကူးမည်။</string>
-    <string name="settings_support_debuglog_recording_desc">Debug သတင်းအချက်အလက် ရိုက်ကူးနေသည်။ ရပ်တန့်ရန် နှိပ်ပါ။</string>
-    <string name="settings_support_debuglog_path">မှတ်တမ်း လမ်းကြောင်း: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">အလွန် တိုသော ရိုက်ကူးမှု</string>
     <string name="settings_support_debuglog_short_recording_msg">ဒါဟာ အလွန် တိုသော ရိုက်ကူးမှုတစ်ခု ဖြစ်သည်။ Debug မှတ်တမ်းများသည် ရိုက်ကူးမှုများ ဖြစ်ပြီး snapshot များ မဟုတ်ပါ — မှတ်တမ်းကို အသုံးဝင်အောင် ရိုက်ကူးနေစဉ် ပြဿနာကို ပြန်ပြုလုပ်ပါ။</string>
     <string name="settings_support_debuglog_short_recording_continue">ဆက်လက် ရိုက်ကူးမည်</string>
     <string name="settings_support_debuglog_short_recording_stop">ဘာပဲဖြစ်ဖြစ် ရပ်တန့်မည်</string>
-    <string name="settings_support_debuglog_folder_label">Debug မှတ်တမ်း ဖိုင်တွဲ</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="other">%1$d session သည် %2$s သုံးနေသည်</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">သိမ်းဆည်းထားသော debug မှတ်တမ်း မရှိ</string>
-    <string name="settings_support_debuglog_folder_delete_title">Debug မှတ်တမ်း အားလုံး ဖျက်မည်လား?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">ဤလုပ်ဆောင်မှုသည် သိမ်းဆည်းထားသော debug မှတ်တမ်း session အားလုံးကို အပြီးတိုင် ဖျက်မည်။</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">တွေ့ဆုံ၍ မေးခွန်းများ မေးနိုင်သော နေရာ</string>
     <!-- Settings/Acks-->
@@ -226,16 +204,12 @@
     <string name="settings_acks_translation_header">ဘာသာပြန်ခြင်း</string>
     <string name="settings_acks_translators_title">ဘာသာပြန်သူများ</string>
     <string name="settings_acks_translators_people">Person1;Person2(optional@email.com)</string>
-    <string name="settings_acks_translate_title">BVM ဘာသာပြန်မည်</string>
-    <string name="settings_acks_translate_desc">BVM ကို သင်၏ ဘာသာစကားသို့ ဘာသာပြန်ရန် ကူညီပါ</string>
     <string name="settings_acks_thanks_header">ကျေးဇူးတင်သည်</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">အဖွင့်ရင်းမြစ် ပရောဂျက်များ ဘာသာပြန်ခြင်းကို ပံ့ပိုးသောအတွက်</string>
     <string name="settings_licenses_label">လိုင်စင်များ</string>
     <string name="settings_translation_label">ဘာသာပြန်ဆိုခြင်း</string>
     <string name="settings_translation_desc">အက်ပ်ကို သင်အကြိုက်ဆုံးဘာသာစကားသို့ ဘာသာပြန်ဆိုရာတွင် ကူညီပါ</string>
-    <string name="settings_sponsor_development_title">ဖွံ့ဖြိုးမှုကို ပံ့ပိုးမည်</string>
-    <string name="settings_sponsor_development_summary">အားပေးသူ ဖြစ်ပြီး ဆက်လက် ဖွံ့ဖြိုးမှုကို ဖြစ်နိုင်အောင် ပြုလုပ်ပါ။</string>
     <string name="settings_privacy_policy_label">ကိုယ်ရေးအချက်အလက် မူဝါဒ</string>
     <string name="settings_privacy_policy_desc">ဒေတာကို တာဝန်ယူမှုဖြင့် ကိုင်တွယ်ခြင်း</string>
     <string name="changelog_label">ပြောင်းလဲမှု မှတ်တမ်း</string>
@@ -257,10 +231,8 @@
     <string name="backup_restore_success_restore">ပြန်လည်ရယူမှု ပြီးဆုံး — %1$d ကိရိယာများ ပြန်လည်ရယူပြီး၊ %2$d ခု ကျော်သွားသည်။</string>
     <string name="backup_restore_version_warning">ဤ backup ကို ဗားရှင်း %1$s ဖြင့် ဖန်တီးထားသည်။ သင် %2$s ဖြင့် လည်ပတ်နေသည်။ ဆက်တင်အချို့ မှန်မှန်ကန်ကန် ပြန်လည်ရယူနိုင်မည် မဟုတ်ပါ။</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">Debug အကြောင်းကြားချက်များ</string>
     <string name="debug_log_consent_title">Debug မှတ်တမ်း</string>
     <string name="debug_log_consent_explanation">ဤအင်္ဂါရပ်သည် အပ် လုပ်ဆောင်မှု အားလုံးကို မျှဝေနိုင်သော ဖိုင်တစ်ခုတွင် ရိုက်ကူးသည်။ ထုတ်လုပ်ထားသော ဖိုင်တွင် အထိခိုက်မခံသော သတင်းအချက်အလက် (ဥပမာ - ဖိုင်အမည်များနှင့် တပ်ဆင်ထားသော အပ်များ) ပါဝင်သည်။ ယုံကြည်စိတ်ချရသော ပါတီများနှင့် (ဥပမာ - ပြဿနာ ဖြေရှင်းနေသော developer) သာ မျှဝေပါ။</string>
-    <string name="debug_log_recording_progress">Debug မှတ်တမ်း ရိုက်ကူးနေသည်</string>
     <string name="debug_log_record_action">ရိုက်ကူး</string>
     <string name="debug_log_stop_action">ရိုက်ကူးမှု ရပ်တန့်မည်</string>
     <string name="debug_log_screen_title">Debug မှတ်တမ်း ရိုက်ကူးကိရိယာ</string>
@@ -274,7 +246,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">ဖျက်ပစ်မည်</string>
     <string name="debug_log_screen_keep_action">သိမ်းထားမည်</string>
-    <string name="debug_log_compressing_label">ချုံ့နေသည်…</string>
     <string name="debug_log_file_label">ရိုက်ကူးထားသော မှတ်တမ်းဖိုင်</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">မှတ်တမ်း ပို့ပြီးပြီလား?</string>
@@ -302,7 +273,6 @@
     <string name="contact_description_question_hint">သင်၏ မေးခွန်းကို အသေးစိတ် ဖော်ပြပါ။</string>
     <string name="contact_category_section_label">အမျိုးအစား</string>
     <string name="contact_debug_log_label">Debug မှတ်တမ်း</string>
-    <string name="contact_debug_log_select_hint">ပူးတွဲရန် debug မှတ်တမ်း ရွေးချယ်ပါ</string>
     <string name="contact_debug_log_picker_hint">ပြဿနာကို ပိုမြန်စွာ ရှင်းလင်းနိုင်ရန် debug မှတ်တမ်း ပူးတွဲပါ။</string>
     <string name="contact_debug_log_picker_empty">Debug မှတ်တမ်း မရှိပါ။ ဦးစွာ တစ်ခု ရိုက်ကူးပါ။</string>
     <string name="contact_expected_behavior_label">မျှော်မှန်းထားသော အပြုအမူ</string>
@@ -315,82 +285,32 @@
     <string name="contact_welcome_msg">မက်ဆေ့ချ် တိုင်းကို ကိုယ်တိုင် ဖတ်ပြီး တတ်နိုင်သမျှ ပြန်ကြားရန် ကြိုးစားသည်၊ သို့သော် တစ်ယောက်တည်း လုပ်နေသောကြောင့် အချိန် ကြာနိုင်သည်။ ကျေးဇူးတင်သည်။</string>
     <string name="contact_footer_msg">သင်၏ မက်ဆေ့ချ်ကို email မှတစ်ဆင့် ပို့မည်။ ကိရိယာနှင့် ဆက်တင် သတင်းအချက်အလက် အလိုအလျောက် ပူးတွဲသည်။</string>
     <string name="contact_no_email_app_msg">ဤကိရိယာတွင် email အပ် မတွေ့ပါ။</string>
-    <string name="contact_attachment_missing_msg">Debug မှတ်တမ်းဖိုင် မတည်ရှိတော့</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">သိမ်းဆည်းထားသော debug မှတ်တမ်းများ</string>
     <string name="settings_support_stored_logs_desc">%1$d session (%2$s)</string>
     <string name="settings_support_stored_logs_empty">သိမ်းဆည်းထားသော debug မှတ်တမ်း မရှိ</string>
-    <string name="settings_support_stored_logs_delete_title">သိမ်းဆည်းထားသော မှတ်တမ်းများ ဖျက်မည်လား?</string>
-    <string name="settings_support_stored_logs_delete_msg">သိမ်းဆည်းထားသော debug မှတ်တမ်း session %1$d ခုလုံး ဖျက်မည်။</string>
-    <string name="settings_support_stored_logs_deleted_msg">သိမ်းဆည်းထားသော debug မှတ်တမ်းများ ဖျက်ပြီး</string>
-    <string name="label_bug_reports">ချို့ယွင်းချက် အစီရင်ခံမှုများ</string>
-    <string name="description_bug_reports">အလိုအလျောက် ချို့ယွင်းချက်နှင့် ပျက်ကျမှု အစီရင်ခံခြင်း</string>
     <string name="label_add_device">ကိရိယာ ထည့်မည်</string>
-    <string name="label_just_a_moment_please">ခဏစောင့်ပါ</string>
     <string name="label_notification_channel_status">အခြေအနေ</string>
     <string name="label_notification_channel_setup">အစ်တင်တည်ဆောက်ခြင်း လိုအပ်ပါသည်</string>
     <string name="monitor_notification_starting">စတင်နေပါသည်…</string>
     <string name="action_set">သတ်မှတ်မည်</string>
     <string name="action_cancel">ပယ်ဖျက်</string>
-    <string name="label_invalid_input">မမှန်ကန်သော ထည့်သွင်းမှု</string>
     <string name="action_reset">ပြန်လည်သတ်မှတ်မည်</string>
     <string name="label_no_connected_devices">ချိတ်ဆက်ထားသော ကိရိယာ မရှိ</string>
-    <string name="label_status_idle">အနားယူနေသည်</string>
-    <string name="label_status_adjusting_volumes">အသံ ချိန်ညှိနေသည်</string>
-    <string name="label_premium_version">Premium မျိုးကွဲ</string>
     <string name="general_upgrade_action">အဆင့်မြှင့်တင်မည်</string>
     <string name="common_upgrade_required_label">အဆင့်မြှင့်တင်ရန် လိုအပ်သည်</string>
-    <string name="label_premium_version_required">Premium မျိုးကွဲ လိုအပ်သည်</string>
-    <string name="description_intro_purpose">ဤအပ်သည် သင့် Android ကိရိယာကို မတူညီသော Bluetooth ကိရိယာများ၏ အသံကို မှတ်မိစေသည်။</string>
-    <string name="upgrade_benefit_unlimited_devices">ကန့်သတ်မှုမရှိသော ကိရိယာ ပရိုဖိုင်များ</string>
-    <string name="upgrade_benefit_connection_actions">အလိုအလျောက်ဖွင့်ခြင်း၊ အက်ပ်ဖွင့်ခြင်းနှင့် ချိတ်ဆက်မှု သတိပေးချက်များ</string>
-    <string name="upgrade_benefit_theme_customization">အပြင်အဆင်၊ ပုံစံနှင့် အရောင် စိတ်ကြိုက်ပြင်ဆင်မှု</string>
-    <string name="upgrade_benefit_power_controls">အသံအတိုးအကျယ် လော့ခ်နှင့် နှုန်ကန့်သတ်ခြင်း</string>
-    <string name="upgrade_benefit_support">လွတ်လပ်သော ဖန်တီးမှုကို ပံ့ပိုးပါ</string>
     <string name="upgrade_benefit_equalizer">• ကိရိယာအလိုက် ညီမျှစာစီစဉ် (စနစ်ညီမျှစာစီစဉ်ပံ့ပိုးပေးသည့် ဂီတအက်ပ်များအတွက်)</string>
-    <string name="description_intro_tap_the_button">ပထမဆုံး ကိရိယာ ထည့်ခြင်းဖြင့် စတင်ပါ။</string>
     <string name="description_bluetooth_is_disabled">Bluetooth ပိတ်ထားသည်။</string>
     <string name="title_bluetooth_is_off">Bluetooth ပိတ်ထားသည်</string>
     <string name="action_enable_bluetooth">Bluetooth ဖွင့်မည်</string>
     <string name="title_bluetooth_permission_required">Bluetooth ခွင့်ပြုချက် လိုအပ်သည်</string>
     <string name="description_bluetooth_permission_required">ဤအပ်သည် သင့်ကိရိယာ အသံများ စီမံခန့်ခွဲရန် Bluetooth ခွင့်ပြုချက် လိုအပ်သည်။</string>
     <string name="action_grant_permission">ခွင့်ပြုချက် ပေးမည်</string>
-    <string name="label_status_listening_for_changes">အသံ ပြောင်းလဲမှုများ နားထောင်နေသည်</string>
     <string name="action_exit">ထွက်မည်</string>
-    <string name="action_start">စတင်မည်</string>
-    <string name="label_welcome">ကြိုဆိုပါသည်</string>
-    <string name="description_intro_contact">မေးခွန်းများ သို့မဟုတ် အင်္ဂါရပ် အသစ် အကြံဉာဏ်ရှိလျှင် ဆက်သွယ်ရန် မတွန့်ဆုတ်ပါနှင့်။</string>
-    <string name="label_translation">ဘာသာပြန်ခြင်း</string>
-    <string name="description_help_translate">ဤအပ်ကို အခြားဘာသာစကားများတွင် ရနိုင်အောင် ကူညီပါ။</string>
     <string name="label_device_speaker">ကိရိယာ စပီကာ</string>
-    <string name="label_keyevent_playpause">ဖွင့်/ရပ်</string>
-    <string name="label_keyevent_play">ဖွင့်</string>
-    <string name="label_keyevent_next">နောက်တစ်ပုဒ်</string>
-    <string name="label_install_id">တပ်ဆင်မှု ID</string>
     <string name="message_copied_to_clipboard">Clipboard သို့ ကူးယူပြီး</string>
-    <string name="label_thanks">ကျေးဇူးတင်သည်</string>
-    <string name="label_licenses">လိုင်စင်များ</string>
-    <string name="description_ring_volume_additional_permission">မြည်သံ ပြောင်းရန် ထပ်ဆောင်း ခွင့်ပြုချက်များ လိုအပ်သည်။</string>
-    <string name="label_missing_permissions">ခွင့်ပြုချက် မပြည့်စုံ</string>
-    <string name="action_grant">ပေးမည်</string>
-    <string name="label_advanced">အဆင့်မြင့်</string>
-    <string name="label_exclude_health">ကျန်းမာရေး ပရိုဖိုင်များ ဖယ်ထားမည်</string>
-    <string name="description_exclude_health">အချို့ Android ကိရိယာများသည် \'Health Device\' Bluetooth ပရိုဖိုင်များ (HDP, 0x1400) ကို ရှာဖွေသောအခါ တိမ်ကောနေသည်။</string>
-    <string name="label_exclude_gattserver">GATT server ပရိုဖိုင်များ ဖယ်ထားမည်</string>
-    <string name="label_exclude_gatt">GATT ပရိုဖိုင်များ ဖယ်ထားမည်</string>
-    <string name="description_exclude_gattserver">\'Generic Attribute\' (GATT) server အမျိုးအစား Bluetooth ပရိုဖိုင်များ မမေးမြန်းပါ။</string>
-    <string name="description_exclude_gatt">\'Generic Attribute\' (GATT) client အမျိုးအစား Bluetooth ပရိုဖိုင်များ မမေးမြန်းပါ။</string>
-    <string name="description_waiting_for_devicex">%s ချိတ်ဆက်မှု ပြည့်စုံရန် စောင့်နေသည်</string>
-    <string name="action_undo">နောက်ပြန်ဆွဲမည်</string>
-    <string name="action_show">ပြသမည်</string>
     <string name="action_dismiss">ပိတ်မည်</string>
-    <string name="action_fix">ပြင်မည်</string>
-    <string name="battery_optimizations_issue_description">ဤအပ်အတွက် ဘက်ထရီ ပိုမိုကောင်းမွန်အောင် ပြုလုပ်ခြင်း ဖွင့်ထားပြီး Bluetooth ဖြစ်ရပ်များ လက်ခံရယူမှုကို တားဆီးနိုင်သည်။ ပြဿနာများ ကြုံနေလျှင် ပိုမိုကောင်းမွန်အောင် ပြုလုပ်ခြင်းကို ပိတ်ရန် စဉ်းစားပါ။</string>
     <string name="label_bluetooth_settings">Bluetooth ဆက်တင်များ</string>
-    <string name="android10_applaunch_issue_description">Android 10 သည် အပ်များကို နောက်ခံမှ မည်ကဲ့သို့ ဖွင့်နိုင်သည်ကို ကန့်သတ်သည်။ Bluetooth ကိရိယာ ချိတ်ဆက်သောအခါ အပ်များ ဖွင့်ရန် ခွင့်ပြုရန် &quot;အခြားအပ်များ အပေါ် ပြသမည်&quot; (SYSTEM_ALERT_WINDOW) ခွင့်ပြုချက် ပေးပါ။</string>
-    <string name="label_opensource">ဆော့ဝဲကုဒ်</string>
-    <string name="android13_notification_permission_description">ဤအပ်သည် အကြောင်းကြားချက်များ ပြသရန် ခွင့်ပြုချက် ပေးပါ။ ဤအပ် အသက်ဝင်နေ၍ အသံ ချိန်ညှိမှုများ ပြုလုပ်နေစဉ် အကြောင်းကြားချက် ပြသနိုင်ပါသည်။</string>
-    <string name="privacy_policy_label">ကိုယ်ရေးအချက်အလက် မူဝါဒ</string>
     <string name="managed_devices_empty_message">Bluetooth ကိရိယာ မသတ်မှတ်ရသေး။\nပထမဆုံး ကိရိယာ ထည့်ရန် + ခလုတ် နှိပ်ပါ။</string>
     <string name="label_pro_feature">Premium လုပ်ဆောင်ချက်</string>
     <plurals name="discover_device_limit_banner">
@@ -420,21 +340,15 @@
     <string name="review_app_review_action">သုံးသပ်ချက် ပေးရန်</string>
     <string name="review_app_dismiss_action">နောက်ပိုင်းမှ</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">ဝယ်ယူမှု ပယ်ဖျက်ခဲ့သည်</string>
-    <string name="error_iap_unavailable_message">အပ် အတွင်း ဝယ်ယူမှုများ မရနိုင်</string>
-    <string name="error_generic_message">အမှားတစ်ခု ဖြစ်ပေါ်ခဲ့သည်။ ထပ်မံ ကြိုးစားပါ။</string>
-    <string name="error_iap_owned_message">သင်သည် ဤပစ္စည်းကို ပိုင်ဆိုင်ပြီးဖြစ်သည်</string>
     <string name="label_no_devices_title">ကိရိယာ မရှိ</string>
     <string name="bluemusic_mascot_description">အပ် အိုင်ကွန်</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">အပ်များ ရွေးချယ်ပါ</string>
     <string name="devices_app_selection_search_hint">အပ်များ ရှာဖွေ…</string>
-    <string name="devices_app_selection_currently_selected">လက်ရှိ ရွေးချယ်ထားသည်</string>
     <string name="devices_app_selection_selected_count">%d အပ် ရွေးချယ်ထားသည်</string>
     <string name="general_navigate_back_action">နောက်သို့ သွားမည်</string>
     <string name="general_reset_action">ပြန်လည်သတ်မှတ်မည်</string>
     <string name="general_clear_action">ရှင်းလင်းမည်</string>
-    <string name="general_save_action">သိမ်းဆည်းမည်</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">သော့ခတ်</string>
     <string name="devices_indicator_awake">နိုးနေ</string>
@@ -444,7 +358,6 @@
     <string name="devices_indicator_limit">ကန့်သတ်</string>
     <string name="devices_indicator_eq">ညီမျှစာစီစဉ်</string>
     <string name="devices_indicator_boost">အတိုး</string>
-    <string name="devices_indicator_launch">စတင်</string>
     <string name="devices_indicator_home">ပင်မ</string>
     <string name="devices_indicator_dnd">မနှောင့်ယှက်နှင့်</string>
     <string name="devices_indicator_alert">သတိပေးချက်</string>

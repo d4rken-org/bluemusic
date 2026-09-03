@@ -5,7 +5,6 @@
     <string name="upgrade_feature_requires_pro">Nepieciešams BSP Pro</string>
     <string name="upgrade_prompt_title">Jaunināt uz BSP Pro</string>
     <string name="upgrade_prompt_body">Bluetooth skaļuma pārvaldnieks Pro piedāvā labākus rezultātus, vairāk funkciju un opciju sapļrotājiem lietotājiem.</string>
-    <string name="upgrade_prompt_upgrade_action">Jaunināt</string>
     <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
     <string name="upgrade_screen_title_template">Jaunināt uz %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth skaļuma pārvaldniekam nav reklāmu un tas nepardod lietotāju datus. Manu darbu finansiē jūs.</string>
@@ -56,7 +55,6 @@
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth skaļuma pārvaldnieks nevar izveidot savienojumu ar Google Play. Vai Google Play ir instalēts un atjaunināts? Vai Google konts ir piezēmošanās? Mēģiniet notīrīt Google Play lietotnes kešatmiņu un pārstārtout ierīci.</string>
     <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
     <string name="upgrades_gplay_not_installed_message">Nevarēja atvērt Google Play. Tas var nebūt instalēts, atspējots vai ierobežots šajā ierīcē.</string>
-    <string name="upgrades_no_purchases_found_check_account">Pirkumi nav atrasti. Vai izmantojat pareizo kontu?</string>
     <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
     <string name="upgrade_screen_offers_title">Jaunināšanas opcijas</string>
     <string name="upgrade_screen_offers_body">Abas opcijas atbloķē tieši tās pašas Pro funkcijas — izvēlieties to, kas jums der.</string>

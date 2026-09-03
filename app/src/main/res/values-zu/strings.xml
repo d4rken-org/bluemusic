@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">Ezinye izici ziguqukile ngesikhathi sokubuyekeza. Sicela uhlole izilungiselelo zedivayisi yakho ukuqinisekisa ukuthi konke kulungiselwe ngendlela efanele.</string>
     <string name="onboarding_rewrite_action">Qhubeka</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">Azikho izidivayisi ezingaphathwa ezitholakele</string>
     <string name="discover_all_devices_managed_msg">Wonke amadivayisi akho asebenzisana nawo aphathwa! Udinga elisha?</string>
     <string name="discover_pair_new_device_action">Hlanganisa idivayisi entsha</string>
     <string name="discover_device_speaker_desc">Isahluko sefowuni sayo. Umthwali waso usetshenziswa lapho umsindo ubuya efowunini, isibonelo, emva kokuthi isixwayiso sakho se-Bluetooth siqedele ukunxibelelana.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Ukucwaninga kwedivayisi</string>
-    <string name="devices_device_config_section_general_label">Okujwayelekile</string>
     <string name="devices_device_config_remove_device_label">Libale idivayisi</string>
-    <string name="devices_device_config_remove_device_desc">Ilibala idivayisi kulolu hlelo futhi lisuse ukucwaninga kwalo. Lokhu akuhlukani idivayisi nesevisi ye-Bluetooth.</string>
     <string name="devices_device_config_remove_device_action">Libala</string>
     <string name="devices_device_config_remove_device_confirmation">Libala %s ezidivaysini eziphathwayo?</string>
-    <string name="devices_device_config_rename_device_label">Phinda uqambe igama idivayisi</string>
-    <string name="devices_device_config_rename_device_desc">Phinda uqambe igama lale divayisi kulolu hlelo, futhi uma kunokwenzeka, ngaphakathi kohlelo.</string>
     <string name="devices_device_config_rename_device_action">Phinda uqambe igama</string>
     <string name="devices_device_config_enabled_label">Kunikwe amandla</string>
     <string name="devices_device_config_enabled_desc">Phendula kule divayisi uma ixhunyiwe</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">Imiyalo yokudlala ngokuzenzakalela</string>
     <string name="devices_device_config_autoplay_keycodes_order">Ukulandelana kwemiyalo</string>
     <string name="devices_device_config_autoplay_keycodes_label">Imiyalo</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Lungisa ukuthi imuphi imiyalo ozothumela nangayiphi indlela</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">Ayikho imiyalo ebekiwe</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">Engeza umyalo</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">Imiyalo ephakeme %1$d</string>
@@ -121,7 +115,6 @@
     <string name="cd_autoplay_keycode_move_up">Nyukela phezulu</string>
     <string name="cd_autoplay_keycode_move_down">Ehla phansi</string>
     <string name="cd_autoplay_keycode_remove">Susa</string>
-    <string name="devices_device_config_section_volumes_label">Amavolumu</string>
     <string name="devices_device_config_section_volume_label">Ivolumu</string>
     <string name="devices_device_config_alarm_volume_label">Ivolumu ye-alamu</string>
     <string name="devices_device_config_alarm_volume_desc">Ezinye izinhlelo ze-alamu zisebenzisa ivolumu yomuziki esikhundleni sayo.</string>
@@ -155,8 +148,6 @@
     <string name="devices_audio_stream_ring_label">Ukhalo</string>
     <string name="devices_audio_stream_notification_label">Isaziso</string>
     <string name="devices_audio_stream_alarm_label">I-alamu</string>
-    <string name="devices_neverseen_label">Akuzange ibonakale</string>
-    <string name="devices_state_connected_label">Ixhunyiwe</string>
     <string name="devices_last_connected_label">Ixhunyiwe okwedlule: %s</string>
     <string name="devices_currently_connected_label">Ixhunyiwe manje</string>
     <string name="devices_device_disabled_label">Idivayisi ivaliwe</string>
@@ -191,10 +182,7 @@
     <string name="devices_settings_desc">Izilungiselelo ezithinta wonke amadivayisi aphathwayo.</string>
     <string name="label_app_enabled">Uhlelo lukhona</string>
     <string name="description_app_enabled">Guqula ukwazi kohlelo ukuphendula ezigamekweni zamavolumu ne-Bluetooth.</string>
-    <string name="label_visible_volume_adjustments">Ukuhlela okubonakalayo</string>
-    <string name="description_visible_volume_adjustments">Bonisa ifasitela lamavolumu lesistem ngenkathi lolu hlelo lenza ukuhlela.</string>
     <string name="label_volume_listener">Buka izinguquko</string>
-    <string name="description_volume_listener">Hlala usebenza ngenkathi idivayisi ixhunyiwe futhi ulondoloze izinguquko zamavolumu ezingenziwanga ngalolu hlelo.</string>
     <string name="label_boot_restore">Buyisela ekuqaleni uma kuvulwa</string>
     <string name="description_boot_restore">Buyisela ivolumu ngemuva kokuqala/ukuqala kabusha uma idivayisi ye-Bluetooth ixhunyiwe.</string>
     <!-- Settings/Support-->
@@ -204,22 +192,11 @@
     <string name="settings_support_wiki_description">Funda ukusebenzisa i-BVM ngempumelelo</string>
     <string name="settings_support_issue_tracker_description">Isixhumanisi esivulekile sezinkinga sokubika amaphutha nezicelo zeziqu.</string>
     <string name="settings_support_issue_tracker_label">Isixhumanisi sezinkinga</string>
-    <string name="settings_support_debuglog_label">Ilogi lokuphephisa iziphazamiso</string>
     <string name="settings_support_debuglog_desc">Rekhoda konke uhlelo olukwenzayo kufayela lombhalo ongawabelana ngalo.</string>
-    <string name="settings_support_debuglog_recording_desc">Manje iqopha ulwazi lwe-debug. Thepha ukuqeda ukuqopha.</string>
-    <string name="settings_support_debuglog_path">Indlela ye-log: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">Ukuqopha okufushane kakhulu</string>
     <string name="settings_support_debuglog_short_recording_msg">Kwakuwukuqopha okufushane kakhulu. Ama-debug log ayizinto ezirekhodiwe, hhayi izithombe — phinda inkinga ngenkathi ukuqopha kusebenza ukuze i-log ibe yusizo.</string>
     <string name="settings_support_debuglog_short_recording_continue">Qhubeka ukuqopha</string>
     <string name="settings_support_debuglog_short_recording_stop">Misa noma kunjalo</string>
-    <string name="settings_support_debuglog_folder_label">Ifulda ye-debug log</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">Uhlelo %1$d olwethula %2$s</item>
-        <item quantity="other">Izingxenye %1$d ezisebenzisa %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Awekho ama-debug log agcinwe</string>
-    <string name="settings_support_debuglog_folder_delete_title">Susa wonke ama-debug log?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Lokhu kuzosusa ngokuphelele zonke izingxenye ze-debug log ezigcinwe.</string>
     <string name="settings_support_discord_label">I-Discord</string>
     <string name="settings_support_discord_description">Indawo yokuzijabulisa futhi ubuze imibuzo.</string>
     <!-- Settings/Acks-->
@@ -228,16 +205,12 @@
     <string name="settings_acks_translation_header">Ukuhumusha</string>
     <string name="settings_acks_translators_title">Abahumushi</string>
     <string name="settings_acks_translators_people">Person1;Person2(optional@email.com)</string>
-    <string name="settings_acks_translate_title">Humusha i-BVM</string>
-    <string name="settings_acks_translate_desc">Siza ukuhumushela i-BVM olimini lwakho</string>
     <string name="settings_acks_thanks_header">Ngiyabonga</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Ngokusekela ukuhumushwa kwamaphrojekthi avu-source</string>
     <string name="settings_licenses_label">Amalayisensi</string>
     <string name="settings_translation_label">Ukuhumusha</string>
     <string name="settings_translation_desc">Siza ukuhumushela uhlelo olimini ozithandela kulo</string>
-    <string name="settings_sponsor_development_title">Xhasa ukuthuthukiswa</string>
-    <string name="settings_sponsor_development_summary">Yiba umxhasi wenze ukuqhubeka nokuthuthukiswa kube nokwenzeka.</string>
     <string name="settings_privacy_policy_label">Inqubomgomo yobumfihlo</string>
     <string name="settings_privacy_policy_desc">Ukuphatha idatha ngokufanele.</string>
     <string name="changelog_label">Uhlu lwezinguquko</string>
@@ -259,10 +232,8 @@
     <string name="backup_restore_success_restore">Ukubuyisela kuqediwe — amadivayisi angu-%1$d abuyiselwe, angu-%2$d agcagcwe.</string>
     <string name="backup_restore_version_warning">Lesi sipele sidalwe ngoguqulo lwa-%1$s. Usebenzisa inguqulo %2$s. Ezinye izilungiselelo zingeke zibuyiselwe kahle.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">Izaziso zokulungisa amaphutha</string>
     <string name="debug_log_consent_title">Ilogi lokuphephisa iziphazamiso</string>
     <string name="debug_log_consent_explanation">Lesi sici sirekhoda konke okwenziwa yi-app kufayela elingabelwana. Ifayela elenziwe liqukethe ulwazi olubucayi (isib. amagama amafayela nezinhlelo zokusebenza ezifakiwe). Yabelane nalo kuphela nezinhlangothi ezithembekile (isib. umthuthukisi oxazulula inkinga).</string>
-    <string name="debug_log_recording_progress">Kurekhoda umvala wokulungisa amaphutha</string>
     <string name="debug_log_record_action">Qopha</string>
     <string name="debug_log_stop_action">Misa ukurekhoda</string>
     <string name="debug_log_screen_title">Umqophi we-Debug Log</string>
@@ -277,7 +248,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">Lahla</string>
     <string name="debug_log_screen_keep_action">Gcina</string>
-    <string name="debug_log_compressing_label">Kuyacindezela...</string>
     <string name="debug_log_file_label">Ifayela lomvala olurekhodewe</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">I-log ithunyelwe?</string>
@@ -305,7 +275,6 @@
     <string name="contact_description_question_hint">Chaza umbuzo wakho ngokuningiliziwe.</string>
     <string name="contact_category_section_label">Isigaba</string>
     <string name="contact_debug_log_label">Ilogi lokuphephisa iziphazamiso</string>
-    <string name="contact_debug_log_select_hint">Khetha i-debug log ukuyinamathisela</string>
     <string name="contact_debug_log_picker_hint">Namathisela i-debug log ukusiza ukuxilonga inkinga ngokushesha.</string>
     <string name="contact_debug_log_picker_empty">Awekho ama-debug log atholakalayo. Qopha olunye kuqala.</string>
     <string name="contact_expected_behavior_label">Ukuziphatha okwakulindelekile</string>
@@ -319,82 +288,32 @@
     <string name="contact_welcome_msg">Ngifunda wonke umyalezo mina ngokwami futhi ngizama kakhulu ukuphendula, kodwa ngoba ngisebenza ngokuwodwa, kungathatha isikhathi esincane. Ngiyabonga ngesineke sakho.</string>
     <string name="contact_footer_msg">Umyalezo wakho uzothumelwa nge-imeyili. Ulwazi lwedivayisi nokusethwa kunamathiselwa ngokuzenzakalelayo.</string>
     <string name="contact_no_email_app_msg">Akukho uhlelo lwe-imeyili oLutholakele kule divayisi.</string>
-    <string name="contact_attachment_missing_msg">Ifayela le-debug log alikho okunye</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Ama-debug log agcinwe</string>
     <string name="settings_support_stored_logs_desc">Izingxenye %1$d (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Awekho ama-debug log agcinwe</string>
-    <string name="settings_support_stored_logs_delete_title">Susa ama-log agcinwe?</string>
-    <string name="settings_support_stored_logs_delete_msg">Lokhu kuzosusa zonke izingxenye %1$d ze-debug log ezigcinwe.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Ama-debug log agcinwe asusiwe</string>
-    <string name="label_bug_reports">Imibiko yebhagi</string>
-    <string name="description_bug_reports">Ukubika kwezibhagi nokulimala ngokuzenzakalelayo.</string>
     <string name="label_add_device">Engeza idivayisi</string>
-    <string name="label_just_a_moment_please">Isikhashana nje, sicela.</string>
     <string name="label_notification_channel_status">Isimo</string>
     <string name="label_notification_channel_setup">Ukulungiselela kuyadingeka</string>
     <string name="monitor_notification_starting">Iqalaqala...</string>
     <string name="action_set">Setha</string>
     <string name="action_cancel">Yekisa</string>
-    <string name="label_invalid_input">Okokufaka okungalungile</string>
     <string name="action_reset">Setha kabusha</string>
     <string name="label_no_connected_devices">Azikho izidivayisi ezixhunyiwe</string>
-    <string name="label_status_idle">Ilele</string>
-    <string name="label_status_adjusting_volumes">Ihlela amavolumu</string>
-    <string name="label_premium_version">Inguqulo ye-premium</string>
     <string name="general_upgrade_action">Thuthukisa</string>
     <string name="common_upgrade_required_label">Ukuphakamisa kuyadingeka</string>
-    <string name="label_premium_version_required">Kudingeka inguqulo ye-premium</string>
-    <string name="description_intro_purpose">Lolu hlelo luvumela idivayisi yakho ye-Android ukukhumbula ivolumu yezidivayisi ezihlukene ze-Bluetooth.</string>
-    <string name="upgrade_benefit_unlimited_devices">Amaphrofayela amadivayisi angenamkhawulo</string>
-    <string name="upgrade_benefit_connection_actions">Ukudlala ngokuzenzakalela, ukuqalisa uhlelo lokusebenza nezaziso zokulumeka</string>
-    <string name="upgrade_benefit_theme_customization">Ukuguqulwa kwetheme, isitayela nembala</string>
-    <string name="upgrade_benefit_power_controls">Ukukhiya amazwi nokunciphisa inani</string>
-    <string name="upgrade_benefit_support">Seka ukuthuthukiswa okuzimele</string>
     <string name="upgrade_benefit_equalizer">• I-equalizer ngosistimu (zezinhlelo zokuhlabelela ezisekela i-equalizer yesistimu)</string>
-    <string name="description_intro_tap_the_button">Qala ngokwengeza idivayisi yakho yokuqala.</string>
     <string name="description_bluetooth_is_disabled">I-Bluetooth ikhubaziwe.</string>
     <string name="title_bluetooth_is_off">I-Bluetooth ivaliwe</string>
     <string name="action_enable_bluetooth">Vula i-Bluetooth</string>
     <string name="title_bluetooth_permission_required">Kudingeka Imvume ye-Bluetooth</string>
     <string name="description_bluetooth_permission_required">Lolu hlelo ludinga imvume ye-Bluetooth ukuphatha amavolumu edivayisi yakho.</string>
     <string name="action_grant_permission">Nikeza Imvume</string>
-    <string name="label_status_listening_for_changes">Ilalela izinguquko zamavolumu</string>
     <string name="action_exit">Phuma</string>
-    <string name="action_start">Qala</string>
-    <string name="label_welcome">Sawubona</string>
-    <string name="description_intro_contact">Ungasongi ukuxhumana nami uma unemibuzo noma nombono wezici entsha.</string>
-    <string name="label_translation">Ukuhumusha</string>
-    <string name="description_help_translate">Ngisiza ukwenza lolu hlelo lutholakale ngezinye izilimi.</string>
     <string name="label_device_speaker">Isipika sedivayisi</string>
-    <string name="label_keyevent_playpause">Dlala-Misa</string>
-    <string name="label_keyevent_play">Dlala</string>
-    <string name="label_keyevent_next">Okulandelayo</string>
-    <string name="label_install_id">I-ID yokufaka</string>
     <string name="message_copied_to_clipboard">Ikhophelwe ku-clipboard</string>
-    <string name="label_thanks">Ngiyabonga</string>
-    <string name="label_licenses">Amalayisensi</string>
-    <string name="description_ring_volume_additional_permission">Izimvume ezengeziwe zidingeka ukushintsha ivolumu yokhalo.</string>
-    <string name="label_missing_permissions">Izimvume ezilahlekile</string>
-    <string name="action_grant">Nika</string>
-    <string name="label_advanced">Okuthuthukisiwe</string>
-    <string name="label_exclude_health">Khipha amaphrofayili ezempilo</string>
-    <string name="description_exclude_health">Ezinye izidivayisi ze-Android zime uma zifuna amaphrofayili we-Bluetooth \'Health Device\' (HDP, 0x1400).</string>
-    <string name="label_exclude_gattserver">Khipha amaphrofayili eseva ye-GATT</string>
-    <string name="label_exclude_gatt">Khipha amaphrofayili e-GATT</string>
-    <string name="description_exclude_gattserver">Ungabuzi amaphrofayili we-Bluetooth ohlobo lwe-\'Generic Attribute\' (GATT) iseva.</string>
-    <string name="description_exclude_gatt">Ungabuzi amaphrofayili we-Bluetooth ohlobo lwe-\'Generic Attribute\' (GATT) ikhuleki.</string>
-    <string name="description_waiting_for_devicex">Ilinde %s ukuqedela uxhumano</string>
-    <string name="action_undo">Hlehlisa</string>
-    <string name="action_show">Bonisa</string>
     <string name="action_dismiss">Lahla</string>
-    <string name="action_fix">Lungisa</string>
-    <string name="battery_optimizations_issue_description">Ukuqinisekisa ibhethri kukhona kulolu hlelo futhi kungavimbela ukwamukela izigameko ze-Bluetooth. Cabanga ukucisha ukuqinisekisa uma uhlanganisa izinkinga.</string>
     <string name="label_bluetooth_settings">Izilungiselelo ze-Bluetooth</string>
-    <string name="android10_applaunch_issue_description">I-Android 10 ikhawuleza ukuthi izinhlelo zingaqalwa kanjani emuva. Ukuvumela ukuvula izinhlelo uma idivayisi ye-Bluetooth ixhuma, nikeza imvume \"Bonisa phezu kwezinhlelo ezinye\" (SYSTEM_ALERT_WINDOW).</string>
-    <string name="label_opensource">Ikhodi yomthombo</string>
-    <string name="android13_notification_permission_description">Nikeza lolu hlelo imvume yokuthuma izaziso. Lokhu kuvula ukuboniswa kwesaziso uma lolu hlelo lusebenza futhi ukuhlela kwamavolumu kwenziwa.</string>
-    <string name="privacy_policy_label">Inqubomgomo yobumfihlo</string>
     <string name="managed_devices_empty_message">Azikho izidivayisi ze-Bluetooth ezilungiselwe.\nThepha inkinobho + ukwengeza idivayisi yakho yokuqala.</string>
     <string name="label_pro_feature">Isici se-premium</string>
     <plurals name="discover_device_limit_banner">
@@ -425,21 +344,15 @@
     <string name="review_app_review_action">Buyekeza</string>
     <string name="review_app_dismiss_action">Mhlawumbe kamuva</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">Ukuthenga kukhanseliwe</string>
-    <string name="error_iap_unavailable_message">Ukuthenga phakathi kohlelo akutholakali</string>
-    <string name="error_generic_message">Kwenzeke iphutha. Sicela uzame futhi.</string>
-    <string name="error_iap_owned_message">Seninobunikazi balo item</string>
     <string name="label_no_devices_title">Azikho Izidivayisi</string>
     <string name="bluemusic_mascot_description">Isithonjana Sohlelo</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">Khetha Izinhlelo</string>
     <string name="devices_app_selection_search_hint">Sesha izinhlelo...</string>
-    <string name="devices_app_selection_currently_selected">Okhethiwe manje</string>
     <string name="devices_app_selection_selected_count">Izinhlelo ezikhethi %d</string>
     <string name="general_navigate_back_action">Buyela emuva</string>
     <string name="general_reset_action">Setha kabusha</string>
     <string name="general_clear_action">Sula</string>
-    <string name="general_save_action">Londoloza</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">Vala</string>
     <string name="devices_indicator_awake">Phapheme</string>
@@ -449,7 +362,6 @@
     <string name="devices_indicator_limit">Maweza</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Ukukhulisa</string>
-    <string name="devices_indicator_launch">Qalisa</string>
     <string name="devices_indicator_home">Ikhaya</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Isaziso</string>

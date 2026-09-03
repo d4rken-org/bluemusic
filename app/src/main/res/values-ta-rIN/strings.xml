@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">மேம்பாடு மூலம் சில விஷயங்கள் மாறியுள்ளன. அந்த விஷயங்கள் சரியாக அமைக்கப்பட்டுள்ளதாக உறுதிப்படுத்த உங்கள் சாதன அமைப்புகளைச் செக்கவும்.</string>
     <string name="onboarding_rewrite_action">தொடர்</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">நிர்வகிக்கப்படாத சாதனங்கள் ஏதும் காணப்படவில்லை</string>
     <string name="discover_all_devices_managed_msg">உங்கள் எல்லா இணைக்கப்பட்ட சாதனங்களும் நிர்வகிக்கப்படுகின்றன! புதிதாக ஒன்று தேவையா?</string>
     <string name="discover_pair_new_device_action">புதிய சாதனத்தை இணைக்கவும்</string>
     <string name="discover_device_speaker_desc">இந்த ஃபோனின் சொந்த ஸ்பீக்கர். ஆடியோ ஃபோனுக்கு மீண்டும் மாறும் போது அதன் ஒலிகள் பயன்படுத்தப்படுகிறது, எ.கா. உங்கள் ப்ளூடூத் சாதனம் துண்டிக்கப்பட்ட பின்னர்.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">சாதன அமைப்பு</string>
-    <string name="devices_device_config_section_general_label">பொது</string>
     <string name="devices_device_config_remove_device_label">சாதனத்தை மறந்துவிடு</string>
-    <string name="devices_device_config_remove_device_desc">இந்த ஆப்்அலிருந்து சாதனத்தை மறந்து அதன் அமைப்பை நீக்கிவிடுகிறது. இது சாதனத்தை இணைப்பை நீக்காது.</string>
     <string name="devices_device_config_remove_device_action">மறந்துவிடு</string>
     <string name="devices_device_config_remove_device_confirmation">%s-அய் நிர்வகிக்கப்பட்ட சாதனங்களிலிருந்து மறந்துவிடலாமா?</string>
-    <string name="devices_device_config_rename_device_label">சாதனத்தை மறுபெயரிடு</string>
-    <string name="devices_device_config_rename_device_desc">இந்த ஆப்்அல் உள்ளேயும், முடிந்தால், கணினி உள்ளேயும் சாதனத்தை மறுபெயரிடுகிறது.</string>
     <string name="devices_device_config_rename_device_action">மறுபெயரிடு</string>
     <string name="devices_device_config_enabled_label">இயக்கப்பட்ட</string>
     <string name="devices_device_config_enabled_desc">இந்த சாதனம் இணைக்கப்பட்டால் ப்ரதிகிரியுங்கள்</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">தானியங்கி இயக்க கட்டளைகள்</string>
     <string name="devices_device_config_autoplay_keycodes_order">கட்டளை வரிசை</string>
     <string name="devices_device_config_autoplay_keycodes_label">கட்டளைகள்</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">எந்த கட்டளைகளை அனுப்ப வேண்டும், எந்த வரிசையில் என்று அமைக்கவும்</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">கட்டளைகள் எதுவும் அமைக்கப்படவில்லை</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">கட்டளை சேர்க்கவும்</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">அதிகபட்சம் %1$d கட்டளைகள்</string>
@@ -121,7 +115,6 @@
     <string name="cd_autoplay_keycode_move_up">மேலே நகர்த்து</string>
     <string name="cd_autoplay_keycode_move_down">கீழே நகர்த்து</string>
     <string name="cd_autoplay_keycode_remove">அகற்று</string>
-    <string name="devices_device_config_section_volumes_label">ஒலி அளவுகள்</string>
     <string name="devices_device_config_section_volume_label">ஒலி அளவு</string>
     <string name="devices_device_config_alarm_volume_label">அலாரம் ஒலி அளவு</string>
     <string name="devices_device_config_alarm_volume_desc">சில அலாரம் ஆப்கள் கத்தி ஒலி அளவைப் பயன்படுத்துகின்றன.</string>
@@ -155,8 +148,6 @@
     <string name="devices_audio_stream_ring_label">ரிங்</string>
     <string name="devices_audio_stream_notification_label">அறிவிப்பு</string>
     <string name="devices_audio_stream_alarm_label">அலாரம்</string>
-    <string name="devices_neverseen_label">ஒருமுறையும் காணப்படவில்லை</string>
-    <string name="devices_state_connected_label">இணைக்கப்பட்டது</string>
     <string name="devices_last_connected_label">கடைசியாக இணைக்கப்பட்டது: %s</string>
     <string name="devices_currently_connected_label">தற்போது இணைக்கப்பட்டுள்ளது</string>
     <string name="devices_device_disabled_label">சாதனம் முடக்கப்பட்டது</string>
@@ -191,10 +182,7 @@
     <string name="devices_settings_desc">அனைத்து நிர்வகிக்கப்பட்ட சாதனங்களை பாதிக்கும் அமைப்புகள்.</string>
     <string name="label_app_enabled">ஆப்் இயங்குகிறது</string>
     <string name="description_app_enabled">ஒலி மற்றும் Bluetooth நிகழ்வுகளுக்கு ப்ரதிகிரிக்கும் ஆப்்அின் திறனை மாற்றுகிறது.</string>
-    <string name="label_visible_volume_adjustments">காணும் சரிசெய்த்தல்கள்</string>
-    <string name="description_visible_volume_adjustments">இந்த ஆப்் சரிசெய்த்தல்கள் செய்யும்போது கணினியின் ஒலி சாளர்த்தைக் காட்டு.</string>
     <string name="label_volume_listener">மாற்றங்களைக் கவனி</string>
-    <string name="description_volume_listener">ஒரு சாதனம் இணைக்கப்பட்டிருக்கும்போது உல்நிலையிருக்கும் மற்றும் இந்த ஆப்்இனால் ஏற்படாத ஒலி மாற்றங்களை சேமிக்கும்.</string>
     <string name="label_boot_restore">தொடக்கம் வெளியில் மீட்டெடு</string>
     <string name="description_boot_restore">Bluetooth சாதனம் இணைக்கப்பட்டிருக்கும்போது தொடக்கம்/மறுதொடக்கத்திற்கு பிறகு ஒலி அளவை மீட்டெடு.</string>
     <!-- Settings/Support-->
@@ -204,22 +192,11 @@
     <string name="settings_support_wiki_description">BVM-அன்னை எற்பட்தாக பயன்படுத்துவது எப்படி என்று அறிக்கவும்</string>
     <string name="settings_support_issue_tracker_description">Bug reports மற்றும் feature requests க்கான ஒரு பொது issue tracker.</string>
     <string name="settings_support_issue_tracker_label">சிக்கல் கண்காணிப்பான்</string>
-    <string name="settings_support_debuglog_label">பிழைத்திருத்த பதிவு</string>
     <string name="settings_support_debuglog_desc">பயன்பாடு செய்யும் எல்லாத்தையும் நீங்கள் பகிருவதற்கு கூடிய ஒரு text file இல் பதிவு செய்வது.</string>
-    <string name="settings_support_debuglog_recording_desc">தற்போது பிழைபோக்கு தகவல் பதிவு செய்து கொண்டிருக்கிறது. பதிவை நிறுத்த தட்டும்.</string>
-    <string name="settings_support_debuglog_path">பதிவு பாதை: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">மிகவும் சிறிய பதிவு</string>
     <string name="settings_support_debuglog_short_recording_msg">இது மிகவும் சிறிய பதிவு ஆகும். பிழைபோக்கு பதிவுகள் பதிவுகளே தவிர உலை படிம்புகள் அல்ல - பதிவு செயலில் இருக்கும்போது பிழையை முண்படுத்தவும் பதிவு பயனுள்ளதாக இருக்கும்.</string>
     <string name="settings_support_debuglog_short_recording_continue">பதிவை தொடர்</string>
     <string name="settings_support_debuglog_short_recording_stop">ஏனும் நிறுத்து</string>
-    <string name="settings_support_debuglog_folder_label">பிழைபோக்கு பதிவு கோப்பை</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d அமர்வு %2$s பயன்படுத்தும்</item>
-        <item quantity="other">%1$d அமர்வுகள் %2$s பயன்படுத்தவும்</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">பிழைபோக்கு பதிவுகள் ஏதும் சேமிக்கப்படவில்லை</string>
-    <string name="settings_support_debuglog_folder_delete_title">அனைத்து பிழைபோக்கு பதிவுகளையும் நீக்கலாமா?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">இது சேமிக்கப்பட்ட அனைத்து பிழைபோக்கு பதிவு அமர்வுகளை நிரந்தரமாக நீக்கிவிடும்.</string>
     <string name="settings_support_discord_label">டிஸ்கார்ட்</string>
     <string name="settings_support_discord_description">ஒன்றாக இருக்கவும் கேள்விகள் கேட்கவும் ஒரு இடம்.</string>
     <!-- Settings/Acks-->
@@ -228,16 +205,12 @@
     <string name="settings_acks_translation_header">மொழிபெயர்ப்பு</string>
     <string name="settings_acks_translators_title">மொழிபெயர்ப்பாளர்கள்</string>
     <string name="settings_acks_translators_people">Person1;Person2(optional@email.com)</string>
-    <string name="settings_acks_translate_title">BVM-அன்னை மொழிபெயர்க்கவும்</string>
-    <string name="settings_acks_translate_desc">BVM-அன்னை உங்கள் மொழியில் மொழிபெயர்க்க உதவுங்கள்</string>
     <string name="settings_acks_thanks_header">நன்றி</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">திறந்த மூல திட்டங்களின் மொழிபெயர்ப்பினை ஆதரித்ததற்காக</string>
     <string name="settings_licenses_label">இஜையங்கள்</string>
     <string name="settings_translation_label">மொழிபெயர்ப்பு</string>
     <string name="settings_translation_desc">ஆப்்அன்னை உங்கள் விரும்பிய மொழியில் மொழிபெயர்க்க உதவுங்கள்</string>
-    <string name="settings_sponsor_development_title">மேம்பாட்டை வழங்கவும்</string>
-    <string name="settings_sponsor_development_summary">ஒரு patron ஆகி தொடர் மேம்பாட்டை சாத்தியமாக்கவும்.</string>
     <string name="settings_privacy_policy_label">தனியுரிமை கொள்கை</string>
     <string name="settings_privacy_policy_desc">தகவலை பொறுப்புடனுடன் கைகாளவது.</string>
     <string name="changelog_label">மாற்றங்கள் பதிவு</string>
@@ -259,10 +232,8 @@
     <string name="backup_restore_success_restore">மீட்டமைவு முடிந்தது — %1$d சாதனங்கள் மீட்டமைக்கப்பட்டன, %2$d தவிர்க்கப்பட்டன.</string>
     <string name="backup_restore_version_warning">இந்த காப்புப்பிரதி %1$s பதிப்பில் உருவாக்கப்பட்டது. நீங்கள் %2$s இயக்குகிறீர்கள். சில அமைப்புகள் சரியாக மீட்டமைக்கப்படாமல் போகலாம்.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">பிழைத்திருத்த அறிவிப்புகள்</string>
     <string name="debug_log_consent_title">பிழைத்திருத்த பதிவு</string>
     <string name="debug_log_consent_explanation">இந்த அம்சம் பயன்பாடு செய்யும் அனைத்தையும் பகிரக்கூடிய கோப்பில் பதிவு செய்கிறது. உருவாக்கப்பட்ட கோப்பில் முக்கியமான தகவல்கள் உள்ளன (எ.கா. கோப்பு பெயர்கள் மற்றும் நிறுவப்பட்ட பயன்பாடுகள்). நம்பகமானவர்களுடன் மட்டுமே பகிரவும் (எ.கா. சிக்கலைத் தீர்க்கும் உருவாக்குநர்).</string>
-    <string name="debug_log_recording_progress">பிழைத்திருத்த பதிவை பதிவு செய்கிறது</string>
     <string name="debug_log_record_action">பதிவு செய்</string>
     <string name="debug_log_stop_action">பதிவு செய்வதை நிறுத்து</string>
     <string name="debug_log_screen_title">பிழைபோக்கு பதிவு பதிவொளி</string>
@@ -277,7 +248,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">நிராகரி</string>
     <string name="debug_log_screen_keep_action">வைத்திரு</string>
-    <string name="debug_log_compressing_label">சுருக்கிக் கொண்டிருக்கிறது…</string>
     <string name="debug_log_file_label">பதிவு செய்யப்பட்ட பதிவு கோப்பு</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">பதிவு அனுப்பப்பட்டதா?</string>
@@ -305,7 +275,6 @@
     <string name="contact_description_question_hint">உங்கள் கேள்வியை விரிவாக விளக்கும்.</string>
     <string name="contact_category_section_label">வகைப்பரிவு</string>
     <string name="contact_debug_log_label">பிழைத்திருத்த பதிவு</string>
-    <string name="contact_debug_log_select_hint">இணைக்க பிழைபோக்கு பதிவைத் தேர்ந்தெடு</string>
     <string name="contact_debug_log_picker_hint">பிழையை விரைவாக கண்டறிய பிழைபோக்கு பதிவை இணைக்கும்.</string>
     <string name="contact_debug_log_picker_empty">பிழைபோக்கு பதிவுகள் ஏதும் கிடையவில்லை. முதலில் ஒன்றைப் பதிவு செய்யும்.</string>
     <string name="contact_expected_behavior_label">எதிர்பார்க்கப்பட்ட ஆற்றல்</string>
@@ -319,82 +288,32 @@
     <string name="contact_welcome_msg">ஏனும் பதிலளிக்க முயற்சிக்கிறேன், ஆனால் தனியாக பணியுள்ளதால் சிறிது நேரம் எடுக்கலாம். உங்கள் போறுமைக்கு நன்றி.</string>
     <string name="contact_footer_msg">உங்கள் செய்தி மின்னஞ்சல் ମூலம் அனுப்பப்படும். சாதனம் மற்றும் அமைப்பு தகவல் தானாகவே இணைக்கப்படும்.</string>
     <string name="contact_no_email_app_msg">இந்த சாதனத்தில் மின்னஞ்சல் ஆப்் ஏதும் காணப்படவில்லை.</string>
-    <string name="contact_attachment_missing_msg">பிழைபோக்கு பதிவு கோப்பு இனி இல்லை</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">சேமிக்கப்பட்ட பிழைபோக்கு பதிவுகள்</string>
     <string name="settings_support_stored_logs_desc">%1$d அமர்வுகள் (%2$s)</string>
     <string name="settings_support_stored_logs_empty">சேமிக்கப்பட்ட பிழைதொழில் பதிவுகள் இல்லை</string>
-    <string name="settings_support_stored_logs_delete_title">சேமிக்கப்பட்ட பதிவுகளை நீக்கவுமா?</string>
-    <string name="settings_support_stored_logs_delete_msg">இது அனைத்து %1$d சேமிக்கப்பட்ட பிழைதொழில் பதிவு அழிக்கும்.</string>
-    <string name="settings_support_stored_logs_deleted_msg">சேமிக்கப்பட்ட பிழைதொழில் பதிவுகள் நீக்கப்பட்டன</string>
-    <string name="label_bug_reports">பிழை அறிக்கைகள்</string>
-    <string name="description_bug_reports">தானியல்ப் பிழை மற்றும் இயங்காமல் அறிக்கை.</string>
     <string name="label_add_device">சாதனம் சேர்க்கவும்</string>
-    <string name="label_just_a_moment_please">ஒரு நிமிடம் தாமதிக்கவும்.</string>
     <string name="label_notification_channel_status">நிலை</string>
     <string name="label_notification_channel_setup">அமைவு தேவை</string>
     <string name="monitor_notification_starting">தொடங்குகிறது…</string>
     <string name="action_set">அமை</string>
     <string name="action_cancel">ரத்து செய்</string>
-    <string name="label_invalid_input">தவறான உள்ளீடு</string>
     <string name="action_reset">மீட்டமை</string>
     <string name="label_no_connected_devices">சாதனங்கள் ஏதும் இணைப்பில்லை</string>
-    <string name="label_status_idle">சுலாமல்</string>
-    <string name="label_status_adjusting_volumes">ஒலி அளவுகளை சரிசெய்த்தல் செய்து கொண்டிருக்கிறது</string>
-    <string name="label_premium_version">ப்ரிமியம் பதிப்பு</string>
     <string name="general_upgrade_action">மேம்படுத்து</string>
     <string name="common_upgrade_required_label">மேம்படுத்தல் தேவை</string>
-    <string name="label_premium_version_required">ப்ரிமியம் பதிப்பு தேவைய்</string>
-    <string name="description_intro_purpose">இந்த ஆப்் உங்கள் Android சாதனம் மாற்றமான Bluetooth சாதனங்களின் ஒலி அளவுகளை நினைவில் வைக்க உதவுகிறது.</string>
-    <string name="upgrade_benefit_unlimited_devices">வரம்பற்ற சாதன சுயவிவரங்கள்</string>
-    <string name="upgrade_benefit_connection_actions">தானியங்கி இயக்கம், பயன்பாட்டு தொடக்கம் மற்றும் இணைப்பு எச்சரிக்கைகள்</string>
-    <string name="upgrade_benefit_theme_customization">தீம், பாணி மற்றும் வண்ண தனிப்பயனாக்கம்</string>
-    <string name="upgrade_benefit_power_controls">தொகுதி பூட்டு மற்றும் வீத வரம்பிடல்</string>
-    <string name="upgrade_benefit_support">சுயாதீன வளர்ச்சியை ஆதரிக்கவும்</string>
     <string name="upgrade_benefit_equalizer">• ஒவ்வொரு சாதனத்திற்கும் ஈகுவலைசர் (சிஸ்டம் ஈகுவலைசர் ஆதரவுள்ள இசைப் பயன்பாடுகளுக்கு)</string>
-    <string name="description_intro_tap_the_button">உங்கள் முதல் சாதனத்தை சேர்பதிலிருந்து தொடங்கும்.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth அணைக்கப்பட்டுள்ளது.</string>
     <string name="title_bluetooth_is_off">Bluetooth அணைந்துள்ளது</string>
     <string name="action_enable_bluetooth">Bluetooth இயக்கு</string>
     <string name="title_bluetooth_permission_required">Bluetooth அனுமதி தேவைப்படுகிறது</string>
     <string name="description_bluetooth_permission_required">உங்கள் சாதன ஒலி அளவுகளை நிர்வகிக்க இந்த ஆப்்கு Bluetooth அனுமதி தேவைப்படுகிறது.</string>
     <string name="action_grant_permission">அனுமதி வழங்கு</string>
-    <string name="label_status_listening_for_changes">ஒலி மாற்றங்களைக் கேட்டுக் கொண்டிருக்கிறது</string>
     <string name="action_exit">வெளியேறு</string>
-    <string name="action_start">தொடங்கு</string>
-    <string name="label_welcome">வரவேற்கிறோம்</string>
-    <string name="description_intro_contact">கேள்விகள் அல்லது புதிய சிறப்பியுக்கான கருத்து இருந்தாலும் என்னைத் தொடர்பு கொள்ள தயங்காதீர்கள்.</string>
-    <string name="label_translation">மொழிபெயர்ப்பு</string>
-    <string name="description_help_translate">இந்த ஆப்்அன்னை மற்ற மொழிகளில் கிடைக்கப்பட உதவும்.</string>
     <string name="label_device_speaker">சாதன உருள்</string>
-    <string name="label_keyevent_playpause">இசை-இடைநிறுத்து</string>
-    <string name="label_keyevent_play">இசைப்பிச்சு</string>
-    <string name="label_keyevent_next">அடுத்தது</string>
-    <string name="label_install_id">நிறுவல் ஐடி</string>
     <string name="message_copied_to_clipboard">க்ளிப்போர்டில் நகலெடுக்கப்பட்டது</string>
-    <string name="label_thanks">நன்றி</string>
-    <string name="label_licenses">இஜையங்கள்</string>
-    <string name="description_ring_volume_additional_permission">ரிங் ஒலி அளவை மாற்ற கூடுதலான அனுமதிகள் தேவைப்படுகின்றன.</string>
-    <string name="label_missing_permissions">காணாத அனுமதிகள்</string>
-    <string name="action_grant">வழங்கு</string>
-    <string name="label_advanced">மேம்பட்ட</string>
-    <string name="label_exclude_health">ஆரோக்கிய ப்ரோபைல்களை தவிர்</string>
-    <string name="description_exclude_health">சில Android சாதனங்கள் \'ஆரோக்கிய சாதனம்\' Bluetooth ப்ரோபைல்களை (HDP, 0x1400) தேடும்போது தடுமாறுகின்றன.</string>
-    <string name="label_exclude_gattserver">GATT சேவையர் ப்ரோபைல்களை தவிர்</string>
-    <string name="label_exclude_gatt">GATT ப்ரோபைல்களை தவிர்</string>
-    <string name="description_exclude_gattserver">\'பொதுவான குண்பம்\' (GATT) சேவையர் வகையின் Bluetooth ப்ரோபைல்களை கேளாதீர்.</string>
-    <string name="description_exclude_gatt">\'பொதுவான குண்பம்\' (GATT) களியன்ட் வகையின் Bluetooth ப்ரோபைல்களை கேளாதீர்.</string>
-    <string name="description_waiting_for_devicex">%s இணைப்பை முடிக்க காத்திருக்கிறது</string>
-    <string name="action_undo">செயல்தவிர்</string>
-    <string name="action_show">காட்டு</string>
     <string name="action_dismiss">நிராகரி</string>
-    <string name="action_fix">சரிசெய்</string>
-    <string name="battery_optimizations_issue_description">இந்த ஆப்்கு பட்டரி மேம்பாடுகள் இயக்கப்பட்டுள்ளன மற்றும் Bluetooth நிகழ்வுகளைப் பெற்றுக்கொள்வதைத் தடுக்கலாம். உங்களுக்கு பிரச்சினை இருந்தால் மேம்பாடுகளை குறைக்கலாம்.</string>
     <string name="label_bluetooth_settings">Bluetooth அமைப்புகள்</string>
-    <string name="android10_applaunch_issue_description">Android 10 பின்ணிலையிருந்து ஆப்களை தொடங்குவதைத் தடுக்கிறது. Bluetooth சாதனம் இணைக்கப்படும்போது ஆப்களை திறக்க அனுமதிக்க \"மற்ற ஆப்களின் மேல் காட்டு\" (SYSTEM_ALERT_WINDOW) அனுமதி வழங்கும்.</string>
-    <string name="label_opensource">மூல குறியீடு</string>
-    <string name="android13_notification_permission_description">இந்த ஆப்் இயங்கும்போது மற்றும் ஒலி சரிசெய்த்தல் நடக்கும்போது அறிவிப்பு காட்ட இந்த ஆப்்கு அறிவிப்பு போட்டிட அனுமதி வழங்கும்.</string>
-    <string name="privacy_policy_label">தனியுரிமை கொள்கை</string>
     <string name="managed_devices_empty_message">Bluetooth சாதனங்கள் ஏதும் கட்டமைக்கப்படவில்லை.\nமுதல் சாதனத்தை சேர்க்க + பட்டனை தட்டும்.</string>
     <string name="label_pro_feature">ப்ரிமியம் சிறப்பிய்</string>
     <plurals name="discover_device_limit_banner">
@@ -425,21 +344,15 @@
     <string name="review_app_review_action">மார்வு</string>
     <string name="review_app_dismiss_action">பிறகு வேளையில்</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">கொள்முடிவு ரத்துசெய்யப்பட்டது</string>
-    <string name="error_iap_unavailable_message">ஆப்் உள்ளை கொள்முடிவுகள் கிடையவில்லை</string>
-    <string name="error_generic_message">பிழை ஏற்பட்டது. மீண்டும் முயற்சிக்கவும்.</string>
-    <string name="error_iap_owned_message">உங்களிடம் ஈ பொருள் ஏற்கனவே உள்ளது</string>
     <string name="label_no_devices_title">சாதனங்கள் இல்லை</string>
     <string name="bluemusic_mascot_description">ஆப்் சின்னம்</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">ஆப்களைத் தேர்ந்தெடு</string>
     <string name="devices_app_selection_search_hint">ஆப்களை தேடும்…</string>
-    <string name="devices_app_selection_currently_selected">தற்போது தேர்ந்தெடுக்கப்பட்டது</string>
     <string name="devices_app_selection_selected_count">%d ஆப்கள் தேர்ந்தெடுக்கப்பட்டன</string>
     <string name="general_navigate_back_action">பின்னால் செல்</string>
     <string name="general_reset_action">மீட்டமை</string>
     <string name="general_clear_action">அழிக்கு</string>
-    <string name="general_save_action">சேமி</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">பூட்டு</string>
     <string name="devices_indicator_awake">விழிப்பு</string>
@@ -449,7 +362,6 @@
     <string name="devices_indicator_limit">கட்டுப்படுத்து</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">பூஸ்ட்</string>
-    <string name="devices_indicator_launch">தொடங்கு</string>
     <string name="devices_indicator_home">இல்லம்</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">எச்சரிக்கை</string>

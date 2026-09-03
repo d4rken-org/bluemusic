@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">Jotkut ominaisuudet ovat muuttuneet päivityksen aikana. Tarkista laiteasetuksesi varmistaaksesi, että kaikki on määritetty oikein.</string>
     <string name="onboarding_rewrite_action">Jatka</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">Hallitsemattomia laitteita ei löydy</string>
     <string name="discover_all_devices_managed_msg">Kaikki paritetut laitteesi on hallittu! Tarvitsetko uuden?</string>
     <string name="discover_pair_new_device_action">Parита uusi laite</string>
     <string name="discover_device_speaker_desc">Tämän puhelimen oma kaiutin. Sen äänenvoimakkuuksia käytetään, kun ääni vaihtuu takaisin puhelimeen, esim. Bluetooth-laitteen irrottamisen jälkeen.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Laitteen asetukset</string>
-    <string name="devices_device_config_section_general_label">Yleiset</string>
     <string name="devices_device_config_remove_device_label">Unohda laite</string>
-    <string name="devices_device_config_remove_device_desc">Poistaa laitteen tästä sovelluksesta ja poistaa sen asetukset. Tämä ei poista laitteen paritusta.</string>
     <string name="devices_device_config_remove_device_action">Unohda</string>
     <string name="devices_device_config_remove_device_confirmation">Unohdetaanko %s hallituista laitteista?</string>
-    <string name="devices_device_config_rename_device_label">Nimeä laite uudelleen</string>
-    <string name="devices_device_config_rename_device_desc">Nimeä laite uudelleen tässä sovelluksessa ja mahdollisuuksien mukaan myös järjestelmässä.</string>
     <string name="devices_device_config_rename_device_action">Nimeä uudelleen</string>
     <string name="devices_device_config_enabled_label">Käytössä</string>
     <string name="devices_device_config_enabled_desc">Reagoi tähän laitteeseen, kun se yhdistää</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">Automaattisen toiston komennot</string>
     <string name="devices_device_config_autoplay_keycodes_order">Komentojen järjestys</string>
     <string name="devices_device_config_autoplay_keycodes_label">Komennot</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Määritä lähetettävät komennot ja niiden järjestys</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">Ei määritettyjä komentoja</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">Lisää komento</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">Enintään %1$d komentoa</string>
@@ -121,7 +115,6 @@
     <string name="cd_autoplay_keycode_move_up">Siirrä ylös</string>
     <string name="cd_autoplay_keycode_move_down">Siirrä alas</string>
     <string name="cd_autoplay_keycode_remove">Poista</string>
-    <string name="devices_device_config_section_volumes_label">Äänenvoimakkuudet</string>
     <string name="devices_device_config_section_volume_label">Äänenvoimakkuus</string>
     <string name="devices_device_config_alarm_volume_label">Hälytysäänenvoimakkuus</string>
     <string name="devices_device_config_alarm_volume_desc">Jotkut hälytyssovellukset käyttävät musiikkiäänenvoimakkuutta sen sijaan.</string>
@@ -155,8 +148,6 @@
     <string name="devices_audio_stream_ring_label">Soitto</string>
     <string name="devices_audio_stream_notification_label">Ilmoitus</string>
     <string name="devices_audio_stream_alarm_label">Hälytys</string>
-    <string name="devices_neverseen_label">Ei nähty</string>
-    <string name="devices_state_connected_label">Yhdistetty</string>
     <string name="devices_last_connected_label">Viimeksi yhdistetty: %s</string>
     <string name="devices_currently_connected_label">Tällä hetkellä yhdistetty</string>
     <string name="devices_device_disabled_label">Laite pois käytöstä</string>
@@ -191,10 +182,7 @@
     <string name="devices_settings_desc">Asetukset, jotka vaikuttavat kaikkiin hallittuihin laitteisiin.</string>
     <string name="label_app_enabled">Sovellus aktiivinen</string>
     <string name="description_app_enabled">Sallii sovelluksen reagoida äänenvoimakkuus ja bluetooth tapahtumiin.</string>
-    <string name="label_visible_volume_adjustments">Näkyvät muutokset</string>
-    <string name="description_visible_volume_adjustments">Näytä järjestelmän äänenvoimakkuus säätimet, kun tämä ohjelma tekee muutoksia.</string>
     <string name="label_volume_listener">Tarkkaile muutoksia</string>
-    <string name="description_volume_listener">Pysy aktiivisena kun laite on yhteydessä ja tallenna äänenvoimakkuus muutokset, mitkä ei ole tämän sovelluksen tekemiä.</string>
     <string name="label_boot_restore">Palauta uudelleenkäynnistyksen yhteydessä</string>
     <string name="description_boot_restore">Palauta äänenvoimakkuus käynnistyksen yhteydessä jos Bluetooth laite on yhdistettynä.</string>
     <!-- Settings/Support-->
@@ -204,22 +192,11 @@
     <string name="settings_support_wiki_description">Opi käyttämään BVM:a tehokkaasti</string>
     <string name="settings_support_issue_tracker_description">Julkinen ongelmaseuranta virheilmoituksia ja ominaisuuspyyntöjä varten.</string>
     <string name="settings_support_issue_tracker_label">Ongelmaseuranta</string>
-    <string name="settings_support_debuglog_label">Debug-loki</string>
     <string name="settings_support_debuglog_desc">Tallenna kaikki mitä sovellus tekee tekstitiedostoon, jonka voit jakaa.</string>
-    <string name="settings_support_debuglog_recording_desc">Tallentaa parhaillaan debug-tietoja. Napauta lopettaaksesi tallennuksen.</string>
-    <string name="settings_support_debuglog_path">Lokitiedoston polku: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">Hyvin lyhyt tallennus</string>
     <string name="settings_support_debuglog_short_recording_msg">Tuo oli hyvin lyhyt tallennus. Debug-logit ovat tallenteita, eivät tilannekuvia — toista ongelma tallennuksen aikana, jotta lokista on hyötyä.</string>
     <string name="settings_support_debuglog_short_recording_continue">Jatka tallennusta</string>
     <string name="settings_support_debuglog_short_recording_stop">Pysäytä silti</string>
-    <string name="settings_support_debuglog_folder_label">Debug-lokikansio</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d istunto, käyttää %2$s</item>
-        <item quantity="other">%1$d istuntoa, käyttää %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Ei tallennettuja debug-lokeja</string>
-    <string name="settings_support_debuglog_folder_delete_title">Poista kaikki debug-logit?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Tämä poistaa pysyvästi kaikki tallennetut debug-lokin istunnot.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Paikka viettää aikaa ja kysellä kysymyksiä.</string>
     <!-- Settings/Acks-->
@@ -228,16 +205,12 @@
     <string name="settings_acks_translation_header">Käännös</string>
     <string name="settings_acks_translators_title">Kääntäjät</string>
     <string name="settings_acks_translators_people">Henkilö1;Henkilö2(valinnainen@sähköposti.com)</string>
-    <string name="settings_acks_translate_title">Käännä BVM</string>
-    <string name="settings_acks_translate_desc">Auta kääntämään BVM sinun kiellesi</string>
     <string name="settings_acks_thanks_header">Kiitokset</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Avoimen lähdekoodin projektien käännösten tukemisesta</string>
     <string name="settings_licenses_label">Lisenssit</string>
     <string name="settings_translation_label">Käännös</string>
     <string name="settings_translation_desc">Auta kääntämään sovellus suosikkikielellesi</string>
-    <string name="settings_sponsor_development_title">Sponsoroi kehitystä</string>
-    <string name="settings_sponsor_development_summary">Ryhdy suojelijaksi ja tee jatkuva kehitys mahdolliseksi.</string>
     <string name="settings_privacy_policy_label">Tietosuojakäytäntö</string>
     <string name="settings_privacy_policy_desc">Tietojen vastuullinen käsittely.</string>
     <string name="changelog_label">Muutosloki</string>
@@ -259,10 +232,8 @@
     <string name="backup_restore_success_restore">Palautus valmis — %1$d laitetta palautettu, %2$d ohitettu.</string>
     <string name="backup_restore_version_warning">Tämä varmuuskopio on luotu versiolla %1$s. Käytät versiota %2$s. Osa asetuksista ei välttämättä palaudu oikein.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">Debug-ilmoitukset</string>
     <string name="debug_log_consent_title">Debug-loki</string>
     <string name="debug_log_consent_explanation">Tämä ominaisuus tallentaa kaiken mitä sovellus tekee jaettavaan tiedostoon. Luotu tiedosto sisältää arkaluonteisia tietoja (esim. tiedostonimet ja asennetut sovellukset). Jaa se vain luotettavien tahojen kanssa (esim. kehittäjän kanssa ongelman ratkaisemiseksi).</string>
-    <string name="debug_log_recording_progress">Tallennetaan debug-lokia</string>
     <string name="debug_log_record_action">Tallenna</string>
     <string name="debug_log_stop_action">Lopeta tallentaminen</string>
     <string name="debug_log_screen_title">Debug-lokin tallennin</string>
@@ -277,7 +248,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">Hylkää</string>
     <string name="debug_log_screen_keep_action">Säilytä</string>
-    <string name="debug_log_compressing_label">Pakataan…</string>
     <string name="debug_log_file_label">Tallennettu lokitiedosto</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Loki lähetetty?</string>
@@ -305,7 +275,6 @@
     <string name="contact_description_question_hint">Kuvaile kysymyksesi yksityiskohtaisesti.</string>
     <string name="contact_category_section_label">Kategoria</string>
     <string name="contact_debug_log_label">Debug-loki</string>
-    <string name="contact_debug_log_select_hint">Valitse liitettävä debug-loki</string>
     <string name="contact_debug_log_picker_hint">Liitä debug-loki auttaaksesi diagnosoimaan ongelman nopeammin.</string>
     <string name="contact_debug_log_picker_empty">Debug-lokeja ei ole saatavilla. Tallenna ensin yksi.</string>
     <string name="contact_expected_behavior_label">Odotettu toiminta</string>
@@ -319,82 +288,32 @@
     <string name="contact_welcome_msg">Luen jokaisen viestin itse ja teen parhaani vastatakseni, mutta koska työskentelen yksin, se voi kestää hetken. Kiitos kärsivällisyydestäsi.</string>
     <string name="contact_footer_msg">Viestisi lähetetään sähköpostitse. Laite- ja asetustiedot liitetään automaattisesti.</string>
     <string name="contact_no_email_app_msg">Tällä laitteella ei löydy sähköpostisovellusta.</string>
-    <string name="contact_attachment_missing_msg">Debug-lokitiedostoa ei enää ole</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Tallennetut debug-logit</string>
     <string name="settings_support_stored_logs_desc">%1$d istuntoa (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Ei tallennettuja debug-lokeja</string>
-    <string name="settings_support_stored_logs_delete_title">Poista tallennetut logit?</string>
-    <string name="settings_support_stored_logs_delete_msg">Tämä poistaa kaikki %1$d tallennettu debug-lokin istuntoa.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Tallennetut debug-logit poistettu</string>
-    <string name="label_bug_reports">Virheraportti</string>
-    <string name="description_bug_reports">Automaattinen virhe- ja kaatumis raportointi.</string>
     <string name="label_add_device">Lisää laite</string>
-    <string name="label_just_a_moment_please">Pieni hetki, odotathan.</string>
     <string name="label_notification_channel_status">Tila</string>
     <string name="label_notification_channel_setup">Määritys vaaditaan</string>
     <string name="monitor_notification_starting">Käynnistetään…</string>
     <string name="action_set">Aseta</string>
     <string name="action_cancel">Peruuta</string>
-    <string name="label_invalid_input">Virheellinen syöte</string>
     <string name="action_reset">Nollaa</string>
     <string name="label_no_connected_devices">Ei laitteita yhdistettynä</string>
-    <string name="label_status_idle">Ei aktiivisia toimintoja</string>
-    <string name="label_status_adjusting_volumes">Säädetään äänenvoimakkuuksia</string>
-    <string name="label_premium_version">Premium versio</string>
     <string name="general_upgrade_action">Päivitä</string>
     <string name="common_upgrade_required_label">Päivitys vaaditaan</string>
-    <string name="label_premium_version_required">Vaatii premium version</string>
-    <string name="description_intro_purpose">Tämä sovellus mahdollistaa Android laitteesi muistaa erillisten Bluetooth laitteiden äänenvoimakkuuden.</string>
-    <string name="upgrade_benefit_unlimited_devices">Rajattomat laiteprofiillit</string>
-    <string name="upgrade_benefit_connection_actions">Automaattinen toisto, sovelluksen käynnistys ja yhteysilmoitukset</string>
-    <string name="upgrade_benefit_theme_customization">Teeman, tyylin ja värin mukauttaminen</string>
-    <string name="upgrade_benefit_power_controls">Äänenvoimakkuuden lukitus ja nopeusrajoitus</string>
-    <string name="upgrade_benefit_support">Tue itsenäistä kehitystä</string>
     <string name="upgrade_benefit_equalizer">• Laitekohtainen taajuuskorjain (musiikkisovelluksille, jotka tukevat järjestelmän taajuuskorjainta)</string>
-    <string name="description_intro_tap_the_button">Aloita lisäämällä ensimmäinen laitteesi.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth ei ole käytössä.</string>
     <string name="title_bluetooth_is_off">Bluetooth on pois päältä</string>
     <string name="action_enable_bluetooth">Ota Bluetooth käyttöön</string>
     <string name="title_bluetooth_permission_required">Bluetooth-lupa vaaditaan</string>
     <string name="description_bluetooth_permission_required">Tämä sovellus tarvitsee Bluetooth-luvan hallitakseen laitteidesi äänenvoimakkuuksia.</string>
     <string name="action_grant_permission">Myönnä lupa</string>
-    <string name="label_status_listening_for_changes">Seuraa äänenvoimakkuus muutoksia</string>
     <string name="action_exit">Poistu</string>
-    <string name="action_start">Aloita</string>
-    <string name="label_welcome">Tervetuloa</string>
-    <string name="description_intro_contact">Älä epäröi ottaa yhteyttä jos sinulla on kysymyksia tai vaikka idea uudesta ominaisuudesta.</string>
-    <string name="label_translation">Käännös</string>
-    <string name="description_help_translate">Auta minua kääntämään tämä sovellus muille kielille.</string>
     <string name="label_device_speaker">Kaiutin</string>
-    <string name="label_keyevent_playpause">Toista-Tauko</string>
-    <string name="label_keyevent_play">Toista</string>
-    <string name="label_keyevent_next">Seuraava</string>
-    <string name="label_install_id">Asennustunnus</string>
     <string name="message_copied_to_clipboard">Kopioitu leikepöydälle</string>
-    <string name="label_thanks">Kiitos</string>
-    <string name="label_licenses">Lisenssit</string>
-    <string name="description_ring_volume_additional_permission">Lisäoikeudet on välttämättömiä soittoäänen äänenvoimakkuuden säätämiseksi.</string>
-    <string name="label_missing_permissions">Käyttöoikeuksia puuttuu</string>
-    <string name="action_grant">Myönnä</string>
-    <string name="label_advanced">Lisäasetukset</string>
-    <string name="label_exclude_health">Jätä pois terveys profiilit</string>
-    <string name="description_exclude_health">Jotkut Android laitteet menevät jumiin tarkastellessaan \'Terveys laitteiden\' Bluetooth profiileita (HDP, 0x1400).</string>
-    <string name="label_exclude_gattserver">Jätä pois GATT palvelin profiilit</string>
-    <string name="label_exclude_gatt">Jätä pois GATT profiileja</string>
-    <string name="description_exclude_gattserver">Älä hae \'Generic Attribute\' (GATT) tyyppisiä palvelin Bluetooth profiileja.</string>
-    <string name="description_exclude_gatt">Älä hae \'Generic Attribute\' (GATT) tyyppisiä asiakas Bluetooth profiileja.</string>
-    <string name="description_waiting_for_devicex">Odotetaan %s yhteyden valmistumista</string>
-    <string name="action_undo">Kumoa</string>
-    <string name="action_show">Näytä</string>
     <string name="action_dismiss">Pois</string>
-    <string name="action_fix">Korjaa</string>
-    <string name="battery_optimizations_issue_description">Akun optimointi on käytössä tälle sovellukselle ja saattaa estää sitä vastaanottamasta tietoa Bluetooth tapahtumista. Harkitse optimointien poistamista käytöstä, jos huomaat ongelmia.</string>
     <string name="label_bluetooth_settings">Bluetooth asetukset</string>
-    <string name="android10_applaunch_issue_description">Android 10 rajoittaa kuinka sovelluksia voidaan käynnistää taustalta. Jotta sovellukset voidaan avata kun Bluetooth-laite yhdistää, myönnä käyttöoikeus \"Näytä muiden sovellusten päällä\" (SYSTEM_ALERT_WINDOW).</string>
-    <string name="label_opensource">Lähdekoodi</string>
-    <string name="android13_notification_permission_description">Myönnä tälle sovellukselle käyttöoikeus lähettää ilmoituksia. Tämä mahdollistaa ilmoituksen näyttämisen kun sovellus on aktiivinen ja äänenvoimakkuussäätöjä tehdään.</string>
-    <string name="privacy_policy_label">Tietosuojakäytäntö</string>
     <string name="managed_devices_empty_message">Bluetooth-laitteita ei ole määritetty.\nNapauta + painiketta lisätäksesi ensimmäisen laitteesi.</string>
     <string name="label_pro_feature">Premium-ominaisuus</string>
     <plurals name="discover_device_limit_banner">
@@ -425,21 +344,15 @@
     <string name="review_app_review_action">Arvostele</string>
     <string name="review_app_dismiss_action">Ehkä myöhemmin</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">Osto peruutettu</string>
-    <string name="error_iap_unavailable_message">Sovelluksen sisäiset ostokset eivät ole saatavilla</string>
-    <string name="error_generic_message">Tapahtui virhe. Yritä uudelleen.</string>
-    <string name="error_iap_owned_message">Omistat jo tämän tuotteen</string>
     <string name="label_no_devices_title">Ei laitteita</string>
     <string name="bluemusic_mascot_description">Sovelluskuvake</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">Valitse sovellukset</string>
     <string name="devices_app_selection_search_hint">Hae sovelluksia…</string>
-    <string name="devices_app_selection_currently_selected">Tällä hetkellä valittu</string>
     <string name="devices_app_selection_selected_count">%d sovellusta valittu</string>
     <string name="general_navigate_back_action">Siirry takaisin</string>
     <string name="general_reset_action">Nollaa</string>
     <string name="general_clear_action">Tyhjennä</string>
-    <string name="general_save_action">Tallenna</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">Lukitus</string>
     <string name="devices_indicator_awake">Hereillä</string>
@@ -449,7 +362,6 @@
     <string name="devices_indicator_limit">Rajaus</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Tehostus</string>
-    <string name="devices_indicator_launch">Käynnistä</string>
     <string name="devices_indicator_home">Koti</string>
     <string name="devices_indicator_dnd">ÄH</string>
     <string name="devices_indicator_alert">Hälytys</string>

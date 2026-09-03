@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">Một số cài đặt thiết bị có thể đã được đặt lại trong quá trình cập nhật này. Vui lòng kiểm tra cấu hình thiết bị của bạn.</string>
     <string name="onboarding_rewrite_action">Tiếp tục</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">Không tìm thấy thiết bị chưa được quản lý</string>
     <string name="discover_all_devices_managed_msg">Tất cả thiết bị đã ghép nối đều được quản lý! Cần thiết bị mới?</string>
     <string name="discover_pair_new_device_action">Ghép nối thiết bị mới</string>
     <string name="discover_device_speaker_desc">Loa của chính chiếc điện thoại này. Âm lượng của nó được áp dụng khi âm thanh chuyển trở lại điện thoại, ví dụ như sau khi thiết bị Bluetooth của bạn ngắt kết nối.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Cấu hình thiết bị</string>
-    <string name="devices_device_config_section_general_label">Tổng quan</string>
     <string name="devices_device_config_remove_device_label">Quên thiết bị</string>
-    <string name="devices_device_config_remove_device_desc">Quên thiết bị khỏi ứng dụng này và xóa cấu hình của nó. Điều này không hủy ghép nối thiết bị.</string>
     <string name="devices_device_config_remove_device_action">Quên</string>
     <string name="devices_device_config_remove_device_confirmation">Quên %s khỏi danh sách thiết bị được quản lý?</string>
-    <string name="devices_device_config_rename_device_label">Đổi tên thiết bị</string>
-    <string name="devices_device_config_rename_device_desc">Đổi tên thiết bị này trong ứng dụng, và nếu có thể, trong hệ thống.</string>
     <string name="devices_device_config_rename_device_action">Đổi tên</string>
     <string name="devices_device_config_enabled_label">Được kích hoạt</string>
     <string name="devices_device_config_enabled_desc">Phản ứng với thiết bị này khi được kết nối</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">Lệnh tự động phát</string>
     <string name="devices_device_config_autoplay_keycodes_order">Trình tự lệnh</string>
     <string name="devices_device_config_autoplay_keycodes_label">Lệnh</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Cấu hình lệnh nào sẽ gửi và theo thứ tự nào</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">Chưa có lệnh nào được cấu hình</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">Thêm lệnh</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">Tối đa %1$d lệnh</string>
@@ -120,7 +114,6 @@
     <string name="cd_autoplay_keycode_move_up">Di chuyển lên</string>
     <string name="cd_autoplay_keycode_move_down">Di chuyển xuống</string>
     <string name="cd_autoplay_keycode_remove">Loại bỏ</string>
-    <string name="devices_device_config_section_volumes_label">Âm lượng</string>
     <string name="devices_device_config_section_volume_label">Âm lượng</string>
     <string name="devices_device_config_alarm_volume_label">Âm lượng báo thức</string>
     <string name="devices_device_config_alarm_volume_desc">Một số ứng dụng báo thức sử dụng âm lượng nhạc để thay thế.</string>
@@ -154,8 +147,6 @@
     <string name="devices_audio_stream_ring_label">Chuông</string>
     <string name="devices_audio_stream_notification_label">Thông báo</string>
     <string name="devices_audio_stream_alarm_label">Báo thức</string>
-    <string name="devices_neverseen_label">Không nhìn thấy</string>
-    <string name="devices_state_connected_label">Đã kết nối</string>
     <string name="devices_last_connected_label">Lần kết nối cuối: %s</string>
     <string name="devices_currently_connected_label">Đang kết nối</string>
     <string name="devices_device_disabled_label">Thiết bị bị vô hiệu hóa</string>
@@ -190,10 +181,7 @@
     <string name="devices_settings_desc">Các cài đặt ảnh hưởng đến tất cả thiết bị được quản lý.</string>
     <string name="label_app_enabled">Ứng dụng được kích hoạt</string>
     <string name="description_app_enabled">Chuyển đổi khả năng hiển thị ứng dụng để phản ứng với sự kiện âm lượng và bluetooth.</string>
-    <string name="label_visible_volume_adjustments">Các điều chỉnh hiển thị</string>
-    <string name="description_visible_volume_adjustments">Hiển thị cửa sổ âm lượng của hệ thống trong khi ứng dụng này thực hiện các điều chỉnh.</string>
     <string name="label_volume_listener">Theo dõi các thay đổi</string>
-    <string name="description_volume_listener">Luôn hoạt động trong khi thiết bị được kết nối và lưu các thay đổi âm lượng không do ứng dụng này.</string>
     <string name="label_boot_restore">Khôi phục khi khởi động</string>
     <string name="description_boot_restore">Khôi phục âm lượng sau khi khởi động/khởi động lại nếu một thiết bị Bluetooth được kết nối.</string>
     <!-- Settings/Support-->
@@ -203,21 +191,11 @@
     <string name="settings_support_wiki_description">Tìm hiểu cách sử dụng BVM hiệu quả</string>
     <string name="settings_support_issue_tracker_description">Bộ theo dõi sự cố công khai cho báo cáo lỗi và yêu cầu tính năng.</string>
     <string name="settings_support_issue_tracker_label">Theo dõi sự cố</string>
-    <string name="settings_support_debuglog_label">Nhật ký gỡ lỗi</string>
     <string name="settings_support_debuglog_desc">Ghi lại mọi thứ ứng dụng đang làm vào một tập tin văn bản mà bạn có thể chia sẻ.</string>
-    <string name="settings_support_debuglog_recording_desc">Đang ghi lại thông tin gỡ lỗi. Nhấn để dừng ghi.</string>
-    <string name="settings_support_debuglog_path">Đường dẫn nhật ký: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">Ghi rất ngắn</string>
     <string name="settings_support_debuglog_short_recording_msg">Đó là một bản ghi rất ngắn. Nhật ký gỡ lỗi là bản ghi, không phải ảnh chụp — hãy tái tạo sự cố trong khi đang ghi để nhật ký có ích.</string>
     <string name="settings_support_debuglog_short_recording_continue">Tiếp tục ghi</string>
     <string name="settings_support_debuglog_short_recording_stop">Dừng dù sao</string>
-    <string name="settings_support_debuglog_folder_label">Thư mục nhật ký gỡ lỗi</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="other">%1$d phiên sử dụng %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Không có nhật ký gỡ lỗi được lưu trữ</string>
-    <string name="settings_support_debuglog_folder_delete_title">Xóa tất cả nhật ký gỡ lỗi?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Thao tác này sẽ xóa vĩnh viễn tất cả các phiên nhật ký gỡ lỗi đã lưu trữ.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Nơi để trò chuyện và đặt câu hỏi.</string>
     <!-- Settings/Acks-->
@@ -228,16 +206,12 @@
     <string name="settings_acks_translators_people">Đỗ Văn Chức(dovanchuc7521);ThePrimalPea(PeaID);Vo Thanh Tung(wst1001_qqfc); PhongInk(PhongInk);Nguyễn Trung Hậu(Nguyen_Trung_Hau);
 Hai511;
 TheNothingGuy</string>
-    <string name="settings_acks_translate_title">Dịch BVM</string>
-    <string name="settings_acks_translate_desc">Giúp dịch BVM sang ngôn ngữ của bạn</string>
     <string name="settings_acks_thanks_header">Cảm ơn</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Vì hỗ trợ dịch thuật các dự án mở nguồn</string>
     <string name="settings_licenses_label">Giấy phép</string>
     <string name="settings_translation_label">Dịch thuật</string>
     <string name="settings_translation_desc">Hãy giúp dịch ứng dụng sang ngôn ngữ bạn yêu thích</string>
-    <string name="settings_sponsor_development_title">Tài trợ phát triển</string>
-    <string name="settings_sponsor_development_summary">Trở thành nhà bảo trợ và giúp việc phát triển tiếp tục có thể.</string>
     <string name="settings_privacy_policy_label">Chính sách bảo mật</string>
     <string name="settings_privacy_policy_desc">Xử lý dữ liệu có trách nhiệm.</string>
     <string name="changelog_label">Nhật ký thay đổi</string>
@@ -259,10 +233,8 @@ TheNothingGuy</string>
     <string name="backup_restore_success_restore">Khôi phục hoàn tất — đã khôi phục %1$d thiết bị, bỏ qua %2$d.</string>
     <string name="backup_restore_version_warning">Bản sao lưu này được tạo với phiên bản %1$s. Bạn đang dùng phiên bản %2$s. Một số cài đặt có thể không được khôi phục đúng.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">Thông báo gỡ lỗi</string>
     <string name="debug_log_consent_title">Nhật ký gỡ lỗi</string>
     <string name="debug_log_consent_explanation">Tính năng này ghi lại mọi thứ ứng dụng đang làm vào một tập tin có thể chia sẻ. Tập tin được tạo chứa thông tin nhạy cảm (ví dụ tên tập tin và ứng dụng đã cài). Chỉ chia sẻ với các bên đáng tin cậy (ví dụ nhà phát triển khắc phục sự cố).</string>
-    <string name="debug_log_recording_progress">Đang ghi nhật ký gỡ lỗi</string>
     <string name="debug_log_record_action">Ghi lại</string>
     <string name="debug_log_stop_action">Dừng ghi</string>
     <string name="debug_log_screen_title">Bộ ghi nhật ký gỡ lỗi</string>
@@ -276,7 +248,6 @@ TheNothingGuy</string>
     </plurals>
     <string name="debug_log_screen_discard_action">Loại bỏ</string>
     <string name="debug_log_screen_keep_action">Giữ lại</string>
-    <string name="debug_log_compressing_label">Đang nén…</string>
     <string name="debug_log_file_label">Tập tin nhật ký đã ghi</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Đã gửi nhật ký?</string>
@@ -304,7 +275,6 @@ TheNothingGuy</string>
     <string name="contact_description_question_hint">Mô tả câu hỏi của bạn một cách chi tiết.</string>
     <string name="contact_category_section_label">Danh mục</string>
     <string name="contact_debug_log_label">Nhật ký gỡ lỗi</string>
-    <string name="contact_debug_log_select_hint">Chọn nhật ký gỡ lỗi để đính kèm</string>
     <string name="contact_debug_log_picker_hint">Đính kèm nhật ký gỡ lỗi để giúp chẩn đoán sự cố nhanh hơn.</string>
     <string name="contact_debug_log_picker_empty">Không có nhật ký gỡ lỗi nào. Hãy ghi một cái trước.</string>
     <string name="contact_expected_behavior_label">Hành vi mong đợi</string>
@@ -317,83 +287,32 @@ TheNothingGuy</string>
     <string name="contact_welcome_msg">Tôi tự đọc từng tin nhắn và cố gắng hết sức để trả lời, nhưng vì tôi làm việc một mình nên có thể mất một chút thời gian. Cảm ơn sự kiên nhẫn của bạn.</string>
     <string name="contact_footer_msg">Tin nhắn của bạn sẽ được gửi qua email. Thông tin thiết bị và cài đặt được đính kèm tự động.</string>
     <string name="contact_no_email_app_msg">Không tìm thấy ứng dụng email trên thiết bị này.</string>
-    <string name="contact_attachment_missing_msg">Tệp nhật ký gỡ lỗi không còn tồn tại</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Nhật ký gỡ lỗi đã lưu trữ</string>
     <string name="settings_support_stored_logs_desc">%1$d phiên (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Không có nhật ký gỡ lỗi đã lưu trữ</string>
-    <string name="settings_support_stored_logs_delete_title">Xóa nhật ký đã lưu trữ?</string>
-    <string name="settings_support_stored_logs_delete_msg">Thao tác này sẽ xóa tất cả %1$d phiên nhật ký gỡ lỗi đã lưu trữ.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Nhật ký gỡ lỗi đã lưu trữ đã bị xóa</string>
-    <string name="label_bug_reports">Báo lỗi</string>
-    <string name="description_bug_reports">Tự động báo lỗi và crash.</string>
     <string name="label_add_device">Thêm thiết bị</string>
-    <string name="label_just_a_moment_please">Xin chờ một chút.</string>
     <string name="label_notification_channel_status">Trạng thái</string>
     <string name="label_notification_channel_setup">Cần thiết lập</string>
     <string name="monitor_notification_starting">Khởi động…</string>
     <string name="action_set">Đặt</string>
     <string name="action_cancel">Hủy bỏ</string>
-    <string name="label_invalid_input">Dữ liệu nhập không hợp lệ</string>
     <string name="action_reset">Thiết lập lại</string>
     <string name="label_no_connected_devices">Không có thiết bị nào được kết nối</string>
-    <string name="label_status_idle">Không hoạt động</string>
-    <string name="label_status_adjusting_volumes">Điều chỉnh âm lượng</string>
-    <string name="label_premium_version">Bản trả phí</string>
     <string name="general_upgrade_action">Nâng cấp</string>
     <string name="common_upgrade_required_label">Yêu cầu nâng cấp</string>
-    <string name="label_premium_version_required">Yêu cầu phiên bản trả phí</string>
-    <string name="description_intro_purpose">Ứng dụng này cho phép Android ghi nhớ mức âm lượng của thiết bị Bluetooth khác nhau.</string>
-    <string name="upgrade_benefit_unlimited_devices">Không giới hạn hồ sơ thiết bị</string>
-    <string name="upgrade_benefit_connection_actions">Tự phát, mở ứng dụng và cảnh báo kết nối</string>
-    <string name="upgrade_benefit_theme_customization">Tùy chỉnh giao diện, kiểu dáng và màu sắc</string>
-    <string name="upgrade_benefit_power_controls">Khóa âm lượng và giới hạn tốc độ</string>
-    <string name="upgrade_benefit_support">Hỗ trợ phát triển độc lập</string>
     <string name="upgrade_benefit_equalizer">• Bộ cân bằng theo thiết bị (cho ứng dụng nhạc hỗ trợ bộ cân bằng hệ thống)</string>
-    <string name="description_intro_tap_the_button">Bắt đầu bằng cách thêm thiết bị đầu tiên của bạn.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth bị tắt.</string>
     <string name="title_bluetooth_is_off">Bluetooth đã tắt</string>
     <string name="action_enable_bluetooth">Bật Bluetooth</string>
     <string name="title_bluetooth_permission_required">Cần quyền Bluetooth</string>
     <string name="description_bluetooth_permission_required">Ứng dụng này cần quyền Bluetooth để quản lý âm lượng thiết bị của bạn.</string>
     <string name="action_grant_permission">Cấp quyền</string>
-    <string name="label_status_listening_for_changes">Lắng nghe thay đổi âm lượng</string>
     <string name="action_exit">Thoát</string>
-    <string name="action_start">Bắt đầu</string>
-    <string name="label_welcome">Chào mừng</string>
-    <string name="description_intro_contact">Đừng ngần ngại liên hệ với tôi nếu bạn có thắc mắc hoặc thậm chí là một ý tưởng cho một tính năng mới.</string>
-    <string name="label_translation">Dịch thuật</string>
-    <string name="description_help_translate">Giúp tôi để ứng dụng này có các ngôn ngữ khác.</string>
     <string name="label_device_speaker">Thiết bị loa</string>
-    <string name="label_keyevent_playpause">Phát- Tạm dừng</string>
-    <string name="label_keyevent_play">Phát</string>
-    <string name="label_keyevent_next">Tiếp</string>
-    <string name="label_install_id">Cài đặt ID</string>
     <string name="message_copied_to_clipboard">Chép vào bộ nhớ tạm</string>
-    <string name="label_thanks">Cảm ơn</string>
-    <string name="label_licenses">Giấy phép</string>
-    <string name="description_ring_volume_additional_permission">Các quyền bổ sung là cần thiết để thay đổi âm lượng chuông.</string>
-    <string name="label_missing_permissions">Thiếu quyền</string>
-    <string name="action_grant">Chấp thuận</string>
-    <string name="label_advanced">Nâng cao</string>
-    <string name="label_exclude_health">Loại trừ cấu hình sức khoẻ</string>
-    <string name="description_exclude_health">Một số thiết bị Android bị treo khi tìm kiếm cấu hình Bluetooth \'Thiết bị Y tế\' (HDP, 0x1400).</string>
-    <string name="label_exclude_gattserver">Loại trừ các cấu hình server GATT</string>
-    <string name="label_exclude_gatt">Loại trừ các cấu hình GATT</string>
-    <string name="description_exclude_gattserver">Không truy vấn cấu hình Bluetooth của máy chủ \'Thuộc tính Chung\' (GATT).</string>
-    <string name="description_exclude_gatt">Không truy vấn cấu hình Bluetooth của ứng dụng thuộc tính \'Thuộc tính Chung\' (GATT).</string>
-    <string name="description_waiting_for_devicex">Chờ %s để hoàn thành kết nối</string>
-    <string name="action_undo">Hoàn tác</string>
-    <string name="action_show">Hiển thị</string>
     <string name="action_dismiss">Bỏ qua</string>
-    <string name="action_fix">Sửa</string>
-    <string name="battery_optimizations_issue_description">Tối ưu hóa pin được bật cho ứng dụng này và có thể ngăn ứng dụng nhận các sự kiện Bluetooth. Vô hiệu hóa nếu bạn đang gặp vấn đề.</string>
     <string name="label_bluetooth_settings">Cài đặt Bluetooth</string>
-    <string name="android10_applaunch_issue_description">Android 10 hạn chế cách các ứng dụng có thể chạy nền. Để cho phép mở ứng dụng khi thiết bị Bluetooth kết nối, hãy cấp quyền \&quot;Hiển thị trên các ứng dụng khác\&quot; 
-(SYSTEM_ALERT_WINDOW).</string>
-    <string name="label_opensource">Mã nguồn</string>
-    <string name="android13_notification_permission_description">Cấp quyền cho ứng dụng này để gửi thông báo. Điều này cho phép hiển thị thông báo khi ứng dụng hoạt động và đang điều chỉnh âm lượng.</string>
-    <string name="privacy_policy_label">Chính sách bảo mật</string>
     <string name="managed_devices_empty_message">Chưa có thiết bị Bluetooth nào được cấu hình.\nNhấn nút + để thêm thiết bị đầu tiên.</string>
     <string name="label_pro_feature">Tính năng trả phí</string>
     <plurals name="discover_device_limit_banner">
@@ -423,21 +342,15 @@ TheNothingGuy</string>
     <string name="review_app_review_action">Đánh giá</string>
     <string name="review_app_dismiss_action">Để sau</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">Mua hàng bị hủy</string>
-    <string name="error_iap_unavailable_message">Mua hàng trong ứng dụng không khả dụng</string>
-    <string name="error_generic_message">Có lỗi xảy ra. Vui lòng thử lại.</string>
-    <string name="error_iap_owned_message">Bạn đã sở hữu mục này</string>
     <string name="label_no_devices_title">Không có thiết bị</string>
     <string name="bluemusic_mascot_description">Biểu tượng ứng dụng</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">Chọn ứng dụng</string>
     <string name="devices_app_selection_search_hint">Tìm kiếm ứng dụng…</string>
-    <string name="devices_app_selection_currently_selected">Hiện đang chọn</string>
     <string name="devices_app_selection_selected_count">Đã chọn %d ứng dụng</string>
     <string name="general_navigate_back_action">Điều hướng quay lại</string>
     <string name="general_reset_action">Đặt lại</string>
     <string name="general_clear_action">Xóa</string>
-    <string name="general_save_action">Lưu</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">Khóa</string>
     <string name="devices_indicator_awake">Thức</string>
@@ -447,7 +360,6 @@ TheNothingGuy</string>
     <string name="devices_indicator_limit">Giới hạn</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Tăng âm</string>
-    <string name="devices_indicator_launch">Mở</string>
     <string name="devices_indicator_home">Màn hình chính</string>
     <string name="devices_indicator_dnd">KTR</string>
     <string name="devices_indicator_alert">Cảnh báo</string>

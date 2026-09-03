@@ -5,7 +5,6 @@
     <string name="upgrade_feature_requires_pro">BVM Pro தேவைப்படுகிறது</string>
     <string name="upgrade_prompt_title">BVM Proக்கு மேம்படுத்து</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro சிறந்த தர்வ்ூதல்கள், மேலும் அனுபவம், மேலும் அமைப்்புகள் மற்றும் சக்தியான பயனர்களுக்கான விருப்பங்களை வாயில் வளர்கிறது.</string>
-    <string name="upgrade_prompt_upgrade_action">மேம்படுத்து</string>
     <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
     <string name="upgrade_screen_title_template">%1$s க்கு மேம்படுத்தவும்</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager விளம்பரங்கள் இல்லாதது மற்றும் பயனர் தரவுகளை விற்கவிற்கை இல்லை. என் பணியின் நிதியம் உங்களால் வழங்கப்படுகிறது.</string>
@@ -56,7 +55,6 @@
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager Google Playஆல் இணையமுடியவில்லை. Google Play நிறுவப்பட்டு புதுப்பிக்கப்பட்டதா? உங்கள் Google கணக்கு உள்நுழைகிறீர்களா? Google Play பயன்பாட்டுகள் தீளிப்பை அழித்து சாதனத்தை மறுதொடக்கம் செய்து முயற்சிக்கவும்.</string>
     <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
     <string name="upgrades_gplay_not_installed_message">Google Play ஐ திறக்க முடியவில்லை. இது சாதனத்தில் இல்லாமல் இருக்கலாம், முடக்கப்பட்டிருக்கலாம் அல்லது கட்டுப்படுத்தப்பட்டிருக்கலாம்.</string>
-    <string name="upgrades_no_purchases_found_check_account">கொள்முதல்கள் எதுவும் இல்லை. நீங்கள் சரியான கணக்கைப் பயன்படுத்துகிறீர்களா?</string>
     <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
     <string name="upgrade_screen_offers_title">மேம்படுத்தல் விருப்பங்கள்</string>
     <string name="upgrade_screen_offers_body">இரண்டு விருப்பங்களும் ஒரே Pro அம்சங்களை திறக்கின்றன — உங்களுக்குப் பொருத்தமான ஒன்றைத் தேர்ந்தெடுக்கவும்.</string>

@@ -5,7 +5,6 @@
     <string name="upgrade_feature_requires_pro">Yêu cầu BVM Pro</string>
     <string name="upgrade_prompt_title">Nâng cấp lên BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro mang lại kết quả tốt hơn, nhiều tính năng và tùy chọn hơn cho người dùng.</string>
-    <string name="upgrade_prompt_upgrade_action">Nâng cấp</string>
     <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
     <string name="upgrade_screen_title_template">Nâng cấp lên %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager không có quảng cáo và không bán dữ liệu người dùng. Công việc của tôi được tài trợ bởi bạn ❤️.</string>
@@ -56,7 +55,6 @@
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager không thể kết nối với Google Play. Google Play đã được cài đặt và cập nhật chưa? Bạn đã đăng nhập tài khoản Google chưa? Hãy thử xóa bộ nhớ cache của ứng dụng Google Play và khởi động lại thiết bị.</string>
     <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
     <string name="upgrades_gplay_not_installed_message">Không mở được Google Play. Có thể ứng dụng bị thiếu, bị tắt hoặc bị hạn chế trên thiết bị này.</string>
-    <string name="upgrades_no_purchases_found_check_account">Không tìm thấy giao dịch nào. Bạn có đang sử dụng đúng tài khoản không?</string>
     <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
     <string name="upgrade_screen_offers_title">Các tùy chọn nâng cấp</string>
     <string name="upgrade_screen_offers_body">Cả hai tùy chọn đều mở khóa các tính năng Pro giống hệt nhau — hãy chọn tùy chọn phù hợp với bạn.</string>

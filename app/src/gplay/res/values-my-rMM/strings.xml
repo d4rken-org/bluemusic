@@ -5,7 +5,6 @@
     <string name="upgrade_feature_requires_pro">BVM Pro လိုအပ်သည်</string>
     <string name="upgrade_prompt_title">BVM Pro သို့ အဆင့်မြှင့်ပါ</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro သည် ပိုမိုကောင်းမွန်သော ရလဒ်များ၊ ပိုမိုများပြားသော လုပ်ဆောင်ချက်များနှင့် ကျွမ်းကျင်အသုံးပြုသူများအတွက် ရွေးချယ်စရာများကို ပေးပါသည်။</string>
-    <string name="upgrade_prompt_upgrade_action">အဆင့်မြှင့်ပါ</string>
     <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
     <string name="upgrade_screen_title_template">%1$s သို့ အဆင့်မြှင့်တင်ပါ</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager တွင် ကြော်ငြာများမရှိပါ၊ အသုံးပြုသူဒေတာများကိုလည်း မရောင်းချပါ။ ကျွန်ုပ်၏အလုပ်ကို သင်မှ ငွေကြေးထောက်ပံ့ထားပါသည် ❤️။</string>
@@ -56,7 +55,6 @@
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager မှ Google Play သို့ ချိတ်ဆက်၍မရပါ။ Google Play ထည့်သွင်းပြီး နောက်ဆုံးဗားရှင်းဖြစ်ပါသလား? သင်၏ Google အကောင့် ဝင်ရောက်ထားပါသလား? Google Play အက်ပ်၏ cache ကိုရှင်းလင်းပြီး ကိရိယာကိုပြန်လည်စတင်ကြည့်ပါ။</string>
     <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
     <string name="upgrades_gplay_not_installed_message">Google Play ကို မဖွင့်နိုင်ခဲ့ပါ။ ယင်းသည် ဤကိရိယာ ပေါ်တွင် မရှိခြင်း၊ ပိတ်ထားခြင်း သို့မဟုတ် ကန့်သတ်ထားခြင်း ရှိနိုင်ပါသည်။</string>
-    <string name="upgrades_no_purchases_found_check_account">ဝယ်ယူမှုများ ရှာမတွေ့ပါ။ မှန်ကန်သော အကောင့်ကို အသုံးပြုနေပါသလား။</string>
     <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
     <string name="upgrade_screen_offers_title">အဆင့်မြှင့်တင်ခြင်းရွေးချယ်မှုများ</string>
     <string name="upgrade_screen_offers_body">ရွေးချယ်မှုနှစ်ခုစလုံးသည် အတူတူ Pro သွင်သတ္တာများကို သုံးစွဲနိုင်စေသည် — သင့်လျှောက်တွင်ရှိသည့်အရာ ရွေးချယ်ပါ။</string>

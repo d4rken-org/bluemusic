@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">V rámci aktualizace došlo ke změnám některých funkcí. Zkontrolujte prosím nastavení svého zařízení, abyste se ujistili, že je vše správně nakonfigurováno.</string>
     <string name="onboarding_rewrite_action">Pokračovat</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">Nebyla nalezena žádná nespravovaná zařízení</string>
     <string name="discover_all_devices_managed_msg">Všechna vaše spárovaná zařízení jsou pod kontrolou! Potřebujete nové?</string>
     <string name="discover_pair_new_device_action">Spárovat nové zařízení</string>
     <string name="discover_device_speaker_desc">Vlastní reproduktor telefonu. Jeho hlasitost se aplikuje, když se zvuk vrátí do telefonu, například poté, co se vaše zařízení Bluetooth odpojí.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Konfigurace zařízení</string>
-    <string name="devices_device_config_section_general_label">Obecné</string>
     <string name="devices_device_config_remove_device_label">Zapomenout zařízení</string>
-    <string name="devices_device_config_remove_device_desc">Zapomene zařízení z této aplikace a smaže jeho konfiguraci. Nezruší spárování zařízení.</string>
     <string name="devices_device_config_remove_device_action">Zapomenout</string>
     <string name="devices_device_config_remove_device_confirmation">Zapomenout %s ze spravovaných zařízení?</string>
-    <string name="devices_device_config_rename_device_label">Přejmenovat zařízení</string>
-    <string name="devices_device_config_rename_device_desc">Přejmenuje toto zařízení v této aplikaci a pokud možno i v systému.</string>
     <string name="devices_device_config_rename_device_action">Přejmenovat</string>
     <string name="devices_device_config_enabled_label">Povoleno</string>
     <string name="devices_device_config_enabled_desc">Reagovat na toto zařízení při připojení</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">Příkazy automatického přehrávání</string>
     <string name="devices_device_config_autoplay_keycodes_order">Pořadí příkazů</string>
     <string name="devices_device_config_autoplay_keycodes_label">Příkazy</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Nakonfigurujte, které příkazy se mají odeslat a v jakém pořadí</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">Žádné příkazy nenakonfigurovány</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">Přidat příkaz</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">Maximálně %1$d příkazů</string>
@@ -123,7 +117,6 @@
     <string name="cd_autoplay_keycode_move_up">Posunout nahoru</string>
     <string name="cd_autoplay_keycode_move_down">Posunout dolů</string>
     <string name="cd_autoplay_keycode_remove">Odebrat</string>
-    <string name="devices_device_config_section_volumes_label">Hlasitosti</string>
     <string name="devices_device_config_section_volume_label">Hlasitost</string>
     <string name="devices_device_config_alarm_volume_label">Hlasitost budíku</string>
     <string name="devices_device_config_alarm_volume_desc">Některé aplikace budíku používají místo toho hlasitost hudby.</string>
@@ -157,8 +150,6 @@
     <string name="devices_audio_stream_ring_label">Vyzvánění</string>
     <string name="devices_audio_stream_notification_label">Oznámení</string>
     <string name="devices_audio_stream_alarm_label">Budík</string>
-    <string name="devices_neverseen_label">Nikdy neviděno</string>
-    <string name="devices_state_connected_label">Připojeno</string>
     <string name="devices_last_connected_label">Naposledy připojeno: %s</string>
     <string name="devices_currently_connected_label">Aktuálně připojeno</string>
     <string name="devices_device_disabled_label">Zařízení zakázáno</string>
@@ -193,10 +184,7 @@
     <string name="devices_settings_desc">Nastavení, které ovlivňují všechna spravovaná zařízení.</string>
     <string name="label_app_enabled">Aplikace je povolena</string>
     <string name="description_app_enabled">Přepíná schopnost této aplikace reagovat na události hlasitosti a Bluetooth.</string>
-    <string name="label_visible_volume_adjustments">Viditelné změny</string>
-    <string name="description_visible_volume_adjustments">Zobrazí systémové okno hlasitosti, zatímco aplikace provádí změny.</string>
     <string name="label_volume_listener">Sledování změn</string>
-    <string name="description_volume_listener">Zůstaňte na pozoru, když je toto zařízení připojeno a uložte změny hlasitosti, které nepocházejí z této aplikace.</string>
     <string name="label_boot_restore">Obnovit při spuštění</string>
     <string name="description_boot_restore">Obnoví hlasitosti po spuštění/restartování, když je zařízení připojeno.</string>
     <!-- Settings/Support-->
@@ -206,24 +194,11 @@
     <string name="settings_support_wiki_description">Naučte se, jak efektivně používat BVM</string>
     <string name="settings_support_issue_tracker_description">Veřejný nástroj pro sledování hlášení chyb a požadavků na nové funkce.</string>
     <string name="settings_support_issue_tracker_label">Nástroj pro sledování chyb</string>
-    <string name="settings_support_debuglog_label">Log ladění</string>
     <string name="settings_support_debuglog_desc">Zaznamenávejte vše, co aplikace dělá do textového souboru, který můžete sdílet.</string>
-    <string name="settings_support_debuglog_recording_desc">Právě se zaznamenávají ladicí informace. Klepnutím zaznamenávání zastavíte.</string>
-    <string name="settings_support_debuglog_path">Cesta k logu: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">Velmi krátký záznam</string>
     <string name="settings_support_debuglog_short_recording_msg">Záznam byl velmi krátký. Logy ladění jsou záznamy, nikoli snímky — aby byl log užitečný, je třeba problém reprodukovat během aktivního záznamu.</string>
     <string name="settings_support_debuglog_short_recording_continue">Pokračovat v záznamu</string>
     <string name="settings_support_debuglog_short_recording_stop">Přesto ukončit</string>
-    <string name="settings_support_debuglog_folder_label">Složka logů ladění</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d relace používá %2$s</item>
-        <item quantity="few">%1$d relace používají %2$s</item>
-        <item quantity="many">%1$d relací používá %2$s</item>
-        <item quantity="other">%1$d relací používá %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Žádné uložené logy ladění</string>
-    <string name="settings_support_debuglog_folder_delete_title">Smazat všechny logy ladění?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Toto trvale smaže všechny uložené relace logu ladění.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Místo, kde se můžete scházet a klást otázky.</string>
     <!-- Settings/Acks-->
@@ -232,16 +207,12 @@
     <string name="settings_acks_translation_header">Překlad</string>
     <string name="settings_acks_translators_title">Překladatelé</string>
     <string name="settings_acks_translators_people">novas78@xda;Matthias (darken)</string>
-    <string name="settings_acks_translate_title">Přeložit BVM</string>
-    <string name="settings_acks_translate_desc">Pomozte přeložit BVM do svého jazyka</string>
     <string name="settings_acks_thanks_header">Poděkování</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Za podporu překladu open-source projektů</string>
     <string name="settings_licenses_label">Licence</string>
     <string name="settings_translation_label">Překlad</string>
     <string name="settings_translation_desc">Pomozte přeložit aplikaci do svého oblíbeného jazyka</string>
-    <string name="settings_sponsor_development_title">Sponzorovat vývoj</string>
-    <string name="settings_sponsor_development_summary">Staňte se patronem a umožněte další vývoj.</string>
     <string name="settings_privacy_policy_label">Zásady ochrany osobních údajů</string>
     <string name="settings_privacy_policy_desc">Zodpovědné nakládání s daty.</string>
     <string name="changelog_label">Seznam změn</string>
@@ -263,10 +234,8 @@
     <string name="backup_restore_success_restore">Obnovení dokončeno — obnoveno %1$d zařízení, přeskočeno %2$d.</string>
     <string name="backup_restore_version_warning">Tato záloha byla vytvořena ve verzi %1$s. Spouštíte verzi %2$s. Některá nastavení nemusí být obnovena správně.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">Oznámení o ladění</string>
     <string name="debug_log_consent_title">Log ladění</string>
     <string name="debug_log_consent_explanation">Tato funkce zaznamenává vše, co aplikace dělá do souboru, který lze sdílet. Vygenerovaný soubor obsahuje citlivé informace (např. názvy souborů a nainstalovaných aplikací). Sdílejte je pouze s důvěryhodnými stranami (např. s vývojáři, kteří řeší nějaký problém).</string>
-    <string name="debug_log_recording_progress">Zaznamenávání logu ladění</string>
     <string name="debug_log_record_action">Zaznamenat</string>
     <string name="debug_log_stop_action">Ukončit zaznamenávání</string>
     <string name="debug_log_screen_title">Záznam logu ladění</string>
@@ -283,7 +252,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">Zahodit</string>
     <string name="debug_log_screen_keep_action">Ponechat</string>
-    <string name="debug_log_compressing_label">Komprimování…</string>
     <string name="debug_log_file_label">Zaznamenaný log soubor</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Log odeslán?</string>
@@ -311,7 +279,6 @@
     <string name="contact_description_question_hint">Podrobně popište svůj dotaz.</string>
     <string name="contact_category_section_label">Kategorie</string>
     <string name="contact_debug_log_label">Log ladění</string>
-    <string name="contact_debug_log_select_hint">Vyberte log ladění jako přílohu</string>
     <string name="contact_debug_log_picker_hint">Připojte log ladění pro rychlejší diagnostiku problému.</string>
     <string name="contact_debug_log_picker_empty">Nebyly nalezeny žádné logy ladění. Nejdříve je zaznamenejte.</string>
     <string name="contact_expected_behavior_label">Očekávané chování</string>
@@ -327,82 +294,32 @@
     <string name="contact_welcome_msg">Všechny zprávy čtu sám a snažím se na ně odpovídat, ale protože na tom pracuji sám, může to chvíli trvat. Děkuji za trpělivost.</string>
     <string name="contact_footer_msg">Vaše zpráva bude odeslána e-mailem. Údaje o zařízení a nastavení se připojí automaticky.</string>
     <string name="contact_no_email_app_msg">V tomto zařízení nebyla nalezena žádná e-mailová aplikace.</string>
-    <string name="contact_attachment_missing_msg">Soubor logu ladění již neexistuje</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Uložené logy ladění</string>
     <string name="settings_support_stored_logs_desc">%1$d relací (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Žádné uložené logy ladění</string>
-    <string name="settings_support_stored_logs_delete_title">Smazat uložené logy?</string>
-    <string name="settings_support_stored_logs_delete_msg">Tím se odstraní všech %1$d uložených relací logu ladění.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Uložené logy ladění smazány</string>
-    <string name="label_bug_reports">Hlášení chyb</string>
-    <string name="description_bug_reports">Automatické hlášení chyb a selhání.</string>
     <string name="label_add_device">Přidat zařízení</string>
-    <string name="label_just_a_moment_please">Chviličku prosím.</string>
     <string name="label_notification_channel_status">Stav</string>
     <string name="label_notification_channel_setup">Vyžadováno nastavení</string>
     <string name="monitor_notification_starting">Spouštění…</string>
     <string name="action_set">Nastavit</string>
     <string name="action_cancel">Zrušit</string>
-    <string name="label_invalid_input">Neplatný vstup</string>
     <string name="action_reset">Resetovat</string>
     <string name="label_no_connected_devices">Není připojeno žádné zařízení</string>
-    <string name="label_status_idle">Neaktivní</string>
-    <string name="label_status_adjusting_volumes">Nastavení hlasitosti</string>
-    <string name="label_premium_version">Verze Premium</string>
     <string name="general_upgrade_action">Upgradovat</string>
     <string name="common_upgrade_required_label">Vyžadován upgrade</string>
-    <string name="label_premium_version_required">Je vyžadována verze Premium</string>
-    <string name="description_intro_purpose">Tato aplikace umožňuje zařízení Android zapamatovat si hlasitost různých zařízení Bluetooth.</string>
-    <string name="upgrade_benefit_unlimited_devices">Neomezené profily zařízení</string>
-    <string name="upgrade_benefit_connection_actions">Automatické přehrávání, spuštění aplikace a upozornění na připojení</string>
-    <string name="upgrade_benefit_theme_customization">Přizpůsobení motivu, stylu a barev</string>
-    <string name="upgrade_benefit_power_controls">Zámek hlasitosti a omezení rychlosti</string>
-    <string name="upgrade_benefit_support">Podpora nezávislého vývoje</string>
     <string name="upgrade_benefit_equalizer">• Ekvalizér pro jednotlivá zařízení (pro hudební aplikace s podporou systémového ekvalizéru)</string>
-    <string name="description_intro_tap_the_button">Začněte přidáním prvního zařízení.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth je vypnuto.</string>
     <string name="title_bluetooth_is_off">Bluetooth je vypnuto</string>
     <string name="action_enable_bluetooth">Zapnout Bluetooth</string>
     <string name="title_bluetooth_permission_required">Potřebné oprávnění pro Bluetooth</string>
     <string name="description_bluetooth_permission_required">Tato aplikace potřebuje oprávnění k použití Bluetooth, aby mohla spravovat hlasitost vašeho zařízení.</string>
     <string name="action_grant_permission">Udělit oprávnění</string>
-    <string name="label_status_listening_for_changes">Naslouchání změn hlasitosti</string>
     <string name="action_exit">Ukončit</string>
-    <string name="action_start">Spustit</string>
-    <string name="label_welcome">Vítejte</string>
-    <string name="description_intro_contact">Pokud máte nějaké dotazy nebo i nápad na novou funkci, neváhejte mě kontaktovat.</string>
-    <string name="label_translation">Překlad</string>
-    <string name="description_help_translate">Pomozte mi přeložit tuto aplikaci do ostatních jazyků.</string>
     <string name="label_device_speaker">Reproduktor zařízení</string>
-    <string name="label_keyevent_playpause">Přehrát/pozastavit</string>
-    <string name="label_keyevent_play">Přehrát</string>
-    <string name="label_keyevent_next">Další</string>
-    <string name="label_install_id">ID instalace</string>
     <string name="message_copied_to_clipboard">Zkopírováno do schránky</string>
-    <string name="label_thanks">Díky</string>
-    <string name="label_licenses">Licence</string>
-    <string name="description_ring_volume_additional_permission">Pro změnu hlasitosti vyzvánění je potřeba další oprávnění.</string>
-    <string name="label_missing_permissions">Chybějící oprávnění</string>
-    <string name="action_grant">Udělit</string>
-    <string name="label_advanced">Pokročilé</string>
-    <string name="label_exclude_health">Vyloučit zdravotní profily</string>
-    <string name="description_exclude_health">Některá zařízení Android zamrznou při vyhledávání profilů Bluetooth \'Zdravotní zařízení\' (HDP, 0x1400).</string>
-    <string name="label_exclude_gattserver">Vyloučit profily serveru GATT</string>
-    <string name="label_exclude_gatt">Vyloučit profily GATT</string>
-    <string name="description_exclude_gattserver">Neptat se na Bluetooth profily typu \'Obecný atribut\' serveru (GATT).</string>
-    <string name="description_exclude_gatt">Neptat se na Bluetooth profily typu \'Obecný atribut\' klienta (GATT).</string>
-    <string name="description_waiting_for_devicex">Čekám, až %s dokončí připojení</string>
-    <string name="action_undo">Zpět</string>
-    <string name="action_show">Zobrazit</string>
     <string name="action_dismiss">Zrušit</string>
-    <string name="action_fix">Opravit</string>
-    <string name="battery_optimizations_issue_description">Optimalizace baterie je pro tuto aplikaci povolena a může zabránit přijímání událostí Bluetooth. Vezměte v úvahu zakázání optimalizace, pokud máte potíže.</string>
     <string name="label_bluetooth_settings">Nastavení Bluetooth</string>
-    <string name="android10_applaunch_issue_description">Android 10 omezuje způsob spouštění aplikací na pozadí. Pro povolení spouštění aplikací po připojení Bluetooth zařízení udělte oprávnění „Vykreslit přes další aplikace“ (SYSTEM_ALERT_WINDOW).</string>
-    <string name="label_opensource">Zdrojový kód</string>
-    <string name="android13_notification_permission_description">Udělte této aplikaci oprávnění k odesílání oznámení. Tím se umožní zobrazování oznámení, když je tato aplikace aktivní a dochází k úpravám hlasitosti.</string>
-    <string name="privacy_policy_label">Zásady ochrany osobních údajů</string>
     <string name="managed_devices_empty_message">Není nakonfigurováno žádné zařízení Bluetooth.\nKlepnutím na tlačítko + přidejte své první zařízení.</string>
     <string name="label_pro_feature">Prémiová funkce</string>
     <plurals name="discover_device_limit_banner">
@@ -435,21 +352,15 @@
     <string name="review_app_review_action">Posoudit</string>
     <string name="review_app_dismiss_action">Možná později</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">Nákup zrušen</string>
-    <string name="error_iap_unavailable_message">Nákupy v aplikaci nejsou dostupné</string>
-    <string name="error_generic_message">Nastala chyba. Zkus to prosím znovu.</string>
-    <string name="error_iap_owned_message">Tuto položku již vlastníte</string>
     <string name="label_no_devices_title">Žádná zařízení</string>
     <string name="bluemusic_mascot_description">Ikona aplikace</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">Vybrat aplikace</string>
     <string name="devices_app_selection_search_hint">Hledat aplikace…</string>
-    <string name="devices_app_selection_currently_selected">Aktuálně vybrané</string>
     <string name="devices_app_selection_selected_count">%d aplikací vybráno</string>
     <string name="general_navigate_back_action">Navigovat zpět</string>
     <string name="general_reset_action">Resetovat</string>
     <string name="general_clear_action">Vyčistit</string>
-    <string name="general_save_action">Uložit</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">Uzamčeno</string>
     <string name="devices_indicator_awake">Aktivní</string>
@@ -459,7 +370,6 @@
     <string name="devices_indicator_limit">Limit</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Zesílení</string>
-    <string name="devices_indicator_launch">Spustit</string>
     <string name="devices_indicator_home">Domů</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Upozornění</string>

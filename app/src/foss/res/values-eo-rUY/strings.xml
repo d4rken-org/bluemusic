@@ -3,7 +3,6 @@
     <string name="upgrade_feature_requires_pro">Postulas BVM FOSS</string>
     <string name="upgrade_prompt_title">Plibonigi al BVM FOSS</string>
     <string name="upgrade_prompt_body">Malŝlosi pliajn funkciojn kaj fiĝiĝi patrono por subteni daŭran disvolvadon!</string>
-    <string name="upgrade_prompt_upgrade_action">Plibonigi</string>
     <string name="upgrade_screen_title">Plibonigi al BVM FOSS</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager ne havas reklamojn kaj ne vendas uzantoajn datumojn. Daŭra disvolvado estas ebligita nur de vi.</string>
     <string name="upgrade_screen_how_title">Kiel helpi</string>

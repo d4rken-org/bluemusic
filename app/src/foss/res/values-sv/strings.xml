@@ -3,7 +3,6 @@
     <string name="upgrade_feature_requires_pro">Kräver BVM FOSS</string>
     <string name="upgrade_prompt_title">Uppgradera till BVM FOSS</string>
     <string name="upgrade_prompt_body">Lås upp ytterligare funktioner och bli en beskyddare för att stödja fortsatt utveckling!</string>
-    <string name="upgrade_prompt_upgrade_action">Uppgradera</string>
     <string name="upgrade_screen_title">Uppgradera till BVM FOSS</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager har inga annonser och säljer inte användardata. Fortsätt utveckling är endast möjlig tack vare dig.</string>
     <string name="upgrade_screen_how_title">Hur du kan hjälpa</string>

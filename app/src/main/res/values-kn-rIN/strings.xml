@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">ಅಪ್‌ಡೇಟ್ ಸಮಯದಲ್ಲಿ ಕೆಲವು ವೈಶಿಷ್ಟ್ಯಗಳು ಬದಲಾಗಿವೆ. ಎಲ್ಲವೂ ಸರಿಯಾಗಿ ಹೊಂದಿಸಲಾಗಿದೆ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಲು ನಿಮ್ಮ ಸಾಧನದ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಪರಿಶೀಲಿಸಿ.</string>
     <string name="onboarding_rewrite_action">ಮುಂದುವರಿಸಿ</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">ನಿರ್ವಹಿಸದ ಸಾಧನಗಳು ಕಂಡುಬಂದಿಲ್ಲ</string>
     <string name="discover_all_devices_managed_msg">ನಿಮ್ಮ ಎಲ್ಲಾ ಜೋಡಿಯಾದ ಸಾಧನಗಳು ನಿರ್ವಹಿಸಲ್ಪಡುತ್ತಿವೆ! ಹೊಸದು ಬೇಕೇ?</string>
     <string name="discover_pair_new_device_action">ಹೊಸ ಸಾಧನ ಜೋಡಿಸಿ</string>
     <string name="discover_device_speaker_desc">ಈ ಫೋನ್‌ನ ಸ್ವಂತ ಸ್ಪೀಕರ್. ಆಡಿಯೋ ಫೋನ್‌ಗೆ ಮತ್ತೆ ಬದಲಾಗಿದಾಗ ಅದರ ವಾಲ್ಯೂಮ್‌ಗಳನ್ನು ಅನ್ವಯ ಮಾಡಲಾಗುತ್ತದೆ, ಉದಾ. ನಿಮ್ಮ Bluetooth ಸಾಧನ ಸಂಪರ್ಕ ಕಡಿತವಾದ ನಂತರ.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">ಸಾಧನ ಅನುಸ್ಥಾಪನೆ</string>
-    <string name="devices_device_config_section_general_label">ಸಾಮಾನ್ಯ</string>
     <string name="devices_device_config_remove_device_label">ಸಾಧನ ಮರೆಯಿ</string>
-    <string name="devices_device_config_remove_device_desc">ಈ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ಸಾಧನವನ್ನು ಮರೆತು ಅದರ ಅನುಸ್ಥಾಪನೆ ಅಳಿಸುತ್ತದೆ. ಇದು ಸಾಧನವನ್ನು ಜೋಡಿ ತೆಗೆದುಕೊಳ್ಳಲಾರದು.</string>
     <string name="devices_device_config_remove_device_action">ಮರೆಯಿ</string>
     <string name="devices_device_config_remove_device_confirmation">ನಿರ್ವಹಿತ ಸಾಧನಗಳಿಂದ %s ಅನ್ನು ಮರೆಯಬೇಕೇ?</string>
-    <string name="devices_device_config_rename_device_label">ಸಾಧನ ಮರುನಾಮಕರಣ</string>
-    <string name="devices_device_config_rename_device_desc">ಈ ಅಪ್ಲಿಕೇಶನ್‌ನಲ್ಲಿ ಈ ಸಾಧನವನ್ನು ಮರುನಾಮಕರಿಸಿ, ಮತ್ತು ಸಾಧ್ಯವಿದ್ದಲ್ಲಿ ಸಿಸ್ಟಮ್‌ನಲ್ಲಿಯೂ ಮರುನಾಮಕರಿಸಿ.</string>
     <string name="devices_device_config_rename_device_action">ಮರುನಾಮಕರಿಸಿ</string>
     <string name="devices_device_config_enabled_label">ಸಕ್ರಿಯವಾಗಿದೆ</string>
     <string name="devices_device_config_enabled_desc">ಜೋಡಿಗೊಂಡಾಗ ಈ ಸಾಧನಕ್ಕೆ ಪ್ರತಿಕ್ರಿಯಿಸಿ</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">ಆಟೋಪ್ಲೇ ಆಜ್ಞೆಗಳು</string>
     <string name="devices_device_config_autoplay_keycodes_order">ಆಜ್ಞೆ ಅನುಕ್ರಮ</string>
     <string name="devices_device_config_autoplay_keycodes_label">ಆಜ್ಞೆಗಳು</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">ಯಾವ ಆಜ್ಞೆಗಳನ್ನು ಕಳುಹಿಸಬೇಕು ಮತ್ತು ಯಾವ ಕ್ರಮದಲ್ಲಿ ಎಂದು ಕಾನ್ಫಿಗರ್ ಮಾಡಿ</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">ಯಾವುದೇ ಆಜ್ಞೆಗಳು ಕಾನ್ಫಿಗರ್ ಆಗಿಲ್ಲ</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">ಆಜ್ಞೆ ಸೇರಿಸಿ</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">ಗರಿಷ್ಠ %1$d ಆಜ್ಞೆಗಳು</string>
@@ -121,7 +115,6 @@
     <string name="cd_autoplay_keycode_move_up">ಮೇಲೆ ಸರಿಸಿ</string>
     <string name="cd_autoplay_keycode_move_down">ಕೆಳಗೆ ಸರಿಸಿ</string>
     <string name="cd_autoplay_keycode_remove">ತೆಗೆದುಹಾಕಿ</string>
-    <string name="devices_device_config_section_volumes_label">ವಾಲ್ಯೂಮ್ಗಳು</string>
     <string name="devices_device_config_section_volume_label">ವಾಲ್ಯೂಮ್</string>
     <string name="devices_device_config_alarm_volume_label">ಅಲಾರ್ಮ್ ವಾಲ್ಯೂಮ್</string>
     <string name="devices_device_config_alarm_volume_desc">ಕೆಲವು ಅಲಾರ್ಮ್ ಅಪ್ಲಿಗಳು ಬದಲಾಗಿ ಮ್ಯೂಸಿಕ್ ವಾಲ್ಯೂಮ್ ಬಳಸುತ್ತವೆ.</string>
@@ -155,8 +148,6 @@
     <string name="devices_audio_stream_ring_label">ರಿಂಗ್</string>
     <string name="devices_audio_stream_notification_label">ಅಧಿಸೂಚನೆ</string>
     <string name="devices_audio_stream_alarm_label">ಅಲಾರ್ಮ್</string>
-    <string name="devices_neverseen_label">ಎಂದೂ ಕಂಡಿಲ್ಲ</string>
-    <string name="devices_state_connected_label">ಜೋಡಿಗೊಂಡಿದೆ</string>
     <string name="devices_last_connected_label">ಕೊನೆಯಾಗಿ ಜೋಡಿಗೊಂಡದ್ದು: %s</string>
     <string name="devices_currently_connected_label">ಪ್ರಸ್ತುತ ಜೋಡಿಗೊಂಡಿದೆ</string>
     <string name="devices_device_disabled_label">ಸಾಧನ ನಿಷ್ಕ್ರಿಯ</string>
@@ -191,10 +182,7 @@
     <string name="devices_settings_desc">ಎಲ್ಲಾ ನಿರ್ವಹಿತ ಸಾಧನಗಳನ್ನು ಪರಿಣಾಮಿಸುವ ಸೆಟ್ಟಿಂಗ್‌ಗಳು.</string>
     <string name="label_app_enabled">ಅಪ್ ಸಕ್ರಿಯ</string>
     <string name="description_app_enabled">ವಾಲ್ಯೂಮ್ ಮತ್ತು Bluetooth ಘಟನೆಗಳಕ್ಕೆ ಪ್ರತಿಕ್ರಿಯಿಸುವ ಅಪ್ನ ಸಾಮರ್ಥ್ಯವನ್ನು ಟೊಗ್‌ಗ್ ಮಾಡುತ್ತದೆ.</string>
-    <string name="label_visible_volume_adjustments">ದೃಶ್ಯ ಸರಿಹೊಂದಿಕೆಗಳು</string>
-    <string name="description_visible_volume_adjustments">ಈ ಅಪ್ಲಿಕೇಶನ್ ಸರಿಹೊಂದಿಕೆ ಮಾಡುವಾಗ ಸಿಸ್ಟಮ್ನ ವಾಲ್ಯೂಮ್ ವಿಂಡೋ ತೋರಿಸಿ.</string>
     <string name="label_volume_listener">ಬದಲಾವಣೆಗಳನ್ನು ಗಮನಿಸಿ</string>
-    <string name="description_volume_listener">ಎಂದಾದರೂ ಸಾಧನ ಜೋಡಿಗೊಂಡಿರುವಾಗ ಸಕ್ರಿಯವಾಗಿರಿ ಮತ್ತು ಈ ಅಪ್ಲಿಕೇಶನ್ ಮಾಡ್ಯದ ವಾಲ್ಯೂಮ್ ಬದಲಾವಣೆಗಳನ್ನು ಉಳಿಸಿಕೊಳ್ಳಿ.</string>
     <string name="label_boot_restore">ಬೂಟ್ ಮೇಲೆ ಪುನರ್ಸ್ಥಾಪಿಸಿ</string>
     <string name="description_boot_restore">Bluetooth ಸಾಧನ ಜೋಡಿಗೊಂಡಿದ್ದರೆ ಬೂಟ್/ರಿಬೂಟ್ ನಂತರ ವಾಲ್ಯೂಮ್ ಪುನರ್ಸ್ಥಾಪಿಸಿ.</string>
     <!-- Settings/Support-->
@@ -204,22 +192,11 @@
     <string name="settings_support_wiki_description">BVM ಅನ್ನು ಪರಿಣಾಮಕಾರಿಯಾಗಿ ಬಳಸುವುದು ಹೇಗೆ ಎಂದು ತಿಳಿಯಿ</string>
     <string name="settings_support_issue_tracker_description">ಬಗ್ ವರದಿಗಳು ಮತ್ತು ಫೀಚರ್ ವಿನಂತಿಗಳಗಾಗಿ ಸಾರ್ವಜನಿಕ ಸಮಸ್ಯೆ ನಿರ್ವಾಹಕ.</string>
     <string name="settings_support_issue_tracker_label">ಸಮಸ್ಯೆ ಟ್ರ್ಯಾಕರ್</string>
-    <string name="settings_support_debuglog_label">ಡೀಬಗ್ ಲಾಗ್</string>
     <string name="settings_support_debuglog_desc">ಅಪ್ಲಿಕೇಶನ್ ಮಾಡುವ ಎಲ್ಲವನ್ನೂ ನೀವು ಹಂಚಿಕೊಳ್ಳಬಹುದಾದ ಪಠ್ಯ ಫೈಲ್‌ನಲ್ಲಿ ರೆಕಾರ್ಡ್ ಮಾಡಿ.</string>
-    <string name="settings_support_debuglog_recording_desc">ಪ್ರಸ್ತುತ ಡಿಬಗ್ ಮಾಹಿತಿ ರೆಕಾರ್ಡಿಂಗ್ ಮಾಡುತ್ತಿದೆ. ರೆಕಾರ್ಡಿಂಗ್ ನಿಲ್ಲಿಸಲು ತಾಟಿ.</string>
-    <string name="settings_support_debuglog_path">ಲಾಗ್ ಮಾರ್ಗ: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">ತುಂಬಾ ಕಿರು ರೆಕಾರ್ಡಿಂಗ್</string>
     <string name="settings_support_debuglog_short_recording_msg">ಅದು ತುಂಬಾ ಕಿರು ರೆಕಾರ್ಡಿಂಗ್ ಆಗಿತ್ತು. ಡಿಬಗ್ ಲಾಗ್ಗಳು ರೆಕಾರ್ಡಿಂಗ್ಗಳು, ಸ್ನ್ಯಾಪ್ಶರ್ಗಳಲ್ಲ - ರೆಕಾರ್ಡಿಂಗ್ ಸಕ್ರಿಯವಾಗಿರುವಾಗ ಸಮಸ್ಯೆ ಪುನರ್ ಉತ್ಪನ್ನಿಸಿ ಲಾಗ್ ಬಳಕಕ್ಕೆ ಬರಲಿ.</string>
     <string name="settings_support_debuglog_short_recording_continue">ರೆಕಾರ್ಡಿಂಗ್ ಮುಂದುವರಿಸಿ</string>
     <string name="settings_support_debuglog_short_recording_stop">ಹಾಗೆಯೇ ನಿಲ್ಲಿಸಿ</string>
-    <string name="settings_support_debuglog_folder_label">ಡಿಬಗ್ ಲಮಮು</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d ಸೆಷನ್ %2$s ಬಳಸಕೆ</item>
-        <item quantity="other">%1$d ಸೆಷನ್ಗಳು %2$s ಬಳಸಕೆ</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">ಯಾವುದೇ ಡಿಬಗ್ ಲಾಗ್ ಸಂಗ್ರಿಸಲಾಗಿಲ್ಲ</string>
-    <string name="settings_support_debuglog_folder_delete_title">ಎಲ್ಲಾ ಡಿಬಗ್ ಲಾಗ್ಗಳನ್ನು ಅಳಿಸಬೇಕೇ?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">ಇದು ಎಲ್ಲಾ ಸಂಗ್ರಿಸಲಾದ ಡಿಬಗ್ ಲಾಗ್ ಸೆಷನ್ಗಳನ್ನು ಶಾಶ್ವತವಾಗಿ ಅಳಿಸುತ್ತದೆ.</string>
     <string name="settings_support_discord_label">ಡಿಸ್ಕಾರ್ಡ್</string>
     <string name="settings_support_discord_description">ಹ್ಯಾಂಗ್ ಔಟ್ ಮಾಡಲು ಮತ್ತು ಪ್ರಶ್ನೆಗಳನ್ನು ಕೇಳಲು ಒಂದು ಸ್ಥಳ.</string>
     <!-- Settings/Acks-->
@@ -228,16 +205,12 @@
     <string name="settings_acks_translation_header">ಅನುವಾದ</string>
     <string name="settings_acks_translators_title">ಅನುವಾದಕರು</string>
     <string name="settings_acks_translators_people">Person1;Person2(optional@email.com)</string>
-    <string name="settings_acks_translate_title">BVM ತರ್ಜುಮೆ ಮಾಡಿ</string>
-    <string name="settings_acks_translate_desc">BVM ಅನ್ನು ನಿಮ್ಮ ಭಾಷೆಗೆ ತರ್ಜುಮೆ ಮಾಡಲು ಸಹಾಯಿಸಿ</string>
     <string name="settings_acks_thanks_header">ಧನ್ಯವಾದ</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">ಓಪನ್-ಸೋರ್ಸ್ ಯೋಜನೆಗಳ ತರ್ಜುಮೆ ಬೆಂಬಲಿಸಿದಕ್ಕಾಗಿ</string>
     <string name="settings_licenses_label">ಪರವಾನಗಿಗಳು</string>
     <string name="settings_translation_label">ಅನುವಾದ</string>
     <string name="settings_translation_desc">ಅಪ್ಅನ್ನು ನಿಮ್ಮ ಪ್ರಿಯ ಭಾಷೆಗೆ ತರ್ಜುಮೆ ಮಾಡಲು ಸಹಾಯಿಸಿ</string>
-    <string name="settings_sponsor_development_title">ಅಭಿವೃದ್ಧಿ ಪ್ರಾಯೋಜಕ</string>
-    <string name="settings_sponsor_development_summary">ಪೃಷ್ಟ೛ಪೋಷಕರಾಗಿ ಸೇರಿ ನಿರಂತರ ಅಭಿವೃದ್ಧಿ ಸಾಧ್ಯವಾಗಿಸಿ.</string>
     <string name="settings_privacy_policy_label">ಗೌಪ್ಯತೆ ನೀತಿ</string>
     <string name="settings_privacy_policy_desc">ಡೇಟಾವನ್ನು ಜವಾಬ್ದಾರಿಯುತವಾಗಿ ನಿರ್ವಹಿಸುವುದು.</string>
     <string name="changelog_label">ಬದಲಾವಣೆ ಲಾಗ್</string>
@@ -259,10 +232,8 @@
     <string name="backup_restore_success_restore">ಮರುಸ್ಥಾಪನೆ ಪೂರ್ಣಗೊಂಡಿದೆ — %1$d ಸಾಧನಗಳು ಮರುಸ್ಥಾಪಿಸಲಾಗಿದೆ, %2$d ಬಿಟ್ಟುಬಿಡಲಾಗಿದೆ.</string>
     <string name="backup_restore_version_warning">ಈ ಬ್ಯಾಕಪ್ ಆವೃತ್ತಿ %1$s ನೊಂದಿಗೆ ರಚಿಸಲಾಗಿದೆ. ನೀವು %2$s ಚಾಲಿಸುತ್ತಿದ್ದೀರಿ. ಕೆಲವು ಸೆಟ್ಟಿಂಗ್‌ಗಳು ಸರಿಯಾಗಿ ಮರುಸ್ಥಾಪನೆ ಆಗದಿರಬಹುದು.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">ಡೀಬಗ್ ಅಧಿಸೂಚನೆಗಳು</string>
     <string name="debug_log_consent_title">ಡೀಬಗ್ ಲಾಗ್</string>
     <string name="debug_log_consent_explanation">ಈ ವೈಶಿಷ್ಟ್ಯ ಅಪ್ಲಿಕೇಶನ್ ಮಾಡುತ್ತಿರುವ ಪ್ರತಿಯನ್ನು ಹಂಚಿಕೊಳ್ಳಲಾಗುವ ಫೈಲಿಗೆ ರೆಕಾರ್ಡ್ ಮಾಡುತ್ತದೆ. ಉತ್ಪನ್ನವಾದ ಫೈಲು ಸಂವೇದನಶೀಲ ಮಾಹಿತಿಯನ್ನು ಹೊಂದಿಸಿದೆ (ಉದಾ. ಫೈಲ್ ಹೆಸರುಗಳು ಮತ್ತು ಸ್ಥಾಪಿಸಲಾದ ಅಪ್ಲಿಗಳು). ಇದನ್ನು ವಿಶ್ವಾಸಾರ್ಹ ಪಕ್ಷಗಳೊಂದಿಗೆ ಮಾತ್ರ ಹಂಚಿಕೊಳ್ಳಿ.</string>
-    <string name="debug_log_recording_progress">ಡೀಬಗ್ ಲಾಗ್ ರೆಕಾರ್ಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ</string>
     <string name="debug_log_record_action">ರೆಕಾರ್ಡ್</string>
     <string name="debug_log_stop_action">ರೆಕಾರ್ಡಿಂಗ್ ನಿಲ್ಲಿಸಿ</string>
     <string name="debug_log_screen_title">ಡಿಬಗ್ ಲಾಗ್ ರೆಕಾರ್ಡರ್</string>
@@ -277,7 +248,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">ಬಿಟಿ</string>
     <string name="debug_log_screen_keep_action">ಇಟ್ಟುಕೊ</string>
-    <string name="debug_log_compressing_label">ಸಂಕುಚಿಸಲಾಗುತ್ತಿದೆ…</string>
     <string name="debug_log_file_label">ರೆಕಾರ್ಡ್ ಮಾಡಿದ ಲಾಗ್ ಫೈಲ್</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">ಲಾಗ್ ಕಳುಹಿಸಲಾಯಿತೇ?</string>
@@ -305,7 +275,6 @@
     <string name="contact_description_question_hint">ನಿಮ್ಮ ಪ್ರಶ್ನೆಯನ್ನು ವಿಸ್ತೌರವಾಗಿ ವಿವರಿಸಿ.</string>
     <string name="contact_category_section_label">ವರ್ಗ</string>
     <string name="contact_debug_log_label">ಡೀಬಗ್ ಲಾಗ್</string>
-    <string name="contact_debug_log_select_hint">ಲಗತ್ತಿಸಲು ಡಿಬಗ್ ಲಾಗ್ ಆಯ್ಕೆ ಮಾಡಿ</string>
     <string name="contact_debug_log_picker_hint">ಸಮಸ್ಯೆ ವೇಗವಾಗಿ ಪತ್ತೆಹಚ್ಚಲು ಡಿಬಗ್ ಲಾಗ್ ಲಗತ್ತಿಸಿ.</string>
     <string name="contact_debug_log_picker_empty">ಯಾವುದೇ ಡಿಬಗ್ ಲಾಗ್ ಲಭ್ಯವಿಲ್ಲ. ಮೊದಲು ಒಂದನ್ನು ರೆಕಾರ್ಡ್ ಮಾಡಿ.</string>
     <string name="contact_expected_behavior_label">ಎಂದು ನಿರೀಕ್ಷಿಸಲಾಗಿತ್ತು</string>
@@ -319,82 +288,32 @@
     <string name="contact_welcome_msg">ಪ್ರತಿಯೊಂದು ಸಂದೇಶವನ್ನು ನಾನು ಸ್ವಯಂ ಓದುತ್ತೇನೆ ಮತ್ತು ಪ್ರತಿಕ್ರಿಯಿಸಲು ಪ್ರಯತ್ನಿಸುತ್ತೇನೆ, ಆದರೆ ಏಕಲಾ ಕೆಲಸ ಮಾಡುವುದರಿಂದ ಸ್ವಲ್ಪ ಸಮಯ ಕಳೆಯಬಹುದು. ತಾಳ್ಮೆಗಾಗಿ ಧನ್ಯವಾದ.</string>
     <string name="contact_footer_msg">ನಿಮ್ಮ ಸಂದೇಶ ಇಮೇಲ್ ಮೂಲಕ ಕಳುಹಿಸಲಾಗುತ್ತದೆ. ಸಾಧನ ಮತ್ತು ಸೆಟ್ಟಪ್ ಮಾಹಿತಿ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಲಗತ್ತಿಸಲಾಗುತ್ತದೆ.</string>
     <string name="contact_no_email_app_msg">ಈ ಸಾಧನದಲ್ಲಿ ಇಮೇಲ್ ಅಪ್ ಕಂಡುಬಂದಿಲ್ಲ.</string>
-    <string name="contact_attachment_missing_msg">ಡಿಬಗ್ ಲಮಮು ಫೈಲು ಇನ್ನು ಅಸ್ತಿತ್ವದಲ್ಲಿಲ್ಲ</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">ಸಂಗ್ರಿಸಲಾದ ಡಿಬಗ್ ಲಾಗ್ಗಳು</string>
     <string name="settings_support_stored_logs_desc">%1$d ಸೆಷನ್ಗಳು (%2$s)</string>
     <string name="settings_support_stored_logs_empty">ಸಂಗ್ರಿಸಲಾದ ಡಿಬಗ್ ಲಾಗ್ಗಳಿಲ್ಲ</string>
-    <string name="settings_support_stored_logs_delete_title">ಸಂಗ್ರಿಸಲಾದ ಲಮಾಮುಗಳನ್ನು ಅಳಿಸಬೇಕೇ?</string>
-    <string name="settings_support_stored_logs_delete_msg">ಇದು ಎಲ್ಲಾ %1$d ಸಂಗ್ರಿಸಲಾದ ಡಿಬಗ್ ಲಮಾಮು ಸೆಷನ್ಗಳನ್ನು ಅಳಿಸುತ್ತದೆ.</string>
-    <string name="settings_support_stored_logs_deleted_msg">ಸಂಗ್ರಿಸಲಾದ ಡಿಬಗ್ ಲಮಾಮುಗಳು ಅಳಿಸಲಾಯಿತು</string>
-    <string name="label_bug_reports">ಬಗ್ ವರದಿಗಳು</string>
-    <string name="description_bug_reports">ಸ್ವಯಂಚಾಲಿತ ಬಗ್ ಮತ್ತು ಕ್ರ್ಯಾಶ್ ವರದಿ.</string>
     <string name="label_add_device">ಸಾಧನ ಸೇರಿಸಿ</string>
-    <string name="label_just_a_moment_please">ಒಂದು ಕ್ಷಣ, ದಯವಿಟ್ಟು.</string>
     <string name="label_notification_channel_status">ಸ್ಥಿತಿ</string>
     <string name="label_notification_channel_setup">ಸೆಟಪ್ ಅಗತ್ಯ</string>
     <string name="monitor_notification_starting">ಪ್ರಾರಂಭಿಸುತ್ತಿದೆ…</string>
     <string name="action_set">ಹೊಂದಿಸಿ</string>
     <string name="action_cancel">ರದ್ದುಮಾಡಿ</string>
-    <string name="label_invalid_input">ಅಮಾನ್ಯ ಇನ್ಪುಟ್</string>
     <string name="action_reset">ಮರುಹೊಂದಿಸಿ</string>
     <string name="label_no_connected_devices">ಯಾವುದೇ ಸಾಧನ ಜೋಡಿಗೊಂಡಿಲ್ಲ</string>
-    <string name="label_status_idle">ನಿಷ್ಕ್ರಿಯ</string>
-    <string name="label_status_adjusting_volumes">ವಾಲ್ಯೂಮ್ ಸರಿಹೊಂದಿಸಲಾಗುತ್ತಿದೆ</string>
-    <string name="label_premium_version">ಪ್ರಿಮಿಯಮ್ ಆವೃತ್ತಿ</string>
     <string name="general_upgrade_action">ಅಪ್‌ಗ್ರೇಡ್ ಮಾಡಿ</string>
     <string name="common_upgrade_required_label">ಅಪ್‌ಗ್ರೇಡ್ ಅಗತ್ಯವಿದೆ</string>
-    <string name="label_premium_version_required">ಪ್ರಿಮಿಯಮ್ ಆವೃತ್ತಿ ಅಗತ್ಯ</string>
-    <string name="description_intro_purpose">ಈ ಅಪ್ಲಿಕೇಶನ್ ನಿಮ್ಮ Android ಸಾಧನಕ್ಕೆ ವಿವಿಧ Bluetooth ಸಾಧನಗಳ ವಾಲ್ಯೂಮ್ ನೆನಪಿಟ್ಟುಕೊಳ್ಳಲು ಅನುಮತಿಸುತ್ತದೆ.</string>
-    <string name="upgrade_benefit_unlimited_devices">ಅಪರಿಮಿತ ಸಾಧನ ಪ್ರೊಫೈಲ್‌ಗಳು</string>
-    <string name="upgrade_benefit_connection_actions">ಸ್ವಯಂಪ್ಲೇ, ಅಪ್ಲಿಕೇಶನ್ ಲಾಂಚ್ ಮತ್ತು ಸಂಪರ್ಕ ಎಚ್ಚರಿಕೆಗಳು</string>
-    <string name="upgrade_benefit_theme_customization">ಥೀಮ್, ಶೈಲಿ ಮತ್ತು ಬಣ್ಣ ಕಸ್ಟಮೈಸೇಶನ್</string>
-    <string name="upgrade_benefit_power_controls">ವಾಲ್ಯೂಮ್ ಲಾಕ್ ಮತ್ತು ದರ ಮಿತಿ</string>
-    <string name="upgrade_benefit_support">ಸ್ವತಂತ್ರ ಅಭಿವೃದ್ಧಿಯನ್ನು ಬೆಂಬಲಿಸಿ</string>
     <string name="upgrade_benefit_equalizer">• ಪ್ರತಿ-ಸಾಧನ ಸಮಾನಕಾರೀ (ವ್ಯವಸ್ಥೆಯ ಸಮಾನಕಾರೀ ಬೆಂಬಲದೊಂದಿಗೆ ಸಂಗೀತ ಅಪ್ಲಿಕೇಶನ್‌ಗಳಿಗೆ)</string>
-    <string name="description_intro_tap_the_button">ನಿಮ್ಮ ಮೊದಲ ಸಾಧನ ಸೇರಿಸುವೊದರಿಂದ ಪ್ರಾರಂಭಿಸಿ.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ.</string>
     <string name="title_bluetooth_is_off">Bluetooth ಆಫ್ ಆಗಿದೆ</string>
     <string name="action_enable_bluetooth">Bluetooth ಸಕ್ರಿಯಮಾಡಿ</string>
     <string name="title_bluetooth_permission_required">Bluetooth ಅನುಮತಿ ಅಗತ್ಯ</string>
     <string name="description_bluetooth_permission_required">ನಿಮ್ಮ ಸಾಧನ ವಾಲ್ಯೂಮ್ ನಿರ್ವಹಿಸಲು ಈ ಅಪ್ಗೆ Bluetooth ಅನುಮತಿ ಬೇಕು.</string>
     <string name="action_grant_permission">ಅನುಮತಿ ನೀಡಿ</string>
-    <string name="label_status_listening_for_changes">ವಾಲ್ಯೂಮ್ ಬದಲಾವಣೆಗಳನ್ನು ಕೇಳುತ್ತಿದೆ</string>
     <string name="action_exit">ನಿಂಗಡಿ</string>
-    <string name="action_start">ಪ್ರಾರಂಭಿಸಿ</string>
-    <string name="label_welcome">ಸ್ವಾಗತ</string>
-    <string name="description_intro_contact">ನಿಮ್ಮಗೆ ಪ್ರಶ್ನೆಗಳು ಅಥವಾ ಹೊಸ ವೈಶಿಷ್ಟ್ಯಕ್ಕೆ ಆಲೋಚನೆ ಇದ್ದರೆ ನನ್ನನ್ನು ಸಂಪರ್ಕಿಸಲು ಹಿಂಜಿಕೊಳ್ಳಬೇಡಿ.</string>
-    <string name="label_translation">ಅನುವಾದ</string>
-    <string name="description_help_translate">ಈ ಅಪ್ಅನ್ನು ಇತರ ಭಾಷೆಗಳಲ್ಲಿ ಲಭ್ಯವಾಗಿಸಲು ನನಗೆ ಸಹಾಯಿಸಿ.</string>
     <string name="label_device_speaker">ಸಾಧನ ಸ್ಪೀಕರ್</string>
-    <string name="label_keyevent_playpause">ಪ್ಲೇ-ಪಾಸ್</string>
-    <string name="label_keyevent_play">ಪ್ಲೇ</string>
-    <string name="label_keyevent_next">ಮುಂದಿನದು</string>
-    <string name="label_install_id">ಇನ್‌ಸ್ಟಾಲ್ ಐಡಿ</string>
     <string name="message_copied_to_clipboard">ಕ್ಲಿಪ್ಬೋರ್ಡ್‌ಗೆ ನಕಲಿಸಲಾಯಿತು</string>
-    <string name="label_thanks">ಧನ್ಯವಾದ</string>
-    <string name="label_licenses">ಪರವಾನಗಿಗಳು</string>
-    <string name="description_ring_volume_additional_permission">ರಿಂಗ್ ವಾಲ್ಯೂಮ್ ಬದಲಾಯಿಸಲು ಹೆಚ್ಚಿನ ಅನುಮತಿಗಳು ಅಗತ್ಯ.</string>
-    <string name="label_missing_permissions">ಅನುಮತಿಗಳು ಇಲ್ಲ</string>
-    <string name="action_grant">ನೀಡಿ</string>
-    <string name="label_advanced">ಸುಧಾರಿತ</string>
-    <string name="label_exclude_health">ಆರೋಗ್ಯ ಪ್ರೋಫೈಲ್ಗಳನ್ನು ಹೋಳಿಸಿ</string>
-    <string name="description_exclude_health">ಕೆಲವು Android ಸಾಧನಗಳು \'Health Device\' Bluetooth ಪ್ರೋಫೈಲ್ಗಳನ್ನು (HDP, 0x1400) ಬೆದಕಿದಾಗ ನಿಲ್ಲಿಬಿಡುತ್ತವೆ.</string>
-    <string name="label_exclude_gattserver">GATT ಸರ್ವರ್ ಪ್ರೋಫೈಲ್ಗಳನ್ನು ಹೋಳಿಸಿ</string>
-    <string name="label_exclude_gatt">GATT ಪ್ರೋಫೈಲ್ಗಳನ್ನು ಹೋಳಿಸಿ</string>
-    <string name="description_exclude_gattserver">\'Generic Attribute\' (GATT) ಸರ್ವರ್ ಪ್ರಕಾರದ Bluetooth ಪ್ರೋಫೈಲ್ಗಳನ್ನು ಅನ್ವೇಷಿಸಬೇಡಿ.</string>
-    <string name="description_exclude_gatt">\'Generic Attribute\' (GATT) ಕ್ಲೈಂಟ್ ಪ್ರಕಾರದ Bluetooth ಪ್ರೋಫೈಲ್ಗಳನ್ನು ಅನ್ವೇಷಿಸಬೇಡಿ.</string>
-    <string name="description_waiting_for_devicex">%s ಸಂಪರ್ಕವನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಕಾಯುತ್ತಿದೆ</string>
-    <string name="action_undo">ರದ್ದುಮಾಡು</string>
-    <string name="action_show">ತೋರಿಸು</string>
     <string name="action_dismiss">ವಜಾ ಮಾಡು</string>
-    <string name="action_fix">ಸರಿಪಡಿಸು</string>
-    <string name="battery_optimizations_issue_description">ಈ ಅಪ್ಲಿಕೇಶನ್‌ಗೆ ಬ್ಯಾಟರಿ ಆಪ್ಟಿಮೈಸೇಶನ್‌ಗಳು ಸಕ್ರಿಯವಾಗಿವೆ ಮತ್ತು ಇದು ಬ್ಲೂಟೂತ್ ಈವೆಂಟ್‌ಗಳನ್ನು ಸ್ವೀಕರಿಸುವುದರಿಂದ ತಡೆಯಬಹುದು</string>
     <string name="label_bluetooth_settings">ಬ್ಲೂಟೂತ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
-    <string name="android10_applaunch_issue_description">Android 10 ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಹಿನ್ನೆಲೆಯಿಂದ ಹೇಗೆ ಪ್ರಾರಂಭಿಸಬಹುದು ಎಂಬುದನ್ನು ನಿರ್ಬಂಧಿಸುತ್ತದೆ</string>
-    <string name="label_opensource">ಮೂಲ ಕೋಡ್</string>
-    <string name="android13_notification_permission_description">ಅಧಿಸೂಚನೆಗಳನ್ನು ಪೋಸ್ಟ್ ಮಾಡಲು ಈ ಅಪ್ಲಿಕೇಶನ್‌ಗೆ ಅನುಮತಿ ನೀಡಿ</string>
-    <string name="privacy_policy_label">ಗೌಪ್ಯತೆ ನೀತಿ</string>
     <string name="managed_devices_empty_message">ಯಾವುದೇ ಬ್ಲೂಟೂತ್ ಸಾಧನಗಳು ಕಾನ್ಫಿಗರ್ ಮಾಡಾಗಿಲ್ಲ.
 ನಿಮ್ಮ ಮೊದಲ ಸಾಧನವನ್ನು ಸೇರಿಸಲು + ಬಟನನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ</string>
     <string name="label_pro_feature">ಪ್ರಿಮಿಯಂ ವೈಶಿಷ್ಟ್ಯ</string>
@@ -426,21 +345,15 @@
     <string name="review_app_review_action">ವಿಮರ್ಶೆ</string>
     <string name="review_app_dismiss_action">ಬೇಕಾದರೆ ನಂತರ</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">ಖರೀದು ರದ್ದಾಗಿದೆ</string>
-    <string name="error_iap_unavailable_message">ಅಪ್ ಒಳಗೆ ಖರೀದುಗಳು ಲಭ್ಯವಿಲ್ಲ</string>
-    <string name="error_generic_message">ದೋಷ ಸಂಭವಿಸಿದೆ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</string>
-    <string name="error_iap_owned_message">ನೀವು ಈಗાಗಲೆ ಈ ವಸ್ತುವನ್ನು ಹೊಂದಿದ್ದೀರಿ</string>
     <string name="label_no_devices_title">ಸಾಧನಗಳಿಲ್ಲ</string>
     <string name="bluemusic_mascot_description">ಅಪ್ ಐಕಾನ್</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">ಅಪ್‌ಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ</string>
     <string name="devices_app_selection_search_hint">ಅಪ್‌ಗಳನ್ನು ಹುಡುಕಿರಿ…</string>
-    <string name="devices_app_selection_currently_selected">ಏಗાದರು ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ</string>
     <string name="devices_app_selection_selected_count">%d ಅಪ್‌ಗಳು ಆಯ್ಕೆಮಾಡಲಾಗಿವೆ</string>
     <string name="general_navigate_back_action">ಹಿಂದೆ ತೆರಳಿ</string>
     <string name="general_reset_action">ಮರುಹೊಂದಿಸು</string>
     <string name="general_clear_action">ತೆರವುಮಾಡು</string>
-    <string name="general_save_action">ಉಳಿಸಿ</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">ಲಾಕ್</string>
     <string name="devices_indicator_awake">ಎಚ್ಚರವಾಗಿರು</string>
@@ -450,7 +363,6 @@
     <string name="devices_indicator_limit">ಮಿತಿ</string>
     <string name="devices_indicator_eq">ಸಮಾನ</string>
     <string name="devices_indicator_boost">ವರ್ಧನೆ</string>
-    <string name="devices_indicator_launch">ಪ್ರಾರಂಭಿಸು</string>
     <string name="devices_indicator_home">ಮುಖಪುಟ</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">ಎಚ್ಚರಿಕೆ</string>

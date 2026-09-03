@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">在此次更新過程中，某些裝置設定可能已被重設。請檢查您的裝置設定。</string>
     <string name="onboarding_rewrite_action">繼續</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">找不到未管理的裝置</string>
     <string name="discover_all_devices_managed_msg">您的所有配對裝置都已管理！需要配對新裝置嗎？</string>
     <string name="discover_pair_new_device_action">配對新裝置</string>
     <string name="discover_device_speaker_desc">此手機的揚聲器。當音訊切換回手機時（例如藍牙設備斷開連接後），會應用其音量。</string>
     <!-- Devices -->
     <string name="devices_device_config_label">裝置設定</string>
-    <string name="devices_device_config_section_general_label">一般</string>
     <string name="devices_device_config_remove_device_label">忘記裝置</string>
-    <string name="devices_device_config_remove_device_desc">從這個應用程式中忘記裝置並刪除其設定。這不會取消裝置的配對。</string>
     <string name="devices_device_config_remove_device_action">忘記</string>
     <string name="devices_device_config_remove_device_confirmation">要從管理裝置中忘記 %s 嗎？</string>
-    <string name="devices_device_config_rename_device_label">重新命名裝置</string>
-    <string name="devices_device_config_rename_device_desc">在這個應用程式中重新命名此裝置，如果可能的話，也在系統中重新命名。</string>
     <string name="devices_device_config_rename_device_action">重新命名</string>
     <string name="devices_device_config_enabled_label">已啟用</string>
     <string name="devices_device_config_enabled_desc">連線時對此裝置作出反應</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">自動播放指令</string>
     <string name="devices_device_config_autoplay_keycodes_order">指令序列</string>
     <string name="devices_device_config_autoplay_keycodes_label">指令</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">設定要發送哪些指令及其順序</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">未設定指令</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">新增指令</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">最多 %1$d 個指令</string>
@@ -120,7 +114,6 @@
     <string name="cd_autoplay_keycode_move_up">向上移動</string>
     <string name="cd_autoplay_keycode_move_down">向下移動</string>
     <string name="cd_autoplay_keycode_remove">移除</string>
-    <string name="devices_device_config_section_volumes_label">音量</string>
     <string name="devices_device_config_section_volume_label">音量</string>
     <string name="devices_device_config_alarm_volume_label">鬧鐘音量</string>
     <string name="devices_device_config_alarm_volume_desc">一些鬧鐘應用程式使用音樂音量來代替。</string>
@@ -154,8 +147,6 @@
     <string name="devices_audio_stream_ring_label">鈴聲</string>
     <string name="devices_audio_stream_notification_label">通知</string>
     <string name="devices_audio_stream_alarm_label">鬧鐘</string>
-    <string name="devices_neverseen_label">從未見過</string>
-    <string name="devices_state_connected_label">已連線</string>
     <string name="devices_last_connected_label">最後連接時間：%s</string>
     <string name="devices_currently_connected_label">目前已連接</string>
     <string name="devices_device_disabled_label">裝置已停用</string>
@@ -190,10 +181,7 @@
     <string name="devices_settings_desc">影響所有管理裝置的設定。</string>
     <string name="label_app_enabled">應用程式已啟用</string>
     <string name="description_app_enabled">切換應用對音量和藍牙事件作出反應的能力。</string>
-    <string name="label_visible_volume_adjustments">可見調整</string>
-    <string name="description_visible_volume_adjustments">在此應用調整時顯示系統音量視窗。</string>
     <string name="label_volume_listener">Observe changes</string>
-    <string name="description_volume_listener">當此應用程式正在為此裝置進行調整時，顯示系統音量視窗</string>
     <string name="label_boot_restore">開機後復原</string>
     <string name="description_boot_restore">在開機/重新開機後，如果連上藍牙裝置就復原音量。</string>
     <!-- Settings/Support-->
@@ -203,21 +191,11 @@
     <string name="settings_support_wiki_description">學習如何有效地使用 BVM</string>
     <string name="settings_support_issue_tracker_description">用於錯誤回報和功能請求的公開問題追蹤系統。</string>
     <string name="settings_support_issue_tracker_label">問題追蹤</string>
-    <string name="settings_support_debuglog_label">除錯日誌</string>
     <string name="settings_support_debuglog_desc">將應用程式所做的一切記錄到一個您可以分享的文字檔案中。</string>
-    <string name="settings_support_debuglog_recording_desc">目前正在記錄除錯資訊。點擊停止記錄。</string>
-    <string name="settings_support_debuglog_path">日誌路徑：%1$s</string>
     <string name="settings_support_debuglog_short_recording_title">錄製時間很短</string>
     <string name="settings_support_debuglog_short_recording_msg">這次錄製非常短。除錯日誌是錄製，而不是快照 — 在錄製進行中重現問題，日誌才能有用。</string>
     <string name="settings_support_debuglog_short_recording_continue">繼續錄製</string>
     <string name="settings_support_debuglog_short_recording_stop">仍然停止</string>
-    <string name="settings_support_debuglog_folder_label">除錯日誌資料夾</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="other">%1$d 個工作階段使用 %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">沒有存儲的除錯日誌</string>
-    <string name="settings_support_debuglog_folder_delete_title">刪除所有除錯日誌？</string>
-    <string name="settings_support_debuglog_folder_delete_msg">這將永久刪除所有已存儲的除錯日誌工作階段。</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">一個可以關逛和提問的地方。</string>
     <!-- Settings/Acks-->
@@ -226,16 +204,12 @@
     <string name="settings_acks_translation_header">翻譯</string>
     <string name="settings_acks_translators_title">翻譯者</string>
     <string name="settings_acks_translators_people">Adeptus2</string>
-    <string name="settings_acks_translate_title">翻譯 BVM</string>
-    <string name="settings_acks_translate_desc">協助將 BVM 翻譯成您的語言</string>
     <string name="settings_acks_thanks_header">鳴謝</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">支持開源專案的翻譯</string>
     <string name="settings_licenses_label">授權條款</string>
     <string name="settings_translation_label">翻譯</string>
     <string name="settings_translation_desc">幫助將應用程式翻譯為你喜愛的語言</string>
-    <string name="settings_sponsor_development_title">贊助開發</string>
-    <string name="settings_sponsor_development_summary">成為贊助者，讓持續開發成為可能。</string>
     <string name="settings_privacy_policy_label">隱私權政策</string>
     <string name="settings_privacy_policy_desc">負責任地處理資料。</string>
     <string name="changelog_label">更新日誌</string>
@@ -257,10 +231,8 @@
     <string name="backup_restore_success_restore">還原完成 — 已還原 %1$d 台裝置，略過 %2$d 台。</string>
     <string name="backup_restore_version_warning">此備份由版本 %1$s 建立。你目前使用的是 %2$s。部分設定可能無法正確還原。</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">除錯通知</string>
     <string name="debug_log_consent_title">除錯日誌</string>
     <string name="debug_log_consent_explanation">此功能會將應用程式所做的一切記錄到可分享的檔案中。產生的檔案包含敏感資訊（例如檔案名稱和已安裝的應用程式）。請只與可信任的對象分享（例如正在解決問題的開發者）。</string>
-    <string name="debug_log_recording_progress">正在記錄除錯日誌</string>
     <string name="debug_log_record_action">記錄</string>
     <string name="debug_log_stop_action">停止記錄</string>
     <string name="debug_log_screen_title">除錯日誌記錄器</string>
@@ -274,7 +246,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">破棄</string>
     <string name="debug_log_screen_keep_action">保留</string>
-    <string name="debug_log_compressing_label">壓縮中…</string>
     <string name="debug_log_file_label">已記錄的日誌檔案</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">日誌已發送？</string>
@@ -302,7 +273,6 @@
     <string name="contact_description_question_hint">詳細描述您的問題。</string>
     <string name="contact_category_section_label">類別</string>
     <string name="contact_debug_log_label">除錯日誌</string>
-    <string name="contact_debug_log_select_hint">選擇要附加的除錯日誌</string>
     <string name="contact_debug_log_picker_hint">附加除錯日誌以幫助更快地診斷問題。</string>
     <string name="contact_debug_log_picker_empty">沒有可用的除錯日誌。請先錄製一個。</string>
     <string name="contact_expected_behavior_label">預期行為</string>
@@ -315,82 +285,32 @@
     <string name="contact_welcome_msg">我親自閱讀每條訊息並盡力回覆，但由於我獨自一人在做這件事，可能需要一點時間。感謝您的耐心。</string>
     <string name="contact_footer_msg">您的訊息將透過電子郵件發送。裝置和設定資訊會自動附加。</string>
     <string name="contact_no_email_app_msg">此裝置上未找到電子郵件應用程式。</string>
-    <string name="contact_attachment_missing_msg">除錯日誌檔案不再存在</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">已存儲的除錯日誌</string>
     <string name="settings_support_stored_logs_desc">%1$d 個工作階段 (%2$s)</string>
     <string name="settings_support_stored_logs_empty">沒有已存儲的除錯日誌</string>
-    <string name="settings_support_stored_logs_delete_title">刪除存儲的日誌？</string>
-    <string name="settings_support_stored_logs_delete_msg">這將刪除全部 %1$d 個已存儲的除錯日誌工作階段。</string>
-    <string name="settings_support_stored_logs_deleted_msg">已存儲的除錯日誌已刪除</string>
-    <string name="label_bug_reports">錯誤回報</string>
-    <string name="description_bug_reports">自動回報錯誤和當機報告。</string>
     <string name="label_add_device">新增裝置</string>
-    <string name="label_just_a_moment_please">請稍等一下。</string>
     <string name="label_notification_channel_status">狀態</string>
     <string name="label_notification_channel_setup">需要設定</string>
     <string name="monitor_notification_starting">正在啟動…</string>
     <string name="action_set">設定</string>
     <string name="action_cancel">取消</string>
-    <string name="label_invalid_input">無效的輸入</string>
     <string name="action_reset">重設</string>
     <string name="label_no_connected_devices">沒有裝置連線</string>
-    <string name="label_status_idle">閒置</string>
-    <string name="label_status_adjusting_volumes">調整音量</string>
-    <string name="label_premium_version">付費版本</string>
     <string name="general_upgrade_action">升級</string>
     <string name="common_upgrade_required_label">需要升級</string>
-    <string name="label_premium_version_required">需要付費版本</string>
-    <string name="description_intro_purpose">這個應用程式允許 Android 記住不同的藍牙裝置的音量。</string>
-    <string name="upgrade_benefit_unlimited_devices">無限裝置設定檔</string>
-    <string name="upgrade_benefit_connection_actions">自動播放、啟動應用程式與連線提醒</string>
-    <string name="upgrade_benefit_theme_customization">主題、風格與顏色自訂</string>
-    <string name="upgrade_benefit_power_controls">音量鎖定與限速</string>
-    <string name="upgrade_benefit_support">支持獨立開發</string>
     <string name="upgrade_benefit_equalizer">• 個別裝置等化器（適用於支援系統等化器的音樂應用程式）</string>
-    <string name="description_intro_tap_the_button">從新增你的第一個裝置開始。</string>
     <string name="description_bluetooth_is_disabled">藍牙已停用。</string>
     <string name="title_bluetooth_is_off">藍牙已關閉</string>
     <string name="action_enable_bluetooth">啟用藍牙</string>
     <string name="title_bluetooth_permission_required">需要藍牙權限</string>
     <string name="description_bluetooth_permission_required">此應用程式需要藍牙權限來管理您的裝置音量。</string>
     <string name="action_grant_permission">授予權限</string>
-    <string name="label_status_listening_for_changes">聆聽音量變更</string>
     <string name="action_exit">離開</string>
-    <string name="action_start">執行</string>
-    <string name="label_welcome">歡迎</string>
-    <string name="description_intro_contact">若有疑問或新功能的好點子，不要猶豫，直接和我聯絡。</string>
-    <string name="label_translation">翻譯</string>
-    <string name="description_help_translate">協助我將這個應用程式翻譯成其他語言。</string>
     <string name="label_device_speaker">裝置揚聲器</string>
-    <string name="label_keyevent_playpause">播放 - 暫停</string>
-    <string name="label_keyevent_play">播放</string>
-    <string name="label_keyevent_next">下一首</string>
-    <string name="label_install_id">安裝 ID</string>
     <string name="message_copied_to_clipboard">已複製到剪貼簿</string>
-    <string name="label_thanks">感謝</string>
-    <string name="label_licenses">授權條款</string>
-    <string name="description_ring_volume_additional_permission">變更鈴聲音量需要額外權限。</string>
-    <string name="label_missing_permissions">缺少權限</string>
-    <string name="action_grant">授權</string>
-    <string name="label_advanced">進階</string>
-    <string name="label_exclude_health">排除健康設定檔</string>
-    <string name="description_exclude_health">一些 Android 裝置在查找「健康裝置」藍牙設定檔 (HDP, 0x1400) 時掛起。</string>
-    <string name="label_exclude_gattserver">排除 GATT 伺服器設定檔</string>
-    <string name="label_exclude_gatt">排除 GATT 設定檔</string>
-    <string name="description_exclude_gattserver">不要查詢「通用屬性」(GATT) 伺服器類型的藍牙設定檔。</string>
-    <string name="description_exclude_gatt">不要查詢「通用屬性」(GATT) 用戶端類型的藍牙設定檔。</string>
-    <string name="description_waiting_for_devicex">等待 %s 完成連線</string>
-    <string name="action_undo">復原</string>
-    <string name="action_show">顯示</string>
     <string name="action_dismiss">忽略</string>
-    <string name="action_fix">修復</string>
-    <string name="battery_optimizations_issue_description">該應用程式啟用了電池效能最佳化功能，會阻止它接收藍牙事件。如果你遇到問題，請考慮停用電池效能最佳化功能。</string>
     <string name="label_bluetooth_settings">藍牙設定</string>
-    <string name="android10_applaunch_issue_description">Android 10 限制了應用程式從背景啟動的方式。要允許在藍牙裝置連線時開啟應用程式，請授予「顯示在其他應用程式上層」權限 (SYSTEM_ALERT_WINDOW)。</string>
-    <string name="label_opensource">原始碼</string>
-    <string name="android13_notification_permission_description">授予此應用程式發送通知的權限。這讓應用程式活躍時及調整音量時能顯示通知。</string>
-    <string name="privacy_policy_label">隱私權政策</string>
     <string name="managed_devices_empty_message">沒有設定藍牙裝置。\n點擊 + 按鈕來新增您的第一個裝置。</string>
     <string name="label_pro_feature">付費功能</string>
     <plurals name="discover_device_limit_banner">
@@ -420,21 +340,15 @@
     <string name="review_app_review_action">評論</string>
     <string name="review_app_dismiss_action">稍後再說</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">購買已取消</string>
-    <string name="error_iap_unavailable_message">無法使用應用程式內購買</string>
-    <string name="error_generic_message">發生錯誤。請再試一次。</string>
-    <string name="error_iap_owned_message">您已經擁有此項目</string>
     <string name="label_no_devices_title">沒有裝置</string>
     <string name="bluemusic_mascot_description">應用程式圖示</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">選擇應用程式</string>
     <string name="devices_app_selection_search_hint">搜尋應用程式…</string>
-    <string name="devices_app_selection_currently_selected">目前已選取</string>
     <string name="devices_app_selection_selected_count">已選取 %d 個應用程式</string>
     <string name="general_navigate_back_action">返回</string>
     <string name="general_reset_action">重設</string>
     <string name="general_clear_action">清除</string>
-    <string name="general_save_action">儲存</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">鎖定</string>
     <string name="devices_indicator_awake">喚醒</string>
@@ -444,7 +358,6 @@
     <string name="devices_indicator_limit">限制</string>
     <string name="devices_indicator_eq">等化器</string>
     <string name="devices_indicator_boost">增益</string>
-    <string name="devices_indicator_launch">啟動</string>
     <string name="devices_indicator_home">主頁</string>
     <string name="devices_indicator_dnd">勿擾</string>
     <string name="devices_indicator_alert">Alert</string>

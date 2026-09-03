@@ -5,7 +5,6 @@
     <string name="upgrade_feature_requires_pro">Απαιτεί το BVM Pro</string>
     <string name="upgrade_prompt_title">Αναβαθμίστε στο BVM Pro</string>
     <string name="upgrade_prompt_body">Το Bluetooth Volume Manager Pro προσφέρει καλύτερα αποτελέσματα, περισσότερες δυνατότητες και επιλογές για προχωρημένους χρήστες.</string>
-    <string name="upgrade_prompt_upgrade_action">Αναβάθμιση</string>
     <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
     <string name="upgrade_screen_title_template">Αναβάθμιση σε %1$s</string>
     <string name="upgrade_screen_preamble">Το Bluetooth Volume Manager δεν έχει διαφημίσεις και δεν πωλεί δεδομένα χρηστών. Η δουλειά μου χρηματοδοτείται από εσάς ❤️.</string>
@@ -56,7 +55,6 @@
     <string name="upgrades_gplay_unavailable_error_description">Το Bluetooth Volume Manager δεν μπορεί να συνδεθεί με το Google Play. Είναι το Google Play εγκατεστημένο και ενημερωμένο; Έχετε συνδεθεί με τον λογαριασμό Google σας; Δοκιμάστε να διαγράψετε την προσωρινή μνήμη της εφαρμογής Google Play και να επανεκκινήσετε τη συσκευή σας.</string>
     <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
     <string name="upgrades_gplay_not_installed_message">Δεν μπόρεσε να ανοίξει το Google Play. Ενδέχεται να λείπει, να είναι απενεργοποιημένο ή περιορισμένο σε αυτήν τη συσκευή.</string>
-    <string name="upgrades_no_purchases_found_check_account">Δεν βρέθηκαν αγορές. Χρησιμοποιείτε τον σωστό λογαριασμό;</string>
     <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
     <string name="upgrade_screen_offers_title">Επιλογές αναβάθμισης</string>
     <string name="upgrade_screen_offers_body">Και οι δύο επιλογές ξεκλειδώνουν ακριβώς τα ίδια Pro χαρακτηριστικά — επιλέξτε ό,τι σας ταιριάζει.</string>

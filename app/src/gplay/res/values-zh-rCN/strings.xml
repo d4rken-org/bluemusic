@@ -5,7 +5,6 @@
     <string name="upgrade_feature_requires_pro">需要 BVM Pro</string>
     <string name="upgrade_prompt_title">升级至 BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro 为高级用户提供更好的效果、更多的功能和选项。</string>
-    <string name="upgrade_prompt_upgrade_action">升级</string>
     <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
     <string name="upgrade_screen_title_template">升级到%1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager 没有广告，也不出售用户数据。我的工作由您资助 ❤️。</string>
@@ -56,7 +55,6 @@
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager 无法连接到 Google Play。Google Play 是否已安装并更新至最新版本？您的 Google 账户是否已登录？请尝试清除 Google Play 应用的缓存并重启设备。</string>
     <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
     <string name="upgrades_gplay_not_installed_message">无法打开 Google Play。该应用可能未安装、已禁用或受到限制。</string>
-    <string name="upgrades_no_purchases_found_check_account">未找到任何购买记录。您确定账号正确吗？</string>
     <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
     <string name="upgrade_screen_offers_title">升级选项</string>
     <string name="upgrade_screen_offers_body">两种选项都解锁相同的Pro功能——选择适合你的即可。</string>

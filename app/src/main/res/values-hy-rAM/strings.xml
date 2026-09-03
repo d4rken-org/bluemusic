@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">Թարմացման ընթացքում որոշ հնարավորություններ փոխվել են: Խնդրում ենք ստուգել ձեր սարքի կարգավորումները՝ համոզվելու, որ ամեն ինչ ճիշտ է կարգաբերված:</string>
     <string name="onboarding_rewrite_action">Շարունակել</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">Կառավարելիք սարքեր չեն գտնվել</string>
     <string name="discover_all_devices_managed_msg">Ձեր բոլոր զուգակցված սարքերը կառավարվում են: Ուզո՞ւմ եք ավելացնել նոր:</string>
     <string name="discover_pair_new_device_action">Զուգակցել նոր սարք</string>
     <string name="discover_device_speaker_desc">Այս հեռախոսի սեփական բարձրախոս։ Դրա ծավալները կիրառվում են, երբ աուդիոն վերադառնում է հեռախոսին, օր.՞ Bluetooth սարքի անջատվելուց հետո։</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Սարքի կարգաբերում</string>
-    <string name="devices_device_config_section_general_label">Ընդհանուր</string>
     <string name="devices_device_config_remove_device_label">Մոռանալ սարքը</string>
-    <string name="devices_device_config_remove_device_desc">Մոռանում է սարքը այս հավելվածից և ջնջում նրա կարգավորումը: Սա չի լուծում սարքի զուգակցությունը:</string>
     <string name="devices_device_config_remove_device_action">Մոռանալ</string>
     <string name="devices_device_config_remove_device_confirmation">Մոռանա՞լ %s-ին կառավարվող սարքերից:</string>
-    <string name="devices_device_config_rename_device_label">Վերանվանել սարքը</string>
-    <string name="devices_device_config_rename_device_desc">Վերանվանել այս սարքը այս հավելվածի շրջանակում և, հնարավորության դեպքում, համակարգում:</string>
     <string name="devices_device_config_rename_device_action">Վերանվանել</string>
     <string name="devices_device_config_enabled_label">Ակտիվացված</string>
     <string name="devices_device_config_enabled_desc">Արձագանքել այս սարքին կապակցվելիս</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">Ավտոմատ նվագարկման հրամաններ</string>
     <string name="devices_device_config_autoplay_keycodes_order">Հրամանների հաջորդականություն</string>
     <string name="devices_device_config_autoplay_keycodes_label">Հրամաններ</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Կարգաբերեք, թե որ հրամաններն ուղարկել և ինչ հերթականությամբ</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">Հրամաններ չեն կարգաբերվել</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">Ավելացնել հրաման</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">Առավելագույնը %1$d հրաման</string>
@@ -121,7 +115,6 @@
     <string name="cd_autoplay_keycode_move_up">Տեղաշարժել վեր</string>
     <string name="cd_autoplay_keycode_move_down">Տեղաշարժել վար</string>
     <string name="cd_autoplay_keycode_remove">Հեռացնել</string>
-    <string name="devices_device_config_section_volumes_label">Ծավալներ</string>
     <string name="devices_device_config_section_volume_label">Ծավալ</string>
     <string name="devices_device_config_alarm_volume_label">Քլարմի ծավալ</string>
     <string name="devices_device_config_alarm_volume_desc">Քլարմի սպա հավելվածները երաժժական ծավալն ևն կիրառության ոգտագորխում են ոգտագորխում:</string>
@@ -155,8 +148,6 @@
     <string name="devices_audio_stream_ring_label">զանգակոց</string>
     <string name="devices_audio_stream_notification_label">Ծակուցություն</string>
     <string name="devices_audio_stream_alarm_label">Ռլարմ</string>
-    <string name="devices_neverseen_label">Արտասակ չի կապված</string>
-    <string name="devices_state_connected_label">Կապակցված</string>
     <string name="devices_last_connected_label">վերջին կապակցությունը: %s</string>
     <string name="devices_currently_connected_label">Ալի կապակցված</string>
     <string name="devices_device_disabled_label">Սարքը անկալժացված է</string>
@@ -191,10 +182,7 @@
     <string name="devices_settings_desc">Կարգավորումներ, որոնք ազդեցնում ևն բոլոր կառավարվող սարքերին:</string>
     <string name="label_app_enabled">Հավելվածը ակտիվացված է</string>
     <string name="description_app_enabled">Լլազարկում և հավելվածի կարողությունը արձագանքել ծավալի և Bluetooth իրադարիչներին:</string>
-    <string name="label_visible_volume_adjustments">Տեսանելի ճշգրտումներ</string>
-    <string name="description_visible_volume_adjustments">Ցուցադրել կարգաբերի ծավալի պատուհանը, երբ հավելվածն ճշգրտումներ և կատարում:</string>
     <string name="label_volume_listener">Դիտել փոփոխությունները</string>
-    <string name="description_volume_listener">Ակտիվ մնալ, մինչ սարք կապակցված և, և պահպանել ծավալի փոփոխությունները:</string>
     <string name="label_boot_restore">վերկնել բեռնակկից հետո</string>
     <string name="description_boot_restore">վերկնել ծավալը բեռնակկից հետո, եթև Bluetooth սարք կապակցված և:</string>
     <!-- Settings/Support-->
@@ -204,22 +192,11 @@
     <string name="settings_support_wiki_description">Իանել, թև արդյունականորևն կիրառել BVM-ը</string>
     <string name="settings_support_issue_tracker_description">Հանրային խնդիրնևրի հասկիչ սխալների և կարիքների համար:</string>
     <string name="settings_support_issue_tracker_label">Խնդիրների հետագծիչ</string>
-    <string name="settings_support_debuglog_label">Կարգաբերման մատյան</string>
     <string name="settings_support_debuglog_desc">Գրանցեք այն ամենը, ինչ անում է հավելվածը տեքստային ֆայլում, որը կարող եք կիսվել։</string>
-    <string name="settings_support_debuglog_recording_desc">Ալի կատարվում և սկզբական տևղեկագրությունը: Շոխեք կանգնելու:</string>
-    <string name="settings_support_debuglog_path">Գրանցի ողին: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">շատ կարճ գրանություն</string>
     <string name="settings_support_debuglog_short_recording_msg">Սա շատ կարճ գրանություն իր: Սկզբական լկերը գրանություններ ևն:</string>
     <string name="settings_support_debuglog_short_recording_continue">Շարունակել գրանցությունը</string>
     <string name="settings_support_debuglog_short_recording_stop">Այնուանկալծ կանգնել</string>
-    <string name="settings_support_debuglog_folder_label">Սկզբական լկի հապկիչ</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d նիստերկ հաշվառկությամբ %2$s</item>
-        <item quantity="other">%1$d նիստերկ հաշվառկությամբ %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Սկզբական լկեր չկա</string>
-    <string name="settings_support_debuglog_folder_delete_title">Ալիվականաբար բոլոր Սկզբական լկերը:</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Սա ալիվականաբար կծի բոլոր սկզբական լկի նիստերնևրը:</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Ժամանցի և հարցեր տալու վայր։</string>
     <!-- Settings/Acks-->
@@ -228,16 +205,12 @@
     <string name="settings_acks_translation_header">Թարգմանություն</string>
     <string name="settings_acks_translators_title">Թարգմանիչներ</string>
     <string name="settings_acks_translators_people">Person1;Person2(optional@email.com)</string>
-    <string name="settings_acks_translate_title">Թարգմանել BVM-ը</string>
-    <string name="settings_acks_translate_desc">օգնել BVM-ի թարգմանությանը ձեր լևզվից</string>
     <string name="settings_acks_thanks_header">Շնորհակալություն</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Բաց կոդ-կան ծնդլայնումնևրի թարգմանությանը ապահովելու համար</string>
     <string name="settings_licenses_label">Լիցենզիաներ</string>
     <string name="settings_translation_label">Թարգմանություն</string>
     <string name="settings_translation_desc">Ողնել տարգմանել ծրագիրե ձեր սիրական լեզուով</string>
-    <string name="settings_sponsor_development_title">Հովանավորել զարգացումը</string>
-    <string name="settings_sponsor_development_summary">Դարձեք հովանավոր և հնարավորեցրեք շարունակ զարգացումն։</string>
     <string name="settings_privacy_policy_label">Գաղտնիության քաղաքականություն</string>
     <string name="settings_privacy_policy_desc">Տվյալների պատասխանատու մշակում։</string>
     <string name="changelog_label">Փոփոխությունների մատյան</string>
@@ -259,10 +232,8 @@
     <string name="backup_restore_success_restore">Վերականգնումն ավարտված է — վերականգնված է %1$d սարք, բաց թողնված՝ %2$d:</string>
     <string name="backup_restore_version_warning">Այս կրկնօրինակը ստեղծվել է %1$s տարբերակով: Դուք օգտագործում եք %2$s: Որոշ կարգավորումներ կարող են ճիշտ չվերականգնվել:</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">Վրիպազերծման ծանուցումներ</string>
     <string name="debug_log_consent_title">Կարգաբերման մատյան</string>
     <string name="debug_log_consent_explanation">Այս հատկությունը գրանցում է հավելվածի բոլոր գործողությունները կիսվող ֆայլում: Ստեղծված ֆայլը պարունակում է կարևոր տեղեկություններ (օր. ֆայլերի անուններ և տեղադրված հավելվածներ): Կիսվեք միայն վստահելի կողմերի հետ (օր. խնդիր լուծող մշակողի հետ):</string>
-    <string name="debug_log_recording_progress">Գրանցվում է վրիպազերծման մատյանը</string>
     <string name="debug_log_record_action">Գրանցել</string>
     <string name="debug_log_stop_action">Կանգնացնել գրանցումը</string>
     <string name="debug_log_screen_title">Սկզբական լկի գրանծագրիչ</string>
@@ -277,7 +248,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">Հեռացնել</string>
     <string name="debug_log_screen_keep_action">Պահել</string>
-    <string name="debug_log_compressing_label">սեղադրվում և...</string>
     <string name="debug_log_file_label">Գրանցված մատյանի ֆայլ</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Լկը ուկված և:</string>
@@ -305,7 +275,6 @@
     <string name="contact_description_question_hint">Նկարագրեք դզեր հարցը մանրամասնուտյամբ։</string>
     <string name="contact_category_section_label">Կատеgория</string>
     <string name="contact_debug_log_label">Կարգաբերման մատյան</string>
-    <string name="contact_debug_log_select_hint">Ըրբեք վրիպակագրուտյուն կցկապնդելու համար</string>
     <string name="contact_debug_log_picker_hint">Կցկապնդեք վրիպակագրուտյուն խնդիրն ավելի արագ բացահայտելու համար։</string>
     <string name="contact_debug_log_picker_empty">Վրիպակագրուտյուններ բացակային չեն։ Նախ գրանցեք մեկե։</string>
     <string name="contact_expected_behavior_label">Նախատեսված վարքե</string>
@@ -319,82 +288,32 @@
     <string name="contact_welcome_msg">Ես կարդում եմ բոլոր հաղորդագրությունները ինքնուրույն և լավագույն ամն անում եմ պատասխանելու համար, բայց քանի որ մենակ եմ աշխատում, կարող է մի փոքր ժամանակ տևել։ Ձեր համբերության համար շնորհակալ եմ։</string>
     <string name="contact_footer_msg">Ձեր հաղորդագրությունը կուղարկվի էլ. փոստով։ Սարքի և կարգավորումների տեղեկությունները ավտոմատ կցվում են։</string>
     <string name="contact_no_email_app_msg">Այս սարքում էլ. փոստի հավելված չկա</string>
-    <string name="contact_attachment_missing_msg">Կարգաբերման մատյանի ֆայլն այլևս գոյություն չունի</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Պահված կարգաբերման մատյաններ</string>
     <string name="settings_support_stored_logs_desc">%1$d նիստ (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Պահված կարգաբերման մատյաններ չկան</string>
-    <string name="settings_support_stored_logs_delete_title">Ջնջե՞լ պահված մատյանները</string>
-    <string name="settings_support_stored_logs_delete_msg">Սա կջծի բոլոր %1$d պահված կարգաբերման գլխի նիստերը։</string>
-    <string name="settings_support_stored_logs_deleted_msg">Պահված կարգաբերման մատյաններն ջնջվեցին</string>
-    <string name="label_bug_reports">Սխալների հաշվետվություններ</string>
-    <string name="description_bug_reports">Լրիր սխալի և խզիրի ավտոմատ հաշվետվություն</string>
     <string name="label_add_device">Ավելացնել սարք</string>
-    <string name="label_just_a_moment_please">Մի վայրկյան, խնդրում եմ:</string>
     <string name="label_notification_channel_status">Կարգավիճակ</string>
     <string name="label_notification_channel_setup">Անհրաժեշտ է կարգավորում</string>
     <string name="monitor_notification_starting">Մեկնարկում է…</string>
     <string name="action_set">Սահմանել</string>
     <string name="action_cancel">Չեղարկել</string>
-    <string name="label_invalid_input">Անվավեր մուտք</string>
     <string name="action_reset">Վերագործարկել</string>
     <string name="label_no_connected_devices">Կապակցված սարքեր չկան</string>
-    <string name="label_status_idle">Անգործուն</string>
-    <string name="label_status_adjusting_volumes">Բազմաչափ ձայները</string>
-    <string name="label_premium_version">Պրեմիում տարբերակ</string>
     <string name="general_upgrade_action">Թարմացնել</string>
     <string name="common_upgrade_required_label">Անհրաժեշտ է բարելավում</string>
-    <string name="label_premium_version_required">Պահանջվում է պրեմիում տարբերակ</string>
-    <string name="description_intro_purpose">Այս հավելվածը թույլ է տալիս ձեր Android սարքին հիշել տարբեր Bluetooth սարքերի ձայնի մակարդակը։</string>
-    <string name="upgrade_benefit_unlimited_devices">Անսահմանափակ սարքի պրոֆիլներ</string>
-    <string name="upgrade_benefit_connection_actions">Ավտոնվագարկում, հավելվածի գործարկում և կապի ծանուցումներ</string>
-    <string name="upgrade_benefit_theme_customization">Թեմայի, ոճի և գույնի հարմարեցում</string>
-    <string name="upgrade_benefit_power_controls">Ձայնի կողպեք և արագության սահմանափակում</string>
-    <string name="upgrade_benefit_support">Աջակցել անկախ մշակմանը</string>
     <string name="upgrade_benefit_equalizer">• Առանձին էկվալայզեր յուրաքանչյուր սարքի համար (երաժշտական հավելվածների համար, որոնք աջակցում են համակարգային էկվալայզերին)</string>
-    <string name="description_intro_tap_the_button">Սկսեք՝ ավելացնելով ձեր առաջին սարքը։</string>
     <string name="description_bluetooth_is_disabled">Bluetooth-ն անջատված է.</string>
     <string name="title_bluetooth_is_off">Bluetooth-ն անձատված է</string>
     <string name="action_enable_bluetooth">Միացնել Bluetooth</string>
     <string name="title_bluetooth_permission_required">Bluetooth-ի թույլտվություն է պահանջվում</string>
     <string name="description_bluetooth_permission_required">Այս հավելվախին կառիք ունի Bluetooth-ի թույլտվության ձեր սառքի ձայնեռը կառավառելու համառ։</string>
     <string name="action_grant_permission">Տրամադրել թույլտվություն</string>
-    <string name="label_status_listening_for_changes">Հետևում է ձայնի փոփոխություննեռին</string>
     <string name="action_exit">Ելք</string>
-    <string name="action_start">Սկսել</string>
-    <string name="label_welcome">Բարի գալուստ</string>
-    <string name="description_intro_contact">Հառցեռ կամ գաղափառնեռ ունե՞ք նոռ հնառավոռության մասին։ Մի հապաղեք կապ հաստատել ինձ հետ։</string>
-    <string name="label_translation">Թարգմանություն</string>
-    <string name="description_help_translate">Օգնել ինձ այս հավելվախը հաշանելի դառձնել այլ լեզունեռով։</string>
     <string name="label_device_speaker">Սարքի խոսափող</string>
-    <string name="label_keyevent_playpause">Նվագել/Դադարեցնել</string>
-    <string name="label_keyevent_play">Նվագել</string>
-    <string name="label_keyevent_next">Հաջորդ</string>
-    <string name="label_install_id">Տեղադրման ID</string>
     <string name="message_copied_to_clipboard">Պատկենվածն բուֆեր բերված է</string>
-    <string name="label_thanks">Շնորհակալություն</string>
-    <string name="label_licenses">Լիցենզիաներ</string>
-    <string name="description_ring_volume_additional_permission">Բառաբարկի ձայնը փոխելու համար լրացութիգ թույլտվություններ են անհրաժելի։</string>
-    <string name="label_missing_permissions">Բացկական թույլտվություններ</string>
-    <string name="action_grant">Տրամադրել</string>
-    <string name="label_advanced">Առննացված</string>
-    <string name="label_exclude_health">Բացառկել առողջական պրոֆիլները</string>
-    <string name="description_exclude_health">Անդրոիդի որինը սարքեր կախվածության են ունենալ Bluetooth-ի \"Health Device\" պրոֆիլների հարցում (HDP, 0x1400)։</string>
-    <string name="label_exclude_gattserver">Բացառկել GATT սերվերի պրոֆիլները</string>
-    <string name="label_exclude_gatt">Բացառկել GATT պրոֆիլները</string>
-    <string name="description_exclude_gattserver">Generic Attribute (GATT) սերվեր տիպի Bluetooth պրոֆիլներին չդիմել։</string>
-    <string name="description_exclude_gatt">Generic Attribute (GATT) կլիենտ տիպի Bluetooth պրոֆիլներին չդիմել։</string>
-    <string name="description_waiting_for_devicex">Սպասում է %s-ի կապակցության ավարտացության համար</string>
-    <string name="action_undo">Հետ դարձնել</string>
-    <string name="action_show">Ցուցադրել</string>
     <string name="action_dismiss">Մերժել</string>
-    <string name="action_fix">Ուղղել</string>
-    <string name="battery_optimizations_issue_description">Այս հավելվածի համար մարտկոցի օպտիմալացումները ակտիվ են և կարող են խոչինդոտել Bluetooth-ի իրադարձությունների ստացմանը։ Եթև խնդիրներ ունեք, մտածեք օպտիմալացումները անձատելու մասին։</string>
     <string name="label_bluetooth_settings">Bluetooth կարգավորումներ</string>
-    <string name="android10_applaunch_issue_description">Android 10-ը սահմանափակում է կիրառությունների բացկգրաունդից գորկելու հնարավորությունները։ Bluetooth սարքի կապակցության բացակկիրառությունների բացելու համար տրամադրել «Display over other apps» (SYSTEM_ALERT_WINDOW) թույլտվությունը։</string>
-    <string name="label_opensource">Սկզբնական կոդ</string>
-    <string name="android13_notification_permission_description">Տրամադրել այս հավելվախին ծաբելություններ ուղարկելու թույլտվությունը։ Սա հնարավորություն կ տալիս բանալիս ծաբելություն, երբ հավելվածը ակտիվ է և ձայնի կարգավորումներ կատարվում են։</string>
-    <string name="privacy_policy_label">Գաղտնիության քաղաքականություն</string>
     <string name="managed_devices_empty_message">Bluetooth սարքեր կարգավայրված չկան։\nՍեխմեկ + կնոպը առաջին սարքը ավելացնելու համար։</string>
     <string name="label_pro_feature">Ռազմավար գործալիթյուն</string>
     <plurals name="discover_device_limit_banner">
@@ -425,21 +344,15 @@
     <string name="review_app_review_action">Գնահատական</string>
     <string name="review_app_dismiss_action">Գուցե ավելի ուշ</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">Գնումն չեղյալ է</string>
-    <string name="error_iap_unavailable_message">Լրացկի գնումները հասանելի չեն</string>
-    <string name="error_generic_message">Սխալ առաջացավորություն։ Խնդրում կրկնել։</string>
-    <string name="error_iap_owned_message">Արդեն այս ինքը կունեք</string>
     <string name="label_no_devices_title">Սարքեր չկան</string>
     <string name="bluemusic_mascot_description">Հավելվախի պատկեր</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">Ընտրել կիրառություններ</string>
     <string name="devices_app_selection_search_hint">Գտնել կիրառություններ…</string>
-    <string name="devices_app_selection_currently_selected">Լռկիբս ընտրված</string>
     <string name="devices_app_selection_selected_count">Ընտրված է %d կիրառություն</string>
     <string name="general_navigate_back_action">Նախագնալ հետ</string>
     <string name="general_reset_action">Վերագործարկել</string>
     <string name="general_clear_action">Մաքրել</string>
-    <string name="general_save_action">Պահպանել</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">Կողէլ</string>
     <string name="devices_indicator_awake">Արթնաբած</string>
@@ -449,7 +362,6 @@
     <string name="devices_indicator_limit">Սահման</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Ուժեղացում</string>
-    <string name="devices_indicator_launch">Գորկարկել</string>
     <string name="devices_indicator_home">Գլխագլխ</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Ծանություն</string>

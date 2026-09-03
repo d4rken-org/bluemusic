@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">Κάποιες ρυθμίσεις συσκευών μπορεί να επαναφέρθηκαν κατά τη διάρκεια αυτής της ενημέρωσης. Παρακαλώ ελέγξτε τις διαμορφώσεις των συσκευών σας.</string>
     <string name="onboarding_rewrite_action">Συνέχεια</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">Δεν βρέθηκαν μη διαχειρισμένες συσκευές</string>
     <string name="discover_all_devices_managed_msg">Όλες οι συζευγμένες συσκευές σας διαχειρίζονται ήδη! Χρειάζεστε κάποια καινούρια;</string>
     <string name="discover_pair_new_device_action">Σύζευξη νέας συσκευής</string>
     <string name="discover_device_speaker_desc">Το ηχείο του τηλεφώνου. Οι εντάσεις του εφαρμόζονται όταν ο ήχος επιστρέφει στο τηλέφωνο, π.χ. μετά την αποσύνδεση της συσκευής Bluetooth σας.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Διαμόρφωση συσκευής</string>
-    <string name="devices_device_config_section_general_label">Γενικά</string>
     <string name="devices_device_config_remove_device_label">Λήθη συσκευής</string>
-    <string name="devices_device_config_remove_device_desc">Ξεχνάει τη συσκευή από αυτή την εφαρμογή και διαγράφει τη διαμόρφωσή της. Αυτό δεν αποσυζεύγει τη συσκευή.</string>
     <string name="devices_device_config_remove_device_action">Λήθη</string>
     <string name="devices_device_config_remove_device_confirmation">Να λησμονήσω τη συσκευή %s από τις διαχειρισμένες συσκευές;</string>
-    <string name="devices_device_config_rename_device_label">Μετονομασία συσκευής</string>
-    <string name="devices_device_config_rename_device_desc">Μετονομάστε αυτή τη συσκευή μέσα σε αυτή την εφαρμογή, και αν είναι δυνατόν, στο σύστημα.</string>
     <string name="devices_device_config_rename_device_action">Μετονομασία</string>
     <string name="devices_device_config_enabled_label">Ενεργοποιημένη</string>
     <string name="devices_device_config_enabled_desc">Αντίδραση σε αυτή τη συσκευή όταν συνδέεται</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">Εντολές αυτόματης αναπαραγωγής</string>
     <string name="devices_device_config_autoplay_keycodes_order">Σειρά εντολών</string>
     <string name="devices_device_config_autoplay_keycodes_label">Εντολές</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Ρύθμιση ποιες εντολές να στέλνονται και με ποια σειρά</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">Δεν έχουν ρυθμιστεί εντολές</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">Προσθήκη εντολής</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">Μέγιστο %1$d εντολές</string>
@@ -121,7 +115,6 @@
     <string name="cd_autoplay_keycode_move_up">Μετακίνηση προς τα πάνω</string>
     <string name="cd_autoplay_keycode_move_down">Μετακίνηση προς τα κάτω</string>
     <string name="cd_autoplay_keycode_remove">Αφαίρεση</string>
-    <string name="devices_device_config_section_volumes_label">Εντάσεις</string>
     <string name="devices_device_config_section_volume_label">Ένταση</string>
     <string name="devices_device_config_alarm_volume_label">Ένταση ήχου ξυπνητηριού</string>
     <string name="devices_device_config_alarm_volume_desc">Ορισμένες εφαρμογές ξυπνητηριού χρησιμοποιούν την ένταση μουσικής αντ \'αυτού.</string>
@@ -155,8 +148,6 @@
     <string name="devices_audio_stream_ring_label">Κλήση</string>
     <string name="devices_audio_stream_notification_label">Ειδοποίηση</string>
     <string name="devices_audio_stream_alarm_label">Ξυπνητήρι</string>
-    <string name="devices_neverseen_label">Ποτέ δεν συνδέθηκε</string>
-    <string name="devices_state_connected_label">Συνδέθηκε</string>
     <string name="devices_last_connected_label">Τελευταία σύνδεση: %s</string>
     <string name="devices_currently_connected_label">Συνδεδεμένη τώρα</string>
     <string name="devices_device_disabled_label">Συσκευή απενεργοποιημένη</string>
@@ -191,10 +182,7 @@
     <string name="devices_settings_desc">Ρυθμίσεις που επηρεάζουν όλες τις διαχειρισμένες συσκευές.</string>
     <string name="label_app_enabled">Ενεργοποίηση Εφαρμογής</string>
     <string name="description_app_enabled">Εναλλάσσει την ικανότητα της εφαρμογής να αντιδράσει στις εκδηλώσεις έντασης και Bluetooth.</string>
-    <string name="label_visible_volume_adjustments">Ορατές προσαρμογές</string>
-    <string name="description_visible_volume_adjustments">Εμφάνιση του παραθύρου ήχου του συστήματος, ενώ αυτή η εφαρμογή κάνει τις προσαρμογές.</string>
     <string name="label_volume_listener">Παρατήρηση αλλαγών</string>
-    <string name="description_volume_listener">Η εφαρμογή παραμένει ενεργή όσο η συσκευή είναι συνδεδεμένη και αποθηκεύει τις αλλαγές εντάσεων του ήχου που δεν έχουν γίνει από αυτή την εφαρμογή.</string>
     <string name="label_boot_restore">Επαναφορά κατά την εκκίνηση</string>
     <string name="description_boot_restore">Αποκατάσταση της έντασης μετά την εκκίνηση/επανεκκίνηση αν είναι συνδεδεμένη μια συσκευή Bluetooth.</string>
     <!-- Settings/Support-->
@@ -204,22 +192,11 @@
     <string name="settings_support_wiki_description">Μάθετε πώς να χρησιμοποιείτε αποτελεσματικά το BVM</string>
     <string name="settings_support_issue_tracker_description">Ένας δημόσιος ιχνηλάτης ζητημάτων για αναφορές σφαλμάτων και αιτήματα για νέα χαρακτηριστικά.</string>
     <string name="settings_support_issue_tracker_label">Ιχνηλάτης ζητημάτων</string>
-    <string name="settings_support_debuglog_label">Αρχείο debug</string>
     <string name="settings_support_debuglog_desc">Καταγράφει όλα όσα κάνει η εφαρμογή σε ένα αρχείο κειμένου που μπορείτε να μοιραστείτε.</string>
-    <string name="settings_support_debuglog_recording_desc">Καταγράφει τώρα πληροφορίες debug. Πατήστε για να σταματήσει η καταγραφή.</string>
-    <string name="settings_support_debuglog_path">Διαδρομή αρχείου: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">Πολύ σύντομη εγγραφή</string>
     <string name="settings_support_debuglog_short_recording_msg">Αυτή ήταν μια πολύ σύντομη εγγραφή. Τα αρχεία debug είναι εγγραφές, όχι στιγμιότυπα — αναπαράγετε το πρόβλημα ενώ η εγγραφή είναι ενεργή για να είναι χρήσιμο το αρχείο.</string>
     <string name="settings_support_debuglog_short_recording_continue">Συνέχεια εγγραφής</string>
     <string name="settings_support_debuglog_short_recording_stop">Σταμάτα ούτως ή άλλως</string>
-    <string name="settings_support_debuglog_folder_label">Φάκελος αρχείων debug</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d συνεδρία χρησιμοποιεί %2$s</item>
-        <item quantity="other">%1$d συνεδρίες χρησιμοποιούν %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Δεν υπάρχουν αποθηκευμένα αρχεία debug</string>
-    <string name="settings_support_debuglog_folder_delete_title">Διαγραφή όλων των αρχείων debug;</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Αυτό θα διαγράψει μόνιμα όλες τις αποθηκευμένες συνεδρίες αρχείων debug.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Ένα μέρος να συναναστρέφεστε και να κάνετε ερωτήσεις.</string>
     <!-- Settings/Acks-->
@@ -228,16 +205,12 @@
     <string name="settings_acks_translation_header">Μετάφραση</string>
     <string name="settings_acks_translators_title">Μεταφραστές</string>
     <string name="settings_acks_translators_people">Retrial, Vagelis1608;Theodoros;Asimakopoulos(theoasima@gmail.com);iplayradio;ggb_st;Nick Komninos</string>
-    <string name="settings_acks_translate_title">Μετάφραση BVM</string>
-    <string name="settings_acks_translate_desc">Βοηθήστε να μεταφραστεί το BVM στη γλώσσα σας</string>
     <string name="settings_acks_thanks_header">Ευχαριστίες</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Για την υποστήριξη της μετάφρασης προγραμμάτων ανοιχτού κώδικα</string>
     <string name="settings_licenses_label">Άδειες</string>
     <string name="settings_translation_label">Μετάφραση</string>
     <string name="settings_translation_desc">Βοηθήστε να μεταφράσετε την εφαρμογή στην αγαπημένη σας γλώσσα</string>
-    <string name="settings_sponsor_development_title">Χρηματοδότηση ανάπτυξης</string>
-    <string name="settings_sponsor_development_summary">Γίνετε χορηγός και κάντε δυνατή τη συνεχή ανάπτυξη.</string>
     <string name="settings_privacy_policy_label">Πολιτική απορρήτου</string>
     <string name="settings_privacy_policy_desc">Διαχείριση δεδομένων με υπευθυνότητα.</string>
     <string name="changelog_label">Αρχείο αλλαγών</string>
@@ -259,10 +232,8 @@
     <string name="backup_restore_success_restore">Επαναφορά ολοκληρώθηκε — %1$d συσκευές επαναφέρθηκαν, %2$d παραλείφθηκαν.</string>
     <string name="backup_restore_version_warning">Αυτό το αντίγραφο ασφαλείας δημιουργήθηκε με την έκδοση %1$s. Χρησιμοποιείτε την %2$s. Ορισμένες ρυθμίσεις ενδέχεται να μην επαναφερθούν σωστά.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">Ειδοποιήσεις debug</string>
     <string name="debug_log_consent_title">Αρχείο debug</string>
     <string name="debug_log_consent_explanation">Αυτό το χαρακτηριστικό καταγράφει όλα όσα κάνει η εφαρμογή σε ένα αρχείο που μπορεί να μοιραστεί. Το αρχείο που δημιουργείται περιέχει ευαίσθητες πληροφορίες (π.χ. ονόματα αρχείων και εγκατεστημένες εφαρμογές). Μοιραστείτε το μόνο με έμπιστα άτομα (π.χ. ένα προγραμματιστή που επιλύει ένα πρόβλημα).</string>
-    <string name="debug_log_recording_progress">Καταγραφή αρχείου debug</string>
     <string name="debug_log_record_action">Καταγραφή</string>
     <string name="debug_log_stop_action">Σταμάτηση καταγραφής</string>
     <string name="debug_log_screen_title">Καταγραφέας Αρχείου Debug</string>
@@ -277,7 +248,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">Απόρριψη</string>
     <string name="debug_log_screen_keep_action">Διατήρηση</string>
-    <string name="debug_log_compressing_label">Συμπίεση…</string>
     <string name="debug_log_file_label">Καταγεγραμμένο αρχείο καταγραφής</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Αρχείο απεστάλη;</string>
@@ -305,7 +275,6 @@
     <string name="contact_description_question_hint">Περιγράψτε την ερώτησή σας λεπτομερώς.</string>
     <string name="contact_category_section_label">Κατηγορία</string>
     <string name="contact_debug_log_label">Αρχείο debug</string>
-    <string name="contact_debug_log_select_hint">Επιλέξτε αρχείο debug για επισύναψη</string>
     <string name="contact_debug_log_picker_hint">Επισυνάψτε αρχείο debug για ταχύτερη διάγνωση του προβλήματος.</string>
     <string name="contact_debug_log_picker_empty">Δεν υπάρχουν διαθέσιμα αρχεία debug. Πρώτα καταγράψτε ένα.</string>
     <string name="contact_expected_behavior_label">Αναμενόμενη συμπεριφορά</string>
@@ -319,83 +288,32 @@
     <string name="contact_welcome_msg">Διαβάζω κάθε μήνυμα μόνος μου και κάνω ό,τι μπορώ για να απαντήσω, αλλά επειδή εργάζομαι μόνος μου, μπορεί να πάρει λίγο χρόνο. Ευχαριστώ για την υπομονή σας.</string>
     <string name="contact_footer_msg">Το μήνυμά σας θα αποσταλεί μέσω email. Οι πληροφορίες συσκευής και ρύθμισης επισυνάπτονται αυτόματα.</string>
     <string name="contact_no_email_app_msg">Δεν βρέθηκε εφαρμογή email σε αυτή τη συσκευή.</string>
-    <string name="contact_attachment_missing_msg">Το αρχείο debug δεν υπάρχει πλέον</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Αποθηκευμένα αρχεία debug</string>
     <string name="settings_support_stored_logs_desc">%1$d συνεδρίες (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Δεν υπάρχουν αποθηκευμένα αρχεία debug</string>
-    <string name="settings_support_stored_logs_delete_title">Διαγραφή αποθηκευμένων αρχείων;</string>
-    <string name="settings_support_stored_logs_delete_msg">Αυτό θα διαγράψει όλες τις %1$d αποθηκευμένες συνεδρίες αρχείων debug.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Τα αποθηκευμένα αρχεία debug διαγράφηκαν</string>
-    <string name="label_bug_reports">Αναφορές σφαλμάτων</string>
-    <string name="description_bug_reports">Αυτόματη αναφορά σφαλμάτων και απρόσμενων κλεισιμάτων εφαρμογής.</string>
     <string name="label_add_device">Προσθήκη συσκευής</string>
-    <string name="label_just_a_moment_please">Μια στιγμή, παρακαλώ.</string>
     <string name="label_notification_channel_status">Κατάσταση</string>
     <string name="label_notification_channel_setup">Απαιτείται ρύθμιση</string>
     <string name="monitor_notification_starting">Εκκίνηση…</string>
     <string name="action_set">Ορισμός</string>
     <string name="action_cancel">Ακύρωση</string>
-    <string name="label_invalid_input">Μή έκγυρη εισαγωγή</string>
     <string name="action_reset">Επαναφορά</string>
     <string name="label_no_connected_devices">Δεν υπάρχουν συνδεδεμένες συσκευές</string>
-    <string name="label_status_idle">Σε αδράνεια</string>
-    <string name="label_status_adjusting_volumes">Ρύθμιση εντάσεων</string>
-    <string name="label_premium_version">Premium έκδοση</string>
     <string name="general_upgrade_action">Αναβάθμιση</string>
     <string name="common_upgrade_required_label">Απαιτείται αναβάθμιση</string>
-    <string name="label_premium_version_required">Απαιτείται η Premium έκδοση</string>
-    <string name="description_intro_purpose">Αυτή η εφαρμογή επιτρέπει στην συσκευή Android σας να θυμάται την ένταση όλων των διαφορετικών συσκευών Bluetooth.</string>
-    <string name="upgrade_benefit_unlimited_devices">Απεριόριστα προφίλ συσκευών</string>
-    <string name="upgrade_benefit_connection_actions">Αυτόματη αναπαραγωγή, εκκίνηση εφαρμογής και ειδοποιήσεις σύνδεσης</string>
-    <string name="upgrade_benefit_theme_customization">Προσαρμογή θέματος, στυλ και χρώματος</string>
-    <string name="upgrade_benefit_power_controls">Κλείδωμα έντασης και περιορισμός ρυθμού</string>
-    <string name="upgrade_benefit_support">Υποστήριξη ανεξάρτητης ανάπτυξης</string>
     <string name="upgrade_benefit_equalizer">• Εξισωτής ανά συσκευή (για εφαρμογές μουσικής με υποστήριξη εξισωτή συστήματος)</string>
-    <string name="description_intro_tap_the_button">Ξεκινήστε προσθέτοντας την πρώτη συσκευή σας.</string>
     <string name="description_bluetooth_is_disabled">Το Bluetooth είναι απενεργοποιημένο.</string>
     <string name="title_bluetooth_is_off">Το Bluetooth είναι απενεργοποιημένο</string>
     <string name="action_enable_bluetooth">Ενεργοποίηση Bluetooth</string>
     <string name="title_bluetooth_permission_required">Απαιτείται Άδεια Bluetooth</string>
     <string name="description_bluetooth_permission_required">Αυτή η εφαρμογή χρειάζεται άδεια Bluetooth για να διαχειρίζεται τις εντάσεις των συσκευών σας.</string>
     <string name="action_grant_permission">Χορήγηση Άδειας</string>
-    <string name="label_status_listening_for_changes">Ακρόαση για μεταβολές του ήχου</string>
     <string name="action_exit">Έξοδος</string>
-    <string name="action_start">Έναρξη</string>
-    <string name="label_welcome">Καλώς ήρθατε</string>
-    <string name="description_intro_contact">Μην διστάσετε να επικοινωνήσετε μαζί μου, αν έχετε απορίες ή ακόμα και μια ιδέα για ένα νέο χαρακτηριστικό γνώρισμα.</string>
-    <string name="label_translation">Μετάφραση</string>
-    <string name="description_help_translate">Βοηθήστε με να γίνει αυτή η εφαρμογή διαθέσιμη και σε άλλες γλώσσες.</string>
     <string name="label_device_speaker">Ηχείο συσκευής</string>
-    <string name="label_keyevent_playpause">Αναπαραγωγή-Παύση</string>
-    <string name="label_keyevent_play">Αναπαραγωγή</string>
-    <string name="label_keyevent_next">Επόμενο</string>
-    <string name="label_install_id">Εγκατεστημένο ID</string>
     <string name="message_copied_to_clipboard">Αντιγράφηκε στο πρόχειρο</string>
-    <string name="label_thanks">Ευχαριστώ</string>
-    <string name="label_licenses">Άδειες Xρήσης</string>
-    <string name="description_ring_volume_additional_permission">Πρόσθετα δικαιώματα είναι αναγκαία για να αλλάξετε την ένταση του ήχου κλήσης.</string>
-    <string name="label_missing_permissions">Ελλειπή δικαιώματα</string>
-    <string name="action_grant">Χορήγηση</string>
-    <string name="label_advanced">Προχωρημένα</string>
-    <string name="label_exclude_health">Παράκαμψη προφίλ υγείας</string>
-    <string name="description_exclude_health">Ορισμένες συσκευές Android κολλάνε όταν ψάχνουν για τα προφίλ Bluetooth «Συσκευή Υγείας» (HDP, 0x1400).</string>
-    <string name="label_exclude_gattserver">Παράκαμψη προφίλ GATT server</string>
-    <string name="label_exclude_gatt">Παράκαμψη προφίλ GATT</string>
-    <string name="description_exclude_gattserver">Μην τρέξετε ερώτημα για προφίλ Bluetooth τύπου \'Generic Attribute\' (GATT) server.</string>
-    <string name="description_exclude_gatt">Μην τρέξετε ερώτημα για προφίλ Bluetooth τύπου \'Generic Attribute\' (GATT) client.</string>
-    <string name="description_waiting_for_devicex">Αναμονή του %s για να ολοκληρωθεί η σύνδεση</string>
-    <string name="action_undo">Αναίρεση</string>
-    <string name="action_show">Εμφάνιση</string>
     <string name="action_dismiss">Παράβλεψη</string>
-    <string name="action_fix">Επιδιόρθωση</string>
-    <string name="battery_optimizations_issue_description">Οι βελτιστοποήσεις μπαταρίας είναι ενεργοποιημένες για αυτήν την εφαρμογή και ενδέχεται να αποτρέψουν την λήψη δεδομένων Bluetooth.
-Παρακαλώ απενεργοποιήστε τις βελτιστοποιήσεις αυτές, εάν αντιμετωπίζετε προβλήματα.</string>
     <string name="label_bluetooth_settings">Ρυθμίσεις Bluetooth</string>
-    <string name="android10_applaunch_issue_description">Το Android 10 περιορίζει το πως οι εφαρμογές μπορούν να τρέχουν στο παρασκήνιο. Για να αφήσετε να ανοίγουν οι εφαρμογές όταν μια συσκευή Bluetooth συνδέεται, παραχωρήστε το δικαίωμα \"Εμφάνιση πάνω από τις εφαρμογές\" (SYSTEM_ALERT_WINDOW).</string>
-    <string name="label_opensource">Πηγαίος κώδικας</string>
-    <string name="android13_notification_permission_description">Δώστε σε αυτή την εφαρμογή άδεια για αποστολή ειδοποιήσεων. Αυτό επιτρέπει την εμφάνιση ειδοποίησης όταν η εφαρμογή είναι ενεργή και γίνονται ρυθμίσεις έντασης.</string>
-    <string name="privacy_policy_label">Πολιτική απορρήτου</string>
     <string name="managed_devices_empty_message">Δεν έχουν ρυθμιστεί συσκευές Bluetooth.\nΠατήστε το κουμπί + για να προσθέσετε την πρώτη συσκευή σας.</string>
     <string name="label_pro_feature">Λειτουργία premium</string>
     <plurals name="discover_device_limit_banner">
@@ -426,21 +344,15 @@
     <string name="review_app_review_action">Αξιολόγηση</string>
     <string name="review_app_dismiss_action">Ίσως αργότερα</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">Αγορά ακυρώθηκε</string>
-    <string name="error_iap_unavailable_message">Οι αγορές μέσα στην εφαρμογή δεν είναι διαθέσιμες</string>
-    <string name="error_generic_message">Προέκυψε σφάλμα. Παρακαλώ δοκιμάστε ξανά.</string>
-    <string name="error_iap_owned_message">Προμηθευτείτε ήδη αυτό το αντικείμενο</string>
     <string name="label_no_devices_title">Καμία Συσκευή</string>
     <string name="bluemusic_mascot_description">Εικονίδιο Εφαρμογής</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">Επιλογή Εφαρμογών</string>
     <string name="devices_app_selection_search_hint">Αναζήτηση εφαρμογών…</string>
-    <string name="devices_app_selection_currently_selected">Τρέχον επιλεγμένο</string>
     <string name="devices_app_selection_selected_count">%d εφαρμογές επιλέχθηκαν</string>
     <string name="general_navigate_back_action">Πλοήγηση πίσω</string>
     <string name="general_reset_action">Επαναφορά</string>
     <string name="general_clear_action">Εκκαθάριση</string>
-    <string name="general_save_action">Αποθήκευση</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">Κλείδωμα</string>
     <string name="devices_indicator_awake">Ενεργό</string>
@@ -450,7 +362,6 @@
     <string name="devices_indicator_limit">Όριο</string>
     <string name="devices_indicator_eq">Εξισωτής</string>
     <string name="devices_indicator_boost">Ενίσχυση</string>
-    <string name="devices_indicator_launch">Εκκίνηση</string>
     <string name="devices_indicator_home">Αρχική</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Ειδοποίηση</string>

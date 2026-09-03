@@ -3,7 +3,6 @@
     <string name="upgrade_feature_requires_pro">Kudingeka i-BVM FOSS</string>
     <string name="upgrade_prompt_title">Buyekeza kuya ku-BVM FOSS</string>
     <string name="upgrade_prompt_body">Vula izici ezengeziwe futhi ube ngumnikazi ukuze usekele ukuthuthukiswa okuqhubekayo!</string>
-    <string name="upgrade_prompt_upgrade_action">Thuthukisa</string>
     <string name="upgrade_screen_title">Buyekeza kuya ku-BVM FOSS</string>
     <string name="upgrade_screen_preamble">I-Bluetooth Volume Manager ayinazo izikhangiso futhi ayithengisi idatha yabasebenzisi. Ukuthuthukiswa okuqhubekayo kwenziwa kuphela nguwe.</string>
     <string name="upgrade_screen_how_title">Indlela yokusiza</string>

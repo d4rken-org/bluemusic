@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">Sommige apparaatinstellingen zijn mogelijk gereset tijdens deze update. Controleer alsjeblieft je apparaatconfiguraties.</string>
     <string name="onboarding_rewrite_action">Doorgaan</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">Geen onbeheerde apparaten gevonden</string>
     <string name="discover_all_devices_managed_msg">Al je gekoppelde apparaten worden beheerd! Tijd voor een nieuwe?</string>
     <string name="discover_pair_new_device_action">Nieuw apparaat koppelen</string>
     <string name="discover_device_speaker_desc">De eigen spreker van deze telefoon. De volumes ervan worden toegepast wanneer audio terugschakelt naar de telefoon, bijvoorbeeld nadat je Bluetooth-apparaat wordt verbroken.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Apparaatconfiguratie</string>
-    <string name="devices_device_config_section_general_label">Algemeen</string>
     <string name="devices_device_config_remove_device_label">Apparaat vergeten</string>
-    <string name="devices_device_config_remove_device_desc">Vergeet het apparaat uit deze app en verwijdert de configuratie. Dit ontkoppelt het apparaat niet.</string>
     <string name="devices_device_config_remove_device_action">Vergeten</string>
     <string name="devices_device_config_remove_device_confirmation">%s vergeten uit beheerde apparaten?</string>
-    <string name="devices_device_config_rename_device_label">Apparaat hernoemen</string>
-    <string name="devices_device_config_rename_device_desc">Hernoem dit apparaat binnen deze app, en indien mogelijk, binnen het systeem.</string>
     <string name="devices_device_config_rename_device_action">Hernoemen</string>
     <string name="devices_device_config_enabled_label">Ingeschakeld</string>
     <string name="devices_device_config_enabled_desc">Reageer op dit apparaat wanneer verbonden</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">Automatisch afspelen opdrachten</string>
     <string name="devices_device_config_autoplay_keycodes_order">Opdrachtvolgorde</string>
     <string name="devices_device_config_autoplay_keycodes_label">Opdrachten</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Stel in welke opdrachten verzonden worden en in welke volgorde</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">Geen opdrachten geconfigureerd</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">Opdracht toevoegen</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">Maximaal %1$d opdrachten</string>
@@ -121,7 +115,6 @@
     <string name="cd_autoplay_keycode_move_up">Omhoog verplaatsen</string>
     <string name="cd_autoplay_keycode_move_down">Omlaag verplaatsen</string>
     <string name="cd_autoplay_keycode_remove">Verwijderen</string>
-    <string name="devices_device_config_section_volumes_label">Volumes</string>
     <string name="devices_device_config_section_volume_label">Volume</string>
     <string name="devices_device_config_alarm_volume_label">Alarmvolume</string>
     <string name="devices_device_config_alarm_volume_desc">Sommige alarm-apps gebruiken in plaats daarvan het muziekvolume.</string>
@@ -155,8 +148,6 @@
     <string name="devices_audio_stream_ring_label">Beltoon</string>
     <string name="devices_audio_stream_notification_label">Melding</string>
     <string name="devices_audio_stream_alarm_label">Alarm</string>
-    <string name="devices_neverseen_label">Nooit gezien</string>
-    <string name="devices_state_connected_label">Verbonden</string>
     <string name="devices_last_connected_label">Laatst verbonden: %s</string>
     <string name="devices_currently_connected_label">Momenteel verbonden</string>
     <string name="devices_device_disabled_label">Apparaat uitgeschakeld</string>
@@ -191,10 +182,7 @@
     <string name="devices_settings_desc">Instellingen die alle beheerde apparaten beïnvloeden.</string>
     <string name="label_app_enabled">App ingeschakeld</string>
     <string name="description_app_enabled">Geeft de app mogelijkheid te reageren op volume en bluetooth gebeurtenissen.</string>
-    <string name="label_visible_volume_adjustments">Zichtbare aanpassingen</string>
-    <string name="description_visible_volume_adjustments">Het systeem volume venster weergegeven terwijl deze app aanpassingen maakt.</string>
     <string name="label_volume_listener">Observeer wijzigingen</string>
-    <string name="description_volume_listener">Actief blijven terwijl een apparaat is aangesloten en sla de volume veranderingen die niet zijn veroorzaakt door deze app op.</string>
     <string name="label_boot_restore">Herstel bij opstarten</string>
     <string name="description_boot_restore">Volume terugzet na het opstarten/rebooten als een Bluetooth-apparaat is aangesloten.</string>
     <!-- Settings/Support-->
@@ -204,22 +192,11 @@
     <string name="settings_support_wiki_description">Leer hoe je BVM effectief gebruikt</string>
     <string name="settings_support_issue_tracker_description">Een openbare probleemtracker voor bugrapporten en functieverzoeken.</string>
     <string name="settings_support_issue_tracker_label">Probleemtracker</string>
-    <string name="settings_support_debuglog_label">Debug-log</string>
     <string name="settings_support_debuglog_desc">Leg alles wat de app doet vast in een tekstbestand dat je kunt delen.</string>
-    <string name="settings_support_debuglog_recording_desc">Momenteel debug-informatie opnemen. Tik om te stoppen.</string>
-    <string name="settings_support_debuglog_path">Logpad: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">Zeer korte opname</string>
     <string name="settings_support_debuglog_short_recording_msg">Dat was een zeer korte opname. Debug-logs zijn opnames, geen momentopnames — reproduceer het probleem tijdens de opname zodat de log nuttig is.</string>
     <string name="settings_support_debuglog_short_recording_continue">Doorgaan met opnemen</string>
     <string name="settings_support_debuglog_short_recording_stop">Toch stoppen</string>
-    <string name="settings_support_debuglog_folder_label">Debug-logmap</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d sessie gebruikt %2$s</item>
-        <item quantity="other">%1$d sessies gebruiken %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Geen debug-logs opgeslagen</string>
-    <string name="settings_support_debuglog_folder_delete_title">Alle debug-logs verwijderen?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Alle opgeslagen debug-logsessies worden permanent verwijderd.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Een plek om te chillen en vragen te stellen.</string>
     <!-- Settings/Acks-->
@@ -228,16 +205,12 @@
     <string name="settings_acks_translation_header">Vertaling</string>
     <string name="settings_acks_translators_title">Vertalers</string>
     <string name="settings_acks_translators_people">Erik Paelman</string>
-    <string name="settings_acks_translate_title">BVM vertalen</string>
-    <string name="settings_acks_translate_desc">Help BVM te vertalen naar jouw taal</string>
     <string name="settings_acks_thanks_header">Bedankt</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Voor het ondersteunen van de vertaling van open-source projecten</string>
     <string name="settings_licenses_label">Licenties</string>
     <string name="settings_translation_label">Vertaling</string>
     <string name="settings_translation_desc">Help de app te vertalen naar je favoriete taal</string>
-    <string name="settings_sponsor_development_title">Ontwikkeling sponsoren</string>
-    <string name="settings_sponsor_development_summary">Word een patroon en maak voortdurende ontwikkeling mogelijk.</string>
     <string name="settings_privacy_policy_label">Privacybeleid</string>
     <string name="settings_privacy_policy_desc">Verantwoord omgaan met gegevens.</string>
     <string name="changelog_label">Wijzigingslog</string>
@@ -259,10 +232,8 @@
     <string name="backup_restore_success_restore">Herstel voltooid — %1$d apparaten hersteld, %2$d overgeslagen.</string>
     <string name="backup_restore_version_warning">Deze back-up is gemaakt met versie %1$s. Je gebruikt %2$s. Sommige instellingen worden mogelijk niet correct hersteld.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">Debug-meldingen</string>
     <string name="debug_log_consent_title">Debug-log</string>
     <string name="debug_log_consent_explanation">Deze functie legt alles wat de app doet vast in een deelbaar bestand. Het gegenereerde bestand bevat gevoelige informatie (bijv. bestandsnamen en geïnstalleerde apps). Deel het alleen met vertrouwde partijen (bijv. een ontwikkelaar die een probleem oplost).</string>
-    <string name="debug_log_recording_progress">Debug-log opnemen</string>
     <string name="debug_log_record_action">Opnemen</string>
     <string name="debug_log_stop_action">Opname stoppen</string>
     <string name="debug_log_screen_title">Debug-logrecorder</string>
@@ -277,7 +248,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">Verwerpen</string>
     <string name="debug_log_screen_keep_action">Bewaren</string>
-    <string name="debug_log_compressing_label">Bezig met comprimeren…</string>
     <string name="debug_log_file_label">Opgenomen logbestand</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Log verstuurd?</string>
@@ -305,7 +275,6 @@
     <string name="contact_description_question_hint">Beschrijf je vraag in detail.</string>
     <string name="contact_category_section_label">Categorie</string>
     <string name="contact_debug_log_label">Debug-log</string>
-    <string name="contact_debug_log_select_hint">Selecteer een debug-log om te bijvoegen</string>
     <string name="contact_debug_log_picker_hint">Voeg een debug-log toe om het probleem sneller te diagnosticeren.</string>
     <string name="contact_debug_log_picker_empty">Geen debug-logs beschikbaar. Neem er eerst een op.</string>
     <string name="contact_expected_behavior_label">Verwacht gedrag</string>
@@ -319,82 +288,32 @@
     <string name="contact_welcome_msg">Ik lees elk bericht zelf en doe mijn best om te antwoorden, maar omdat ik er alleen aan werk, kan het even duren. Bedankt voor je geduld.</string>
     <string name="contact_footer_msg">Je bericht wordt per e-mail verstuurd. Apparaat- en instellingsinformatie wordt automatisch bijgevoegd.</string>
     <string name="contact_no_email_app_msg">Geen e-mailapplicatie gevonden op dit apparaat.</string>
-    <string name="contact_attachment_missing_msg">Debug-logbestand bestaat niet meer</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Opgeslagen debug-logs</string>
     <string name="settings_support_stored_logs_desc">%1$d sessies (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Geen opgeslagen debug-logs</string>
-    <string name="settings_support_stored_logs_delete_title">Opgeslagen logs verwijderen?</string>
-    <string name="settings_support_stored_logs_delete_msg">Alle %1$d opgeslagen debug-logsessies worden verwijderd.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Opgeslagen debug-logs verwijderd</string>
-    <string name="label_bug_reports">Foutrapport</string>
-    <string name="description_bug_reports">Automatisch verzenden fout en crash rapporten.</string>
     <string name="label_add_device">Apparaat toevoegen</string>
-    <string name="label_just_a_moment_please">Een ogenblik, alstublieft.</string>
     <string name="label_notification_channel_status">Status</string>
     <string name="label_notification_channel_setup">Setup vereist</string>
     <string name="monitor_notification_starting">Aan de slag…</string>
     <string name="action_set">Stel in</string>
     <string name="action_cancel">Annuleren</string>
-    <string name="label_invalid_input">Ongeldige invoer</string>
     <string name="action_reset">Opnieuw instellen</string>
     <string name="label_no_connected_devices">Geen apparaten verbonden</string>
-    <string name="label_status_idle">Inactief</string>
-    <string name="label_status_adjusting_volumes">Aanpassen volumes</string>
-    <string name="label_premium_version">Premium versie</string>
     <string name="general_upgrade_action">Upgraden</string>
     <string name="common_upgrade_required_label">Upgrade vereist</string>
-    <string name="label_premium_version_required">Premium versie vereist</string>
-    <string name="description_intro_purpose">Deze app staat je Android toestel toe het volume te onthouden van verschillende Bluetooth-apparaten.</string>
-    <string name="upgrade_benefit_unlimited_devices">Onbeperkte apparaatprofielen</string>
-    <string name="upgrade_benefit_connection_actions">Autoplay, app starten en verbindingswaarschuwingen</string>
-    <string name="upgrade_benefit_theme_customization">Thema-, stijl- en kleurcustomisatie</string>
-    <string name="upgrade_benefit_power_controls">Volumevergrendeling en snelheidsbegrenzing</string>
-    <string name="upgrade_benefit_support">Ondersteun onafhankelijke ontwikkeling</string>
     <string name="upgrade_benefit_equalizer">• Per-apparaat-equalizer (voor muziek-apps met ondersteuning voor systeemequalizers)</string>
-    <string name="description_intro_tap_the_button">Begin met het toevoegen van het eerste apparaat.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth is uitgeschakeld.</string>
     <string name="title_bluetooth_is_off">Bluetooth is Uit</string>
     <string name="action_enable_bluetooth">Bluetooth Inschakelen</string>
     <string name="title_bluetooth_permission_required">Bluetooth Toestemming Vereist</string>
     <string name="description_bluetooth_permission_required">Deze app heeft Bluetooth-toestemming nodig om het volume van je apparaten te beheren.</string>
     <string name="action_grant_permission">Toestemming Verlenen</string>
-    <string name="label_status_listening_for_changes">Luisteren voor veranderingen in volume</string>
     <string name="action_exit">Verlaten</string>
-    <string name="action_start">Starten</string>
-    <string name="label_welcome">Welkom</string>
-    <string name="description_intro_contact">Aarzel niet om me te contacteren als u vragen of zelfs een idee voor een nieuwe functie hebt.</string>
-    <string name="label_translation">Vertaling</string>
-    <string name="description_help_translate">Help me deze app beschikbaar maken in andere talen.</string>
     <string name="label_device_speaker">Apparaat luidspreker</string>
-    <string name="label_keyevent_playpause">Afspelen/pauzeren</string>
-    <string name="label_keyevent_play">Afspelen</string>
-    <string name="label_keyevent_next">Volgende</string>
-    <string name="label_install_id">Installatie ID</string>
     <string name="message_copied_to_clipboard">Gekopieerd naar klipbord</string>
-    <string name="label_thanks">Bedankt</string>
-    <string name="label_licenses">Licenties</string>
-    <string name="description_ring_volume_additional_permission">Aanvullende machtigingen zijn nodig om het beltvolume te wijzigen.</string>
-    <string name="label_missing_permissions">Ontbrekende machtigingen</string>
-    <string name="action_grant">Toestaan</string>
-    <string name="label_advanced">Geavanceerd</string>
-    <string name="label_exclude_health">Gezondheid profielen uitsluiten</string>
-    <string name="description_exclude_health">Sommige Android-apparaten hangen vast bij het zoeken naar Bluetooth-profielen (HDP, 0x1400).</string>
-    <string name="label_exclude_gattserver">GATT server profielen uitsluiten</string>
-    <string name="label_exclude_gatt">GATT server profielen uitsluiten</string>
-    <string name="description_exclude_gattserver">Vraag geen Bluetooth profielen van type \'Algemene Attribuut\' (GATT) server aan.</string>
-    <string name="description_exclude_gatt">Vraag geen Bluetooth profielen van type \'Algemene Attribuut\' (GATT) server aan.</string>
-    <string name="description_waiting_for_devicex">Wachten op %s om de verbinding te voltooien</string>
-    <string name="action_undo">Ongedaan maken</string>
-    <string name="action_show">Toon</string>
     <string name="action_dismiss">Afwijzen</string>
-    <string name="action_fix">Repareren</string>
-    <string name="battery_optimizations_issue_description">Batterij optimalisaties zijn ingeschakeld voor deze app en kunnen voorkomen dat deze Bluetooth-events ontvangt. Overweeg optimalisaties uit te schakelen als u problemen ondervindt.</string>
     <string name="label_bluetooth_settings">Bluetooth-instellingen</string>
-    <string name="android10_applaunch_issue_description">Android 10 beperkt hoe apps vanuit de achtergrond kunnen worden gestart. Om apps te kunnen openen wanneer een Bluetooth-apparaat verbinding maakt, verleen de toestemming &quot;Over andere apps weergeven&quot; (SYSTEM_ALERT_WINDOW).</string>
-    <string name="label_opensource">Broncode</string>
-    <string name="android13_notification_permission_description">Geef deze app toestemming om meldingen te plaatsen. Dit zorgt ervoor dat er een melding wordt weergegeven wanneer deze app actief is en volume-aanpassingen worden gemaakt.</string>
-    <string name="privacy_policy_label">Privacybeleid</string>
     <string name="managed_devices_empty_message">Geen Bluetooth-apparaten geconfigureerd.\nTik op de + knop om je eerste apparaat toe te voegen.</string>
     <string name="label_pro_feature">Premiumfunctie</string>
     <plurals name="discover_device_limit_banner">
@@ -425,21 +344,15 @@
     <string name="review_app_review_action">Beoordeling</string>
     <string name="review_app_dismiss_action">Misschien later</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">Aankoop geannuleerd</string>
-    <string name="error_iap_unavailable_message">In-app aankopen zijn niet beschikbaar</string>
-    <string name="error_generic_message">Er is een fout opgetreden. Probeer het opnieuw.</string>
-    <string name="error_iap_owned_message">Je bezit dit item al</string>
     <string name="label_no_devices_title">Geen Apparaten</string>
     <string name="bluemusic_mascot_description">App-pictogram</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">Apps selecteren</string>
     <string name="devices_app_selection_search_hint">Zoek apps…</string>
-    <string name="devices_app_selection_currently_selected">Momenteel geselecteerd</string>
     <string name="devices_app_selection_selected_count">%d apps geselecteerd</string>
     <string name="general_navigate_back_action">Ga terug</string>
     <string name="general_reset_action">Herstellen</string>
     <string name="general_clear_action">Wissen</string>
-    <string name="general_save_action">Opslaan</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">Vergr</string>
     <string name="devices_indicator_awake">Wakker</string>
@@ -449,7 +362,6 @@
     <string name="devices_indicator_limit">Lim</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Boost</string>
-    <string name="devices_indicator_launch">Start</string>
     <string name="devices_indicator_home">Thuis</string>
     <string name="devices_indicator_dnd">NS</string>
     <string name="devices_indicator_alert">Melding</string>

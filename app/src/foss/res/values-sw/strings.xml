@@ -3,7 +3,6 @@
     <string name="upgrade_feature_requires_pro">Inahitaji BVM FOSS</string>
     <string name="upgrade_prompt_title">Boresha hadi BVM FOSS</string>
     <string name="upgrade_prompt_body">Fungua vipengele vya ziada na uwe mfumo wa kuunga mkono maendeleo ya kuendelea!</string>
-    <string name="upgrade_prompt_upgrade_action">Boresha</string>
     <string name="upgrade_screen_title">Boresha hadi BVM FOSS</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager haina matangazo na haiuzi data ya mtumiaji. Maendeleo yanayoendelea yanawezeshwa tu na wewe.</string>
     <string name="upgrade_screen_how_title">Jinsi ya kusaidia</string>

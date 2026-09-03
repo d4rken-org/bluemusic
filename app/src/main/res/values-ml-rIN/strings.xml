@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">അപ്ഡേറ്റ് സമയത്ത് ചില ഫീച്ചറുകൾ മാറിയിട്ടുണ്ട്. എല്ലാം ശരിയായി ക്രമീകരിച്ചിട്ടുണ്ടെന്ന് ഉറപ്പാക്കാൻ ദയവായി നിങ്ങളുടെ ഉപകരണ ക്രമീകരണങ്ങൾ പരിശോധിക്കുക.</string>
     <string name="onboarding_rewrite_action">തുടരുക</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">നിർവ്വഹിക്കാത്ത ഉപകരണങ്ങൾ കണ്ടെത്തിയില്ല</string>
     <string name="discover_all_devices_managed_msg">നിങ്ങളുടെ എല്ലാ ജോടിചേർത്ത ഉപകരണങ്ങളും നിർവ്വഹിക്കുന്നു! ഒരു പുതിയത് വേണോ?</string>
     <string name="discover_pair_new_device_action">പുതിയ ഉപകരണം ജോടിചേർക്കുക</string>
     <string name="discover_device_speaker_desc">ഈ ഫോണിന്റെ സ്വന്ത സ്പീക്കർ. നിങ്ങളുടെ Bluetooth ഡിവൈസ് വിച്ഛേദിക്കുമ്പോൾ അതിന്റെ വോളിയങ്ങൾ ഫോണിലേക്ക് ഓഡിയോ മടങ്ങുമ്പോൾ പ്രയോഗിക്കുന്നു.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">ഉപകരണ ക്രമീകരണം</string>
-    <string name="devices_device_config_section_general_label">പൊതുവായ</string>
     <string name="devices_device_config_remove_device_label">ഉപകരണം മറക്കുക</string>
-    <string name="devices_device_config_remove_device_desc">ഈ ആപ്പിൽ നിന്ന് ഉപകരണം മറക്കുകയും അതിന്റെ ക്രമീകരണം ഇല്ലാതാക്കുകയും ചെയ്യുന്നു. ഇത് ഉപകരണത്തിന്റെ ജോടിചേർൽ നീക്കുന്നില്ല.</string>
     <string name="devices_device_config_remove_device_action">മറക്കുക</string>
     <string name="devices_device_config_remove_device_confirmation">നിർവ്വഹിക്കുന്ന ഉപകരണങ്ങളിൽ നിന്ന് %s മറക്കണോ?</string>
-    <string name="devices_device_config_rename_device_label">ഉപകരണം പുനർനാമകരണം ചെയ്യുക</string>
-    <string name="devices_device_config_rename_device_desc">ഈ ആപ്പിൽ, സാധ്യമെങ്കിൽ സിസ്റ്റത്തിലും ഈ ഉപകരണം പുനർനാമകരണം ചെയ്യുക.</string>
     <string name="devices_device_config_rename_device_action">പുനർനാമകരണം</string>
     <string name="devices_device_config_enabled_label">പ്രവർത്തനക്ഷമം</string>
     <string name="devices_device_config_enabled_desc">കണക്‌റ് ചെയ്യുമ്പോൾ ഈ ഉപകരണത്തിനോട് പ്രതികരിക്കുക</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">ഓട്ടോപ്ലേ കമാൻഡുകൾ</string>
     <string name="devices_device_config_autoplay_keycodes_order">കമാൻഡ് ക്രമം</string>
     <string name="devices_device_config_autoplay_keycodes_label">കമാൻഡുകൾ</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">ഏതൊക്കെ കമാൻഡുകൾ അയക്കണം, ഏത് ക്രമത്തിൽ എന്ന് ക്രമീകരിക്കുക</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">കമാൻഡുകളൊന്നും ക്രമീകരിച്ചിട്ടില്ല</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">കമാൻഡ് ചേർക്കുക</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">പരമാവധി %1$d കമാൻഡുകൾ</string>
@@ -121,7 +115,6 @@
     <string name="cd_autoplay_keycode_move_up">മേല്പ്പോട്ട് നീക്കുക</string>
     <string name="cd_autoplay_keycode_move_down">താഴോട്ട് നീക്കുക</string>
     <string name="cd_autoplay_keycode_remove">നീക്കം ചെയ്യുക</string>
-    <string name="devices_device_config_section_volumes_label">വോള്യങ്ങൾ</string>
     <string name="devices_device_config_section_volume_label">വോള്യം</string>
     <string name="devices_device_config_alarm_volume_label">അലാം വോള്യം</string>
     <string name="devices_device_config_alarm_volume_desc">ചില അലാം ആപ്പുകൾ പകരം മ്യൂസിക് വോള്യം ഉപയോഗിക്കുന്നു.</string>
@@ -155,8 +148,6 @@
     <string name="devices_audio_stream_ring_label">റിംഗ്</string>
     <string name="devices_audio_stream_notification_label">നോട്ടിഫിക്കേഷൻ</string>
     <string name="devices_audio_stream_alarm_label">അലാം</string>
-    <string name="devices_neverseen_label">ഒരിക്കലും കണ്ടിട്ടില്ല</string>
-    <string name="devices_state_connected_label">കണക്‌റ് ആണ്</string>
     <string name="devices_last_connected_label">അവസാനം കണക്‌റ് ആയത്: %s</string>
     <string name="devices_currently_connected_label">ഇപ്പോൾ കണക്‌റ് ആണ്</string>
     <string name="devices_device_disabled_label">ഉപകരണം പ്രവർത്തനരഹിതമാണ്</string>
@@ -191,10 +182,7 @@
     <string name="devices_settings_desc">നിർവ്വഹിക്കുന്ന എല്ലാ ഉപകരണങ്ങളെയും ബാധിക്കുന്ന ക്രമീകരണങ്ങൾ.</string>
     <string name="label_app_enabled">ആപ്പ് പ്രവർത്തനക്ഷമം</string>
     <string name="description_app_enabled">വോള്യം, Bluetooth ഇവന്റുകളോട് പ്രതികരിക്കാനുള്ള ആപ്പിന്റെ കഴിവ് ടോഗിൾ ചെയ്യുന്നു.</string>
-    <string name="label_visible_volume_adjustments">ദൃശ്യ ക്രമീകരണങ്ങൾ</string>
-    <string name="description_visible_volume_adjustments">ഈ ആപ്പ് ക്രമീകരണങ്ങൾ നടത്തുമ്പോൾ സിസ്റ്റത്തിന്റെ വോള്യം വിൻഡോ കാണിക്കുക.</string>
     <string name="label_volume_listener">മാറ്റങ്ങൾ നിരീക്ഷിക്കുക</string>
-    <string name="description_volume_listener">ഒരു ഉപകരണം കണക്‌റ് ആയിരിക്കുമ്പോൾ സജീവമായിരിക്കുകയും ഈ ആപ്പ് കാരണമല്ലാത്ത വോള്യം മാറ്റങ്ങൾ സംരക്ഷിക്കുകയും ചെയ്യുക.</string>
     <string name="label_boot_restore">ബൂട്ടിൽ പുനഃസ്ഥാപിക്കുക</string>
     <string name="description_boot_restore">ഒരു Bluetooth ഉപകരണം കണക്‌റ് ആണെങ്കിൽ ബൂട്ടിംഗ്/റീബൂട്ടിംഗ് ശേഷം വോള്യം പുനഃസ്ഥാപിക്കുക.</string>
     <!-- Settings/Support-->
@@ -204,22 +192,11 @@
     <string name="settings_support_wiki_description">BVM ഫലപ്രദമായി ഉപയോഗിക്കുന്നത് പഠിക്കുക</string>
     <string name="settings_support_issue_tracker_description">ബഗ് റിപ്പോർട്ടുകൾക്കും ഫീച്ചർ അഭ്യർത്ഥനകൾക്കുമുള്ള പൊതു ഇഷ്യൂ ട്രാക്കർ.</string>
     <string name="settings_support_issue_tracker_label">ഇഷ്യൂ ട്രാക്കർ</string>
-    <string name="settings_support_debuglog_label">ഡീബഗ് ലോഗ്</string>
     <string name="settings_support_debuglog_desc">ആപ്പ് ചെയ്യുന്ന എല്ലാം നിങ്ങൾക്ക് പങ്കിടാനാകുന്ന ടെക്സ്റ്റ് ഫയലിലേക്ക് രേഖപ്പെടുത്തുക.</string>
-    <string name="settings_support_debuglog_recording_desc">നിലവിൽ ഡീബഗ് വിവരങ്ങൾ റെക്കോർഡ് ചെയ്യുന്നു. റെക്കോർഡിംഗ് നിർത്താൻ ടാപ്പ് ചെയ്യുക.</string>
-    <string name="settings_support_debuglog_path">ലോഗ് പാത: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">വളരെ ഹ്രസ്വ റെക്കോർഡിംഗ്</string>
     <string name="settings_support_debuglog_short_recording_msg">അത് വളരെ ഹ്രസ്വമായ ഒരു റെക്കോർഡിംഗ് ആയിരുന്നു. ഡീബഗ് ലോഗുകൾ റെക്കോർഡിംഗുകളാണ്, സ്നാപ്ഷോട്ടുകളല്ല — ലോഗ് ഉപകാരപ്രദമാകണമെങ്കിൽ റെക്കോർഡിംഗ് സജീവമായിരിക്കുമ്പോൾ പ്രശ്നം പുനഃസൃഷ്ടിക്കുക.</string>
     <string name="settings_support_debuglog_short_recording_continue">റെക്കോർഡിംഗ് തുടരുക</string>
     <string name="settings_support_debuglog_short_recording_stop">എന്തായാലും നിർത്തുക</string>
-    <string name="settings_support_debuglog_folder_label">ഡീബഗ് ലോഗ് ഫോർഡർ</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d സെഷൻ %2$s ഉപയോഗിക്കുന്നു</item>
-        <item quantity="other">%1$d സെഷനുകൾ %2$s ഉപയോഗിക്കുന്നു</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">ഡീബഗ് ലോഗുകൾ ഒന്നും സംഭരിച്ചിട്ടില്ല</string>
-    <string name="settings_support_debuglog_folder_delete_title">എല്ലാ ഡീബഗ് ലോഗുകളും ഇല്ലാതാക്കണോ?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">ഇത് സംഭരിച്ച എല്ലാ ഡീബഗ് ലോഗ് സെഷനുകളും ശാശ്വതമായി ഇല്ലാതാക്കും.</string>
     <string name="settings_support_discord_label">ഡിസ്കോർഡ്</string>
     <string name="settings_support_discord_description">ചുറ്റിക്കറങ്ങാനും ചോദ്യങ്ങൾ ചോദിക്കാനുമുള്ള ഇടം.</string>
     <!-- Settings/Acks-->
@@ -228,16 +205,12 @@
     <string name="settings_acks_translation_header">പരിഭാഷ</string>
     <string name="settings_acks_translators_title">പരിഭാഷകർ</string>
     <string name="settings_acks_translators_people">Person1;Person2(optional@email.com)</string>
-    <string name="settings_acks_translate_title">BVM വിവർത്തനം ചെയ്യുക</string>
-    <string name="settings_acks_translate_desc">BVM നിങ്ങളുടെ ഭാഷയിലേക്ക് വിവർത്തനം ചെയ്യാൻ സഹായിക്കുക</string>
     <string name="settings_acks_thanks_header">നന്ദി</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">ഓപ്പൺ-സോഴ്‌സ് പ്രോജക്ടുകളുടെ വിവർത്തനം പിന്തുണയ്ക്കുന്നതിന്</string>
     <string name="settings_licenses_label">ലൈസൻസുകൾ</string>
     <string name="settings_translation_label">പരിഭാഷ</string>
     <string name="settings_translation_desc">ആപ്പ് നിങ്ങളുടെ പ്രിയ ഭാഷയിലേക്ക് വിവർത്തനം ചെയ്യാൻ സഹായിക്കുക</string>
-    <string name="settings_sponsor_development_title">വികസനം സ്പോൺസർ ചെയ്യുക</string>
-    <string name="settings_sponsor_development_summary">പ്രണയിയാകുകയും തുടർ വികസനം സാധ്യമാക്കുകയും ചെയ്യുക.</string>
     <string name="settings_privacy_policy_label">സ്വകാര്യതാ നയം</string>
     <string name="settings_privacy_policy_desc">ഡാറ്റ ഉത്തരവാദിത്തത്തോടെ കൈകാര്യം ചെയ്യുന്നു.</string>
     <string name="changelog_label">മാറ്റങ്ങളുടെ പട്ടിക</string>
@@ -259,10 +232,8 @@
     <string name="backup_restore_success_restore">പുനഃസ്ഥാപനം പൂർത്തിയായി — %1$d ഉപകരണങ്ങൾ പുനഃസ്ഥാപിച്ചു, %2$d ഒഴിവാക്കി.</string>
     <string name="backup_restore_version_warning">ഈ ബാക്കപ്പ് %1$s പതിപ്പ് ഉപയോഗിച്ചാണ് സൃഷ്ടിച്ചത്. നിങ്ങൾ %2$s പ്രവർത്തിപ്പിക്കുന്നു. ചില ക്രമീകരണങ്ങൾ ശരിയായി പുനഃസ്ഥാപിക്കപ്പെടാതിരിക്കാം.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">ഡീബഗ് അറിയിപ്പുകൾ</string>
     <string name="debug_log_consent_title">ഡീബഗ് ലോഗ്</string>
     <string name="debug_log_consent_explanation">ഈ ഫീച്ചർ ആപ്പ് ചെയ്യുന്ന എല്ലാം പങ്കിടാവുന്ന ഫയലിലേക്ക് രേഖപ്പെടുത്തുന്നു. സൃഷ്ടിക്കപ്പെട്ട ഫയലിൽ സെൻസിറ്റീവ് വിവരങ്ങൾ അടങ്ങിയിരിക്കുന്നു (ഉദാ. ഫയൽ പേരുകൾ, ഇൻസ്റ്റാൾ ചെയ്ത ആപ്പുകൾ). വിശ്വസ്ത കക്ഷികളുമായി മാത്രം പങ്കിടുക (ഉദാ. പ്രശ്നം പരിഹരിക്കുന്ന ഡെവലപ്പർ).</string>
-    <string name="debug_log_recording_progress">ഡീബഗ് ലോഗ് രേഖപ്പെടുത്തുന്നു</string>
     <string name="debug_log_record_action">റെക്കോർഡ്</string>
     <string name="debug_log_stop_action">രേഖപ്പെടുത്തൽ നിർത്തുക</string>
     <string name="debug_log_screen_title">ഡീബഗ് ലോഗ് റെക്കോർഡർ</string>
@@ -277,7 +248,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">ഉപേക്ഷിക്കുക</string>
     <string name="debug_log_screen_keep_action">സൂക്ഷിക്കുക</string>
-    <string name="debug_log_compressing_label">കംപ്രസ് ചെയ്യുന്നു…</string>
     <string name="debug_log_file_label">രേഖപ്പെടുത്തിയ ലോഗ് ഫയൽ</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">ലോഗ് അയച്ചോ?</string>
@@ -305,7 +275,6 @@
     <string name="contact_description_question_hint">നിങ്ങളുടെ ചോദ്യം വിശദമായി വിവരിക്കുക.</string>
     <string name="contact_category_section_label">വിഭാഗം</string>
     <string name="contact_debug_log_label">ഡീബഗ് ലോഗ്</string>
-    <string name="contact_debug_log_select_hint">ഒരു ഡീബഗ് ലോഗ് ഘടിപ്പിക്കാൻ തിരഞ്ഞെടുക്കുക</string>
     <string name="contact_debug_log_picker_hint">പ്രശ്നം വേഗത്തിൽ രോഗനിർണ്ണയം ചെയ്യാൻ സഹായിക്കാൻ ഒരു ഡീബഗ് ലോഗ് ഘടിപ്പിക്കുക.</string>
     <string name="contact_debug_log_picker_empty">ഡീബഗ് ലോഗുകൾ ലഭ്യമല്ല. ആദ്യം ഒന്ന് റെക്കോർഡ് ചെയ്യുക.</string>
     <string name="contact_expected_behavior_label">പ്രതീക്ഷിത സ്വഭാവം</string>
@@ -319,82 +288,32 @@
     <string name="contact_welcome_msg">ഞാൻ ഓരോ സന്ദേശവും സ്വയം വായിക്കുകയും മറുപടി നൽകാൻ പരമാവധി ശ്രമിക്കുകയും ചെയ്യുന്നു, പക്ഷേ ഞാൻ ഇത് ഒറ്റയ്ക്ക് ചെയ്യുന്നതിനാൽ, അൽപ്പം സമയം ആകാം. ക്ഷമയ്ക്ക് നന്ദി.</string>
     <string name="contact_footer_msg">നിങ്ങളുടെ സന്ദേശം ഇമെയിൽ വഴി അയക്കും. ഉപകരണ, ക്രമീകരണ വിവരങ്ങൾ സ്വതോഭൂതമായി ഘടിപ്പിക്കും.</string>
     <string name="contact_no_email_app_msg">ഈ ഉപകരണത്തിൽ ഇമെയിൽ ആപ്പ് കണ്ടെത്തിയില്ല.</string>
-    <string name="contact_attachment_missing_msg">ഡീബഗ് ലോഗ് ഫയൽ ഇനി നിലവിലില്ല</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">സംഭരിച്ച ഡീബഗ് ലോഗുകൾ</string>
     <string name="settings_support_stored_logs_desc">%1$d സെഷനുകൾ (%2$s)</string>
     <string name="settings_support_stored_logs_empty">സംഭരിച്ച ഡീബഗ് ലോഗുകൾ ഇല്ല</string>
-    <string name="settings_support_stored_logs_delete_title">സംഭരിച്ച ലോഗുകൾ ഇല്ലാതാക്കണോ?</string>
-    <string name="settings_support_stored_logs_delete_msg">ഇത് %1$d സംഭരിച്ച ഡീബഗ് ലോഗ് സെഷനുകൾ ഇല്ലാതാക്കും.</string>
-    <string name="settings_support_stored_logs_deleted_msg">സംഭരിച്ച ഡീബഗ് ലോഗുകൾ ഇല്ലാതാക്കി</string>
-    <string name="label_bug_reports">ബഗ് റിപ്പോർട്ടുകൾ</string>
-    <string name="description_bug_reports">സ്വതോഭൂതമായ ബഗ്, ക്രാഷ് റിപ്പോർട്ടിംഗ്.</string>
     <string name="label_add_device">ഉപകരണം ചേർക്കുക</string>
-    <string name="label_just_a_moment_please">ഒരു നിമിഷം, ദയവായി.</string>
     <string name="label_notification_channel_status">നില</string>
     <string name="label_notification_channel_setup">സജ്ജീകരണം ആവശ്യമാണ്</string>
     <string name="monitor_notification_starting">ആരംഭിക്കുന്നു…</string>
     <string name="action_set">സജ്ജീകരിക്കുക</string>
     <string name="action_cancel">റദ്ദ്ചെയ്യുക</string>
-    <string name="label_invalid_input">അസാധുവായ ഇൻപുട്ട്</string>
     <string name="action_reset">പുനഃക്രമീകരിക്കുക</string>
     <string name="label_no_connected_devices">ഉപകരണങ്ങൾ ഒന്നും കണക്‌റ് ആയിട്ടില്ല</string>
-    <string name="label_status_idle">നിഷ്ക്രിയം</string>
-    <string name="label_status_adjusting_volumes">വോള്യങ്ങൾ ക്രമീകരിക്കുന്നു</string>
-    <string name="label_premium_version">പ്രീമിയം വേർഷൻ</string>
     <string name="general_upgrade_action">അപ്ഗ്രേഡുചെയ്യുക</string>
     <string name="common_upgrade_required_label">അപ്‌ഗ്രേഡ് ആവശ്യമാണ്</string>
-    <string name="label_premium_version_required">പ്രീമിയം വേർഷൻ ആവശ്യമാണ്</string>
-    <string name="description_intro_purpose">ഈ ആപ്പ് നിങ്ങളുടെ Android ഉപകരണത്തെ വ്യത്യസ്ത Bluetooth ഉപകരണങ്ങളുടെ വോള്യം ഓർക്കാൻ അനുവദിക്കുന്നു.</string>
-    <string name="upgrade_benefit_unlimited_devices">പരിധിയില്ലാത്ത ഉപകരണ പ്രൊഫൈലുകൾ</string>
-    <string name="upgrade_benefit_connection_actions">ഓട്ടോപ്ലേ, ആപ്പ് ലോഞ്ച്, കണക്ഷൻ അലർട്ടുകൾ</string>
-    <string name="upgrade_benefit_theme_customization">തീം, ശൈലി, നിറ കസ്റ്റമൈസേഷൻ</string>
-    <string name="upgrade_benefit_power_controls">വോളിയം ലോക്കും റേറ്റ് ലിമിറ്റിങ്ങും</string>
-    <string name="upgrade_benefit_support">സ്വതന്ത്ര വികസനം പിന്തുനക്കുക</string>
     <string name="upgrade_benefit_equalizer">• പ്രതി-ഉപകരണ ഇക്വലൈസർ (സിസ്റ്റം ഇക്വലൈസർ പിന്തുണയുള്ള മ്യൂസിക് ആപ്പുകൾക്കായി)</string>
-    <string name="description_intro_tap_the_button">നിങ്ങളുടെ ആദ്യ ഉപകരണം ചേർത്ത് ആരംഭിക്കുക.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth പ്രവർത്തനരഹിതമാക്കിയിരിക്കുന്നു.</string>
     <string name="title_bluetooth_is_off">Bluetooth ഓഫ്ഫ് ആണ്</string>
     <string name="action_enable_bluetooth">Bluetooth പ്രവർത്തനക്ഷമമാക്കുക</string>
     <string name="title_bluetooth_permission_required">Bluetooth അനുമതി ആവശ്യമാണ്</string>
     <string name="description_bluetooth_permission_required">നിങ്ങളുടെ ഉപകരണ വോള്യങ്ങൾ നിർവ്വഹിക്കാൻ ഈ ആപ്പിന് Bluetooth അനുമതി ആവശ്യമാണ്.</string>
     <string name="action_grant_permission">അനുമതി നൽകുക</string>
-    <string name="label_status_listening_for_changes">വോള്യം മാറ്റങ്ങൾ ശ്രദ്ധിക്കുന്നു</string>
     <string name="action_exit">പുറത്തുകടക്കുക</string>
-    <string name="action_start">ആരംഭിക്കുക</string>
-    <string name="label_welcome">സ്വാഗതം</string>
-    <string name="description_intro_contact">നിങ്ങൾക്ക് ചോദ്യങ്ങളോ ഒരു പുതിയ ഫീച്ചറിനുള്ള ആശയമോ ഉണ്ടെങ്കിൽ എന്നെ ബന്ധപ്പെടാൻ മടിക്കേണ്ടതില്ല.</string>
-    <string name="label_translation">പരിഭാഷ</string>
-    <string name="description_help_translate">ഈ ആപ്പ് മറ്റ് ഭാഷകളിൽ ലഭ്യമാക്കാൻ എന്നെ സഹായിക്കൂ.</string>
     <string name="label_device_speaker">ഉപകരണ സ്പീക്കർ</string>
-    <string name="label_keyevent_playpause">പ്ലേ-പോസ്</string>
-    <string name="label_keyevent_play">പ്ലേ</string>
-    <string name="label_keyevent_next">അടുത്തത്</string>
-    <string name="label_install_id">ഇൻസ്റ്റാൾ ID</string>
     <string name="message_copied_to_clipboard">ക്ലിപ്പ്ബോർഡിലേക്ക് പകർത്തി</string>
-    <string name="label_thanks">നന്ദി</string>
-    <string name="label_licenses">ലൈസൻസുകൾ</string>
-    <string name="description_ring_volume_additional_permission">റിംഗ് വോള്യം മാറ്റാൻ അധിക അനുമതികൾ ആവശ്യമാണ്.</string>
-    <string name="label_missing_permissions">അനുമതികൾ കാണ്ണുന്നില്ല</string>
-    <string name="action_grant">അനുവദിക്കുക</string>
-    <string name="label_advanced">വിന്യസ്തമായ</string>
-    <string name="label_exclude_health">ഹെൽത്ത് പ്രൊഫൈലുകൾ ഭ്രമിപ്പിക്കുക</string>
-    <string name="description_exclude_health">ചില Android ഉപകരണങ്ങൾ \'ഹെൽത്ത് ഉപകരണം\' Bluetooth പ്രൊഫൈലുകൾ (HDP, 0x1400) തെരയാൻ വിസ്തിക്കുംപോൾ തടസപ്പെടുന്നു.</string>
-    <string name="label_exclude_gattserver">GATT സേവക പ്രൊഫൈലുകൾ ഭ്രമിപ്പിക്കുക</string>
-    <string name="label_exclude_gatt">GATT പ്രൊഫൈലുകൾ ഭ്രമിപ്പിക്കുക</string>
-    <string name="description_exclude_gattserver">\'ജെനേരിക് ആറ്റ്രിബ്യൂട്\' (GATT) സേവക തരത്തിലുള്ള Bluetooth പ്രൊഫൈലുകൾ അന്വേഷിക്കല്ല.</string>
-    <string name="description_exclude_gatt">\'ജെനേരിക് ആറ്റ്രിബ്യൂട്\' (GATT) ക്ലൈയ്യന്റ് തരത്തിലുള്ള Bluetooth പ്രൊഫൈലുകൾ അന്വേഷിക്കല്ല.</string>
-    <string name="description_waiting_for_devicex">%s കണക്ഷൻ പൂർത്തിയാകുന്നതിനായ് കാത്തിരിക്കുന്നു</string>
-    <string name="action_undo">പഴയപടിയാക്കുക</string>
-    <string name="action_show">കാണിക്കുക</string>
     <string name="action_dismiss">തള്ളിക്കളയുക</string>
-    <string name="action_fix">ശരിയാക്കുക</string>
-    <string name="battery_optimizations_issue_description">ഈ ആപ്പിന് ബാറ്റരി ഒപ്റ്റിമൈസേഷൻ സക്രിയമാണ്, ഇത് ആപ്പിന് Bluetooth ഇവന്റുകൾ ലഭിക്കുന്നത് തടയാമ്. പ്രശ്നങ്ങൾ ഉണ്ടെങ്കിൽ ഒപ്റ്റിമൈസേഷൻ പ്രവർത്തനം ംഗം വേണ്ടെണ്ഡു പരിഗണിക്കുക.</string>
     <string name="label_bluetooth_settings">Bluetooth ക്രമീകരണങ്ങൾ</string>
-    <string name="android10_applaunch_issue_description">Android 10 പ്രവർത്തന പിൻത്തിൽ നിന്ന് ആപ്പുകൾ ദൂരൈക്കേൻ കഴിയുന്ന രീതി പരിമിതപ്പെടുത്തുന്നു. Bluetooth ഉപകരണം കണെക്ട് ചെയ്യുമ്പോൾ ആപ്പുകൾ തുറക്കല് അനുവദിക്കാൻ \"മറ്റ് ആപ്പുകൾക് മുകളിൽ പ്രദർശിപ്പിക്കുക\" (SYSTEM_ALERT_WINDOW) അനുമതി നൽകുക.</string>
-    <string name="label_opensource">സോർസ് കോഡ്</string>
-    <string name="android13_notification_permission_description">അധിസൂചനകൾ പ്രസിദ്ധമാക്കാൻ ഈ ആപ്പിന് അനുമതി നൽകുക. ഈ ആപ്പ് സക്രിയമാകുമ്പോൾ വോള്യം ക്രമീകരണം നിര്വഹിക്കുമ്പോൾ ഇത് ഒരു അധിസൂചന പ്രദർശിപ്പിക്കുന്നു.</string>
-    <string name="privacy_policy_label">സ്വകാര്യതാ നയം</string>
     <string name="managed_devices_empty_message">യാതൊരു Bluetooth ഉപകരണവും ക്രമീകരിക്കപ്പെട്ടിട്ടില്ല.\nഫസ്റ്റ് ഉപകരണം ചേർക്കാൻ + ബട്ടൻ ടാപ് ചെയ്യുക.</string>
     <string name="label_pro_feature">പ്രീമിയം ഫീച്ചർ</string>
     <plurals name="discover_device_limit_banner">
@@ -425,21 +344,15 @@
     <string name="review_app_review_action">നിരൂപണം</string>
     <string name="review_app_dismiss_action">പിന്നീട്</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">വാങ്ങൽ റദ്ദാകി</string>
-    <string name="error_iap_unavailable_message">ആപ്പിനുള്ളിലെ വാങ്ങലുകൾ ലഭ്യമല്ല</string>
-    <string name="error_generic_message">ഒരു തൃടി സംഭവിച്ചു. വീണ്ടും ശ്രമിക്കുക.</string>
-    <string name="error_iap_owned_message">ഈ ആയത്തം നിങ്ങൾക്ക് ഇതിനക്ക് സ്വന്തമാണ്</string>
     <string name="label_no_devices_title">ഉപകരണങ്ങളില്ല</string>
     <string name="bluemusic_mascot_description">ആപ്പ് ഐകോൻ</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">ആപ്പുകൾ തിരഞ്ഞെടുക്കുക</string>
     <string name="devices_app_selection_search_hint">ആപ്പുകൾ താൽക്കാൻ…</string>
-    <string name="devices_app_selection_currently_selected">ഇപ്പോൾ തിരഞ്ഞെടുത്ത്തിരിക്കുന്നു</string>
     <string name="devices_app_selection_selected_count">%d ആപ്പുകൾ തിരഞ്ഞെടുത്തു</string>
     <string name="general_navigate_back_action">തിരിച്ച് നാവിഗേറ്റ് ചെയ്യുക</string>
     <string name="general_reset_action">പുനഃക്രമീകരിക്കുക</string>
     <string name="general_clear_action">മാർജിക്കുക</string>
-    <string name="general_save_action">സേവ്</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">ലോക്ക് ചെയ്യുക</string>
     <string name="devices_indicator_awake">ഉണേര്ന്ന</string>
@@ -449,7 +362,6 @@
     <string name="devices_indicator_limit">പരിധി</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">ബൂസ്റ്റ്</string>
-    <string name="devices_indicator_launch">തുറക്കുക</string>
     <string name="devices_indicator_home">ഹോം</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">മുന്നറിയിപ്പ്</string>

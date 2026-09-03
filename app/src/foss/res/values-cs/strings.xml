@@ -3,7 +3,6 @@
     <string name="upgrade_feature_requires_pro">Vyžaduje BVM FOSS</string>
     <string name="upgrade_prompt_title">Upgradovat na BVM FOSS</string>
     <string name="upgrade_prompt_body">Odemkněte další funkce a staňte se patronem, který podpoří další vývoj!</string>
-    <string name="upgrade_prompt_upgrade_action">Upgradovat</string>
     <string name="upgrade_screen_title">Upgradovat na BVM FOSS</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager neobsahuje žádné reklamy a neprodává data uživatelů. Další vývoj je možný pouze díky vám.</string>
     <string name="upgrade_screen_how_title">Jak pomoci</string>

@@ -5,7 +5,6 @@
     <string name="upgrade_feature_requires_pro">نیاز به BVM Pro دارد</string>
     <string name="upgrade_prompt_title">ارتقاء به BVM Pro</string>
     <string name="upgrade_prompt_body">مدیر صدای بلوتوث Pro نتایج بهتر، ویژگی‌ها و گزینه‌های بیشتری برای کاربران حرفه‌ای ارائه می‌دهد.</string>
-    <string name="upgrade_prompt_upgrade_action">ارتقاء</string>
     <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
     <string name="upgrade_screen_title_template">ارتقا به %1$s</string>
     <string name="upgrade_screen_preamble">مدیر صدای بلوتوث تبلیغات ندارد و داده‌های کاربر را نمی‌فروشد. کار من توسط شما تأمین می‌شود ❤️.</string>
@@ -56,7 +55,6 @@
     <string name="upgrades_gplay_unavailable_error_description">مدیر صدای بلوتوث نمی‌تواند به Google Play وصل شود. آیا Google Play نصب و به‌روز است؟ آیا حساب گوگلتان وارد شده؟ حافظه‌پنهان برنامه Google Play را پاک کنید و دستگاه را راه‌اندازی مجدد کنید.</string>
     <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
     <string name="upgrades_gplay_not_installed_message">نمی‌توان Google Play را باز کرد. ممکن است در این دستگاه نصب نشده، غیرفعال یا محدود باشد.</string>
-    <string name="upgrades_no_purchases_found_check_account">هیچ خریدی یافت نشد. آیا از حساب صحیح استفاده می‌کنید؟</string>
     <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
     <string name="upgrade_screen_offers_title">گزینه‌های ارتقا</string>
     <string name="upgrade_screen_offers_body">هر دو گزینه دقیقا همان ویژگی‌های Pro را باز می‌کنند — هرکدام که برای شما مناسب است انتخاب کنید.</string>

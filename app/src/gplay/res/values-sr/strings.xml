@@ -5,7 +5,6 @@
     <string name="upgrade_feature_requires_pro">Захтева BVM Pro</string>
     <string name="upgrade_prompt_title">Надогради на BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro нуди боље резултате, више функција и опција за искусне кориснике.</string>
-    <string name="upgrade_prompt_upgrade_action">Надогради</string>
     <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
     <string name="upgrade_screen_title_template">Надгради на %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager нема реклама и не продаје корисничке податке. Мој рад финансираш ти ❤️.</string>
@@ -56,7 +55,6 @@
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager не може да се повеже на Google Play. Да ли је Google Play инсталиран и ажуриран? Да ли си пријављен на свој Google налог? Покушај очистити кеш Google Play апликације и поново покрени уређај.</string>
     <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
     <string name="upgrades_gplay_not_installed_message">Није могуће отворити Google Play. Може бити да недостаје, онемогућено је или ограничено на овом уређају.</string>
-    <string name="upgrades_no_purchases_found_check_account">Нису пронађене куповине. Користите ли прави налог?</string>
     <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
     <string name="upgrade_screen_offers_title">Опције надградње</string>
     <string name="upgrade_screen_offers_body">Обе опције омогућавају исте Pro функције — изабери ону која ти одговара.</string>

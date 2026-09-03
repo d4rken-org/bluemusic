@@ -5,7 +5,6 @@
     <string name="upgrade_feature_requires_pro">Membutuhkan BVM Pro</string>
     <string name="upgrade_prompt_title">Upgrade ke BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro menawarkan hasil lebih baik, lebih banyak fitur dan opsi untuk pengguna mahir.</string>
-    <string name="upgrade_prompt_upgrade_action">Tingkatkan</string>
     <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
     <string name="upgrade_screen_title_template">Tingkatkan ke %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager tidak menampilkan iklan dan tidak menjual data pengguna. Pekerjaan saya dibiayai oleh Anda ❤️.</string>
@@ -56,7 +55,6 @@
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager tidak dapat terhubung ke Google Play. Apakah Google Play sudah terpasang dan diperbarui? Apakah Akun Google Anda sudah masuk? Coba hapus cache aplikasi Google Play dan mulai ulang perangkat Anda.</string>
     <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
     <string name="upgrades_gplay_not_installed_message">Tidak bisa membuka Google Play. Aplikasinya mungkin tidak tersedia, dinonaktifkan, atau dibatasi di perangkat ini.</string>
-    <string name="upgrades_no_purchases_found_check_account">Pembelian tidak ditemukan. Apakah Anda menggunakan akun yang benar?</string>
     <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
     <string name="upgrade_screen_offers_title">Opsi upgrade</string>
     <string name="upgrade_screen_offers_body">Kedua opsi membuka fitur Pro yang sama persis — pilih yang paling sesuai untuk Anda.</string>
