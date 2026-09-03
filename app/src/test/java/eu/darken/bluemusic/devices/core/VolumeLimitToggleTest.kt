@@ -147,4 +147,66 @@ class VolumeLimitToggleTest : BaseTest() {
         }
         coVerify(exactly = 0) { repo.updateDevice(any(), any()) }
     }
+
+    @Test
+    fun `setVolumeLimit stores a floor at the stream minimum as no floor`() = runTest {
+        val repo = deviceRepo()
+        val update = slot<(DeviceConfigEntity) -> DeviceConfigEntity>()
+        coEvery { repo.updateDevice(address, capture(update)) } returns Unit
+
+        repo.setVolumeLimit(address, AudioStream.Type.MUSIC, min = 0f, max = 0.6f)
+
+        val updated = update.captured(DeviceConfigEntity(address = address))
+        updated.musicVolumeMin shouldBe null
+        updated.musicVolumeMax shouldBe 0.6f
+    }
+
+    @Test
+    fun `setVolumeLimit stores a ceiling at the stream maximum as no ceiling`() = runTest {
+        val repo = deviceRepo()
+        val update = slot<(DeviceConfigEntity) -> DeviceConfigEntity>()
+        coEvery { repo.updateDevice(address, capture(update)) } returns Unit
+
+        repo.setVolumeLimit(address, AudioStream.Type.MUSIC, min = 0.2f, max = 1f)
+
+        val updated = update.captured(DeviceConfigEntity(address = address))
+        updated.musicVolumeMin shouldBe 0.2f
+        updated.musicVolumeMax shouldBe null
+    }
+
+    // A continuous slider can land here; it prints as "At least 0%", so it is not a floor.
+    @Test
+    fun `setVolumeLimit stores a sub-percent floor as no floor`() = runTest {
+        val repo = deviceRepo()
+        val update = slot<(DeviceConfigEntity) -> DeviceConfigEntity>()
+        coEvery { repo.updateDevice(address, capture(update)) } returns Unit
+
+        repo.setVolumeLimit(address, AudioStream.Type.MUSIC, min = 0.004f, max = null)
+
+        update.captured(DeviceConfigEntity(address = address)).musicVolumeMin shouldBe null
+    }
+
+    @Test
+    fun `setVolumeLimit stores bounds inside the range unchanged`() = runTest {
+        val repo = deviceRepo()
+        val update = slot<(DeviceConfigEntity) -> DeviceConfigEntity>()
+        coEvery { repo.updateDevice(address, capture(update)) } returns Unit
+
+        repo.setVolumeLimit(address, AudioStream.Type.MUSIC, min = 0.2f, max = 0.6f)
+
+        val updated = update.captured(DeviceConfigEntity(address = address))
+        updated.musicVolumeMin shouldBe 0.2f
+        updated.musicVolumeMax shouldBe 0.6f
+    }
+
+    // Normalizing first would turn this into the valid pair 0.5f / null and swallow the rejection.
+    @Test
+    fun `setVolumeLimit validates before normalizing`() = runTest {
+        val repo = deviceRepo()
+
+        shouldThrow<IllegalArgumentException> {
+            repo.setVolumeLimit(address, AudioStream.Type.MUSIC, min = 0.5f, max = 0f)
+        }
+        coVerify(exactly = 0) { repo.updateDevice(any(), any()) }
+    }
 }

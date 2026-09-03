@@ -31,6 +31,8 @@ import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.common.compose.UpgradeBadge
 import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.devices.core.normalizeVolumeLimitMax
+import eu.darken.bluemusic.devices.core.normalizeVolumeLimitMin
 import eu.darken.bluemusic.devices.ui.icon
 import eu.darken.bluemusic.devices.ui.volumelimit.getVolumeLimitDescription
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
@@ -46,8 +48,8 @@ data class VolumeLimitSummary(
 fun ManagedDevice.volumeLimitSummaries(): List<VolumeLimitSummary> = AudioStream.Type.entries
     .filter { getVolume(it) != null }
     .mapNotNull { type ->
-        val min = getVolumeMin(type)
-        val max = getVolumeMax(type)
+        val min = normalizeVolumeLimitMin(getVolumeMin(type))
+        val max = normalizeVolumeLimitMax(getVolumeMax(type))
         if (min == null && max == null) null else VolumeLimitSummary(type, min, max)
     }
 

@@ -1,6 +1,7 @@
 package eu.darken.bluemusic.main.backup.core
 
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
+import eu.darken.bluemusic.devices.core.normalizedVolumeLimits
 import eu.darken.bluemusic.devices.core.requireValidVolumeLimit
 import eu.darken.bluemusic.monitor.core.alert.AlertType
 import eu.darken.bluemusic.monitor.core.audio.DndMode
@@ -93,7 +94,7 @@ fun DeviceConfigBackup.toEntity(): DeviceConfigEntity = DeviceConfigEntity(
     eqEnabled = eqEnabled,
     eqBandLevels = eqBandLevels,
     eqBoostGain = eqBoostGain,
-)
+).normalizedVolumeLimits()
 
 /**
  * Checks for enum values in the backup that are not recognized by the current app version.

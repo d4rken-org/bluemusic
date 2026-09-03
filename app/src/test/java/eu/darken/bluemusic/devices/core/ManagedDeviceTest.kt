@@ -424,6 +424,57 @@ class ManagedDeviceTest : BaseTest() {
         ).hasEffectiveVolumeLimit shouldBe false
     }
 
+    // 0% is the stream's own minimum and 100% its maximum, so such a band constrains nothing.
+    @Test
+    fun `getVolumeBand - null for bounds at the stream extremes`() {
+        listOf(
+            0f to null,
+            null to 1f,
+            0f to 1f,
+        ).forEach { (min, max) ->
+            val device = create(
+                config = DeviceConfigEntity(
+                    address = "AA:BB:CC:DD:EE:FF",
+                    volumeLimit = true,
+                    musicVolume = 0.5f,
+                    musicVolumeMin = min,
+                    musicVolumeMax = max,
+                )
+            )
+            device.getVolumeBand(AudioStream.Type.MUSIC) shouldBe null
+            device.hasEffectiveVolumeLimit shouldBe false
+        }
+    }
+
+    @Test
+    fun `getVolumeBand - drops only the extreme half of a band`() {
+        create(
+            config = DeviceConfigEntity(
+                address = "AA:BB:CC:DD:EE:FF",
+                volumeLimit = true,
+                musicVolume = 0.5f,
+                musicVolumeMin = 0f,
+                musicVolumeMax = 0.6f,
+            )
+        ).getVolumeBand(AudioStream.Type.MUSIC) shouldBe VolumeBand(min = null, max = 0.6f)
+    }
+
+    @Test
+    fun `getVolumeBand - an ordinary band is untouched`() {
+        val device = create(
+            config = DeviceConfigEntity(
+                address = "AA:BB:CC:DD:EE:FF",
+                volumeLimit = true,
+                musicVolume = 0.5f,
+                musicVolumeMin = 0.2f,
+                musicVolumeMax = 0.6f,
+            )
+        )
+
+        device.getVolumeBand(AudioStream.Type.MUSIC) shouldBe VolumeBand(min = 0.2f, max = 0.6f)
+        device.hasEffectiveVolumeLimit shouldBe true
+    }
+
     // endregion
 
     @Test
