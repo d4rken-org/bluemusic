@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.devices.ui.volumelimit
 
+import android.content.Context
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.twotone.MusicNote
 import androidx.compose.runtime.MutableState
@@ -9,17 +10,28 @@ import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.SemanticsNodeInteraction
+import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performSemanticsAction
 import androidx.compose.ui.test.performTouchInput
+import androidx.test.core.app.ApplicationProvider
+import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import org.junit.Test
 import testhelpers.compose.BaseComposeRobolectricTest
+import kotlin.math.roundToInt
 
 class VolumeLimitPreferenceTest : BaseComposeRobolectricTest() {
 
     private var lastLimit: Pair<Float?, Float?>? = null
+
+    private val context: Context
+        get() = ApplicationProvider.getApplicationContext()
+
+    private fun rangeDesc(min: Int, max: Int): String =
+        context.getString(R.string.devices_device_config_volume_limit_range_desc, min, max)
 
     private fun render(min: Float?, max: Float?, stepCount: Int? = null) =
         render(mutableStateOf(min to max), stepCount)
@@ -30,7 +42,6 @@ class VolumeLimitPreferenceTest : BaseComposeRobolectricTest() {
             PreviewWrapper {
                 VolumeLimitPreference(
                     title = "Limit for Music",
-                    description = "No limit set",
                     icon = Icons.TwoTone.MusicNote,
                     min = bounds.value.first,
                     max = bounds.value.second,
@@ -136,6 +147,59 @@ class VolumeLimitPreferenceTest : BaseComposeRobolectricTest() {
         thumb(1).performTouchInput { up() }
 
         lastLimit!!.second shouldBe dragged[1].takeIf { it < 1f }
+    }
+
+    @Test
+    fun `stored bounds render as the description`() {
+        render(min = 0.2f, max = 0.6f)
+
+        composeRule.onNodeWithText(rangeDesc(20, 60)).assertIsDisplayed()
+    }
+
+    // The stored bounds only catch up after the release commits, so a description derived from them
+    // would sit at the old band for the whole gesture.
+    @Test
+    fun `the description follows the thumb mid drag`() {
+        render(min = 0.2f, max = 0.6f)
+
+        thumb(1).performTouchInput {
+            down(center)
+            // The first move is spent on the touch slop, only the second one reaches the thumb.
+            moveTo(center + Offset(SLIDER_DRAG_PX, 0f))
+            moveTo(center + Offset(2 * SLIDER_DRAG_PX, 0f))
+        }
+
+        val dragged = rangeDesc(20, (thumbValues()[1] * 100).roundToInt())
+        dragged shouldNotBe rangeDesc(20, 60)
+        composeRule.onNodeWithText(dragged).assertIsDisplayed()
+        lastLimit shouldBe null
+
+        thumb(1).performTouchInput { up() }
+    }
+
+    @Test
+    fun `a thumb at its extreme reads as unbounded`() {
+        render(min = 0.2f, max = 0.6f)
+
+        thumb(1).performSemanticsAction(SemanticsActions.SetProgress) { it(1f) }
+
+        composeRule
+            .onNodeWithText(context.getString(R.string.devices_device_config_volume_limit_min_desc, 20))
+            .assertIsDisplayed()
+    }
+
+    // Without a step count the slider is continuous, so it can land just above the bottom. That
+    // prints as 0%, and what the text says has to match what gets stored.
+    @Test
+    fun `a sub-percent thumb reads as unbounded`() {
+        render(min = 0.2f, max = 0.6f, stepCount = null)
+
+        thumb(0).performSemanticsAction(SemanticsActions.SetProgress) { it(0.004f) }
+
+        composeRule
+            .onNodeWithText(context.getString(R.string.devices_device_config_volume_limit_max_desc, 60))
+            .assertIsDisplayed()
+        lastLimit shouldBe (null to 0.6f)
     }
 
     // A 16 level stream has 15 steps; the slider counts the 14 values sitting between its two ends.
