@@ -221,7 +221,8 @@ class DashboardViewModel @Inject constructor(
         // Seeded, so the debounce and the equalizer engine probe behind it can never hold up the
         // dashboard itself.
         eqStatusFlow.onStart { emit(null) },
-    ) { upgradeInfo, bluetoothState, devicesWithApps, batteryHint, overlayHint, notificationHint, dndHint, lockedDevices, speakerHintDismissed, review, eqStatus ->
+        devicesSettings.isEnabled.flow,
+    ) { upgradeInfo, bluetoothState, devicesWithApps, batteryHint, overlayHint, notificationHint, dndHint, lockedDevices, speakerHintDismissed, review, eqStatus, isMonitoringEnabled ->
         val showSpeakerHint = !speakerHintDismissed &&
             devicesWithApps.any { it.device.type != SourceDevice.Type.PHONE_SPEAKER } &&
             devicesWithApps.none { it.device.type == SourceDevice.Type.PHONE_SPEAKER }
@@ -242,6 +243,7 @@ class DashboardViewModel @Inject constructor(
             // Lowest priority card: only asked for on an otherwise quiet dashboard, i.e. no hint or
             // permission card is competing for attention and the user actually has devices set up.
             showReviewCard = review.shouldAskForReview &&
+                isMonitoringEnabled &&
                 bluetoothState.hasPermission &&
                 bluetoothState.isEnabled &&
                 !batteryHint.shouldShow &&
@@ -251,6 +253,7 @@ class DashboardViewModel @Inject constructor(
                 !showSpeakerHint &&
                 devicesWithApps.isNotEmpty(),
             eqStatus = eqStatus,
+            isMonitoringEnabled = isMonitoringEnabled,
         )
     }.asStateFlow()
 
@@ -284,6 +287,7 @@ class DashboardViewModel @Inject constructor(
         val showSpeakerHint: Boolean = false,
         val showReviewCard: Boolean = false,
         val eqStatus: EqStatusFor? = null,
+        val isMonitoringEnabled: Boolean = true,
     ) {
         // Convenience property for backwards compatibility
         val devices: List<ManagedDevice> get() = devicesWithApps.map { it.device }
@@ -312,6 +316,10 @@ class DashboardViewModel @Inject constructor(
     fun action(action: DashboardAction) = launch {
         log(tag) { "action: $action" }
         when (action) {
+            is DashboardAction.EnableMonitoring -> {
+                devicesSettings.setEnabled(true)
+            }
+
             is DashboardAction.RequestBluetoothPermission -> {
                 launch {
                     val permission = permissionHelper.getBluetoothPermission()

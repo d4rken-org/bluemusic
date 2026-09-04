@@ -10,7 +10,6 @@ import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
-import eu.darken.bluemusic.monitor.core.service.MonitorControl
 import kotlinx.coroutines.flow.combine
 import javax.inject.Inject
 
@@ -21,7 +20,6 @@ constructor(
     dispatcherProvider: DispatcherProvider,
     navCtrl: NavigationController,
     private val devicesSettings: DevicesSettings,
-    private val monitorControl: MonitorControl,
     upgradeRepo: UpgradeRepo,
 ) : ViewModel4(dispatcherProvider, logTag("Settings", "Devices", "ViewModel"), navCtrl) {
 
@@ -42,16 +40,10 @@ constructor(
         navTo(Nav.Main.Upgrade())
     }
 
+    // MonitorControl observes enabledState and both starts and stops the service.
     fun onToggleEnabled(enabled: Boolean) = launch {
         log(tag) { "onToggleEnabled($enabled)" }
         devicesSettings.setEnabled(enabled)
-        // Disabling is handled centrally: MonitorControl observes enabledState and stops the
-        // service; the orchestrator's own watcher tears down the session as a safety net.
-        // forceStart: a quick disable->enable can race the old session's teardown — a plain
-        // start would be swallowed by onStartCommand and killed by the old job's stopSelf.
-        if (enabled) {
-            monitorControl.startMonitor(forceStart = true)
-        }
     }
 
     fun onToggleRestoreOnBoot(enabled: Boolean) = launch {

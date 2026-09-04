@@ -162,6 +162,19 @@ class MonitorControlTest : BaseTest() {
     }
 
     @Test
+    fun `re-enabling with a persistent device starts the service exactly once`() = runTestWithControl {
+        enabledFlow.value = DevicesSettings.EnabledState(isEnabled = false, toggleEpoch = 1L)
+        devicesFlow.value = listOf(device(active = true, requiresPersistentSession = true))
+        verify(exactly = 0) { context.startServiceCompat(any()) }
+
+        enabledFlow.value = DevicesSettings.EnabledState(isEnabled = true, toggleEpoch = 2L)
+
+        // Exactly one: the enabled-state transition alone drives the start, so callers that only
+        // write the setting do not need a start call of their own.
+        verify(exactly = 1) { context.startServiceCompat(fakeIntent) }
+    }
+
+    @Test
     fun `active device with the equalizer enabled triggers service start`() = runTestWithControl {
         eqOperationalFlow.value = true
         devicesFlow.value = listOf(device(active = true, requiresPersistentSession = false, eqEnabled = true))

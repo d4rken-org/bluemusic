@@ -9,10 +9,10 @@ import androidx.compose.ui.tooling.preview.Preview
  * Multi-preview annotation for all Play Store locales (light mode).
  * [name] = fastlane directory name, [locale] = Android resource qualifier.
  *
- * The set is fastlane/metadata/android/* intersected with the languages Play accepts for a store
- * listing. fastlane/remove_unsupported_languages.sh drops the rest just before upload, so the two
- * lists have to agree: a locale rendered here but deleted there is wasted work, and one kept there
- * without a render ships a listing with no screenshots.
+ * The set is the fastlane/metadata/android/<locale> directories intersected with the languages
+ * Play accepts for a store listing. fastlane/remove_unsupported_languages.sh drops the rest just
+ * before upload, so the two lists have to agree: a locale rendered here but deleted there is
+ * wasted work, and one kept there without a render ships a listing with no screenshots.
  */
 @Retention(AnnotationRetention.BINARY)
 @Target(AnnotationTarget.ANNOTATION_CLASS, AnnotationTarget.FUNCTION)
