@@ -336,6 +336,9 @@
     <string name="description_bluetooth_is_disabled">Bluetooth is disabled.</string>
     <string name="title_bluetooth_is_off">Bluetooth is Off</string>
     <string name="action_enable_bluetooth">Enable Bluetooth</string>
+    <string name="title_monitoring_is_off">Monitoring is Off</string>
+    <string name="description_monitoring_is_disabled">BlueMusic is not reacting to Bluetooth connections or volume changes. Saved volumes, limits and locks are not applied automatically.</string>
+    <string name="action_enable_monitoring">Enable monitoring</string>
     <string name="title_bluetooth_permission_required">Bluetooth Permission Required</string>
     <string name="description_bluetooth_permission_required">This app needs Bluetooth permission to manage your device volumes.</string>
     <string name="action_grant_permission">Grant Permission</string>

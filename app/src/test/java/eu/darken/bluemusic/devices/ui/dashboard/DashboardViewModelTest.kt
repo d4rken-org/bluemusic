@@ -95,6 +95,7 @@ class DashboardViewModelTest : BaseTest() {
     private lateinit var dndHintDismissed: DataStoreValue<Boolean>
     private lateinit var speakerHintDismissed: DataStoreValue<Boolean>
     private lateinit var lockedDevices: DataStoreValue<Set<DeviceAddr>>
+    private lateinit var monitoringEnabled: DataStoreValue<Boolean>
 
     @BeforeEach
     fun setup() {
@@ -153,6 +154,7 @@ class DashboardViewModelTest : BaseTest() {
         dndHintDismissed = stubBoolValue(true)
         speakerHintDismissed = stubBoolValue(false)
         lockedDevices = stubSetValue(emptySet())
+        monitoringEnabled = stubBoolValue(true)
 
         every { generalSettings.isBatteryOptimizationHintDismissed } returns batteryHintDismissed
         every { generalSettings.isAndroid10AppLaunchHintDismissed } returns android10HintDismissed
@@ -160,6 +162,7 @@ class DashboardViewModelTest : BaseTest() {
         every { generalSettings.isDndAccessHintDismissed } returns dndHintDismissed
         every { generalSettings.isSpeakerHintDismissed } returns speakerHintDismissed
         every { devicesSettings.lockedDevices } returns lockedDevices
+        every { devicesSettings.isEnabled } returns monitoringEnabled
 
         // Default: hint helpers report shouldShow=false unless test sets up otherwise.
         every { permissionHelper.getBatteryOptimizationHint(any()) } returns
@@ -413,6 +416,31 @@ class DashboardViewModelTest : BaseTest() {
         updateSlot.captured(false) shouldBe true
     }
 
+    @Test
+    fun `state reports monitoring disabled when the master switch is off`() = runTest(UnconfinedTestDispatcher()) {
+        val enabled = MutableStateFlow(false)
+        every { monitoringEnabled.flow } returns enabled
+
+        val vm = viewModel()
+        backgroundScope.launch { vm.state.collect { } }
+        runCurrent()
+
+        vm.state.value!!.isMonitoringEnabled shouldBe false
+
+        enabled.value = true
+        runCurrent()
+
+        vm.state.value!!.isMonitoringEnabled shouldBe true
+    }
+
+    @Test
+    fun `enable monitoring action writes the setting`() = runTest(UnconfinedTestDispatcher()) {
+        viewModel().action(DashboardAction.EnableMonitoring)
+        advanceUntilIdle()
+
+        coVerify { devicesSettings.setEnabled(true) }
+    }
+
     /**
      * Every gate the review card sits behind, satisfied at once. The negative tests below each flip
      * exactly one of them, so a gate that silently stops mattering surfaces as a failure.
@@ -457,6 +485,14 @@ class DashboardViewModelTest : BaseTest() {
         every { bluetoothRepo.state } returns MutableStateFlow(
             BluetoothRepo.State(isEnabled = false, hasPermission = true, devices = emptySet())
         )
+
+        viewModel().state.filterNotNull().first().showReviewCard shouldBe false
+    }
+
+    @Test
+    fun `the review card stays hidden while monitoring is off`() = runTest(UnconfinedTestDispatcher()) {
+        quietDashboard()
+        every { monitoringEnabled.flow } returns MutableStateFlow(false)
 
         viewModel().state.filterNotNull().first().showReviewCard shouldBe false
     }

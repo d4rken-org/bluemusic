@@ -12,6 +12,8 @@ sealed interface DashboardAction {
         val volumeMode: VolumeMode
     ) : DashboardAction
 
+    data object EnableMonitoring : DashboardAction
+
     data object RequestBluetoothPermission : DashboardAction
 
     data object RequestNotificationPermission : DashboardAction

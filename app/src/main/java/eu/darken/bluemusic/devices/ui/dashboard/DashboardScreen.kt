@@ -23,6 +23,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Block
 import androidx.compose.material.icons.filled.BluetoothDisabled
 import androidx.compose.material.icons.twotone.Add
 import androidx.compose.material.icons.twotone.Bluetooth
@@ -65,6 +66,7 @@ import eu.darken.bluemusic.common.compose.navigationBarBottomPadding
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.common.error.ErrorEventHandler
 import eu.darken.bluemusic.common.navigation.Nav
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import eu.darken.bluemusic.devices.core.DeviceAddr
@@ -82,6 +84,8 @@ import eu.darken.bluemusic.upgrade.ui.brandTitleTwoTone
 fun DevicesScreenHost(vm: DashboardViewModel = hiltViewModel()) {
 
     val state by vm.state.collectAsStateWithLifecycle()
+
+    ErrorEventHandler(vm)
 
     val activity = LocalContext.current as? android.app.Activity
 
@@ -182,6 +186,14 @@ fun DevicesScreen(
                 .horizontalCutoutPadding(),
             contentPadding = PaddingValues(top = 8.dp, bottom = 8.dp + navBarPadding)
         ) {
+            if (!state.isMonitoringEnabled) {
+                item {
+                    MonitoringDisabledCard(
+                        onEnable = { onDeviceAction(DashboardAction.EnableMonitoring) }
+                    )
+                }
+            }
+
             // Critical permission/state cards - these block normal functionality
             if (!state.hasBluetoothPermission) {
                 item {
@@ -355,6 +367,56 @@ private fun ManagedDevicesTopBar(
             }
         }
     )
+}
+
+@Composable
+private fun MonitoringDisabledCard(
+    onEnable: () -> Unit
+) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.errorContainer
+        )
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Icon(
+                imageVector = Icons.Filled.Block,
+                contentDescription = null,
+                modifier = Modifier.size(48.dp),
+                tint = MaterialTheme.colorScheme.onErrorContainer
+            )
+            Spacer(modifier = Modifier.height(12.dp))
+            Text(
+                text = stringResource(R.string.title_monitoring_is_off),
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onErrorContainer
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = stringResource(R.string.description_monitoring_is_disabled),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onErrorContainer,
+                textAlign = TextAlign.Center
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Button(
+                onClick = onEnable,
+                colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.error
+                )
+            ) {
+                Text(stringResource(R.string.action_enable_monitoring))
+            }
+        }
+    }
 }
 
 @Composable
