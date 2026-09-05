@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">블루투스 음량 매니저</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">오류</string>
     <string name="general_error_no_compatible_app_found_msg">이 요청을 처리할 수 있는 호환 가능한 앱을 찾을 수 없습니다.</string>
     <string name="general_share_action">공유</string>
     <string name="general_back_action">뒤로</string>
     <string name="general_show_details_action">자세히 보기</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">BVM에 오신 것을 환영합니다</string>
     <string name="onboarding_welcome_message">블루투스 음량 매니저는 블루투스 디바이스 음량을 자동으로 관리할 수 있게 해줍니다.</string>
     <string name="onboarding_welcome_action">시작하기</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">안드로이드 변경사항과 구글 요구사항 때문에 앱이 계속 안정적으로 작동할 수 있도록 블루투스 음량 매니저를 처음부터 완전히 다시 만들었습니다.</string>
     <string name="onboarding_rewrite_features">이번 업데이트로 인해 일부 디바이스 설정이 재설정되었을 수 있습니다. 디바이스 구성을 확인해 주세요.</string>
     <string name="onboarding_rewrite_action">계속</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">모든 페어링된 기기가 이미 관리되고 있어요! 새로운 기기가 필요하신가요?</string>
     <string name="discover_pair_new_device_action">새 기기 페어링</string>
     <string name="discover_device_speaker_desc">이 휴대폰의 자체 스피커입니다. 오디오가 휴대폰으로 전환될 때(예: Bluetooth 기기 연결 해제 후) 음량이 적용됩니다.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">디바이스 설정</string>
     <string name="devices_device_config_remove_device_label">디바이스 제거</string>
     <string name="devices_device_config_remove_device_action">제거</string>
@@ -37,6 +32,7 @@
     <string name="devices_device_config_rename_device_action">이름 변경</string>
     <string name="devices_device_config_enabled_label">활성화됨</string>
     <string name="devices_device_config_enabled_desc">연결 시 이 기기에 반응</string>
+    <string name="devices_device_config_equalizer_label">이퀄라이저</string>
     <string name="devices_device_config_equalizer_desc">이 기기의 이퀄라이저 밴드와 볼륨 부스트를 조정할 수 있어요. Android 시스템 이퀄라이저를 지원하는 음악 앱에서만 작동해요.</string>
     <string name="devices_device_config_equalizer_boost_label">볼륨 부스트: %1$s</string>
     <string name="devices_device_config_section_timing_label">타이밍</string>
@@ -150,10 +146,8 @@
     <string name="devices_currently_connected_label">현재 연결됨</string>
     <string name="devices_device_disabled_label">기기 비활성화됨</string>
     <string name="devices_no_volumes_configured">이 디바이스에 설정된 음량이 없습니다. 음량 설정을 위해 구성을 누르세요.</string>
-    <!-- Settings-->
     <string name="settings_label">설정</string>
     <string name="settings_category_other_label">기타</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">일반</string>
     <string name="general_settings_desc">전체 앱에 영향을 주는 일반 설정입니다.</string>
     <string name="settings_category_ui_label">사용자 인터페이스</string>
@@ -175,7 +169,6 @@
     <string name="ui_theme_color_sunset_label">노을</string>
     <string name="ui_language_override_label">앱 언어</string>
     <string name="ui_language_override_desc">시스템 기본 언어와 관계없이 BVM에 대한 다른 언어를 선택합니다.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">디바이스</string>
     <string name="devices_settings_desc">모든 관리 디바이스에 영향을 주는 설정입니다.</string>
     <string name="label_app_enabled">앱 켜짐</string>
@@ -183,7 +176,6 @@
     <string name="label_volume_listener">변경 관측</string>
     <string name="label_boot_restore">부트 후 복구</string>
     <string name="description_boot_restore">안드로이드가 시작 또는 재시작된 뒤 블루투스 디바이스가 연결되어 있을 경우 음량을 복구합니다.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">지원</string>
     <string name="settings_support_description">문서 읽기, 문제 신고, 다른 사람들과 대화 또는 디버그 로그 기록을 할 수 있습니다.</string>
     <string name="settings_support_wiki_label">문서</string>
@@ -197,7 +189,6 @@
     <string name="settings_support_debuglog_short_recording_stop">그래도 중지</string>
     <string name="settings_support_discord_label">디스코드</string>
     <string name="settings_support_discord_description">어울리고 질문을 할 수 있는 공간입니다.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">인정</string>
     <string name="settings_acknowledgements_description">크레디트, 라이센스 및 특별한 감사</string>
     <string name="settings_acks_translation_header">번역</string>
@@ -212,7 +203,6 @@
     <string name="settings_privacy_policy_label">개인정보처리방침</string>
     <string name="settings_privacy_policy_desc">데이터를 책임감 있게 처리합니다.</string>
     <string name="changelog_label">변경 내역</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">백업 및 복원</string>
     <string name="backup_restore_settings_desc">기기 설정 및 앱 설정을 백업하고 복원하세요.</string>
     <string name="backup_restore_screen_title">백업 및 복원</string>
@@ -229,7 +219,6 @@
     <string name="backup_restore_success_backup">백업 생성 완료 — %1$d개 기기가 저장되었습니다.</string>
     <string name="backup_restore_success_restore">복원 완료 — %1$d개 기기가 복원되었고, %2$d개가 건너뛰어졌습니다.</string>
     <string name="backup_restore_version_warning">이 백업은 버전 %1$s에서 만들어졌습니다. 현재 버전은 %2$s입니다. 일부 설정이 올바르게 복원되지 않을 수 있습니다.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">디버그 로그</string>
     <string name="debug_log_consent_explanation">이 기능은 앱이 하고 있는 모든 작업을 공유 가능한 파일로 기록합니다. 생성된 파일에는 민감한 정보(예: 파일 이름 및 설치된 앱)가 포함되어 있습니다. 신뢰할 수 있는 당사자(예: 문제를 해결하는 개발자)에게만 공유하세요.</string>
     <string name="debug_log_record_action">기록</string>
@@ -246,7 +235,6 @@
     <string name="debug_log_screen_discard_action">폐기</string>
     <string name="debug_log_screen_keep_action">보관</string>
     <string name="debug_log_file_label">기록된 로그 파일</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">로그를 전송했나요?</string>
     <string name="support_debuglog_sent_message">디버그 로그를 전송했다면 기기에서 삭제할 수 있습니다. 제거하시겠습니까?</string>
     <string name="support_debuglog_session_delete_title">디버그 로그를 삭제할까요?</string>
@@ -259,7 +247,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP 실패</string>
     <string name="support_debuglog_clear_title">모든 디버그 로그를 삭제할까요?</string>
     <string name="support_debuglog_clear_message">저장된 모든 디버그 로그 세션이 영구적으로 삭제됩니다.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">개발자에게 연락</string>
     <string name="settings_support_contact_desc">개발자에게 이메일을 보내는 양식을 작성하세요.</string>
     <string name="contact_screen_title">개발자에게 연락</string>
@@ -284,7 +271,6 @@
     <string name="contact_welcome_msg">모든 메시지를 직접 읽고 최선을 다해 답변드리지만, 혼자 작업하기 때문에 시간이 좀 걸릴 수 있습니다. 기다려 주셔서 감사합니다.</string>
     <string name="contact_footer_msg">메시지는 이메일로 전송됩니다. 기기와 설정 정보가 자동으로 첨부됩니다.</string>
     <string name="contact_no_email_app_msg">이 기기에서 이메일 앱을 찾을 수 없습니다.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">저장된 디버그 로그</string>
     <string name="settings_support_stored_logs_desc">%1$d 세션 (%2$s)</string>
     <string name="settings_support_stored_logs_empty">저장된 디버그 로그 없음</string>
@@ -302,6 +288,9 @@
     <string name="description_bluetooth_is_disabled">블루투스가 꺼져 있습니다.</string>
     <string name="title_bluetooth_is_off">블루투스가 꺼져 있습니다</string>
     <string name="action_enable_bluetooth">블루투스 켜기</string>
+    <string name="title_monitoring_is_off">모니터링 중지됨</string>
+    <string name="description_monitoring_is_disabled">BlueMusic가 Bluetooth 연결 또는 볼륨 변경에 반응하지 않습니다. 저장된 볼륨, 제한 및 잠금이 자동으로 적용되지 않습니다.</string>
+    <string name="action_enable_monitoring">모니터링 활성화</string>
     <string name="title_bluetooth_permission_required">블루투스 권한 필요</string>
     <string name="description_bluetooth_permission_required">이 앱은 디바이스 음량을 관리하기 위해 블루투스 권한이 필요합니다.</string>
     <string name="action_grant_permission">권한 허용</string>
@@ -338,36 +327,31 @@
     <string name="review_app_body">BVM 리뷰를 남겨주시겠어요? ❤️</string>
     <string name="review_app_review_action">리뷰</string>
     <string name="review_app_dismiss_action">다음에 해요</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">디바이스 없음</string>
     <string name="bluemusic_mascot_description">앱 아이콘</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">앱 선택</string>
     <string name="devices_app_selection_search_hint">앱 검색…</string>
     <string name="devices_app_selection_selected_count">%d개 앱 선택됨</string>
     <string name="general_navigate_back_action">뒤로 이동</string>
     <string name="general_reset_action">재설정</string>
     <string name="general_clear_action">지우기</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">잠금</string>
     <string name="devices_indicator_awake">깨어있음</string>
     <string name="devices_indicator_nudge">너징</string>
     <string name="devices_indicator_observe">관찰</string>
     <string name="devices_indicator_disconnect">연결 해제</string>
     <string name="devices_indicator_limit">제한</string>
+    <string name="devices_indicator_volume_range">범위</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">부스트</string>
     <string name="devices_indicator_home">홈</string>
     <string name="devices_indicator_dnd">방해금지</string>
     <string name="devices_indicator_alert">알림</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">볼륨 (0–100)</string>
     <string name="devices_volume_input_error">%1$d에서 %2$d 사이의 값을 입력하세요</string>
     <string name="devices_volume_input_caption">실제 볼륨은 기기가 지원하는 가장 가까운 단계로 반올림될 수 있습니다.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">잠금</string>
     <string name="devices_unlock_sliders_action">잠금 해제</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">활성 블루투스 기기의 볼륨 잠금 상태를 표시합니다</string>
     <string name="widget_no_device_label">연결된 기기 없음</string>
     <string name="widget_bluetooth_off_label">블루투스가 꺼져 있습니다</string>
@@ -384,7 +368,7 @@
     <string name="widget_config_theme_green_label">녹색</string>
     <string name="widget_config_theme_red_label">빨간색</string>
     <string name="widget_config_theme_custom_label">사용자 지정</string>
-    <!-- Equalizer -->
+    <string name="eq_screen_title">이퀄라이저</string>
     <string name="eq_bands_label">밴드</string>
     <string name="eq_mini_graph_desc">설정된 이퀄라이저 밴드</string>
     <string name="eq_enable_label">이퀄라이저 사용</string>

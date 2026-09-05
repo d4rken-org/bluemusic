@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Hitilafu</string>
     <string name="general_error_no_compatible_app_found_msg">Hakuna programu inayofaa kupatikana kushughulikia ombi hili.</string>
     <string name="general_share_action">Shiriki</string>
     <string name="general_back_action">Rudi</string>
     <string name="general_show_details_action">Onyesha maelezo</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Karibu BVM</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager inakuruhusu kudhibiti sauti za vifaa vya Bluetooth kiotomatiki.</string>
     <string name="onboarding_welcome_action">Twende</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Nilipaswa kuandika upya programu ili kuendana na mabadiliko ya Android na mahitaji ya Google. Nimeboresha programu inapowezekana kuhakikisha inaendelea kufanya kazi kwa uaminifu.</string>
     <string name="onboarding_rewrite_features">Baadhi ya vipengele vimebadilika wakati wa sasisho. Tafadhali angalia mipangilio ya kifaa chako kuhakikisha kila kitu kimesanidiwa vizuri.</string>
     <string name="onboarding_rewrite_action">Endelea</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">Vifaa vyako vyote vilivyounganishwa vinadhibitiwa! Unahitaji kipya?</string>
     <string name="discover_pair_new_device_action">Unganisha kifaa kipya</string>
     <string name="discover_device_speaker_desc">Spikari ya simu yenyewe. Kiwango cha sauti chake kinatumika wakati sauti inaburudika kwa simu, kwa mfano baada ya kifaa chako cha Bluetooth kutengana.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Usanidi wa kifaa</string>
     <string name="devices_device_config_remove_device_label">Sahau kifaa</string>
     <string name="devices_device_config_remove_device_action">Sahau</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">Imeunganishwa sasa hivi</string>
     <string name="devices_device_disabled_label">Kifaa kimezimwa</string>
     <string name="devices_no_volumes_configured">Hakuna sauti zilizosanidiwa kwa kifaa hiki. Gonga Sanidi ili kuweka mapendeleo ya sauti.</string>
-    <!-- Settings-->
     <string name="settings_label">Mipangilio</string>
     <string name="settings_category_other_label">Nyingine</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">Jumla</string>
     <string name="general_settings_desc">Marekebisho ya jumla yanayoathiri programu nzima.</string>
     <string name="settings_category_ui_label">Kiolesura cha mtumiaji</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">Machweo ya jua</string>
     <string name="ui_language_override_label">Lugha ya programu</string>
     <string name="ui_language_override_desc">Chagua lugha tofauti kwa BVM, bila kujali lugha chaguo-msingi ya mfumo wako.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Vifaa</string>
     <string name="devices_settings_desc">Mipangilio inayoathiri vifaa vyote vinavyodhibitiwa.</string>
     <string name="label_app_enabled">Programu imewezeshwa</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">Angalia mabadiliko</string>
     <string name="label_boot_restore">Rejesha wakati wa kuwasha</string>
     <string name="description_boot_restore">Rejesha sauti baada ya kuwasha/kuanzisha upya kama kifaa cha Bluetooth kimeunganishwa.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Msaada</string>
     <string name="settings_support_description">Soma nyaraka, ripoti matatizo, ongea na wengine au rekodi rekodi za utatuzi.</string>
     <string name="settings_support_wiki_label">Nyaraka</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Simamisha hata hivyo</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Mahali pa kukutana na kuuliza maswali.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Shukrani</string>
     <string name="settings_acknowledgements_description">Heshima, leseni, na shukrani maalum</string>
     <string name="settings_acks_translation_header">Tafsiri</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">Sera ya faragha</string>
     <string name="settings_privacy_policy_desc">Kushughulikia data kwa uwazi.</string>
     <string name="changelog_label">Historia ya mabadiliko</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Hifadhi &amp; Urejesho</string>
     <string name="backup_restore_settings_desc">Hifadhi na urejeshee usanidi wa kifaa chako na mipangilio yako.</string>
     <string name="backup_restore_screen_title">Hifadhi &amp; Urejesho</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">Hifadhi imeundwa — vifaa %1$d vimehifadhiwa.</string>
     <string name="backup_restore_success_restore">Urejesho umekamilika — vifaa %1$d vimerejeshwa, %2$d vimerukwa.</string>
     <string name="backup_restore_version_warning">Hifadhi hii iliundwa na toleo %1$s. Unaendesha %2$s. Baadhi ya mipangilio inaweza isirejeshwe vizuri.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Rekodi ya utatuzi</string>
     <string name="debug_log_consent_explanation">Kipengele hiki kinarekodi kila kitu programu inachofanya katika faili linaweza kushirikishwa. Faili lililotengenezwa lina maelezo ya siri (k.m. majina ya mafaili na programu zilizosakiniwa). Shiriki tu na wahusika wanaoweza kuaminika (k.m. msanidi programu anayetatua tatizo).</string>
     <string name="debug_log_record_action">Rekodi</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">Tupa</string>
     <string name="debug_log_screen_keep_action">Hifadhi</string>
     <string name="debug_log_file_label">Faili la rekodi lililoandikwa</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Logi imetumwa?</string>
     <string name="support_debuglog_sent_message">Kama umetuma logi ya utatuzi, inaweza kufutwa kutoka kwa kifaa. Je, ungependa kuiondoa?</string>
     <string name="support_debuglog_session_delete_title">Futa logi ya utatuzi?</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP ilishindwa</string>
     <string name="support_debuglog_clear_title">Futa logi zote za utatuzi?</string>
     <string name="support_debuglog_clear_message">Hii itafuta kabisa vipindi vyote vya logi za utatuzi vilivyohifadhiwa.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Wasiliana na msanidi</string>
     <string name="settings_support_contact_desc">Jaza fomu kutuma msanidi barua pepe.</string>
     <string name="contact_screen_title">Wasiliana na msanidi</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">Ninasoma kila ujumbe mwenyewe na ninajaribu kujibu kwa uwezo wangu wote, lakini kwani ninafanya hii peke yangu, inaweza kuchukua muda kidogo. Asante kwa uvumilivu wako.</string>
     <string name="contact_footer_msg">Ujumbe wako utatumwa kupitia barua pepe. Maelezo ya kifaa na usanidi yanaambatishwa kiotomatiki.</string>
     <string name="contact_no_email_app_msg">Hakuna programu ya barua pepe iliyopatikana kwenye kifaa hiki.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Logi za utatuzi zilizohifadhiwa</string>
     <string name="settings_support_stored_logs_desc">Vipindi %1$d (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Hakuna logi za utatuzi zilizohifadhiwa</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">Bluetooth imezimwa.</string>
     <string name="title_bluetooth_is_off">Bluetooth Imezimwa</string>
     <string name="action_enable_bluetooth">Washa Bluetooth</string>
+    <string name="title_monitoring_is_off">Ufuatiliaji Umezimwa</string>
+    <string name="description_monitoring_is_disabled">BlueMusic haifanyi kazi kwa uunganisho wa Bluetooth au mabadiliko ya sauti. Kiasi, vikwazo, na kufungwa iliyohifadhiwa hakitumiki kiotomatiki.</string>
+    <string name="action_enable_monitoring">Weza ufuatiliaji</string>
     <string name="title_bluetooth_permission_required">Ruhusa ya Bluetooth Inahitajika</string>
     <string name="description_bluetooth_permission_required">Programu hii inahitaji ruhusa ya Bluetooth kudhibiti sauti za kifaa chako.</string>
     <string name="action_grant_permission">Toa Ruhusa</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">Je, ungependa kuacha mapitio ya BVM? ❤️</string>
     <string name="review_app_review_action">Mapitio</string>
     <string name="review_app_dismiss_action">Labda baadaye</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">Hakuna Vifaa</string>
     <string name="bluemusic_mascot_description">Ikoni ya Programu</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Chagua Programu</string>
     <string name="devices_app_selection_search_hint">Tafuta programu…</string>
     <string name="devices_app_selection_selected_count">Programu %d zimechaguliwa</string>
     <string name="general_navigate_back_action">Rudi nyuma</string>
     <string name="general_reset_action">Weka upya</string>
     <string name="general_clear_action">Futa</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Funga</string>
     <string name="devices_indicator_awake">Macho</string>
     <string name="devices_indicator_nudge">Sukuma kidogo</string>
     <string name="devices_indicator_observe">Angalia</string>
     <string name="devices_indicator_disconnect">Tenga</string>
     <string name="devices_indicator_limit">Kizuizi</string>
+    <string name="devices_indicator_volume_range">Upeo</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Ongezeko</string>
     <string name="devices_indicator_home">Nyumbani</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Arifa</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Sauti (0–100)</string>
     <string name="devices_volume_input_error">Ingiza thamani kati ya %1$d na %2$d</string>
     <string name="devices_volume_input_caption">Sauti halisi inaweza kukaribiana na hatua ya karibu zaidi inayoungwa mkono na kifaa chako.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Funga</string>
     <string name="devices_unlock_sliders_action">Fungua</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Inaonyesha hali ya kufuli cha sauti kwa kifaa cha Bluetooth kinachofanya kazi</string>
     <string name="widget_no_device_label">Hakuna kifaa kilichounganishwa</string>
     <string name="widget_bluetooth_off_label">Bluetooth imezimwa</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">Kijani</string>
     <string name="widget_config_theme_red_label">Nyekundu</string>
     <string name="widget_config_theme_custom_label">Desturi</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">Ikwalaiza</string>
     <string name="eq_bands_label">Bendi</string>
     <string name="eq_mini_graph_desc">Bendi za kisawazishi zilizowekwa</string>

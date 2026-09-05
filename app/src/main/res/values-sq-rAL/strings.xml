@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Gabim</string>
     <string name="general_error_no_compatible_app_found_msg">Nuk u gjet aplikacion i përputhshëm për të trajtuar këtë kërkesë.</string>
     <string name="general_share_action">Ndaj</string>
     <string name="general_back_action">Mbrapa</string>
     <string name="general_show_details_action">Shfaq detajet</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Mirëse në BVM</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager të lejon të menaxhosh vëllimin e zërit të pajisjeve Bluetooth në mënyrë automatike.</string>
     <string name="onboarding_welcome_action">Le të shkojmë</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Duhej të e rishkruaj aplikacionin për të qëndruar në hap me ndryshimet e Android dhe kërkesat e Google. Kam modernizuar aplikacionin ku ishte e mundur për të siguruar që të vazhdon të funksionojë në mënyrë të besueshme.</string>
     <string name="onboarding_rewrite_features">Disa veçori kanë ndryshuar gjatë përditësimit. Ju lutemi kontrolloni cilësimet e pajisjes tuaj për të siguruar që gjithçka është konfiguruar saktë.</string>
     <string name="onboarding_rewrite_action">Vazhdo</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">Të gjitha pajisjet e tua të çiftuara janë të menaxhuara! Ke nevojë për një të re?</string>
     <string name="discover_pair_new_device_action">Çiftua pajisje të re</string>
     <string name="discover_device_speaker_desc">Altoparlanti i vetë i këtij telefoni. Volumet e tij zbatohen kur audio kthehet në telefon, p.sh. pasi pajisja juaj Bluetooth shkëputohet.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Konfigurimi i pajisjes</string>
     <string name="devices_device_config_remove_device_label">Harro pajisje</string>
     <string name="devices_device_config_remove_device_action">Harro</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">Aktualisht i lidhur</string>
     <string name="devices_device_disabled_label">Pajisja e çaktivizuar</string>
     <string name="devices_no_volumes_configured">Nuk ka volume të konfiguruar për këtë pajisje. Prekni Konfiguro për të vendosur përferencat e volumit.</string>
-    <!-- Settings-->
     <string name="settings_label">Cilësimet</string>
     <string name="settings_category_other_label">Tjera</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">Përgjithshta</string>
     <string name="general_settings_desc">Përshtatjet e përgjithshme që ndikojnë në të gjithë aplikacionin.</string>
     <string name="settings_category_ui_label">Ndërfaqja e përdoruesit</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">Perëndim dielli</string>
     <string name="ui_language_override_label">Gjuha e aplikacionit</string>
     <string name="ui_language_override_desc">Zgjidh një gjuhë tjetër për BVM, pavarësisht nga gjuha e paracaktuar e sistemit tuaj.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Pajisjet</string>
     <string name="devices_settings_desc">Cilësimet që ndikojnë në të gjitha pajisjet e menaxhuara.</string>
     <string name="label_app_enabled">Aplikacioni i aktivizuar</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">Mbikëqyr ndryshimet</string>
     <string name="label_boot_restore">Restauro në nisje</string>
     <string name="description_boot_restore">Restauro volumin pas nisjes/rishisjes nëse pajisja Bluetooth lidhet.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Mbështetja</string>
     <string name="settings_support_description">Lexo dokumentacionin, raporto problemet, fol me të tjerë ose regjistro regjistrat e gabimit.</string>
     <string name="settings_support_wiki_label">Dokumentacioni</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Ndaloje gjithsesi</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Një vend për të qëndruar dhe për të bërë pyetje.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Mirënjohjet</string>
     <string name="settings_acknowledgements_description">Kredite, licenca dhe falenderim i veçantë</string>
     <string name="settings_acks_translation_header">Përkthim</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">Politika e privatësisë</string>
     <string name="settings_privacy_policy_desc">Trajtim përgjegjës i të dhënave.</string>
     <string name="changelog_label">Ndryshimet regjistri</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Rezervim &amp; Rivendosje</string>
     <string name="backup_restore_settings_desc">Rezervoni dhe rivendosni konfigurimet dhe cilësimet e pajisjes suaj.</string>
     <string name="backup_restore_screen_title">Rezervim &amp; Rivendosje</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">Rezervimi u krijua — %1$d pajisje u ruajtën.</string>
     <string name="backup_restore_success_restore">Rivendosja u përfundua — %1$d pajisje u rivendosën, %2$d u kapërcyen.</string>
     <string name="backup_restore_version_warning">Ky rezervim u krijua me versionin %1$s. Ju po përdorni %2$s. Disa cilësime mund të mos rivendosen saktë.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Regjistri i gabimit</string>
     <string name="debug_log_consent_explanation">Ky veçori regjistron gjithçka që bën aplikacioni në një skedar të ndarë. Skedari i gjeneruar përmban informacione të ndjeshme (p.sh. emra skedarësh dhe aplikacione të instaluara). Ndaj vetëm me palë të besuara (p.sh. një zhvilluesi që gjidhjet një problem).</string>
     <string name="debug_log_record_action">Regjistro</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">Hedh</string>
     <string name="debug_log_screen_keep_action">Mbaj</string>
     <string name="debug_log_file_label">Skedari i regjistrit të regjistruar</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Regjistri u dërgua?</string>
     <string name="support_debuglog_sent_message">Nëse e ke dërguar regjistrin e debugging, mund të fshihet nga pajisja. Dëshiron ta heqësh?</string>
     <string name="support_debuglog_session_delete_title">Fshi regjistrin e debugging?</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP dështoi</string>
     <string name="support_debuglog_clear_title">Fshi të gjithë regjistrat e debugging?</string>
     <string name="support_debuglog_clear_message">Kjo do të fshijë përgjithmonë të gjitha seancat e ruajtura të regjistrit të debugging.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Kontakto zhvilluesin</string>
     <string name="settings_support_contact_desc">Plotëso një formular për t\'i dërguar zhvilluesit një email.</string>
     <string name="contact_screen_title">Kontakto zhvilluesin</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">Lexoj çdo mesazh vetë dhe bëj çmos të përgjigjem, por meqë punoj vetëm, mund të duhet pak kohë. Faleminderit për durim.</string>
     <string name="contact_footer_msg">Mesazhi yt do të dërgohet me email. Informacioni i pajisjes dhe i konfigurimit bashkëngjitet automatikisht.</string>
     <string name="contact_no_email_app_msg">Nuk u gjet asnjë aplikacion emaili në këtë pajisje.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Regjistrat e ruajtur të debugging</string>
     <string name="settings_support_stored_logs_desc">%1$d seanca (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Nuk ka regjistër të ruajtur debugging</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">Bluetooth është i çaktivizuar.</string>
     <string name="title_bluetooth_is_off">Bluetooth është Mbyllur</string>
     <string name="action_enable_bluetooth">Aktivizo Bluetooth</string>
+    <string name="title_monitoring_is_off">Monitorimi nuk funksionon</string>
+    <string name="description_monitoring_is_disabled">BlueMusic nuk po përgjigjet ndaj lidhjeve Bluetooth ose ndryshimeve në volum. Volumet, limitat dhe blloqet e ruajtura nuk zbatohen automatikisht.</string>
+    <string name="action_enable_monitoring">Aktivizo monitorimin</string>
     <string name="title_bluetooth_permission_required">Leja Bluetooth Kërkohej</string>
     <string name="description_bluetooth_permission_required">Ky aplikacion ka nevojë për lejen e Bluetooth për të menaxhuar volumet e pajisjes tuaj.</string>
     <string name="action_grant_permission">Jep Lejë</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">Dëshironi t\'i lini një koment BVM? ❤️</string>
     <string name="review_app_review_action">Rishikimi</string>
     <string name="review_app_dismiss_action">Ndoshta më vonë</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">Nuk ka Paisjesh</string>
     <string name="bluemusic_mascot_description">Ikona e aplikacionit</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Zgjidh Aplikacionet</string>
     <string name="devices_app_selection_search_hint">Kërkoni aplikacionet…</string>
     <string name="devices_app_selection_selected_count">%d aplikacione të përzgjedhur</string>
     <string name="general_navigate_back_action">Navigo mbrapa</string>
     <string name="general_reset_action">Zgjojë</string>
     <string name="general_clear_action">Pastro</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Bllokimi</string>
     <string name="devices_indicator_awake">Zgjuar</string>
     <string name="devices_indicator_nudge">Lëvizje</string>
     <string name="devices_indicator_observe">Mbikëqyre</string>
     <string name="devices_indicator_disconnect">Shkëputje</string>
     <string name="devices_indicator_limit">Kufiri</string>
+    <string name="devices_indicator_volume_range">Diapazoni</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Përforcim</string>
     <string name="devices_indicator_home">Shtëpi</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Alarm</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Vëllimi (0–100)</string>
     <string name="devices_volume_input_error">Vendos një vlerë midis %1$d dhe %2$d</string>
     <string name="devices_volume_input_caption">Volumi aktual mund të rrumbullakoset në hapin më të afërt që pajisja juaj mbëshëtet.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Blloko</string>
     <string name="devices_unlock_sliders_action">Zhblloko</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Tregon gjendjen e bllokimit të volumit për pajisjen aktive Bluetooth</string>
     <string name="widget_no_device_label">Asnjë pajisje e lidhur</string>
     <string name="widget_bluetooth_off_label">Bluetooth është i çaktivizuar</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">Jeshile</string>
     <string name="widget_config_theme_red_label">Kuq</string>
     <string name="widget_config_theme_custom_label">Me porosi</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">Ekualizues</string>
     <string name="eq_bands_label">Brezat</string>
     <string name="eq_mini_graph_desc">Brezat e konfiguruar të ekualizatorit</string>

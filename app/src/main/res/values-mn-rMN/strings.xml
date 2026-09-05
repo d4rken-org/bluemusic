@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Алдаа</string>
     <string name="general_error_no_compatible_app_found_msg">Энэ хүсэлтийг боловсруулах тохиромжтой апп олдсонгүй.</string>
     <string name="general_share_action">Хуваалцах</string>
     <string name="general_back_action">Буцах</string>
     <string name="general_show_details_action">Дэлгэрэнгүй харуулах</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">BVM-д тавтай морилно уу</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager нь Bluetooth төхөөрөмжийн дууны хэмжээг автоматаар удирдах боломжийг олгодог.</string>
     <string name="onboarding_welcome_action">Эхлэх</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Android-ын өөрчлөлт ба Google-ыйн шаардлагад таарсан аппыг дахин бичсэн байгаа байна бичыя шаардлагтай. Боломжтой газар аппыг орчин ажиллагдахын баталгаар шинэчлэгдсэн.</string>
     <string name="onboarding_rewrite_features">Шинэчлэлтийн уцаар зарим үед өөрчлөгдсөн. Бүх зүйл зөв байдлаар тохиргуулан тохиргуулалтаа төхөөрөмийнӮ шалгаад үзьгээ ньгтгүйг няах.</string>
     <string name="onboarding_rewrite_action">Үргэлжлүүлэх</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">Таны харилцан бүх төхөөрөмжийг удааладаж байна! Шинэ нэг нэмжийг хариалцуулах гэж</string>
     <string name="discover_pair_new_device_action">Шинэ төхөөрөмжийг харилцах</string>
     <string name="discover_device_speaker_desc">Энэ утасны өөрийн чанга яригч. Түүний эзлэхүүнүүд аудио утас руу эргэж ирэхэд хэрэглэгдэнэ, жишээлбэл таны Bluetooth төхөөрөмж салсны дараа.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Төхөөрөмжийн тохиргуулалт</string>
     <string name="devices_device_config_remove_device_label">Төхөөрөмжийг мартах</string>
     <string name="devices_device_config_remove_device_action">Мартах</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">Одоо холбогдсон</string>
     <string name="devices_device_disabled_label">Төхөөрөмжий идэвхүүлгүй</string>
     <string name="devices_no_volumes_configured">Энэ төхөөрөмжийд дууны тохиргуулалт байхгүй. Дууны тохиргуулалт тохируулахаар Тохируулах дээр дарагна.</string>
-    <!-- Settings-->
     <string name="settings_label">Тохиргоо</string>
     <string name="settings_category_other_label">Бусад</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">Ерөнхийлэл</string>
     <string name="general_settings_desc">Апп-н бүх хэсэгт нөлөөлөх ерөнхий тохируулгууд.</string>
     <string name="settings_category_ui_label">Хэрэглэгчийн цонх</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">Нарангар үд</string>
     <string name="ui_language_override_label">Аппын хэл</string>
     <string name="ui_language_override_desc">Системийн өгчимлөгч хэлнээс үл тусгаарал бус BVM-д өөр хэл сонгох.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Төхөөрөмжүүд</string>
     <string name="devices_settings_desc">Бүх удаалагдсан төхөөрөмжүүдд нөлөөлөх тохиргуулалт.</string>
     <string name="label_app_enabled">Апп идэвхүүлсэн</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">Өөрчлөлт ажиглах</string>
     <string name="label_boot_restore">Ньюцлэхэд сэргээлэх</string>
     <string name="description_boot_restore">Bluetooth төхөөрөмжий холбогдсон байсаалд ньюцлэх/дахин ньюцлэхийн дараа дууг сэргээлэх.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Дэмжлэг</string>
     <string name="settings_support_description">Баримт унших, асуудал засгаах, бусадтайгаа ярилцах эсвэл дибаг лог бичлэх.</string>
     <string name="settings_support_wiki_label">Баримт</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Жам зогсох</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Чөлөөт цагаа өнгөрөөх, асуулт асуух газар.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Талархал</string>
     <string name="settings_acknowledgements_description">Хүндэтгэлийн баталгаар, лиценз ба онцгой талархал</string>
     <string name="settings_acks_translation_header">Орчуулга</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">Нууцлалын бодлого</string>
     <string name="settings_privacy_policy_desc">Өгөгдлийг хариуцлагатайгаар зохицуулах.</string>
     <string name="changelog_label">Өөрчлөлтийн түүх</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Нөөцлөлт &amp; Сэргээлт</string>
     <string name="backup_restore_settings_desc">Төхөөрөмжийн тохиргоо болон тохируулгуудаа нөөцлөх, сэргээх.</string>
     <string name="backup_restore_screen_title">Нөөцлөлт &amp; Сэргээлт</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">Нөөцлөлт үүсгэгдсэн — %1$d төхөөрөмж хадагалсан.</string>
     <string name="backup_restore_success_restore">Сэргээлт дууссан — %1$d төхөөрөмж сэргээгдсэн, %2$d алгассан.</string>
     <string name="backup_restore_version_warning">Энэ нөөцлөлт %1$s хувилбариар үүсгэгдсэн. Та %2$s ашиглаж байна. Деяки тохируулга зөв сэргээгдсэхгүй байж болно.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Дибаг лог</string>
     <string name="debug_log_consent_explanation">Энэ функц нь аппликешний бүх үйлдлийг хуваалцах боломжтой файлд бичдэг. Үүсгэсэн файл нь эмзэг мэдээлэл агуулдаг (жишээ нь файлын нэр, суулгасан аппликешн). Зөвхөн итгэмжлэгдсэн талуудтай хуваалцана уу (жишээ нь асуудлыг шийдэж байгаа хөгжүүлэгч).</string>
     <string name="debug_log_record_action">Бичлэх</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">Хаях</string>
     <string name="debug_log_screen_keep_action">Хадгалах</string>
     <string name="debug_log_file_label">Бичсэн лог файл</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Лог илгээ уу?</string>
     <string name="support_debuglog_sent_message">Хэрэв дибаг логиг илгэсэн бол, түүнээс устгаж болно. Устгах уу?</string>
     <string name="support_debuglog_session_delete_title">Дибаг лог устгах уу?</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP амжилсангүй</string>
     <string name="support_debuglog_clear_title">Бүх дибаг логыг устгах уу?</string>
     <string name="support_debuglog_clear_message">Энэ хадгалагдсан бүх дибаг лог сешүүлэлтийг бүрмөсөн устгана.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Хөгжлөлтийн боловсонтой холбогдох</string>
     <string name="settings_support_contact_desc">Хөгжлөлтийн боловсонтой имэйл илгээхийн маягт бөглөө.</string>
     <string name="contact_screen_title">Хөгжлөлтийн боловсонтой холбогдох</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">Би бүх зурварыг өөрөө уншаад хариулахаар чадалах боловч гэжээд нэг нэг хугацаа зарим авах болно. Тэвчээлтийн байдал байлала.</string>
     <string name="contact_footer_msg">Таны зурварыг имэйлеэр илгэнэ. Төхөөрөмжий ба тохиргуулалтын мэдээлел автоматаар хавсрагдана.</string>
     <string name="contact_no_email_app_msg">Энэ төхөөрөмжийд имэйл апп олдсонгүй.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Хадгалагдсан дибаг лог</string>
     <string name="settings_support_stored_logs_desc">%1$d сешүүлэлт (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Хадгалагдсан дибаг лог байхгүй</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">Bluetooth идэвхгүй байна.</string>
     <string name="title_bluetooth_is_off">Bluetooth унтраассан</string>
     <string name="action_enable_bluetooth">Bluetooth идэвхүүлэх</string>
+    <string name="title_monitoring_is_off">Мониторинг унтарсан</string>
+    <string name="description_monitoring_is_disabled">BlueMusic нь Bluetooth холболт эсвэл дууны өөрчлөлтөд хариу үйлдэл үзүүлэхгүй байна. Хадгалсан дууны түвшин, хязгаарлалт, түгжээ автоматаар хэрэглэгдэхгүй байна.</string>
+    <string name="action_enable_monitoring">Мониторингийг идэвхжүүлэх</string>
     <string name="title_bluetooth_permission_required">Bluetooth зөвшөөрөл шаардлагана</string>
     <string name="description_bluetooth_permission_required">Энэ апп таны төхөөрөмжийн дууг удирдахад Bluetooth зөвшөөрөл шаардлагана.</string>
     <string name="action_grant_permission">Зөвшөөрөл олгох</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">Та BVM-д үнэлгээ үлдээхийг хүсч байна уу? ❤️</string>
     <string name="review_app_review_action">Үнэлгээ</string>
     <string name="review_app_dismiss_action">Дараа нь магадгүй</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">Төхөөрөмжий байхгүй</string>
     <string name="bluemusic_mascot_description">Аппын дүрс зураг</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Апп сонгох</string>
     <string name="devices_app_selection_search_hint">Апп хайхах…</string>
     <string name="devices_app_selection_selected_count">%d апп сонгогдсон</string>
     <string name="general_navigate_back_action">Буцах шилжих</string>
     <string name="general_reset_action">Дахин тохируулах</string>
     <string name="general_clear_action">Цэвцлэх</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Түгжийх</string>
     <string name="devices_indicator_awake">Сэржүүлээр</string>
     <string name="devices_indicator_nudge">Өших</string>
     <string name="devices_indicator_observe">Ажиглах</string>
     <string name="devices_indicator_disconnect">Салгах</string>
     <string name="devices_indicator_limit">Хязгаалалт</string>
+    <string name="devices_indicator_volume_range">Хүрээ</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Ихэсгэлт</string>
     <string name="devices_indicator_home">Дэлгэц</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Дохиолго</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Дуу (0–1000)</string>
     <string name="devices_volume_input_error">%1$d ба %2$d хооронды утга оруулна</string>
     <string name="devices_volume_input_caption">Таны төхөөрөмж дэмжиглэх дууны хамгийн алхамдаа дүгрэж асвал дээш дуунд ойрож болох тал.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Түгжийх</string>
     <string name="devices_unlock_sliders_action">Тайлах</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Идэвхийлэлттэй Bluetooth төхөөрөмжийн дууны түгжээг үзүүл́эх</string>
     <string name="widget_no_device_label">Төхөөрөмж холбогдоогүй</string>
     <string name="widget_bluetooth_off_label">Bluetooth унтараа байна</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">Ногоон</string>
     <string name="widget_config_theme_red_label">Улаан</string>
     <string name="widget_config_theme_custom_label">Дурьмалах</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">Эквалайзер</string>
     <string name="eq_bands_label">Зурвасууд</string>
     <string name="eq_mini_graph_desc">Тохируулсан эквалайзерын зурвасууд</string>

@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Eror</string>
     <string name="general_error_no_compatible_app_found_msg">No kompatibul app dem find to handle dis request.</string>
     <string name="general_share_action">Shia</string>
     <string name="general_back_action">Go back</string>
     <string name="general_show_details_action">Shoa details</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Welkom to BVM</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager go allow you manage Bluetooth device volumes by demself.</string>
     <string name="onboarding_welcome_action">Make we go</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">I don rewrite di app to follow Android changes and Google requirements. I don upgrade di app where possible so e go continue dey work well well.</string>
     <string name="onboarding_rewrite_features">Some features don change during di update. Abeg check your device settings to make sure everything set correctly.</string>
     <string name="onboarding_rewrite_action">Continue</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">All your paired devices dey managed! You need new one?</string>
     <string name="discover_pair_new_device_action">Pair new device</string>
     <string name="discover_device_speaker_desc">Di phone speaker. E apply di volumes when audio switch back to phone, like afta your Bluetooth device disconnect.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Device configuration</string>
     <string name="devices_device_config_remove_device_label">Forget device</string>
     <string name="devices_device_config_remove_device_action">Forget</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">Currently connected</string>
     <string name="devices_device_disabled_label">Device disabled</string>
     <string name="devices_no_volumes_configured">No volumes configured for dis device. Tap Configure to set up your volume preferences.</string>
-    <!-- Settings-->
     <string name="settings_label">Settings</string>
     <string name="settings_category_other_label">Other</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">General</string>
     <string name="general_settings_desc">General tweaks wey affect di whole app.</string>
     <string name="settings_category_ui_label">User interface</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">Sunset</string>
     <string name="ui_language_override_label">App language</string>
     <string name="ui_language_override_desc">Select different language for BVM, separate from your system default language.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Devices</string>
     <string name="devices_settings_desc">Settings wey affect all managed devices.</string>
     <string name="label_app_enabled">App enabled</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">Observe changes</string>
     <string name="label_boot_restore">Restore on boot</string>
     <string name="description_boot_restore">Restore volume afta booting/rebooting if Bluetooth device dey connected.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Support</string>
     <string name="settings_support_description">Read documentation, report issues, chat with others or record debug logs.</string>
     <string name="settings_support_wiki_label">Documentation</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Stop anyway</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Place to chill and ask questions.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Acknowledgements</string>
     <string name="settings_acknowledgements_description">Credits, licenses, and special thanks</string>
     <string name="settings_acks_translation_header">Translation</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">Privacy policy</string>
     <string name="settings_privacy_policy_desc">Handling data responsibly.</string>
     <string name="changelog_label">Changelog</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Backup &amp; Restore</string>
     <string name="backup_restore_settings_desc">Back up and restore di settings and configurations for your device.</string>
     <string name="backup_restore_screen_title">Backup &amp; Restore</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">Backup don create — %1$d devices saved.</string>
     <string name="backup_restore_success_restore">Restore don finish — %1$d devices restored, %2$d skipped.</string>
     <string name="backup_restore_version_warning">Dem create dis backup with version %1$s. You dey run %2$s. Some settings fit no restore well.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Debug log</string>
     <string name="debug_log_consent_explanation">Dis feature dey record everything di app dey do into shareable file. Di file wey dem generate get sensitive information (e.g. file names and installed apps). Only share am with people wey you trust (e.g. developer wey dey troubleshoot issue).</string>
     <string name="debug_log_record_action">Record</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">Discard</string>
     <string name="debug_log_screen_keep_action">Keep</string>
     <string name="debug_log_file_label">Recorded log file</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Log sent?</string>
     <string name="support_debuglog_sent_message">If you don send di debug log, e fit delete from di device. You wan remove am?</string>
     <string name="support_debuglog_session_delete_title">Delete debug log?</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP failed</string>
     <string name="support_debuglog_clear_title">Delete all debug logs?</string>
     <string name="support_debuglog_clear_message">Dis go permanently delete all stored debug log sessions.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Contact developer</string>
     <string name="settings_support_contact_desc">Fill form to send di developer email.</string>
     <string name="contact_screen_title">Contact developer</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">I dey read every message myself and I try my best to reply, but since I dey work alone on dis, e fit take small time. Thanks for your patience.</string>
     <string name="contact_footer_msg">Your message go send via email. Device and setup information go attach automatically.</string>
     <string name="contact_no_email_app_msg">No email app found on dis device.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Stored debug logs</string>
     <string name="settings_support_stored_logs_desc">%1$d sessions (%2$s)</string>
     <string name="settings_support_stored_logs_empty">No stored debug logs</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">Bluetooth don off.</string>
     <string name="title_bluetooth_is_off">Bluetooth dey Off</string>
     <string name="action_enable_bluetooth">Enable Bluetooth</string>
+    <string name="title_monitoring_is_off">Monitoring Off</string>
+    <string name="description_monitoring_is_disabled">BlueMusic no dey listen to Bluetooth connections or volume changes. Di saved volumes, limits and locks no dey apply automatically.</string>
+    <string name="action_enable_monitoring">Turn On Monitoring</string>
     <string name="title_bluetooth_permission_required">Bluetooth Permission Required</string>
     <string name="description_bluetooth_permission_required">Dis app need Bluetooth permission to manage your device volumes.</string>
     <string name="action_grant_permission">Grant Permission</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">You go like leave BVM review? ❤️</string>
     <string name="review_app_review_action">Review</string>
     <string name="review_app_dismiss_action">Later nau</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Select Apps</string>
     <string name="devices_app_selection_search_hint">Search apps...</string>
     <string name="devices_app_selection_selected_count">%d apps selected</string>
     <string name="general_navigate_back_action">Navigate back</string>
     <string name="general_reset_action">Reset</string>
     <string name="general_clear_action">Clear</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Lock</string>
     <string name="devices_indicator_awake">Awake</string>
     <string name="devices_indicator_nudge">Nudge</string>
     <string name="devices_indicator_observe">Observe</string>
     <string name="devices_indicator_disconnect">Disconnect</string>
     <string name="devices_indicator_limit">Limit</string>
+    <string name="devices_indicator_volume_range">Range</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Boost</string>
     <string name="devices_indicator_home">Home</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Alert</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volume (0-100)</string>
     <string name="devices_volume_input_error">Enter value between %1$d and %2$d</string>
     <string name="devices_volume_input_caption">Di actual volume fit round to di nearest step wey your device support.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Lock</string>
     <string name="devices_unlock_sliders_action">Unlock</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Show volume lock status for di active Bluetooth device</string>
     <string name="widget_no_device_label">No device connect</string>
     <string name="widget_bluetooth_off_label">Bluetooth don off</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">Green</string>
     <string name="widget_config_theme_red_label">Red</string>
     <string name="widget_config_theme_custom_label">Custom</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">Equalizer</string>
     <string name="eq_bands_label">Bands</string>
     <string name="eq_mini_graph_desc">Equalizer bands wey don set</string>

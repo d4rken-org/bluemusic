@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">பிழை</string>
     <string name="general_error_no_compatible_app_found_msg">இந்த கோரிக்கையைக் கையாள பொருந்தக்கூடிய பயன்பாடு எதுவும் காணப்படவில்லை.</string>
     <string name="general_share_action">பகிர்</string>
     <string name="general_back_action">பின்செல்</string>
     <string name="general_show_details_action">விவரங்களைக் காட்டு</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">BVM-க்கு வரவேற்கிறோம்</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager உங்கள் Bluetooth சாதன ஒலி அளவை தானாகவே நிர்வகிக்க உதவுகிறது.</string>
     <string name="onboarding_welcome_action">தொடங்குவோம்</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Android மாற்றங்கள் மற்றும் Google தேவைகளுக்கு ஏற்பட்டாக ஆப்்அன்னை மூளை நான் முழுமையாக எழுதினேன். நம்பகமாக தொடரந்து இயங்கப்பட இயலுமிடத்தில் ஆப்்அன்னை நவீனப்படுத்திகிறேன்.</string>
     <string name="onboarding_rewrite_features">மேம்பாடு மூலம் சில விஷயங்கள் மாறியுள்ளன. அந்த விஷயங்கள் சரியாக அமைக்கப்பட்டுள்ளதாக உறுதிப்படுத்த உங்கள் சாதன அமைப்புகளைச் செக்கவும்.</string>
     <string name="onboarding_rewrite_action">தொடர்</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">உங்கள் எல்லா இணைக்கப்பட்ட சாதனங்களும் நிர்வகிக்கப்படுகின்றன! புதிதாக ஒன்று தேவையா?</string>
     <string name="discover_pair_new_device_action">புதிய சாதனத்தை இணைக்கவும்</string>
     <string name="discover_device_speaker_desc">இந்த ஃபோனின் சொந்த ஸ்பீக்கர். ஆடியோ ஃபோனுக்கு மீண்டும் மாறும் போது அதன் ஒலிகள் பயன்படுத்தப்படுகிறது, எ.கா. உங்கள் ப்ளூடூத் சாதனம் துண்டிக்கப்பட்ட பின்னர்.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">சாதன அமைப்பு</string>
     <string name="devices_device_config_remove_device_label">சாதனத்தை மறந்துவிடு</string>
     <string name="devices_device_config_remove_device_action">மறந்துவிடு</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">தற்போது இணைக்கப்பட்டுள்ளது</string>
     <string name="devices_device_disabled_label">சாதனம் முடக்கப்பட்டது</string>
     <string name="devices_no_volumes_configured">இந்த சாதனத்திற்கு ஒலி அளவுகள் ஏதும் கட்டமைக்கப்படவில்லை. ஒலி அளவு அமைப்புகளை அமைக்க கட்டமை தட்டும்.</string>
-    <!-- Settings-->
     <string name="settings_label">அமைப்புகள்</string>
     <string name="settings_category_other_label">மற்றவை</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">பொது</string>
     <string name="general_settings_desc">முழு பயன்பாட்டையும் பாதிக்கும் பொது வின்யாசங்கள்.</string>
     <string name="settings_category_ui_label">பயனர் இணையதுளம்</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">மாலைப்போது</string>
     <string name="ui_language_override_label">பயன்பாட்டின் மொழி</string>
     <string name="ui_language_override_desc">உங்கள் கணினியின் இயற்படியான மொழிக்கு சாராமல் BVMக்கு எழுதும் மொழியைத் தேர்ந்தெடு.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">சாதனங்கள்</string>
     <string name="devices_settings_desc">அனைத்து நிர்வகிக்கப்பட்ட சாதனங்களை பாதிக்கும் அமைப்புகள்.</string>
     <string name="label_app_enabled">ஆப்் இயங்குகிறது</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">மாற்றங்களைக் கவனி</string>
     <string name="label_boot_restore">தொடக்கம் வெளியில் மீட்டெடு</string>
     <string name="description_boot_restore">Bluetooth சாதனம் இணைக்கப்பட்டிருக்கும்போது தொடக்கம்/மறுதொடக்கத்திற்கு பிறகு ஒலி அளவை மீட்டெடு.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">ஆதரவு</string>
     <string name="settings_support_description">ஆவணங்களை படிக்கவும், பிழைகளை அறிக்க செய்யவும், மற்றவர்களுடன் உரையாடவும் அல்லது debug logs ஐ பதிவு செய்யவும்.</string>
     <string name="settings_support_wiki_label">ஆவணம்</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">ஏனும் நிறுத்து</string>
     <string name="settings_support_discord_label">டிஸ்கார்ட்</string>
     <string name="settings_support_discord_description">ஒன்றாக இருக்கவும் கேள்விகள் கேட்கவும் ஒரு இடம்.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">நன்றி அறிவிப்புகள்</string>
     <string name="settings_acknowledgements_description">க்ரெடிட்டுகள், உரிம்மூலங்கள், மற்றும் சிறப்பு நன்றியல்</string>
     <string name="settings_acks_translation_header">மொழிபெயர்ப்பு</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">தனியுரிமை கொள்கை</string>
     <string name="settings_privacy_policy_desc">தகவலை பொறுப்புடனுடன் கைகாளவது.</string>
     <string name="changelog_label">மாற்றங்கள் பதிவு</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">காப்புப்பிரதி &amp; மீட்டமைவு</string>
     <string name="backup_restore_settings_desc">உங்கள் சாதன உள்ளமைவுகள் மற்றும் அமைப்புகளை காப்புப்பிரதி எடுக்கவும் மீட்டமைக்கவும்.</string>
     <string name="backup_restore_screen_title">காப்புப்பிரதி &amp; மீட்டமைவு</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">காப்புப்பிரதி உருவாக்கப்பட்டது — %1$d சாதனங்கள் சேமிக்கப்பட்டன.</string>
     <string name="backup_restore_success_restore">மீட்டமைவு முடிந்தது — %1$d சாதனங்கள் மீட்டமைக்கப்பட்டன, %2$d தவிர்க்கப்பட்டன.</string>
     <string name="backup_restore_version_warning">இந்த காப்புப்பிரதி %1$s பதிப்பில் உருவாக்கப்பட்டது. நீங்கள் %2$s இயக்குகிறீர்கள். சில அமைப்புகள் சரியாக மீட்டமைக்கப்படாமல் போகலாம்.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">பிழைத்திருத்த பதிவு</string>
     <string name="debug_log_consent_explanation">இந்த அம்சம் பயன்பாடு செய்யும் அனைத்தையும் பகிரக்கூடிய கோப்பில் பதிவு செய்கிறது. உருவாக்கப்பட்ட கோப்பில் முக்கியமான தகவல்கள் உள்ளன (எ.கா. கோப்பு பெயர்கள் மற்றும் நிறுவப்பட்ட பயன்பாடுகள்). நம்பகமானவர்களுடன் மட்டுமே பகிரவும் (எ.கா. சிக்கலைத் தீர்க்கும் உருவாக்குநர்).</string>
     <string name="debug_log_record_action">பதிவு செய்</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">நிராகரி</string>
     <string name="debug_log_screen_keep_action">வைத்திரு</string>
     <string name="debug_log_file_label">பதிவு செய்யப்பட்ட பதிவு கோப்பு</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">பதிவு அனுப்பப்பட்டதா?</string>
     <string name="support_debuglog_sent_message">பிழைபோக்கு பதிவை அனுப்பியிருந்தால், அதை சாதனத்திலிருந்து நீக்கலாம். நீக்கவிரும்புகிறீர்களா?</string>
     <string name="support_debuglog_session_delete_title">பிழைபோக்கு பதிவை நீக்கலாமா?</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">சுருக்க தோல்வி</string>
     <string name="support_debuglog_clear_title">அனைத்து பிழைபோக்கு பதிவுகளையும் நீக்கலாமா?</string>
     <string name="support_debuglog_clear_message">இது சேமிக்கப்பட்ட அனைத்து பிழைபோக்கு பதிவு அமர்வுகளை நிரந்தரமாக நீக்கிவிடும்.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">ஜன்ணிய் உருவாக்குமள் தொடர்பு கொள்ளும்</string>
     <string name="settings_support_contact_desc">ொரு படிவத்தை நிரப்பி ஜன்ணிய் உருவாக்குமளுக்கு மின்னஞ்சல் அனுப்பும்.</string>
     <string name="contact_screen_title">ஜன்ணிய் உருவாக்குமள் தொடர்பு கொள்ளும்</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">ஏனும் பதிலளிக்க முயற்சிக்கிறேன், ஆனால் தனியாக பணியுள்ளதால் சிறிது நேரம் எடுக்கலாம். உங்கள் போறுமைக்கு நன்றி.</string>
     <string name="contact_footer_msg">உங்கள் செய்தி மின்னஞ்சல் ମூலம் அனுப்பப்படும். சாதனம் மற்றும் அமைப்பு தகவல் தானாகவே இணைக்கப்படும்.</string>
     <string name="contact_no_email_app_msg">இந்த சாதனத்தில் மின்னஞ்சல் ஆப்் ஏதும் காணப்படவில்லை.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">சேமிக்கப்பட்ட பிழைபோக்கு பதிவுகள்</string>
     <string name="settings_support_stored_logs_desc">%1$d அமர்வுகள் (%2$s)</string>
     <string name="settings_support_stored_logs_empty">சேமிக்கப்பட்ட பிழைதொழில் பதிவுகள் இல்லை</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">Bluetooth அணைக்கப்பட்டுள்ளது.</string>
     <string name="title_bluetooth_is_off">Bluetooth அணைந்துள்ளது</string>
     <string name="action_enable_bluetooth">Bluetooth இயக்கு</string>
+    <string name="title_monitoring_is_off">கண்காணிப்பு முடக்கப்பட்டுள்ளது</string>
+    <string name="description_monitoring_is_disabled">BlueMusic ஆனது Bluetooth இணைப்புகள் அல்லது ஒலி நிலை மாற்றங்களுக்குப் பதிலளிக்கவில்லை. சேமிக்கப்பட்ட ஒலி நிலைகள், வரம்புகள் மற்றும் பூட்டுகள் தானாக பயன்படுத்தப்படுவதில்லை.</string>
+    <string name="action_enable_monitoring">கண்காணிப்பை செயல்படுத்து</string>
     <string name="title_bluetooth_permission_required">Bluetooth அனுமதி தேவைப்படுகிறது</string>
     <string name="description_bluetooth_permission_required">உங்கள் சாதன ஒலி அளவுகளை நிர்வகிக்க இந்த ஆப்்கு Bluetooth அனுமதி தேவைப்படுகிறது.</string>
     <string name="action_grant_permission">அனுமதி வழங்கு</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">நீங்கள் BVM க்கு மார்வை வழங்க விரும்புகிறீர்களா? ❤️</string>
     <string name="review_app_review_action">மார்வு</string>
     <string name="review_app_dismiss_action">பிறகு வேளையில்</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">சாதனங்கள் இல்லை</string>
     <string name="bluemusic_mascot_description">ஆப்் சின்னம்</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">ஆப்களைத் தேர்ந்தெடு</string>
     <string name="devices_app_selection_search_hint">ஆப்களை தேடும்…</string>
     <string name="devices_app_selection_selected_count">%d ஆப்கள் தேர்ந்தெடுக்கப்பட்டன</string>
     <string name="general_navigate_back_action">பின்னால் செல்</string>
     <string name="general_reset_action">மீட்டமை</string>
     <string name="general_clear_action">அழிக்கு</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">பூட்டு</string>
     <string name="devices_indicator_awake">விழிப்பு</string>
     <string name="devices_indicator_nudge">தள்ளு</string>
     <string name="devices_indicator_observe">கவனி</string>
     <string name="devices_indicator_disconnect">தொடர்பு துணிக்கு</string>
     <string name="devices_indicator_limit">கட்டுப்படுத்து</string>
+    <string name="devices_indicator_volume_range">வரம்பு</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">பூஸ்ட்</string>
     <string name="devices_indicator_home">இல்லம்</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">எச்சரிக்கை</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">ஒலியளவு (0–100)</string>
     <string name="devices_volume_input_error">%1$d மற்றும் %2$d இடையில் ஒரு மதிப்பை உள்ளிடுக</string>
     <string name="devices_volume_input_caption">உண்மையான ஒலியளவு உங்கள் சாதனம் ஆதரிக்கும் அருகாமை படிக்கு வட்டமிடப்படலாம்.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">பூட்டு</string>
     <string name="devices_unlock_sliders_action">திறு</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">செயலில் உள்ள Bluetooth சாதனத்தின் தொகுதி பூட்டு நிலையை காட்டுகிறது</string>
     <string name="widget_no_device_label">சாதனம் இணைக்கப்படவில்ளை</string>
     <string name="widget_bluetooth_off_label">Bluetooth அணைந்துள்ளது</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">பச்சை</string>
     <string name="widget_config_theme_red_label">சிவப்பு</string>
     <string name="widget_config_theme_custom_label">தனிப்பயன்</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">ஈக்வலைசர்</string>
     <string name="eq_bands_label">பேண்டுகள்</string>
     <string name="eq_mini_graph_desc">கட்டமைக்கப்பட்ட ஈகுவலைசர் பேண்டுகள்</string>

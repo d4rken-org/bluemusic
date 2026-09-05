@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Villa</string>
     <string name="general_error_no_compatible_app_found_msg">Ekkert samhæft forrit fannst til að meðhöndla þessa beiðni.</string>
     <string name="general_share_action">Deila</string>
     <string name="general_back_action">Til baka</string>
     <string name="general_show_details_action">Sýna smáatriði</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Velkomin/n í BVM</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager gerir þér kleift að stjórna hljóðstyrk Bluetooth tækja sjálfkrafa.</string>
     <string name="onboarding_welcome_action">Við skulum fara</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Ég þurfti að endurskrifa forritið til að fylgja breytingum á Android og kröfum Google. Ég hef nútímavætt forritið þar sem mögulegt er til að tryggja að það haldi áfram að virka áreiðanlega.</string>
     <string name="onboarding_rewrite_features">Sumir eiginleikar hafa breyst við uppfærsluna. Vinsamlegast athugaðu stillingar tækisins til að tryggja að allt sé rétt stillt.</string>
     <string name="onboarding_rewrite_action">Halda áfram</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">Öll pöruð tæki þín eru stýrð! Þarftu nýtt?</string>
     <string name="discover_pair_new_device_action">Para nýtt tæki</string>
     <string name="discover_device_speaker_desc">Eigin hátalari þessa sími. Hljóðstyrk hans er notaður þegar hljóð skiptir aftur til símans, t.d. eftir að Bluetooth tækinu þínu er aftengst.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Tækjastillingar</string>
     <string name="devices_device_config_remove_device_label">Gleyma tæki</string>
     <string name="devices_device_config_remove_device_action">Gleyma</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">Tengt núna</string>
     <string name="devices_device_disabled_label">Tæki óvirkt</string>
     <string name="devices_no_volumes_configured">Engir hljóðstyrkar stilltir fyrir þetta tæki. Ýttu á Stilla til að setja upp hljóðstyrksstillingar.</string>
-    <!-- Settings-->
     <string name="settings_label">Stillingar</string>
     <string name="settings_category_other_label">Annað</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">Almennt</string>
     <string name="general_settings_desc">Almennar stillingar sem hafa áhrif á allt forritið.</string>
     <string name="settings_category_ui_label">Notendaviðmót</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">Sólsetur</string>
     <string name="ui_language_override_label">Forritasmál</string>
     <string name="ui_language_override_desc">Veldu annað tungumál fyrir BVM, óháð sjálfgefnu tungumáli kerfisins þíns.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Tæki</string>
     <string name="devices_settings_desc">Stillingar sem hafa áhrif á öll stýrð tæki.</string>
     <string name="label_app_enabled">Forrit virkt</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">Fylgjast með breytingum</string>
     <string name="label_boot_restore">Endurheimta við ræsingu</string>
     <string name="description_boot_restore">Endurheimta hljóðstyrk eftir ræsingu/endurræsingu ef Bluetooth tæki er tengt.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Aðstoð</string>
     <string name="settings_support_description">Lestu skjölun, tilkynntu vandamál, spjaðaðu við aðra eða skráðu villuleit.</string>
     <string name="settings_support_wiki_label">Skjölun</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Stöðva samt</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Staður til að hanga og spyrja spurninga.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Þakkir fá</string>
     <string name="settings_acknowledgements_description">Inneignir, leyfi og sérstakar þakkir</string>
     <string name="settings_acks_translation_header">Þýðing</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">Persónuverndarstefna</string>
     <string name="settings_privacy_policy_desc">Meðhöndlun gagna á ábyrgan hátt.</string>
     <string name="changelog_label">Breytingaskrá</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Öryggisafrit &amp; Endurheimta</string>
     <string name="backup_restore_settings_desc">Taktu öryggisafrit og endurheimtu stillingar og tækjastillingar.</string>
     <string name="backup_restore_screen_title">Öryggisafrit &amp; Endurheimta</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">Öryggisafrit búð til — %1$d tæki vistuð.</string>
     <string name="backup_restore_success_restore">Endurheimting lokið — %1$d tæki endurheimt, %2$d sleppt.</string>
     <string name="backup_restore_version_warning">Þetta öryggisafrit var búð til með útgáfu %1$s. Þú ert að keyra %2$s. Sumar stillingar gætu ekki endurheimt rétt.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Villuleitarskrá</string>
     <string name="debug_log_consent_explanation">Þessi eiginleiki skráir allt sem forritið gerir í deilanlega skrá. Skráin inniheldur viðkvæmar upplýsingar (t.d. skráarnöfn og uppsett forrit). Deildu henni aðeins með traustum aðilum (t.d. þróunaraðila sem er að leysa vandamál).</string>
     <string name="debug_log_record_action">Skrá</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">Henda</string>
     <string name="debug_log_screen_keep_action">Geyma</string>
     <string name="debug_log_file_label">Skráð villuleitarskrá</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Skrá send?</string>
     <string name="support_debuglog_sent_message">Ef þú hefur sent villuletarskrána má eyða henni af tækinu. Viltu fjarlægja hana?</string>
     <string name="support_debuglog_session_delete_title">Eyða villuletarskrá?</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP mistókst</string>
     <string name="support_debuglog_clear_title">Eyða öllum villuletarskrám?</string>
     <string name="support_debuglog_clear_message">Þetta mun eyða endanlega öllum geymdum villuletarskráningum.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Hafa samband við forritara</string>
     <string name="settings_support_contact_desc">Fylltu út eyðublatð til að senda forritaranum tölvupóst.</string>
     <string name="contact_screen_title">Hafa samband við forritara</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">Ég les hvert skilaboð sjálfur og geri mitt besta til að svara, en þar sem ég vinn að þessu einn, getur tekið svolítinn tíma. Þakka þér fyrir þolinmæðina.</string>
     <string name="contact_footer_msg">Skilaboðin þín verða send með tölvupósti. Upplýsingar um tæki og uppsetningu eru hlutlagðar sjálfkrafa.</string>
     <string name="contact_no_email_app_msg">Ekkert tölvupóstforrit fannst á þessu tæki.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Geymdar villuletarskrár</string>
     <string name="settings_support_stored_logs_desc">%1$d lotur (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Engar geymdar villuletarskrár</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">Bluetooth er óvirkt.</string>
     <string name="title_bluetooth_is_off">Bluetooth er slökkt</string>
     <string name="action_enable_bluetooth">Kveikja á Bluetooth</string>
+    <string name="title_monitoring_is_off">Eftirlit er slökkt</string>
+    <string name="description_monitoring_is_disabled">BlueMusic bregðst ekki við Bluetooth-tengingum eða breytingum á hljóðstyrk. Vistaðir hljóðstyrkir, takmörk og læsingar eru ekki notuð sjálfkrafa.</string>
+    <string name="action_enable_monitoring">Virkja eftirlit</string>
     <string name="title_bluetooth_permission_required">Bluetooth leyfi nauðsynlegt</string>
     <string name="description_bluetooth_permission_required">Þetta forrit þarf Bluetooth leyfi til að stjórna hljóðstyrkum tækisins þíns.</string>
     <string name="action_grant_permission">Veita leyfi</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">Viltu skilja eftir umsögn um BVM? ❤️</string>
     <string name="review_app_review_action">Umsögn</string>
     <string name="review_app_dismiss_action">Kannski síðar</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">Engin tæki</string>
     <string name="bluemusic_mascot_description">Forritsmerki</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Velja forrit</string>
     <string name="devices_app_selection_search_hint">Leita í forritum…</string>
     <string name="devices_app_selection_selected_count">%d forrit valin</string>
     <string name="general_navigate_back_action">Fara til baka</string>
     <string name="general_reset_action">Endurstilla</string>
     <string name="general_clear_action">Hreinsa</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Lás</string>
     <string name="devices_indicator_awake">Vakandi</string>
     <string name="devices_indicator_nudge">Ýta</string>
     <string name="devices_indicator_observe">Fylgjast með</string>
     <string name="devices_indicator_disconnect">Aftengja</string>
     <string name="devices_indicator_limit">Takmarka</string>
+    <string name="devices_indicator_volume_range">Svið</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Aukning</string>
     <string name="devices_indicator_home">Heim</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Viðvörun</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Hljóðstyrk (0–100)</string>
     <string name="devices_volume_input_error">Sláðu inn gildi á milli %1$d og %2$d</string>
     <string name="devices_volume_input_caption">Raunverulegur hljóðstyrkur getur sléttað í næstu skref sem tækið þit t styður.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Læsa</string>
     <string name="devices_unlock_sliders_action">Opna lás</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Sýnir stöðu hljóðstyrksláss fyrir virkt Bluetooth-tæki</string>
     <string name="widget_no_device_label">Ekkert tæki tengt</string>
     <string name="widget_bluetooth_off_label">Bluetooth er slökkt</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">Grænn</string>
     <string name="widget_config_theme_red_label">Rauður</string>
     <string name="widget_config_theme_custom_label">Sérsniðinn</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">Jöfnun</string>
     <string name="eq_bands_label">Tíðnisvið</string>
     <string name="eq_mini_graph_desc">Stillt tíðnisvið tónjafnara</string>

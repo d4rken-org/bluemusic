@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Памылка</string>
     <string name="general_error_no_compatible_app_found_msg">Для апрацоўкі гэтага запыту не знойдзена сумяшчальных праграм.</string>
     <string name="general_share_action">Падзяліцца</string>
     <string name="general_back_action">Назад</string>
     <string name="general_show_details_action">Паказаць падрабязнасці</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Сласавіце ў BVM</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager дазваляе вам аўтаматычна кіраваць гучнасцю прылад Bluetooth.</string>
     <string name="onboarding_welcome_action">Пачнём</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Мне давялося перапісаць дадатак, каб паспець за зменамі Android і патрабаваннямі Google. Я мадэрнізаваў дадатак там, дзе гэта магчыма, каб ён працягваў надзейна працаваць.</string>
     <string name="onboarding_rewrite_features">Некаторыя функцыі змяніліся пад час абнаўлення. Калі ласка, праверце налады прылады, каб пераканацца, што ўсё настроена правільна.</string>
     <string name="onboarding_rewrite_action">Працягнуць</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">Усе вашы спалучаныя прылады кіруюцца! Патрэбна новая?</string>
     <string name="discover_pair_new_device_action">Спалучыць новую прыладу</string>
     <string name="discover_device_speaker_desc">Дынамік тэлефона. Яго гучнасці прымяняюцца, калі аўдыё вяртаецца да тэлефона, напр. пасля адключэння вашай прылады Bluetooth.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Канфігурацыя прылады</string>
     <string name="devices_device_config_remove_device_label">Забыць прыладу</string>
     <string name="devices_device_config_remove_device_action">Забыць</string>
@@ -151,10 +146,8 @@
     <string name="devices_currently_connected_label">Зараз падключана</string>
     <string name="devices_device_disabled_label">Прылада адключана</string>
     <string name="devices_no_volumes_configured">Для гэтай прылады гучнасць не наладжана. Націсніце \"Наладзіць\", каб ўсталяваць параметры гучнасці.</string>
-    <!-- Settings-->
     <string name="settings_label">Налады</string>
     <string name="settings_category_other_label">Іншае</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">Агульныя</string>
     <string name="general_settings_desc">Агульныя налады, якія ўплываюць на ўсю праграму.</string>
     <string name="settings_category_ui_label">Карыстальніцкі інтэрфейс</string>
@@ -176,7 +169,6 @@
     <string name="ui_theme_color_sunset_label">Захад</string>
     <string name="ui_language_override_label">Мова праграмы</string>
     <string name="ui_language_override_desc">Выберыце іншую мову для BVM, незалежна ад мовы сістэмы па змаўчанні.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Прылады</string>
     <string name="devices_settings_desc">Налады, якія ўплываюць на ўсе кіраваныя прылады.</string>
     <string name="label_app_enabled">Дадатак ўключаны</string>
@@ -184,7 +176,6 @@
     <string name="label_volume_listener">Назіраць за зменамі</string>
     <string name="label_boot_restore">Аднаўляць пры загрузцы</string>
     <string name="description_boot_restore">Аднаўляць гучнасць пасля загрузкі/перазагрузкі, калі прылада Bluetooth падключана.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Падтрымка</string>
     <string name="settings_support_description">Чытайце дакументацыю, паведамляйце аб праблемах, гутарыце з іншымі або запісвайце журналы адладкі.</string>
     <string name="settings_support_wiki_label">Дакументацыя</string>
@@ -198,7 +189,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Усё роўна спыніць</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Месца, дзе можна пагутарыць і задаць пытанні.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Падзякі</string>
     <string name="settings_acknowledgements_description">Аўтары, ліцэнзіі і асаблівая падзяка</string>
     <string name="settings_acks_translation_header">Пераклад</string>
@@ -213,7 +203,6 @@
     <string name="settings_privacy_policy_label">Палітыка канфідэнцыяльнасці</string>
     <string name="settings_privacy_policy_desc">Адказнае абыходжанне з данымі.</string>
     <string name="changelog_label">Журнал змяненняў</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Рэзервовае капіраванне і аднаўленне</string>
     <string name="backup_restore_settings_desc">Стварыце рэзервовую копію і аднавіце канфігурацыі прылад і налады праграмы.</string>
     <string name="backup_restore_screen_title">Рэзервовае капіраванне і аднаўленне</string>
@@ -230,7 +219,6 @@
     <string name="backup_restore_success_backup">Рэзервовая копія створана — захавана %1$d прылад.</string>
     <string name="backup_restore_success_restore">Аднаўленне завершана — адноўлена %1$d прылад, прапушчана %2$d.</string>
     <string name="backup_restore_version_warning">Гэтая рэзервовая копія была створана з версіяй %1$s. Вы выкарыстоўваеце %2$s. Некаторыя налады могуць не аднавіцца правільна.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Журнал адладкі</string>
     <string name="debug_log_consent_explanation">Гэта функцыя запісвае ўсё, што робіць праграма, у файл, якім можна падзяліцца. Створаны файл змяшчае канфідэнцыяльную інфармацыю (напрыклад, назвы файлаў і спіс усталяваных праграм). Дзяліцеся ім толькі з даверанымі асобамі (напрыклад, з распрацоўшчыкам для вырашэння вашай праблемы).</string>
     <string name="debug_log_record_action">Запісаць</string>
@@ -250,7 +238,6 @@
     <string name="debug_log_screen_discard_action">Адхіліць</string>
     <string name="debug_log_screen_keep_action">Захаваць</string>
     <string name="debug_log_file_label">Запісаны файл журнала</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Журнал адпраўлены?</string>
     <string name="support_debuglog_sent_message">Калі вы адправілі журнал адладкі, яго можна выдаліць з прылады. Хочаце выдаліць яго?</string>
     <string name="support_debuglog_session_delete_title">Выдаліць журнал адладкі?</string>
@@ -263,7 +250,6 @@
     <string name="support_debuglog_failed_zip_failed">Памылка ZIP</string>
     <string name="support_debuglog_clear_title">Выдаліць усе журналы адладкі?</string>
     <string name="support_debuglog_clear_message">Гэта назаўжды выдаліць усе захаваныя сеансы журналаў адладкі.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Звязацца з разпрацоўшчыкам</string>
     <string name="settings_support_contact_desc">Запоўніце форму, каб адправіць разпрацоўшчыку ліст.</string>
     <string name="contact_screen_title">Звязацца з разпрацоўшчыкам</string>
@@ -291,7 +277,6 @@
     <string name="contact_welcome_msg">Я сам чытаю кожнае паведамленне і стараюся адказваць, але паколькі я працую над гэтым адзін, гэта можа заняць некаторы час. Дзякуй за цярпенне.</string>
     <string name="contact_footer_msg">Ваша паведамленне будзе адпраўлена па электроннай пошце. Інфармацыя аб прыладзе і наладах прыкрапляецца аўтаматычна.</string>
     <string name="contact_no_email_app_msg">На гэтай прыладзе не знойдзены дадатак электроннай пошты.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Захаваныя журналы адладкі</string>
     <string name="settings_support_stored_logs_desc">%1$d сеансаў (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Няма захаваных журналаў адладкі</string>
@@ -347,36 +332,31 @@
     <string name="review_app_body">Ці ты хочаш пакінуць водгук на BVM? ❤️</string>
     <string name="review_app_review_action">Водгук</string>
     <string name="review_app_dismiss_action">Магчыма пазней</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">Няма прылад</string>
     <string name="bluemusic_mascot_description">Значок праграмы</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Выбраць праграмы</string>
     <string name="devices_app_selection_search_hint">Пошук праграм…</string>
     <string name="devices_app_selection_selected_count">%d праграм выбрана</string>
     <string name="general_navigate_back_action">Назад</string>
     <string name="general_reset_action">Скінуць</string>
     <string name="general_clear_action">Ачысціць</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Заблакаваць</string>
     <string name="devices_indicator_awake">Актыўны</string>
     <string name="devices_indicator_nudge">Штуршок</string>
     <string name="devices_indicator_observe">Назіраць</string>
     <string name="devices_indicator_disconnect">Адключыць</string>
     <string name="devices_indicator_limit">Абмежаванне</string>
+    <string name="devices_indicator_volume_range">Дыяпазон</string>
     <string name="devices_indicator_eq">ЭК</string>
     <string name="devices_indicator_boost">Ўсіленне</string>
     <string name="devices_indicator_home">Дадому</string>
     <string name="devices_indicator_dnd">Не турбаваць</string>
     <string name="devices_indicator_alert">Абвестка</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Гучнасць (0–100)</string>
     <string name="devices_volume_input_error">Увядзіце значэнне ад %1$d да %2$d</string>
     <string name="devices_volume_input_caption">Рэальная гучнасць можа быць акруглена да бліжэйшага кроку, які падтрымлівае ваша прылада.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Заблакаваць</string>
     <string name="devices_unlock_sliders_action">Разблакаваць</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Паказвае стан блакіроўкі гучнасці для актыўнай прылады Bluetooth</string>
     <string name="widget_no_device_label">Прылада не падключана</string>
     <string name="widget_bluetooth_off_label">Bluetooth выключаны</string>
@@ -393,7 +373,6 @@
     <string name="widget_config_theme_green_label">Зялёны</string>
     <string name="widget_config_theme_red_label">Чырвоны</string>
     <string name="widget_config_theme_custom_label">Уласны</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">Эквалайзер</string>
     <string name="eq_bands_label">Паласы</string>
     <string name="eq_mini_graph_desc">Налаштаваныя паласы эквалайзера</string>

@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Chyba</string>
     <string name="general_error_no_compatible_app_found_msg">Nebyla nalezena žádná kompatibilní aplikace, která by tento požadavek zpracovala.</string>
     <string name="general_share_action">Sdílet</string>
     <string name="general_back_action">Zpět</string>
     <string name="general_show_details_action">Zobrazit podrobnosti</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Vítejte v BVM</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager vám umožní automaticky spravovat hlasitost zařízení Bluetooth.</string>
     <string name="onboarding_welcome_action">Pojďme na to</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Musel jsem aplikaci přepracovat, aby odpovídala změnám v systému Android a požadavkům společnosti Google. Aplikaci jsem tam, kde to bylo možné, modernizoval, aby i nadále spolehlivě fungovala.</string>
     <string name="onboarding_rewrite_features">V rámci aktualizace došlo ke změnám některých funkcí. Zkontrolujte prosím nastavení svého zařízení, abyste se ujistili, že je vše správně nakonfigurováno.</string>
     <string name="onboarding_rewrite_action">Pokračovat</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">Všechna vaše spárovaná zařízení jsou pod kontrolou! Potřebujete nové?</string>
     <string name="discover_pair_new_device_action">Spárovat nové zařízení</string>
     <string name="discover_device_speaker_desc">Vlastní reproduktor telefonu. Jeho hlasitost se aplikuje, když se zvuk vrátí do telefonu, například poté, co se vaše zařízení Bluetooth odpojí.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Konfigurace zařízení</string>
     <string name="devices_device_config_remove_device_label">Zapomenout zařízení</string>
     <string name="devices_device_config_remove_device_action">Zapomenout</string>
@@ -154,10 +149,8 @@
     <string name="devices_currently_connected_label">Aktuálně připojeno</string>
     <string name="devices_device_disabled_label">Zařízení zakázáno</string>
     <string name="devices_no_volumes_configured">Pro toto zařízení nejsou nakonfigurovány žádné hlasitosti. Klepnutím na tlačítko Nakonfigurovat nastavíte předvolby hlasitosti.</string>
-    <!-- Settings-->
     <string name="settings_label">Nastavení</string>
     <string name="settings_category_other_label">Další</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">Obecné</string>
     <string name="general_settings_desc">Obecná vylepšení, která ovlivňují celou aplikaci</string>
     <string name="settings_category_ui_label">Uživatelské rozhraní</string>
@@ -179,7 +172,6 @@
     <string name="ui_theme_color_sunset_label">Západ slunce</string>
     <string name="ui_language_override_label">Jazyk aplikace</string>
     <string name="ui_language_override_desc">Vyber jiný jazyk pro BVM, nezávisle na výchozím jazyce vašeho systému.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Zařízení</string>
     <string name="devices_settings_desc">Nastavení, které ovlivňují všechna spravovaná zařízení.</string>
     <string name="label_app_enabled">Aplikace je povolena</string>
@@ -187,7 +179,6 @@
     <string name="label_volume_listener">Sledování změn</string>
     <string name="label_boot_restore">Obnovit při spuštění</string>
     <string name="description_boot_restore">Obnoví hlasitosti po spuštění/restartování, když je zařízení připojeno.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Podpora</string>
     <string name="settings_support_description">Číst dokumentaci, hlásit problémy, komunikovat s ostatními nebo nahrávat záznamy ladění.</string>
     <string name="settings_support_wiki_label">Dokumentace</string>
@@ -201,7 +192,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Přesto ukončit</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Místo, kde se můžete scházet a klást otázky.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Poděkování</string>
     <string name="settings_acknowledgements_description">Zásluhy, licence a zvláštní poděkování</string>
     <string name="settings_acks_translation_header">Překlad</string>
@@ -216,7 +206,6 @@
     <string name="settings_privacy_policy_label">Zásady ochrany osobních údajů</string>
     <string name="settings_privacy_policy_desc">Zodpovědné nakládání s daty.</string>
     <string name="changelog_label">Seznam změn</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Záloha a obnovení</string>
     <string name="backup_restore_settings_desc">Zálohujte a obnovujte konfigurace zařízení a nastavení aplikace.</string>
     <string name="backup_restore_screen_title">Záloha a obnovení</string>
@@ -233,7 +222,6 @@
     <string name="backup_restore_success_backup">Záloha vytvořena — uloženo %1$d zařízení.</string>
     <string name="backup_restore_success_restore">Obnovení dokončeno — obnoveno %1$d zařízení, přeskočeno %2$d.</string>
     <string name="backup_restore_version_warning">Tato záloha byla vytvořena ve verzi %1$s. Spouštíte verzi %2$s. Některá nastavení nemusí být obnovena správně.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Log ladění</string>
     <string name="debug_log_consent_explanation">Tato funkce zaznamenává vše, co aplikace dělá do souboru, který lze sdílet. Vygenerovaný soubor obsahuje citlivé informace (např. názvy souborů a nainstalovaných aplikací). Sdílejte je pouze s důvěryhodnými stranami (např. s vývojáři, kteří řeší nějaký problém).</string>
     <string name="debug_log_record_action">Zaznamenat</string>
@@ -253,7 +241,6 @@
     <string name="debug_log_screen_discard_action">Zahodit</string>
     <string name="debug_log_screen_keep_action">Ponechat</string>
     <string name="debug_log_file_label">Zaznamenaný log soubor</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Log odeslán?</string>
     <string name="support_debuglog_sent_message">Pokud jste odeslali log ladění, lze jej ze zařízení smazat. Chcete jej smazat?</string>
     <string name="support_debuglog_session_delete_title">Smazat log ladění?</string>
@@ -266,7 +253,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP selhal</string>
     <string name="support_debuglog_clear_title">Smazat všechny logy ladění?</string>
     <string name="support_debuglog_clear_message">Toto trvale smaže všechny uložené relace logu ladění.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Kontaktovat vývojáře</string>
     <string name="settings_support_contact_desc">Vyplňte formulář a odešlete vývojáři e-mail.</string>
     <string name="contact_screen_title">Kontaktovat vývojáře</string>
@@ -294,7 +280,6 @@
     <string name="contact_welcome_msg">Všechny zprávy čtu sám a snažím se na ně odpovídat, ale protože na tom pracuji sám, může to chvíli trvat. Děkuji za trpělivost.</string>
     <string name="contact_footer_msg">Vaše zpráva bude odeslána e-mailem. Údaje o zařízení a nastavení se připojí automaticky.</string>
     <string name="contact_no_email_app_msg">V tomto zařízení nebyla nalezena žádná e-mailová aplikace.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Uložené logy ladění</string>
     <string name="settings_support_stored_logs_desc">%1$d relací (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Žádné uložené logy ladění</string>
@@ -312,6 +297,9 @@
     <string name="description_bluetooth_is_disabled">Bluetooth je vypnuto.</string>
     <string name="title_bluetooth_is_off">Bluetooth je vypnuto</string>
     <string name="action_enable_bluetooth">Zapnout Bluetooth</string>
+    <string name="title_monitoring_is_off">Sledování je vypnuto</string>
+    <string name="description_monitoring_is_disabled">BlueMusic nereaguje na připojení Bluetooth nebo změny hlasitosti. Uložené hlasitosti, limity a zámky nejsou automaticky aplikovány.</string>
+    <string name="action_enable_monitoring">Povolit sledování</string>
     <string name="title_bluetooth_permission_required">Potřebné oprávnění pro Bluetooth</string>
     <string name="description_bluetooth_permission_required">Tato aplikace potřebuje oprávnění k použití Bluetooth, aby mohla spravovat hlasitost vašeho zařízení.</string>
     <string name="action_grant_permission">Udělit oprávnění</string>
@@ -351,36 +339,31 @@
     <string name="review_app_body">Chcete ohodnotit BVM? ❤️</string>
     <string name="review_app_review_action">Posoudit</string>
     <string name="review_app_dismiss_action">Možná později</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">Žádná zařízení</string>
     <string name="bluemusic_mascot_description">Ikona aplikace</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Vybrat aplikace</string>
     <string name="devices_app_selection_search_hint">Hledat aplikace…</string>
     <string name="devices_app_selection_selected_count">%d aplikací vybráno</string>
     <string name="general_navigate_back_action">Navigovat zpět</string>
     <string name="general_reset_action">Resetovat</string>
     <string name="general_clear_action">Vyčistit</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Uzamčeno</string>
     <string name="devices_indicator_awake">Aktivní</string>
     <string name="devices_indicator_nudge">Nastavení</string>
     <string name="devices_indicator_observe">Sledovat</string>
     <string name="devices_indicator_disconnect">Odpojit</string>
     <string name="devices_indicator_limit">Limit</string>
+    <string name="devices_indicator_volume_range">Rozsah</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Zesílení</string>
     <string name="devices_indicator_home">Domů</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Upozornění</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Hlasitost (0–100)</string>
     <string name="devices_volume_input_error">Zadejte hodnotu od %1$d do %2$d</string>
     <string name="devices_volume_input_caption">Skutečná hlasitost se může zaokrouhlit na nejbližší krok, který vaše zařízení podporuje.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Zamknout</string>
     <string name="devices_unlock_sliders_action">Odemknout</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Zobrazuje stav zámku hlasitosti pro aktivní Bluetooth zařízení</string>
     <string name="widget_no_device_label">Žádné zařízení není připojeno</string>
     <string name="widget_bluetooth_off_label">Bluetooth je vypnuto</string>
@@ -397,7 +380,6 @@
     <string name="widget_config_theme_green_label">Zelená</string>
     <string name="widget_config_theme_red_label">Červená</string>
     <string name="widget_config_theme_custom_label">Vlastní</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">Ekvalizér</string>
     <string name="eq_bands_label">Pásy</string>
     <string name="eq_mini_graph_desc">Nakonfigurované frekvenční pásy ekvalizéru</string>

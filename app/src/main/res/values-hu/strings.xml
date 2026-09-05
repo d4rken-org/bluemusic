@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Hiba</string>
     <string name="general_error_no_compatible_app_found_msg">Nem található kompatibilis alkalmazás a kérés kezeléséhez.</string>
     <string name="general_share_action">Megosztás</string>
     <string name="general_back_action">Vissza</string>
     <string name="general_show_details_action">Részletek mutatása</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Üdv a BVM-ben</string>
     <string name="onboarding_welcome_message">A Bluetooth Volume Manager lehetővé teszi, hogy automatikusan kezeld a Bluetooth eszközök hangerejét.</string>
     <string name="onboarding_welcome_action">Kezdjük el</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Teljesen újraépítettem a Bluetooth Volume Managert az Android változások és Google követelmények miatt, hogy biztosítsam az alkalmazás megbízható működését.</string>
     <string name="onboarding_rewrite_features">Néhány eszközbeállítás visszaállítódhatott a frissítés során. Kérlek ellenőrizd az eszközkonfigurációkat.</string>
     <string name="onboarding_rewrite_action">Folytatás</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">Minden párosított eszközöd kezelt! Kell egy új?</string>
     <string name="discover_pair_new_device_action">Új eszköz párosítása</string>
     <string name="discover_device_speaker_desc">A telefon beépített hangszórója. Hangereje akkor érvényesül, amikor a hang visszakapcsolódik a telefonra, például a Bluetooth-eszköz lecsatlakozása után.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Eszköz beállítása</string>
     <string name="devices_device_config_remove_device_label">Eszköz elfelejtése</string>
     <string name="devices_device_config_remove_device_action">Elfelejt</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">Jelenleg csatlakozva</string>
     <string name="devices_device_disabled_label">Eszköz letiltva</string>
     <string name="devices_no_volumes_configured">Nincsenek hangerő-beállítások konfigurálva ehhez az eszközhöz. Koppints a Konfigurálás gombra a hangerőbeállítások megadásához.</string>
-    <!-- Settings-->
     <string name="settings_label">Beállítások</string>
     <string name="settings_category_other_label">Egyéb</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">Általános</string>
     <string name="general_settings_desc">Általános módosítások, amelyek az egész alkalmazásra hatnak.</string>
     <string name="settings_category_ui_label">Felhasználói felület</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">Napnyugta</string>
     <string name="ui_language_override_label">Alkalmazás nyelve</string>
     <string name="ui_language_override_desc">Válassz másik nyelvet a BVM-hez, függetlenül a rendszer alapértelmezett nyelvétől.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Eszközök</string>
     <string name="devices_settings_desc">Beállítások, amelyek az összes kezelt eszközre hatnak.</string>
     <string name="label_app_enabled">Alkalmazás engedélyezve</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">Változások megfigyelése</string>
     <string name="label_boot_restore">Rendszer indulásakor visszaállít</string>
     <string name="description_boot_restore">A hangerő visszaállítása újraindítás után, ha egy Bluetooth eszköz csatlakozik.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Támogatás</string>
     <string name="settings_support_description">Dokumentáció olvasása, hibák jelentése, beszélgetés másokkal vagy hibakeresési naplók rögzítése.</string>
     <string name="settings_support_wiki_label">Dokumentáció</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Leállítás mindenképpen</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Egy hely, ahol lógni és kérdéseket feltenni lehet.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Köszönetnyilvánítás</string>
     <string name="settings_acknowledgements_description">Köszönet, licencek és különleges megjegyzések</string>
     <string name="settings_acks_translation_header">Fordítás</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">Adatvédelmi irányelvek</string>
     <string name="settings_privacy_policy_desc">Adatok felelősségteljes kezelése.</string>
     <string name="changelog_label">Változásnapló</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Biztonsági mentés &amp; Visszaállítás</string>
     <string name="backup_restore_settings_desc">Készíts biztonsági mentést az eszközkonfigurációidról és beállításaidról, vagy állítsd vissza azokat.</string>
     <string name="backup_restore_screen_title">Biztonsági mentés &amp; Visszaállítás</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">Mentés elkészült – %1$d eszköz elmentve.</string>
     <string name="backup_restore_success_restore">Visszaállítás kész – %1$d eszköz visszaállítva, %2$d kihagyva.</string>
     <string name="backup_restore_version_warning">Ez a mentés a(z) %1$s verzióval készült. Jelenleg a(z) %2$s fut. Néhány beállítás esetleg nem áll vissza megfelelően.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Hibakeresési napló</string>
     <string name="debug_log_consent_explanation">Ez a funkció mindent rögzít, amit az alkalmazás csinál egy megosztható fájlba. A létrehozott fájl érzékeny információkat tartalmaz (pl. fájlnevek és telepített alkalmazások). Csak megbízható felekkel oszd meg (pl. egy fejlesztővel, aki hibaelhárítást végz).</string>
     <string name="debug_log_record_action">Rögzítés</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">Eldobás</string>
     <string name="debug_log_screen_keep_action">Megtartás</string>
     <string name="debug_log_file_label">Rögzített naplófájl</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Napló elküldve?</string>
     <string name="support_debuglog_sent_message">Ha elküldted a hibakeresési naplót, az törölhető az eszközről. El szeretnéd távolítani?</string>
     <string name="support_debuglog_session_delete_title">Hibakeresési napló törlése?</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP hiba</string>
     <string name="support_debuglog_clear_title">Törli az összes hibakeresési naplót?</string>
     <string name="support_debuglog_clear_message">Ez véglegesen törli az összes tárolt hibakeresési napló munkamenetet.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Fejlesztő elérése</string>
     <string name="settings_support_contact_desc">Töltsd ki az űrlapot, hogy e-mailt küldj a fejlesztőnek.</string>
     <string name="contact_screen_title">Fejlesztő elérése</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">Minden üzenetet személyesen olvasok el és mindent megteszek, hogy válaszoljak, de mivel egyedül dolgozom, ez eltarthat egy kicsit. Köszönöm a türelmedet.</string>
     <string name="contact_footer_msg">Az üzeneted e-mailben kerül elküldésre. Az eszköz és beállítási adatok automatikusan csatolva lesznek.</string>
     <string name="contact_no_email_app_msg">Ezen az eszközön nem található e-mail alkalmazás.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Tárolt hibakeresési naplók</string>
     <string name="settings_support_stored_logs_desc">%1$d munkamenet (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Nincsenek tárolt hibakeresési naplók</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">A Bluetooth ki van kapcsolva.</string>
     <string name="title_bluetooth_is_off">A Bluetooth ki van kapcsolva</string>
     <string name="action_enable_bluetooth">Bluetooth bekapcsolása</string>
+    <string name="title_monitoring_is_off">Monitorozás ki van kapcsolva</string>
+    <string name="description_monitoring_is_disabled">A BlueMusic nem reagál a Bluetooth-kapcsolatok vagy a hangerő-változásokra. A mentett hangerők, korlátok és zárolások nem kerülnek automatikus alkalmazásra.</string>
+    <string name="action_enable_monitoring">Monitorozás engedélyezése</string>
     <string name="title_bluetooth_permission_required">Bluetooth engedély szükséges</string>
     <string name="description_bluetooth_permission_required">Ez az alkalmazás Bluetooth engedélyt igényel az eszközök hangerőszintjének kezeléséhez.</string>
     <string name="action_grant_permission">Engedély megadása</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">Szeretnél véleményt hagyni a BVM-ről? ❤️</string>
     <string name="review_app_review_action">Áttekintés</string>
     <string name="review_app_dismiss_action">Talán később</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">Nincsenek eszközök</string>
     <string name="bluemusic_mascot_description">Alkalmazás ikon</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Alkalmazások kiválasztása</string>
     <string name="devices_app_selection_search_hint">Alkalmazások keresése…</string>
     <string name="devices_app_selection_selected_count">%d alkalmazás kiválasztva</string>
     <string name="general_navigate_back_action">Visszanavigálás</string>
     <string name="general_reset_action">Visszaállítás</string>
     <string name="general_clear_action">Törlés</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Zárolás</string>
     <string name="devices_indicator_awake">Ébren</string>
     <string name="devices_indicator_nudge">Megbökés</string>
     <string name="devices_indicator_observe">Megfigyelés</string>
     <string name="devices_indicator_disconnect">Lecsatlakozás</string>
     <string name="devices_indicator_limit">Korlát</string>
+    <string name="devices_indicator_volume_range">Tartomány</string>
     <string name="devices_indicator_eq">Hangszín</string>
     <string name="devices_indicator_boost">Fokozás</string>
     <string name="devices_indicator_home">Főképernyő</string>
     <string name="devices_indicator_dnd">NZ</string>
     <string name="devices_indicator_alert">Értesítés</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Hangerő (0–100)</string>
     <string name="devices_volume_input_error">Adj meg egy értéket %1$d és %2$d között</string>
     <string name="devices_volume_input_caption">A tényleges hangerő a készüléked által támogatott legközelebbi lépésre kerekítődhet.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Zárolás</string>
     <string name="devices_unlock_sliders_action">Feloldás</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Megjeleníti az aktív Bluetooth-eszköz hangerőzárának állapotát</string>
     <string name="widget_no_device_label">Nincs csatlakoztatott eszköz</string>
     <string name="widget_bluetooth_off_label">A Bluetooth ki van kapcsolva</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">Zöld</string>
     <string name="widget_config_theme_red_label">Piros</string>
     <string name="widget_config_theme_custom_label">Egyéni</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">Hangszínszabályzó</string>
     <string name="eq_bands_label">Sávok</string>
     <string name="eq_mini_graph_desc">Beállított hangszínszabályzó-sávok</string>

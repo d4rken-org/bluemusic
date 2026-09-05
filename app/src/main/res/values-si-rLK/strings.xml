@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">දෝෂයකි</string>
     <string name="general_error_no_compatible_app_found_msg">මෙම ඉල්ලීම හසුරවන්නට ගැලපෙන යෙදුමක් හමු නොවිණි.</string>
     <string name="general_share_action">බෙදාගන්න</string>
     <string name="general_back_action">ආපසු</string>
     <string name="general_show_details_action">විස්තර පෙන්වන්න</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">BVM වෙත සාදරයෙන් පිළිගනිමු</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager ඔබේ Bluetooth උපාංගයන්හි හඩ ස්වයංක්‍රීයව කළමනාකරණය කිරීමට ඉඩ දෙයි.</string>
     <string name="onboarding_welcome_action">යමු</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Android වෙනස්කම් සහ Google අවශ්‍යතා සමඟ සම්බන්ධ වීමට Bluetooth Volume Manager සම්පූර්ණයෙන් නැවත ලිව්වා. යෙදුම විශ්වාසනීය ලෙස ක්‍රියා කරන බව සහතික කිරීමට හැකි තැන්හිදී නවීකරණය කළා.</string>
     <string name="onboarding_rewrite_features">යාවත්කාලීන කිරීමේදී සමහර උපාංග සැකසීම් යළි සකසෙන්නට ඇත. සෑම දෙයක්ම නිවැරදිව සකසා ඇති බව සහතික කිරීමට ඔබේ උපාංගය සැකසීම් පරීක්ෂා කරන්න.</string>
     <string name="onboarding_rewrite_action">ඉදිරියට</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">ඔබේ සියලු සම්බන්ධ කළ උපාංගයන් කළමනා කෙරෙයි! අලුත් එකක් ඕනෑද?</string>
     <string name="discover_pair_new_device_action">නව උපාංගයක් සම්බන්ධ කරන්න</string>
     <string name="discover_device_speaker_desc">මේ ජංගම දූරකතනයේ තමන්ගේ ශබ්දකය. ශබ්ද ජංගම දූරකතනයට ආපසු මාරු වූ විට එහි පරිමාවන් යෙදේ, උදා. ඔබේ Bluetooth උපාංගය විසංයෝගිත වූ පසු.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">උපාංග සැකසුම</string>
     <string name="devices_device_config_remove_device_label">උපාංගය අමතක කරන්න</string>
     <string name="devices_device_config_remove_device_action">අමතක කරන්න</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">දැනට සම්බන්ධිතයි</string>
     <string name="devices_device_disabled_label">උපාංගය අබල කර ඇත</string>
     <string name="devices_no_volumes_configured">මෙම උපාංගය සඳහා හඩ ව්‍යවස්ථාපිත නැත. හඩ මනාප සකසීමට ව්‍යවස්ථාපනය ස්පර්ශ කරන්න.</string>
-    <!-- Settings-->
     <string name="settings_label">සැකසීම්</string>
     <string name="settings_category_other_label">අනෙකුත්</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">සාමාන්‍ය</string>
     <string name="general_settings_desc">මුළු යෙදුමටම බලපාන සාමාන්‍ය සකසීම්.</string>
     <string name="settings_category_ui_label">පරිශීලක අතුරු මුහුණත</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">හිරු බැසීම</string>
     <string name="ui_language_override_label">යෙදුම් භාෂාව</string>
     <string name="ui_language_override_desc">සිස්ටමයේ පෙරනිමි භාෂාවෙන් ස්වාධීනව BVM සඳහා වෙනත් භාෂාවක් තෝරන්න.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">උපාංග</string>
     <string name="devices_settings_desc">සියලු කළමනාකරිත උපාංගයන් කෙරෙහි බලපාන සැකසීම්.</string>
     <string name="label_app_enabled">යෙදුම සබල කර ඇත</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">වෙනස්කම් නිරීක්ෂණය කරන්න</string>
     <string name="label_boot_restore">ආරම්භ කළ විට ප්‍රතිස්ථාපනය</string>
     <string name="description_boot_restore">බ්ලූටූත් උපාංගයක් සම්බන්ධ ඇත්නම් ආරම්භ/නැවත ආරම්භ කිරීමෙන් පසු හඩ ප්‍රතිස්ථාපනය කරන්න.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">සහාය</string>
     <string name="settings_support_description">ලේඛ කියවන්න, ගැටළු වාර්තා කරන්න, අනෙකුත් අය සමඟ කතා කරන්න හෝ debug ලොග් රේකෝඩ් කරන්න.</string>
     <string name="settings_support_wiki_label">ලේඛ</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">කෙසේ හෝ නැවැත්වන්න</string>
     <string name="settings_support_discord_label">ඩිස්කෝඩ්</string>
     <string name="settings_support_discord_description">ගැවසීමට සහ ප්‍රශ්න ඇසීමට ස්ථානයකි.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">ස්තූතිය</string>
     <string name="settings_acknowledgements_description">ණය, බලපත්‍ර, සහ විශේෂ ස්තූතිය</string>
     <string name="settings_acks_translation_header">පරිවර්තනය</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">රහස්‍යතා ප්‍රතිපත්තිය</string>
     <string name="settings_privacy_policy_desc">දත්ත වගකිවයුතු ලෙස හැසිරවීම.</string>
     <string name="changelog_label">වෙනස් කිරීම් ලැයිස්තුව</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">උපස්ථ සහ ප්‍රතිසාධනය</string>
     <string name="backup_restore_settings_desc">ඔබේ උපාංග වින්‍යාසයන් සහ සැකසුම් උපස්ථ කර ප්‍රතිසාධනය කරන්න.</string>
     <string name="backup_restore_screen_title">උපස්ථ සහ ප්‍රතිසාධනය</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">උපස්ථය සාදා ගන්නා ලදී — උපාංග %1$d සුරකින ලදී.</string>
     <string name="backup_restore_success_restore">ප්‍රතිසාධනය සම්පූර්ණයි — උපාංග %1$d ප්‍රතිසාධනය කරන ලදී, %2$d මඟ හරින ලදී.</string>
     <string name="backup_restore_version_warning">මෙම උපස්ථය %1$s අනුවාදය සමඟ සාදා ඇත. ඔබ %2$s ධාවනය කරයි. සමහර සැකසුම් නිවැරදිව ප්‍රතිසාධනය නොවිය හැක.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Debug ලොගය</string>
     <string name="debug_log_consent_explanation">මෙම ලක්ෂණය යෙදුම කරන සියල්ල බෙදාගත හැකි ගොනුවකට රේකෝඩ් කරයි. ජනනය කරන ලද ගොනුවේ සංවේදී තොරතුරු (ගොනු නාම සහ ස්ථාපිත යෙදුම් ආදිය) ඇත. විශ්වාසනීය පාර්ශ්ව (ගැටළු නිරාකරණය කරන සංවර්ධකයෙකු ආදිය) සමඟ පමණක් බෙදා ගන්න.</string>
     <string name="debug_log_record_action">රේකෝඩ්</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">ඉවත් කිරීම</string>
     <string name="debug_log_screen_keep_action">තබා ගන්න</string>
     <string name="debug_log_file_label">රේකෝඩ් කළ ලොග් ගොනුව</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">ලොගය යැව්වාද?</string>
     <string name="support_debuglog_sent_message">debug ලොගය යැව්වා නම්, එය උපාංගයෙන් මකා දැමිය හැකිය. ඉවත් කිරීමට කැමතිද?</string>
     <string name="support_debuglog_session_delete_title">Debug ලොගය මකන්නද?</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP අසාර්ථකයි</string>
     <string name="support_debuglog_clear_title">සියලු debug ලොග් මකන්නද?</string>
     <string name="support_debuglog_clear_message">මෙය ගබඩා කළ සියලු debug ලොග් සැසි ස්ථිරවම මකනු ඇත.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">සංවර්ධකයා ඇමතීම</string>
     <string name="settings_support_contact_desc">සංවර්ධකයාට ඊමේල් යැවීමට ෆෝමයක් පුරවන්න.</string>
     <string name="contact_screen_title">සංවර්ධකයා ඇමතීම</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">මම සෑම පණිවිඩයක්ම ව්‍යක්තිකව කියවා ප්‍රතිචාර දීමට හැකි පමණ උත්සාහ කරමි, නමුත් මෙය තනිව කරන නිසා, ටිකක් කාලය ගත විය හැකිය. ඔබේ ඉවසීමට ස්තූතියි.</string>
     <string name="contact_footer_msg">ඔබේ පණිවිඩය ඊමේල් හරහා යවනු ඇත. උපාංගය සහ සැකසුම් තොරතුරු ස්වයංක්‍රීයව අමුණයි.</string>
     <string name="contact_no_email_app_msg">මෙම උපාංගයේ ඊමේල් යෙදුමක් හමු නොවිණි.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">ගබඩා කළ debug ලොග්</string>
     <string name="settings_support_stored_logs_desc">%1$d සැසි (%2$s)</string>
     <string name="settings_support_stored_logs_empty">ගබඩා කළ debug ලොග් නැත</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">Bluetooth අක්‍රිය කර ඇත.</string>
     <string name="title_bluetooth_is_off">Bluetooth ක්‍රියාවිරහිත</string>
     <string name="action_enable_bluetooth">Bluetooth සක්‍රිය කරන්න</string>
+    <string name="title_monitoring_is_off">නිරීක්ෂණය වසා ඇත</string>
+    <string name="description_monitoring_is_disabled">BlueMusic බ්ලූටූත් සම්බන්ධතා හෝ ශබ්ද මට්ටම් වෙනස්වීම්වලට ප්‍රතිචාර දක්වා නොසිටින. සුරකිත ශබ්ද, සීමා සහ අවහිරකරණ ස්වයංක්‍රීයව යොදා නොගනී.</string>
+    <string name="action_enable_monitoring">නිරීක්ෂණය සක්‍රිය කරන්න</string>
     <string name="title_bluetooth_permission_required">Bluetooth අවසරය අවශ්‍යයි</string>
     <string name="description_bluetooth_permission_required">ඔබේ උපාංගයේ හඩ කළමනාකරණය කිරීමට මෙම යෙදුමට Bluetooth අවසරය අවශ්‍ය වෙයි.</string>
     <string name="action_grant_permission">අවසරය ලබා දෙන්න</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">ඔබ BVM සඳහා සමාලෝචනයක් ලිවීමට කැමතිද?️ ❤️</string>
     <string name="review_app_review_action">සමාලෝචනය</string>
     <string name="review_app_dismiss_action">පසුව සමහර විට</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">උපාංග නැත</string>
     <string name="bluemusic_mascot_description">යෙදුම් අයිකනය</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">යෙදුම් තෝරන්න</string>
     <string name="devices_app_selection_search_hint">යෙදුම් සොයන්න…</string>
     <string name="devices_app_selection_selected_count">%d යෙදුම් තෝරාගෙන ඇත</string>
     <string name="general_navigate_back_action">ආපසු ගමන්</string>
     <string name="general_reset_action">යළි සකසන්න</string>
     <string name="general_clear_action">හිස් කරන්න</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">අගුල</string>
     <string name="devices_indicator_awake">සක්‍රිය</string>
     <string name="devices_indicator_nudge">තල්ලුව</string>
     <string name="devices_indicator_observe">නිරීක්ෂණය</string>
     <string name="devices_indicator_disconnect">විසන්ධිය</string>
     <string name="devices_indicator_limit">සීමාව</string>
+    <string name="devices_indicator_volume_range">පරාසය</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">වර්ධනය</string>
     <string name="devices_indicator_home">මුල්</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">අනතුරු ඇඟවීම</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">හඩ (0–100)</string>
     <string name="devices_volume_input_error">%1$d සහ %2$d අතර අගයක් ඇතුළු කරන්න</string>
     <string name="devices_volume_input_caption">සැබා ශබ්දය ඔබේ උපාංගය සහාය දක්වන ආසන්නතම පියවරට වටකල් හැක.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">අගුලන්න</string>
     <string name="devices_unlock_sliders_action">අගුල ඇරීම</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">සක්‍රිය Bluetooth උපාංගය සංදහා ශබ්ද අගුල තත්ත්වය පෙන්වයි</string>
     <string name="widget_no_device_label">සම්බන්ධ වූ උපාංගයක් නැත</string>
     <string name="widget_bluetooth_off_label">Bluetooth අක්‍රියයි</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">කොළ</string>
     <string name="widget_config_theme_red_label">රතු</string>
     <string name="widget_config_theme_custom_label">අභිරුඩි</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">ශ්‍රව්‍ය සමකාරකය</string>
     <string name="eq_bands_label">කලාප</string>
     <string name="eq_mini_graph_desc">සකසන ලද සමකාරක කලාප</string>

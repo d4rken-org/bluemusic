@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">מנהל עוצמת בלוטוס</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">שגיאה</string>
     <string name="general_error_no_compatible_app_found_msg">לא נמצאה אפליקציה תואמת לטיפול בבקשה זו.</string>
     <string name="general_share_action">שיתוף</string>
     <string name="general_back_action">חזרה</string>
     <string name="general_show_details_action">הצג פרטים</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">ברוך הבא ל-BVM</string>
     <string name="onboarding_welcome_message">מנהל עוצמת בלוטוס מאפשר לך לנהל את עוצמת הקול של מכשירי בלוטוס באופן אוטומטי.</string>
     <string name="onboarding_welcome_action">בואו נתחיל</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">בניתי מחדש לחלוטין את מנהל עוצמת בלוטוס מהיסוד בעקבות שינויים באנדרואיד ודרישות גוגל כדי לוודא שהאפליקציה ממשיכה לעבוד באופן אמין.</string>
     <string name="onboarding_rewrite_features">חלק מהגדרות המכשיר עשויות להיאנץ במהלך העדכון. אנא בדקו את תצורות המכשירים שלכם.</string>
     <string name="onboarding_rewrite_action">המשך</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">כל המכשירים המצומדים שלכם מנוהלים! צריכים חדש?</string>
     <string name="discover_pair_new_device_action">צמד מכשיר חדש</string>
     <string name="discover_device_speaker_desc">הרמקול של הטלפון הזה. עוצמות הקול שלו מוחלות כאשר האודיו חוזר לטלפון, למשל לאחר ניתוק מכשיר ה-Bluetooth שלך.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">תצורת מכשיר</string>
     <string name="devices_device_config_remove_device_label">שכח מכשיר</string>
     <string name="devices_device_config_remove_device_action">שכח</string>
@@ -153,10 +148,8 @@
     <string name="devices_currently_connected_label">מחובר כעת</string>
     <string name="devices_device_disabled_label">המכשיר מנוטרל</string>
     <string name="devices_no_volumes_configured">לא הוגדרו עוצמות עבור המכשיר. לחץ על תצורה כדי להגדיר העדפות עוצמה.</string>
-    <!-- Settings-->
     <string name="settings_label">הגדרות</string>
     <string name="settings_category_other_label">אחר</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">כללי</string>
     <string name="general_settings_desc">הגדרות כלליות המשפיעות על כל האפליקציה.</string>
     <string name="settings_category_ui_label">ממשק משתמש</string>
@@ -178,7 +171,6 @@
     <string name="ui_theme_color_sunset_label">שקיעה</string>
     <string name="ui_language_override_label">שפת אפליקציה</string>
     <string name="ui_language_override_desc">בחר שפה אחרת עבור BVM, ללא תלות בשפת ברירת המחדל של המערכת.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">מכשירים</string>
     <string name="devices_settings_desc">הגדרות המשפיעות על כל המכשירים המנוהלים.</string>
     <string name="label_app_enabled">אפליקצייה מאופשרת</string>
@@ -186,7 +178,6 @@
     <string name="label_volume_listener">צפייה בשינויים</string>
     <string name="label_boot_restore">שחזור באתחול</string>
     <string name="description_boot_restore">שחזר עוצמת קול לאחר אתחול/אתחול מחדש אם מכשיר בלוטוס מחובר.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">תמיכה</string>
     <string name="settings_support_description">קרא תיעוד, דווח על בעיות, שוחח עם אחרים או הקלט לוגי ניפוי באגים.</string>
     <string name="settings_support_wiki_label">תיעוד</string>
@@ -200,7 +191,6 @@
     <string name="settings_support_debuglog_short_recording_stop">עצור בכל זאת</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">מקום לבלות ולשאול שאלות.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">הודאות</string>
     <string name="settings_acknowledgements_description">קרדיטים, רישיונות ותודות מיוחדות</string>
     <string name="settings_acks_translation_header">תרגום</string>
@@ -215,7 +205,6 @@
     <string name="settings_privacy_policy_label">מדיניות פרטיות</string>
     <string name="settings_privacy_policy_desc">טיפול במידע באחריות.</string>
     <string name="changelog_label">לוג שינויים</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">גיבוי ושחזור</string>
     <string name="backup_restore_settings_desc">גבה ושחזר את תצורות המכשיר וההגדרות שלך.</string>
     <string name="backup_restore_screen_title">גיבוי ושחזור</string>
@@ -232,7 +221,6 @@
     <string name="backup_restore_success_backup">הגיבוי נוצר — %1$d מכשירים נשמרו.</string>
     <string name="backup_restore_success_restore">השחזור הושלם — %1$d מכשירים שוחזרו, %2$d דולגו.</string>
     <string name="backup_restore_version_warning">גיבוי זה נוצר עם גרסה %1$s. אתה מריץ %2$s. ייתכן שחלק מההגדרות לא ישוחזרו כראוי.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">לוג ניפוי באגים</string>
     <string name="debug_log_consent_explanation">תכונה זו מקליטה כל מה שהאפליקציה עושה לקובץ שניתן לשתף. הקובץ הנוצר מכיל מידע רגיש (למשל שמות קבצים ואפליקציות מותקנות). שתפו אותו רק עם גורמים מועמדים (למשל מפתח הפותר בעיה).</string>
     <string name="debug_log_record_action">הקלט</string>
@@ -251,7 +239,6 @@
     <string name="debug_log_screen_discard_action">ותר</string>
     <string name="debug_log_screen_keep_action">שמור</string>
     <string name="debug_log_file_label">קובץ לוג מוקלט</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">הלוג נשלח?</string>
     <string name="support_debuglog_sent_message">אם שלחת את לוג ניפוי הבאגים, ניתן למחוק אותו מהמכשיר. האם ברצונך להסיר אותו?</string>
     <string name="support_debuglog_session_delete_title">למחוק את לוג ניפוי הבאגים?</string>
@@ -264,7 +251,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP נכשל</string>
     <string name="support_debuglog_clear_title">למחוק את כל לוגי ניפוי הבאגים?</string>
     <string name="support_debuglog_clear_message">כל סשני לוג ניפוי הבאגים השמורים יימחקו לצמיתות.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">צור קשר עם המפתח</string>
     <string name="settings_support_contact_desc">מלא טופס לשליחת אימייל למפתח.</string>
     <string name="contact_screen_title">צור קשר עם המפתח</string>
@@ -291,7 +277,6 @@
     <string name="contact_welcome_msg">אני קורא כל הודעה בעצמי ועושה כמיטב יכולתי להשיב, אך מכיוון שאני עובד לבד, זה עשוי לקחת קצת זמן. תודה על הסבלנות.</string>
     <string name="contact_footer_msg">ההודעה שלך תישלח באימייל. מידע על המכשיר וההגדרות מצורף אוטומטית.</string>
     <string name="contact_no_email_app_msg">לא נמצאה אפליקציית אימייל במכשיר זה.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">לוגי ניפוי באגים שמורים</string>
     <string name="settings_support_stored_logs_desc">%1$d סשנים (%2$s)</string>
     <string name="settings_support_stored_logs_empty">אין לוגי ניפוי באגים שמורים</string>
@@ -309,6 +294,9 @@
     <string name="description_bluetooth_is_disabled">בלוטות\' מנוטרל.</string>
     <string name="title_bluetooth_is_off">בלוטוס כבוי</string>
     <string name="action_enable_bluetooth">אפשר בלוטוס</string>
+    <string name="title_monitoring_is_off">ניטור כבוי</string>
+    <string name="description_monitoring_is_disabled">BlueMusic לא מגיבה לחיבורי Bluetooth או לשינויים בעוצמת הקול. עוצמות קול שמורות, מגבלות ונעילות לא מיושמות באופן אוטומטי.</string>
+    <string name="action_enable_monitoring">הפעל ניטור</string>
     <string name="title_bluetooth_permission_required">נדרשת הרשאת בלוטוס</string>
     <string name="description_bluetooth_permission_required">האפליקציה צריכה הרשאת בלוטוס כדי לנהל את עוצמות המכשירים שלך.</string>
     <string name="action_grant_permission">הענק הרשאה</string>
@@ -347,36 +335,31 @@
     <string name="review_app_body">האם תרצה להשאיר ביקורת ל-BVM? ❤️</string>
     <string name="review_app_review_action">סקירה</string>
     <string name="review_app_dismiss_action">אולי מאוחר יותר</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">אין מכשירים</string>
     <string name="bluemusic_mascot_description">איקון אפליקציה</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">בחר אפליקציות</string>
     <string name="devices_app_selection_search_hint">חפש אפליקציות…</string>
     <string name="devices_app_selection_selected_count">%d אפליקציות נבחרו</string>
     <string name="general_navigate_back_action">נווט אחורה</string>
     <string name="general_reset_action">איפוס</string>
     <string name="general_clear_action">נקה</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">נעילה</string>
     <string name="devices_indicator_awake">ער</string>
     <string name="devices_indicator_nudge">דחיפה</string>
     <string name="devices_indicator_observe">צפייה</string>
     <string name="devices_indicator_disconnect">ניתוק</string>
     <string name="devices_indicator_limit">הגבלה</string>
+    <string name="devices_indicator_volume_range">טווח</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">הגברה</string>
     <string name="devices_indicator_home">בית</string>
     <string name="devices_indicator_dnd">נא לא להפריע</string>
     <string name="devices_indicator_alert">התראה</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">עוצמה (0–100)</string>
     <string name="devices_volume_input_error">הזן ערך בין %1$d ל-%2$d</string>
     <string name="devices_volume_input_caption">עוצמת הקול בפועל עשויה להתעגל לשלב הקרוב ביותר שהמכשיר שלך תומך בו.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">נעל</string>
     <string name="devices_unlock_sliders_action">שחרר נעילה</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">מציג את מצב נעילת עוצמת הקול עבור מכשיר הבלוטות\'ה הפעיל</string>
     <string name="widget_no_device_label">אין מכשיר מחובר</string>
     <string name="widget_bluetooth_off_label">הבלוטות\'ה כבוי</string>
@@ -393,7 +376,6 @@
     <string name="widget_config_theme_green_label">ירוק</string>
     <string name="widget_config_theme_red_label">אדום</string>
     <string name="widget_config_theme_custom_label">מותאם אישית</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">אקוולייזר</string>
     <string name="eq_bands_label">רצועות</string>
     <string name="eq_mini_graph_desc">רצועות אקולייזר מוגדרות</string>

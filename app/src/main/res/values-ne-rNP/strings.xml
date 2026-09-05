@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">त्रुटि</string>
     <string name="general_error_no_compatible_app_found_msg">यो अनुरोधलाई ह्यान्डल गर्न मिल्ने कुनै एप फेला परेन।</string>
     <string name="general_share_action">साझेदारी गर्नुहोस्</string>
     <string name="general_back_action">पछाडि</string>
     <string name="general_show_details_action">विवरणहरू देखाउनुहोस्</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">BVM मा स्वागत छ</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager ले तपाईंलाई Bluetooth उपकरण भोल्युमहरू स्वचालित रूपमा व्यवस्थापन गर्न अनुमति दिन्छ।</string>
     <string name="onboarding_welcome_action">चलौं</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Android परिवर्तनहरू र Google आवश्यकताहरूसँग तालमेल राख्नको लागि मैले एपलाई पुनर्लेखन गर्नु पर्यो। एप भरोसेमंद रूपमा काम गर्न जारी राखोस् भनेर मैले जहाँ सम्भव भयो आधुनिकीकरण गरेको छु।</string>
     <string name="onboarding_rewrite_features">अपडेटको क्रममा केही सुविधाहरू परिवर्तन भएका छन्। सबै कुरा सही रूपमा कन्फिगर भएको छ भनी सुनिश्चित गर्न कृपया आफ्नो उपकरण सेटिङहरू जाँच गर्नुहोस्।</string>
     <string name="onboarding_rewrite_action">जारी राख्नुहोस्</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">तपाईंका सबै जोडिएका उपकरणहरू व्यवस्थित छन्! नयाँ चाहिन्छ?</string>
     <string name="discover_pair_new_device_action">नयाँ उपकरण जोड्नुहोस्</string>
     <string name="discover_device_speaker_desc">यो फोनको आफ्नो स्पिकर। यसको भलिउमहरू लागू हुन्छन् जब अडियो फोनमा फेरि स्विच हुन्छ, उदाहरणार्थ आपको Bluetooth उपकरण काट हुन्छ पछि।</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">उपकरण कन्फिगरेसन</string>
     <string name="devices_device_config_remove_device_label">उपकरण बिर्सनुहोस्</string>
     <string name="devices_device_config_remove_device_action">बिर्सनुहोस्</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">हाल जडान भएको छ</string>
     <string name="devices_device_disabled_label">उपकरण अक्षम गरियो</string>
     <string name="devices_no_volumes_configured">यस उपकरणका लागि कुनै भोल्युम कन्फिगर गरिएको छैन। भोल्युम प्राथमिकता सेट गर्न Configure थिच्नुहोस्।</string>
-    <!-- Settings-->
     <string name="settings_label">सेटिङहरू</string>
     <string name="settings_category_other_label">अन्य</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">सामान्य</string>
     <string name="general_settings_desc">सम्पूर्ण एपलाई प्रभावित गर्ने सामान्य समायोजनहरू।</string>
     <string name="settings_category_ui_label">प्रयोगकर्ता इन्टरफेस</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">सूर्यास्त</string>
     <string name="ui_language_override_label">एप भाषा</string>
     <string name="ui_language_override_desc">तपाईंको प्रणालीको पूर्वनिर्धारित भाषाभन्दा स्वतन्त्र रूपमा BVM का लागि फरक भाषा चयन गर्नुहोस्।</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">उपकरणहरू</string>
     <string name="devices_settings_desc">सबै व्यवस्थित उपकरणहरूलाई असर गर्ने सेटिङहरू।</string>
     <string name="label_app_enabled">एप सक्षम</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">परिवर्तनहरू अवलोकन गर्नुहोस्</string>
     <string name="label_boot_restore">बुट गर्दा पुनर्स्थापना गर्नुहोस्</string>
     <string name="description_boot_restore">Bluetooth उपकरण जडान भएको छ भने बुट/रिबुट पछि भोल्युम पुनर्स्थापना गर्नुहोस्।</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">सहायता</string>
     <string name="settings_support_description">कागजात पढ्नुहोस्, समस्याहरू रिपोर्ट गर्नुहोस्, अरूसँग कुराकानी गर्नुहोस् वा डिबग लगहरू रेकर्ड गर्नुहोस्।</string>
     <string name="settings_support_wiki_label">कागजात</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">जे भए पनि रोक्नुहोस्</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">घुम्न र प्रश्नहरू सोध्नको लागि ठाउँ।</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">स्वीकृतिहरू</string>
     <string name="settings_acknowledgements_description">श्रेय, इजाजतपत्र, र विशेष धन्यवाद</string>
     <string name="settings_acks_translation_header">अनुवाद</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">गोपनीयता नीति</string>
     <string name="settings_privacy_policy_desc">डेटा जिम्मेवारीपूर्वक ह्यान्डल गर्दै।</string>
     <string name="changelog_label">परिवर्तन लग</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">ब्याकअप र रिस्टोर</string>
     <string name="backup_restore_settings_desc">आफ्नो यन्त्रका कन्फिगरेसनहरू र सेटिङहरू ब्याकअप र रिस्टोर गर्नुहोस्।</string>
     <string name="backup_restore_screen_title">ब्याकअप र रिस्टोर</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">ब्याकअप सिर्जना भयो — %1$d यन्त्रहरू सुरक्षित गरियो।</string>
     <string name="backup_restore_success_restore">रिस्टोर सम्पन्न — %1$d यन्त्रहरू रिस्टोर गरियो, %2$d छोडियो।</string>
     <string name="backup_restore_version_warning">यो ब्याकअप संस्करण %1$s सँग सिर्जना गरिएको थियो। तपाईं %2$s चलाउँदै हुनुहुन्छ। केही सेटिङहरू सही ढंगले रिस्टोर नहुन सक्छन्।</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">डिबग लग</string>
     <string name="debug_log_consent_explanation">यो सुविधाले एपले गरिरहेको सबै कुरा साझा गर्न मिल्ने फाइलमा रेकर्ड गर्छ। उत्पन्न फाइलमा संवेदनशील जानकारी छ (जस्तै फाइल नामहरू र स्थापना गरिएका एपहरू)। यसलाई केवल विश्वसनीय पक्षहरूसँग साझा गर्नुहोस् (जस्तै समस्या समाधान गर्ने विकासकर्ता)।</string>
     <string name="debug_log_record_action">रेकर्ड गर्नुहोस्</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">छोड्नुहोस्</string>
     <string name="debug_log_screen_keep_action">राख्नुहोस्</string>
     <string name="debug_log_file_label">रेकर्ड गरिएको लग फाइल</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">लग पठाइयो?</string>
     <string name="support_debuglog_sent_message">यदि तपाईंले डिबग लग पठाउनुभएको छ भने, यसलाई उपकरणबाट मेट्न सकिन्छ। के तपाईं यसलाई हटाउन चाहनुहुन्छ?</string>
     <string name="support_debuglog_session_delete_title">डिबग लग मेट्ने?</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP असफल भयो</string>
     <string name="support_debuglog_clear_title">सबै डिबग लगहरू मेट्ने?</string>
     <string name="support_debuglog_clear_message">यसले भण्डारण गरिएका सबै डिबग लग सत्रहरू स्थायी रूपमा मेट्नेछ।</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">विकासकर्तासँग सम्पर्क गर्नुहोस्</string>
     <string name="settings_support_contact_desc">विकासकर्तालाई इमेल पठाउन फारम भर्नुहोस्।</string>
     <string name="contact_screen_title">विकासकर्तासँग सम्पर्क गर्नुहोस्</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">म हरेक सन्देश आफैं पढ्छु र जवाफ दिन मेरो सर्वोत्तम प्रयास गर्छु, तर यसमा एकलै काम गर्दा अलि समय लाग्न सक्छ। तपाईंको धैर्यताको लागि धन्यवाद।</string>
     <string name="contact_footer_msg">तपाईंको सन्देश इमेलमार्फत पठाइनेछ। उपकरण र सेटअप जानकारी स्वचालित रूपमा संलग्न हुन्छ।</string>
     <string name="contact_no_email_app_msg">यस उपकरणमा कुनै इमेल एप फेला परेन।</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">भण्डारण गरिएका डिबग लगहरू</string>
     <string name="settings_support_stored_logs_desc">%1$d सत्रहरू (%2$s)</string>
     <string name="settings_support_stored_logs_empty">कुनै भण्डारण गरिएका डिबग लगहरू छैनन्</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">ब्लुटुथ असक्षम पारिएको छ.</string>
     <string name="title_bluetooth_is_off">Bluetooth बन्द छ</string>
     <string name="action_enable_bluetooth">Bluetooth सक्षम गर्नुहोस्</string>
+    <string name="title_monitoring_is_off">अनुगमन बन्द छ</string>
+    <string name="description_monitoring_is_disabled">BlueMusic Bluetooth जडानहरू वा भोल्युम परिवर्तनहरूमा प्रतिक्रिया गरिरहेको छैन। सेभ गरिएका भोल्युमहरू, सीमाहरू र लकहरू स्वचालित रूपमा लागू हुँदैनन्।</string>
+    <string name="action_enable_monitoring">अनुगमन सक्षम गर</string>
     <string name="title_bluetooth_permission_required">Bluetooth अनुमति आवश्यक</string>
     <string name="description_bluetooth_permission_required">तपाईंको उपकरण भोल्युमहरू व्यवस्थापन गर्न यस एपलाई Bluetooth अनुमति चाहिन्छ।</string>
     <string name="action_grant_permission">अनुमति दिनुहोस्</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">के तपाईं BVM को लागि समीक्षा दिन चाहनुहुन्छ? ❤️</string>
     <string name="review_app_review_action">समीक्षा</string>
     <string name="review_app_dismiss_action">पछि गर्ने</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">कुनै उपकरण छैन</string>
     <string name="bluemusic_mascot_description">एप आइकन</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">एपहरू चयन गर्नुहोस्</string>
     <string name="devices_app_selection_search_hint">एपहरू खोज्नुहोस्…</string>
     <string name="devices_app_selection_selected_count">%d एपहरू चयन गरिए</string>
     <string name="general_navigate_back_action">पछाडि नेभिगेट गर्नुहोस्</string>
     <string name="general_reset_action">रिसेट गर्नुहोस्</string>
     <string name="general_clear_action">खाली गर्नुहोस्</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">लक</string>
     <string name="devices_indicator_awake">जागृत</string>
     <string name="devices_indicator_nudge">धक्का दिनुस्</string>
     <string name="devices_indicator_observe">अवलोकन गर्नुस्</string>
     <string name="devices_indicator_disconnect">विच्छेद गर्नुस्</string>
     <string name="devices_indicator_limit">सीमा</string>
+    <string name="devices_indicator_volume_range">दायरा</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">बुस्ट</string>
     <string name="devices_indicator_home">गृह</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">सूचना</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">भोल्युम (०–१००)</string>
     <string name="devices_volume_input_error">%1$d र %2$d बिचको मान हाल्नुहोस्</string>
     <string name="devices_volume_input_caption">वास्तविक भोल्युम तपाईंको यन्त्रले समर्थन गर्ने नजिकको चरणमा गोल हुन सक्छ।</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">ताला लगाउनुस्</string>
     <string name="devices_unlock_sliders_action">ताला खोल्नुस्</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">सक्रिय Bluetooth यन्त्रको भोल्युम लक स्थिति देखाउँछ</string>
     <string name="widget_no_device_label">कुनै यन्त्र जोडिएको छैन</string>
     <string name="widget_bluetooth_off_label">Bluetooth बन्द छ</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">हरियो</string>
     <string name="widget_config_theme_red_label">रातो</string>
     <string name="widget_config_theme_custom_label">कस्टम</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">इक्वलाइजर</string>
     <string name="eq_bands_label">ब्यान्डहरू</string>
     <string name="eq_mini_graph_desc">कन्फिगर गरिएका इक्वलाइजर ब्यान्डहरू</string>

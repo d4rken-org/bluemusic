@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Грешка</string>
     <string name="general_error_no_compatible_app_found_msg">Не е намерено съвместимо приложение за тази заявка.</string>
     <string name="general_share_action">Сподели</string>
     <string name="general_back_action">Назад</string>
     <string name="general_show_details_action">Покажи подробности</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Добре дошли в BVM</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager ти позволява автоматично да управляваш силата на звука на Bluetooth устройствата.</string>
     <string name="onboarding_welcome_action">Да тръгваме</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Трябваше да пренапиша приложението, за да следвам промените в Android и изискванията на Google. Модернизирах го там, където беше възможно, за да продължи да работи надеждно.</string>
     <string name="onboarding_rewrite_features">Някои функции са се променили по време на актуализацията. Моля, провери настройките на устройствата си, за да се увериш, че всичко е конфигурирано правилно.</string>
     <string name="onboarding_rewrite_action">Продължи</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">Всички сдвоени устройства се управляват! Нужно ли ти е ново?</string>
     <string name="discover_pair_new_device_action">Сдвои ново устройство</string>
     <string name="discover_device_speaker_desc">Собственият говорител на телефона. Неговите нива на звука се прилагат, когато аудиото се върне към телефона, напр. след като вашето Bluetooth устройство се развърже.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Конфигурация на устройство</string>
     <string name="devices_device_config_remove_device_label">Забрави устройство</string>
     <string name="devices_device_config_remove_device_action">Забрави</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">Свързано в момента</string>
     <string name="devices_device_disabled_label">Устройството е деактивирано</string>
     <string name="devices_no_volumes_configured">Няма настроени нива на звука за това устройство. Натисни „Конфигурирай\", за да зададеш предпочитанията за звук.</string>
-    <!-- Settings-->
     <string name="settings_label">Настройки</string>
     <string name="settings_category_other_label">Друго</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">Общи</string>
     <string name="general_settings_desc">Общи настройки, засягащи цялото приложение.</string>
     <string name="settings_category_ui_label">Потребителски интерфейс</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">Залез</string>
     <string name="ui_language_override_label">Език на приложението</string>
     <string name="ui_language_override_desc">Избери различен език за BVM, независимо от стандартния език на системата.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Устройства</string>
     <string name="devices_settings_desc">Настройки, засягащи всички управлявани устройства.</string>
     <string name="label_app_enabled">Приложението е включено</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">Следи промените</string>
     <string name="label_boot_restore">Възстанови при стартиране</string>
     <string name="description_boot_restore">Възстановява силата на звука след старт/рестарт ако Bluetooth устройство е свързано.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Поддръжка</string>
     <string name="settings_support_description">Прочети документацията, докладвай проблеми, чати с другите или запиши дебъг логове.</string>
     <string name="settings_support_wiki_label">Документация</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Спри въпреки това</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Място за разговори и задаване на въпроси.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Признания</string>
     <string name="settings_acknowledgements_description">Credits, лицензи и специални благодарности</string>
     <string name="settings_acks_translation_header">Превод</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">Политика за поверителност</string>
     <string name="settings_privacy_policy_desc">Отговорно боравене с данните.</string>
     <string name="changelog_label">Списък с промени</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Архивиране и възстановяване</string>
     <string name="backup_restore_settings_desc">Архивирайте и възстановете конфигурациите и настройките на устройствата си.</string>
     <string name="backup_restore_screen_title">Архивиране и възстановяване</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">Архивът е създаден — %1$d устройства запазени.</string>
     <string name="backup_restore_success_restore">Възстановяването е завършено — %1$d устройства възстановени, %2$d пропуснати.</string>
     <string name="backup_restore_version_warning">Този архив е създаден с версия %1$s. Вие използвате %2$s. Някои настройки може да не се възстановят правилно.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Дебъг лог</string>
     <string name="debug_log_consent_explanation">Тази функция записва всичко, което прави приложението, в споделяем файл. Генерираният файл съдържа чувствителна информация (напр. имена на файлове и инсталирани приложения). Споделяй го само с доверени лица (напр. разработчик, отстраняващ проблем).</string>
     <string name="debug_log_record_action">Запис</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">Изхвърли</string>
     <string name="debug_log_screen_keep_action">Запази</string>
     <string name="debug_log_file_label">Записан лог файл</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Логът изпратен ли е?</string>
     <string name="support_debuglog_sent_message">Ако си изпратил дебъг лога, той може да се изтрие от устройството. Искаш ли да го премахнеш?</string>
     <string name="support_debuglog_session_delete_title">Изтрий дебъг лога?</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP неуспешен</string>
     <string name="support_debuglog_clear_title">Изтрий всички дебъг логове?</string>
     <string name="support_debuglog_clear_message">Това ще изтрие трайно всички съхранени сесии на дебъг логове.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Свържи се с разработчика</string>
     <string name="settings_support_contact_desc">Попълни формуляр, за да изпратиш имейл на разработчика.</string>
     <string name="contact_screen_title">Свържи се с разработчика</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">Чета всяко съобщение лично и се старая да отговарям, но тъй като работя сам, може да отнеме малко повече. Благодаря за търпението.</string>
     <string name="contact_footer_msg">Съобщението ти ще бъде изпратено по имейл. Информацията за устройството и настройките се прикачва автоматично.</string>
     <string name="contact_no_email_app_msg">Не е намерено имейл приложение на това устройство.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Съхранени дебъг логове</string>
     <string name="settings_support_stored_logs_desc">%1$d сесии (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Няма съхранени дебъг логове</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">Bluetooth е изключен.</string>
     <string name="title_bluetooth_is_off">Bluetooth е изключен</string>
     <string name="action_enable_bluetooth">Включи Bluetooth</string>
+    <string name="title_monitoring_is_off">Мониторингът е изключен</string>
+    <string name="description_monitoring_is_disabled">BlueMusic не реагира на Bluetooth свързвания или промени на звука. Запазени звукови нива, ограничения и заключвания не се прилагат автоматично.</string>
+    <string name="action_enable_monitoring">Включете мониторинга</string>
     <string name="title_bluetooth_permission_required">Необходимо е разрешение за Bluetooth</string>
     <string name="description_bluetooth_permission_required">Приложението се нуждае от разрешение за Bluetooth, за да управлява нивата на звука на устройствата ти.</string>
     <string name="action_grant_permission">Предостави разрешение</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">Бихте ли искали да оставите на BVM оценка? ❤️</string>
     <string name="review_app_review_action">Преглед</string>
     <string name="review_app_dismiss_action">Може би по-късно</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">Няма устройства</string>
     <string name="bluemusic_mascot_description">Икона на приложението</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Избери приложения</string>
     <string name="devices_app_selection_search_hint">Търси приложения…</string>
     <string name="devices_app_selection_selected_count">%d приложения избрани</string>
     <string name="general_navigate_back_action">Навигирай назад</string>
     <string name="general_reset_action">Нулирай</string>
     <string name="general_clear_action">Изчисти</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Заключи</string>
     <string name="devices_indicator_awake">Буден</string>
     <string name="devices_indicator_nudge">Бутни</string>
     <string name="devices_indicator_observe">Наблюдавай</string>
     <string name="devices_indicator_disconnect">Изключи</string>
     <string name="devices_indicator_limit">Ограничи</string>
+    <string name="devices_indicator_volume_range">Диапазон</string>
     <string name="devices_indicator_eq">ЕКВ</string>
     <string name="devices_indicator_boost">Усилване</string>
     <string name="devices_indicator_home">Начало</string>
     <string name="devices_indicator_dnd">НБ</string>
     <string name="devices_indicator_alert">Известие</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Сила на звука (0–100)</string>
     <string name="devices_volume_input_error">Въведи стойност между %1$d и %2$d</string>
     <string name="devices_volume_input_caption">Действителната сила на звука може да се закръгли до най-близката стъпка, поддържана от вашето устройство.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Заключи</string>
     <string name="devices_unlock_sliders_action">Отключи</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Показва статуса на заключването на силата на звука за активното Bluetooth устройство</string>
     <string name="widget_no_device_label">Няма свързано устройство</string>
     <string name="widget_bluetooth_off_label">Bluetooth е изключен</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">Зелен</string>
     <string name="widget_config_theme_red_label">Червен</string>
     <string name="widget_config_theme_custom_label">Персонализиран</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">Еквалайзер</string>
     <string name="eq_bands_label">Ленти</string>
     <string name="eq_mini_graph_desc">Конфигурирани ленти на еквалайзера</string>

@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Errur</string>
     <string name="general_error_no_compatible_app_found_msg">Nagin app cumpatibla chattada per tractare questa dumonda.</string>
     <string name="general_share_action">Partir</string>
     <string name="general_back_action">Enavos</string>
     <string name="general_show_details_action">Mussar detagls</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Bainvegni tar BVM</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager ta permetta da administrar automaticamain ils volumes dals apparats Bluetooth.</string>
     <string name="onboarding_welcome_action">Ins va!</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Jau ha stuì scriver da nov l\'app per adeguar als midaments d\'Android e las pretensiuns da Google. Jau hai modernisà l\'app ubain pussaivel per garantir ch\'ella functiuneschia fidablamain.</string>
     <string name="onboarding_rewrite_features">Pliras funcziuns han midà durant l\'actualisaziun. Controlleschai per plaschair ils parameters da tiu apparat per s\'assicurar che tut saja configurà correctamain.</string>
     <string name="onboarding_rewrite_action">Cuntinuar</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">Tuts tes apparats accopplads èn administrads! Dovras in nov?</string>
     <string name="discover_pair_new_device_action">Accopplar nov apparat</string>
     <string name="discover_device_speaker_desc">La proprisa lavaglia dal telefon. Sias volumen vegn applitgada tgidoñ che l\'audio cuntrescha novamain ala lavaglia dal telefon, p.ex. sdraa che tia apparail Bluetooth sa deconnecta.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Configuraziún da l\'apparat</string>
     <string name="devices_device_config_remove_device_label">Scurdar apparat</string>
     <string name="devices_device_config_remove_device_action">Scurdar</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">Actualamain connectà</string>
     <string name="devices_device_disabled_label">Apparat deactivà</string>
     <string name="devices_no_volumes_configured">Nagins volumes configurads per quest apparat. Tuca Configurar per fixar las preferenzas da volum.</string>
-    <!-- Settings-->
     <string name="settings_label">Configuraziuns</string>
     <string name="settings_category_other_label">Auter</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">General</string>
     <string name="general_settings_desc">Adattaziuns generalas che concernan l\'entira app.</string>
     <string name="settings_category_ui_label">Interfatscha d\'utilisader</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">Tramunt</string>
     <string name="ui_language_override_label">Lingua da l\'app</string>
     <string name="ui_language_override_desc">Tscherner ina autra lingua per BVM, independenta da la lingua standard da tiu sistem.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Apparats</string>
     <string name="devices_settings_desc">Parameters che pertoccan tuts apparats administrads.</string>
     <string name="label_app_enabled">App activada</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">Observar midadas</string>
     <string name="label_boot_restore">Restaurar tar il start</string>
     <string name="description_boot_restore">Restaurar il volum suenter il start/restart sch\'in apparat Bluetooth è connectà.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Agid</string>
     <string name="settings_support_description">Leger la documentaziún, annunziar problems, discutar cun auters u enregistrar logs da debug.</string>
     <string name="settings_support_wiki_label">Documentaziún</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Stopper uschiglio</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">In lieu per star ensemen e far dumondas.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Remerciaments</string>
     <string name="settings_acknowledgements_description">Credits, licenzas e grazia speziala</string>
     <string name="settings_acks_translation_header">Translaziun</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">Protecziun da datas</string>
     <string name="settings_privacy_policy_desc">Tractar datas a moda responsabla.</string>
     <string name="changelog_label">Protocol da midadas</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Backup &amp; Restauraziun</string>
     <string name="backup_restore_settings_desc">Fa in backup ed restaurescha las configuraziouns da tes apparat ed ils parameters.</string>
     <string name="backup_restore_screen_title">Backup &amp; Restauraziun</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">Backup creà — %1$d apparats salvads.</string>
     <string name="backup_restore_success_restore">Restauraziun cumpletta — %1$d apparats restaurads, %2$d siglids.</string>
     <string name="backup_restore_version_warning">Quest backup è vegnì creà cun la versiun %1$s. Ti stais utilisond %2$s. Tscherts parameters na vegnan betg restaurads correctly.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Protocol da debugging</string>
     <string name="debug_log_consent_explanation">Questa funcziun registrescha tut quai che l\'app fa en in datotec che sa lascha partir. Il datotec generà cuntegn infurmaziuns sensiblas (p.ex. nums da datotecs ed apps instaladas). Partir el be cun terzas persunas fidadas (p.ex. in sviluppader che tracta in problem).</string>
     <string name="debug_log_record_action">Enregistrar</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">Scartar</string>
     <string name="debug_log_screen_keep_action">Mantegnair</string>
     <string name="debug_log_file_label">Datotec da protocol registrà</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Log tramess?</string>
     <string name="support_debuglog_sent_message">Sch\'ti has tramess il log da debug, el po vegnir stizzà da l\'apparat. Vuls ti sitar el?</string>
     <string name="support_debuglog_session_delete_title">Stizzar il log da debug?</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP fallida</string>
     <string name="support_debuglog_clear_title">Stizzar tuts ils logs da debug?</string>
     <string name="support_debuglog_clear_message">Quai stizzerà permanentamain tut las sessiuns da log da debug memorisadas.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Contactar il sviluppader</string>
     <string name="settings_support_contact_desc">Cumpli in furmular per trametter al sviluppader in e-mail.</string>
     <string name="contact_screen_title">Contactar il sviluppader</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">Jau less mintga messadi medemamain ed emprova da rispunder sin la meglra maniera, ma pertge ch\'jau lavur sin quai be, po cuzar in pau. Grazia per tia pazientscha.</string>
     <string name="contact_footer_msg">Tiu messadi vegn tramess via e-mail. Infurmaziuns davart l\'apparat e la configuraziún vegnan attachadas automaticamain.</string>
     <string name="contact_no_email_app_msg">Nagina app d\'e-mail chattada sin quest apparat.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Logs da debug memorisads</string>
     <string name="settings_support_stored_logs_desc">%1$d sessiuns (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Nagins logs da debug memorisads</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">Bluetooth è deactivà.</string>
     <string name="title_bluetooth_is_off">Bluetooth è deactivà</string>
     <string name="action_enable_bluetooth">Activar Bluetooth</string>
+    <string name="title_monitoring_is_off">Monitoraziun è disactivada</string>
+    <string name="description_monitoring_is_disabled">BlueMusic na reactescha a connexiuns Bluetooth u a midadas dal volum. Volums memorads, limitaziuns e blochads na vegnan applitgads automaticamain.</string>
+    <string name="action_enable_monitoring">Activar monitoraziun</string>
     <string name="title_bluetooth_permission_required">Permissiun Bluetooth necessaria</string>
     <string name="description_bluetooth_permission_required">Questa app dastga la permissiun Bluetooth per administrar ils volumes da tiu apparat.</string>
     <string name="action_grant_permission">Dar permissiun</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">Vuls tu laschar ina recenziun per BVM? ❤️</string>
     <string name="review_app_review_action">Recenziun</string>
     <string name="review_app_dismiss_action">Magari pli tard</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">Nagins apparats</string>
     <string name="bluemusic_mascot_description">Icona da l\'app</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Tscherner apps</string>
     <string name="devices_app_selection_search_hint">Retscherchar apps…</string>
     <string name="devices_app_selection_selected_count">%d apps tschernidas</string>
     <string name="general_navigate_back_action">Navigar enavos</string>
     <string name="general_reset_action">Reinizialisar</string>
     <string name="general_clear_action">Stizzar</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Bloccar</string>
     <string name="devices_indicator_awake">Svegl</string>
     <string name="devices_indicator_nudge">Adattar minimalmain</string>
     <string name="devices_indicator_observe">Observar</string>
     <string name="devices_indicator_disconnect">Disconnectar</string>
     <string name="devices_indicator_limit">Limitar</string>
+    <string name="devices_indicator_volume_range">Variaziun</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Augment</string>
     <string name="devices_indicator_home">Pagina principala</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Alert</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volum (0–100)</string>
     <string name="devices_volume_input_error">Endatescha in valur tranter %1$d e %2$d</string>
     <string name="devices_volume_input_caption">Il volumen actual po vegnir arravundà al pass pli prossim che tes apparat supporta.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Bloccar</string>
     <string name="devices_unlock_sliders_action">Disbloccar</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Mussa il status dal blocco dal volumen per l\'apparat Bluetooth activ</string>
     <string name="widget_no_device_label">Nagin apparat connectà</string>
     <string name="widget_bluetooth_off_label">Bluetooth è deactivà</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">Verd</string>
     <string name="widget_config_theme_red_label">Cotschen</string>
     <string name="widget_config_theme_custom_label">Persunalisà</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">Egalisader</string>
     <string name="eq_bands_label">Bandas</string>
     <string name="eq_mini_graph_desc">Bandas da l\'equalizer configuradas</string>

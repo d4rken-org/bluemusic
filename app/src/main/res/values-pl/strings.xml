@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Menadżer głośności Bluetooth</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Błąd</string>
     <string name="general_error_no_compatible_app_found_msg">Nie znaleziono kompatybilnej aplikacji do obsługi tego żądania.</string>
     <string name="general_share_action">Udostępnij</string>
     <string name="general_back_action">Wróć</string>
     <string name="general_show_details_action">Pokaż szczegóły</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Witaj w BVM</string>
     <string name="onboarding_welcome_message">Menadżer głośności Bluetooth pozwala automatycznie zarządzać głośnością urządzeń Bluetooth.</string>
     <string name="onboarding_welcome_action">Zaczynajmy</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Całkowicie przebudowałem Menadżera głośności Bluetooth od podstaw ze względu na zmiany w Androidzie i wymagania Google, aby zapewnić niezawodne działanie aplikacji.</string>
     <string name="onboarding_rewrite_features">Niektóre ustawienia urządzeń mogły zostać zresetowane podczas tej aktualizacji. Sprawdź konfiguracje swoich urządzeń.</string>
     <string name="onboarding_rewrite_action">Kontynuuj</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">Wszystkie twoje sparowane urządzenia są już zarządzane! Potrzebujesz nowego?</string>
     <string name="discover_pair_new_device_action">Sparuj nowe urządzenie</string>
     <string name="discover_device_speaker_desc">Wbudowany głośnik telefonu. Jego głośności są stosowane, gdy dźwięk wraca do telefonu, np. po rozłączeniu urządzenia Bluetooth.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Konfiguracja urządzenia</string>
     <string name="devices_device_config_remove_device_label">Zapomnij urządzenie</string>
     <string name="devices_device_config_remove_device_action">Zapomnij</string>
@@ -154,10 +149,8 @@
     <string name="devices_currently_connected_label">Aktualnie połączony</string>
     <string name="devices_device_disabled_label">Urządzenie wyłączone</string>
     <string name="devices_no_volumes_configured">Brak skonfigurowanych głośności dla tego urządzenia. Dotknij Konfiguruj, aby ustawić preferencje głośności.</string>
-    <!-- Settings-->
     <string name="settings_label">Ustawienia</string>
     <string name="settings_category_other_label">Inne</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">Ogólne</string>
     <string name="general_settings_desc">Ogólne ustawienia wpływające na całą aplikację.</string>
     <string name="settings_category_ui_label">Interfejs użytkownika</string>
@@ -179,7 +172,6 @@
     <string name="ui_theme_color_sunset_label">Zachód słońca</string>
     <string name="ui_language_override_label">Język aplikacji</string>
     <string name="ui_language_override_desc">Wybierz inny język dla BVM, niezależnie od domyślnego języka systemu.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Urządzenia</string>
     <string name="devices_settings_desc">Ustawienia wpływające na wszystkie zarządzane urządzenia.</string>
     <string name="label_app_enabled">Aktywność aplikacji</string>
@@ -187,7 +179,6 @@
     <string name="label_volume_listener">Obserwacja zmian</string>
     <string name="label_boot_restore">Przywróć przy uruchomieniu</string>
     <string name="description_boot_restore">Przywraca głośność po ponownym uruchomieniu, jeśli urządzenie Bluetooth zostanie podłączone.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Wsparcie</string>
     <string name="settings_support_description">Czytaj dokumentację, zgłaszaj problemy, rozmawiaj z innymi lub rejestruj logi debugowania.</string>
     <string name="settings_support_wiki_label">Dokumentacja</string>
@@ -201,7 +192,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Zatrzymaj mimo to</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Miejsce do spędzania czasu i zadawania pytań.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Podziękowania</string>
     <string name="settings_acknowledgements_description">Autorzy, licencje i specjalne podziękowania</string>
     <string name="settings_acks_translation_header">Tłumaczenie</string>
@@ -217,7 +207,6 @@ Karol Szastok (K4r0lSz);</string>
     <string name="settings_privacy_policy_label">Polityka prywatności</string>
     <string name="settings_privacy_policy_desc">Odpowiedzialne zarządzanie danymi.</string>
     <string name="changelog_label">Lista zmian</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Kopia zapasowa i przywracanie</string>
     <string name="backup_restore_settings_desc">Twórz kopie zapasowe i przywracaj konfiguracje urządzeń oraz ustawienia.</string>
     <string name="backup_restore_screen_title">Kopia zapasowa i przywracanie</string>
@@ -234,7 +223,6 @@ Karol Szastok (K4r0lSz);</string>
     <string name="backup_restore_success_backup">Kopia zapasowa utworzona — zapisano %1$d urządzeń.</string>
     <string name="backup_restore_success_restore">Przywracanie zakończone — przywrócono %1$d urządzeń, pominięto %2$d.</string>
     <string name="backup_restore_version_warning">Ta kopia zapasowa została utworzona w wersji %1$s. Użwasz wersji %2$s. Niektóre ustawienia mogą nie zostać przywrócone poprawnie.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Log debugowania</string>
     <string name="debug_log_consent_explanation">Ta funkcja rejestruje wszystko, co robi aplikacja w pliku, którym można się podzielić. Wygenerowany plik zawiera wrażliwe informacje (np. nazwy plików i zainstalowane aplikacje). Udostępniaj go tylko zaufanym stronom (np. programiście rozwiązującemu problem).</string>
     <string name="debug_log_record_action">Nagraj</string>
@@ -254,7 +242,6 @@ Karol Szastok (K4r0lSz);</string>
     <string name="debug_log_screen_discard_action">Odrzuć</string>
     <string name="debug_log_screen_keep_action">Zachowaj</string>
     <string name="debug_log_file_label">Nagrany plik logu</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Log wysłany?</string>
     <string name="support_debuglog_sent_message">Jeśli wysłałeś log debugowania, można go usunąć z urządzenia. Chcesz go usunąć?</string>
     <string name="support_debuglog_session_delete_title">Usunąć log debugowania?</string>
@@ -267,7 +254,6 @@ Karol Szastok (K4r0lSz);</string>
     <string name="support_debuglog_failed_zip_failed">ZIP nie powiódł się</string>
     <string name="support_debuglog_clear_title">Usunąć wszystkie logi debugowania?</string>
     <string name="support_debuglog_clear_message">Spowoduje to trwałe usunięcie wszystkich zapisanych sesji logów debugowania.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Kontakt z deweloperem</string>
     <string name="settings_support_contact_desc">Wypełnij formularz, aby wysłać deweloperowi e-mail.</string>
     <string name="contact_screen_title">Kontakt z deweloperem</string>
@@ -295,7 +281,6 @@ Karol Szastok (K4r0lSz);</string>
     <string name="contact_welcome_msg">Sam czytam każdą wiadomość i staram się odpowiadać, ale ponieważ pracuję nad tym sam, może to trochę potrwać. Dzięki za cierpliwość.</string>
     <string name="contact_footer_msg">Twoja wiadomość zostanie wysłana e-mailem. Informacje o urządzeniu i konfiguracji zostaną dołączone automatycznie.</string>
     <string name="contact_no_email_app_msg">Nie znaleziono aplikacji e-mail na tym urządzeniu.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Zapisane logi debugowania</string>
     <string name="settings_support_stored_logs_desc">%1$d sesji (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Brak zapisanych logów debugowania</string>
@@ -313,6 +298,9 @@ Karol Szastok (K4r0lSz);</string>
     <string name="description_bluetooth_is_disabled">Bluetooth jest wyłączony.</string>
     <string name="title_bluetooth_is_off">Bluetooth jest wyłączony</string>
     <string name="action_enable_bluetooth">Włącz Bluetooth</string>
+    <string name="title_monitoring_is_off">Monitoring wyłączony</string>
+    <string name="description_monitoring_is_disabled">BlueMusic nie reaguje na połączenia Bluetooth ani zmiany głośności. Zapisane głośności, limity i blokady nie są stosowane automatycznie.</string>
+    <string name="action_enable_monitoring">Włącz monitoring</string>
     <string name="title_bluetooth_permission_required">Wymagane uprawnienie Bluetooth</string>
     <string name="description_bluetooth_permission_required">Ta aplikacja potrzebuje uprawnienia Bluetooth do zarządzania głośnościami twoich urządzeń.</string>
     <string name="action_grant_permission">Przyznaj uprawnienie</string>
@@ -352,36 +340,31 @@ Karol Szastok (K4r0lSz);</string>
     <string name="review_app_body">Wystawisz opinię dla BVM? ❤️</string>
     <string name="review_app_review_action">Oceń</string>
     <string name="review_app_dismiss_action">Może później</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">Brak urządzeń</string>
     <string name="bluemusic_mascot_description">Ikona aplikacji</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Wybierz aplikacje</string>
     <string name="devices_app_selection_search_hint">Szukaj aplikacji…</string>
     <string name="devices_app_selection_selected_count">Wybrano %d aplikacji</string>
     <string name="general_navigate_back_action">Wróć</string>
     <string name="general_reset_action">Resetuj</string>
     <string name="general_clear_action">Wyczyść</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Blokada</string>
     <string name="devices_indicator_awake">Aktywny</string>
     <string name="devices_indicator_nudge">Popchnij</string>
     <string name="devices_indicator_observe">Obserwuj</string>
     <string name="devices_indicator_disconnect">Rozłącz</string>
     <string name="devices_indicator_limit">Limit</string>
+    <string name="devices_indicator_volume_range">Zakres</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Wzmocnienie</string>
     <string name="devices_indicator_home">Dom</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Alert</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Głośność (0–100)</string>
     <string name="devices_volume_input_error">Wprowadź wartość między %1$d a %2$d</string>
     <string name="devices_volume_input_caption">Rzeczywista głośność może zostać zaokrąglona do najbliższego kroku obsługiwanego przez urządzenie.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Zablokuj</string>
     <string name="devices_unlock_sliders_action">Odblokuj</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Wyświetla status blokady głośności aktywnego urządzenia Bluetooth</string>
     <string name="widget_no_device_label">Brak podłączonego urządzenia</string>
     <string name="widget_bluetooth_off_label">Bluetooth jest wyłączony</string>
@@ -398,7 +381,6 @@ Karol Szastok (K4r0lSz);</string>
     <string name="widget_config_theme_green_label">Zielony</string>
     <string name="widget_config_theme_red_label">Czerwony</string>
     <string name="widget_config_theme_custom_label">Niestandardowy</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">Korektor</string>
     <string name="eq_bands_label">Pasma</string>
     <string name="eq_mini_graph_desc">Skonfigurowane pasma korektora</string>

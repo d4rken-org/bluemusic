@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">ข้อผิดพลาด</string>
     <string name="general_error_no_compatible_app_found_msg">ไม่พบแอปที่เข้ากันได้สำหรับจัดการคำขอนี้</string>
     <string name="general_share_action">แชร์</string>
     <string name="general_back_action">กลับ</string>
     <string name="general_show_details_action">แสดงรายละเอียด</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">ยินดีต้อนรับสู่ BVM</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager ช่วยให้คุณจัดการระดับเสียงของอุปกรณ์บลูทูธได้โดยอัตโนมัติ</string>
     <string name="onboarding_welcome_action">ไปเลย</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">ผมได้สร้าง Bluetooth Volume Manager ขึ้นใหม่ทั้งหมดเพราะการเปลี่ยนแปลงของ Android และข้อกำหนดของ Google เพื่อให้แอปทำงานได้อย่างน่าเชื่อถือต่อไป</string>
     <string name="onboarding_rewrite_features">การตั้งค่าอุปกรณ์บางตัวอาจถูกรีเซ็ตระหว่างการอัปเดต โปรดตรวจสอบการกำหนดค่าอุปกรณ์ของคุณ</string>
     <string name="onboarding_rewrite_action">ดำเนินการต่อ</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">อุปกรณ์ที่จับคู่ทั้งหมดถูกจัดการแล้ว! ต้องการอันใหม่มั้ย?</string>
     <string name="discover_pair_new_device_action">จับคู่อุปกรณ์ใหม่</string>
     <string name="discover_device_speaker_desc">ลำโพงของโทรศัพท์เครื่องนี้ ระดับเสียงจะถูกนำไปใช้เมื่อเสียงสลับกลับไปยังโทรศัพท์ เช่น หลังจากอุปกรณ์ Bluetooth ของคุณตัดการเชื่อมต่อ</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">การตั้งค่าอุปกรณ์</string>
     <string name="devices_device_config_remove_device_label">ลืมอุปกรณ์</string>
     <string name="devices_device_config_remove_device_action">ลืม</string>
@@ -151,10 +146,8 @@
     <string name="devices_currently_connected_label">เชื่อมต่ออยู่ในขณะนี้</string>
     <string name="devices_device_disabled_label">อุปกรณ์ถูกปิดใช้งาน</string>
     <string name="devices_no_volumes_configured">ยังไม่ได้ตั้งค่าระดับเสียงสำหรับอุปกรณ์นี้ แตะที่ กำหนดค่า เพื่อตั้งค่าระดับเสียง</string>
-    <!-- Settings-->
     <string name="settings_label">การตั้งค่า</string>
     <string name="settings_category_other_label">อื่นๆ</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">ทั่วไป</string>
     <string name="general_settings_desc">การตั้งค่าทั่วไปที่มีผลต่อทั้งแอป</string>
     <string name="settings_category_ui_label">ส่วนติดต่อผู้ใช้</string>
@@ -176,7 +169,6 @@
     <string name="ui_theme_color_sunset_label">พระอาทิตย์ตก</string>
     <string name="ui_language_override_label">ภาษาแอป</string>
     <string name="ui_language_override_desc">เลือกภาษาที่ต่างกันสำหรับ BVM โดยไม่ขึ้นกับภาษาเริ่มต้นของระบบ</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">อุปกรณ์</string>
     <string name="devices_settings_desc">การตั้งค่าที่มีผลต่ออุปกรณ์ที่จัดการทั้งหมด</string>
     <string name="label_app_enabled">แอปที่เปิดใช้งาน</string>
@@ -184,7 +176,6 @@
     <string name="label_volume_listener">สังเกตการเปลี่ยนแปลง</string>
     <string name="label_boot_restore">เรียกคืนเมื่อบูต</string>
     <string name="description_boot_restore">คืนค่าระดับเสียงหลังจากบูต/รีบูตเครื่องถ้าเชื่อมต่ออุปกรณ์บลูทูธแล้ว</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">ช่วยเหลือ</string>
     <string name="settings_support_description">อ่านเอกสาร แจ้งปัญหา คุยกับคนอื่น หรือบันทึกล็อกดีบัก</string>
     <string name="settings_support_wiki_label">เอกสาร</string>
@@ -198,7 +189,6 @@
     <string name="settings_support_debuglog_short_recording_stop">หยุดต่อไป</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">ที่สำหรับมาฮังเอาและถามคำถาม</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">กิตติกรรม</string>
     <string name="settings_acknowledgements_description">เครดิต ใบอนุญาต และขอขอบคุณพิเศษ</string>
     <string name="settings_acks_translation_header">การแปล</string>
@@ -213,7 +203,6 @@
     <string name="settings_privacy_policy_label">นโยบายความเป็นส่วนตัว</string>
     <string name="settings_privacy_policy_desc">การจัดการข้อมูลอย่างมีความรับผิดชอบ</string>
     <string name="changelog_label">บันทึกการเปลี่ยนแปลง</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">สำรองและกู้คืน</string>
     <string name="backup_restore_settings_desc">สำรองและกู้คืนการตั้งค่าอุปกรณ์และการตั้งค่าแอปของคุณ</string>
     <string name="backup_restore_screen_title">สำรองและกู้คืน</string>
@@ -230,7 +219,6 @@
     <string name="backup_restore_success_backup">สร้างข้อมูลสำรองแล้ว — บันทึก %1$d อุปกรณ์</string>
     <string name="backup_restore_success_restore">กู้คืนเสร็จสิ้น — กู้คืน %1$d อุปกรณ์, ข้าม %2$d อุปกรณ์</string>
     <string name="backup_restore_version_warning">ข้อมูลสำรองนี้สร้างด้วยเวอร์ชัน %1$s คุณกำลังใช้ %2$s การตั้งค่าบางอย่างอาจกู้คืนไม่ถูกต้อง</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">ล็อกดีบัก</string>
     <string name="debug_log_consent_explanation">คุณสมบัตินี้บันทึกทุกอย่างที่แอปทำลงในไฟล์ที่สามารถแชร์ได้ ไฟล์ที่สร้างขึ้นมีข้อมูลอ่อนไหว (เช่น ชื่อไฟล์และแอปที่ติดตั้ง) แชร์เฉพาะกับบุคคลที่ไว้ใจได้เท่านั้น (เช่น นักพัฒนาที่กำลังแก้ไขปัญหา)</string>
     <string name="debug_log_record_action">บันทึก</string>
@@ -247,7 +235,6 @@
     <string name="debug_log_screen_discard_action">ยกเลิก</string>
     <string name="debug_log_screen_keep_action">เก็บไว้</string>
     <string name="debug_log_file_label">ไฟล์ล็อกที่บันทึกไว้</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">ส่งล็อกแล้ว?</string>
     <string name="support_debuglog_sent_message">หากคุณส่งล็อกดีบักแล้ว สามารถลบออกจากอุปกรณ์ได้ คุณต้องการลบออกหรือไม่?</string>
     <string name="support_debuglog_session_delete_title">ลบล็อกดีบัก?</string>
@@ -260,7 +247,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP ล้มเหลว</string>
     <string name="support_debuglog_clear_title">ลบล็อกดีบักทั้งหมด?</string>
     <string name="support_debuglog_clear_message">การดำเนินการนี้จะลบเซสชั่นล็อกดีบักที่เก็บไว้ทั้งหมดอย่างถาวร</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">ติดต่อนักพัฒนา</string>
     <string name="settings_support_contact_desc">กรอกแบบฟอร์มเพื่อส่งอีเมลถึงนักพัฒนา</string>
     <string name="contact_screen_title">ติดต่อนักพัฒนา</string>
@@ -285,7 +271,6 @@
     <string name="contact_welcome_msg">ผมอ่านทุกข้อความด้วยตัวเองและพยายามตอบกลับอย่างเต็มที่ แต่เนื่องจากทำงานคนเดียว อาจต้องใช้เวลาสักนิด ขอบคุณสำหรับความอดทน</string>
     <string name="contact_footer_msg">ข้อความของคุณจะถูกส่งทางอีเมล ข้อมูลอุปกรณ์และการตั้งค่าจะถูกแนบโดยอัตโนมัติ</string>
     <string name="contact_no_email_app_msg">ไม่พบแอปอีเมลในอุปกรณ์นี้</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">ล็อกดีบักที่เก็บไว้</string>
     <string name="settings_support_stored_logs_desc">%1$d เซสชั่น (%2$s)</string>
     <string name="settings_support_stored_logs_empty">ไม่มีล็อกดีบักที่เก็บไว้</string>
@@ -303,6 +288,9 @@
     <string name="description_bluetooth_is_disabled">บลูทูธถูกปิดใช้งาน</string>
     <string name="title_bluetooth_is_off">บลูทูธปิดอยู่</string>
     <string name="action_enable_bluetooth">เปิดบลูทูธ</string>
+    <string name="title_monitoring_is_off">การตรวจสอบปิดอยู่</string>
+    <string name="description_monitoring_is_disabled">BlueMusic ไม่ตอบสนองต่อการเชื่อมต่อบลูทูธหรือการเปลี่ยนแปลงระดับเสียง ระดับเสียง ขีดจำกัด และการล็อกที่บันทึกไว้จะไม่ถูกนำไปใช้โดยอัตโนมัติ</string>
+    <string name="action_enable_monitoring">เปิดใช้งานการตรวจสอบ</string>
     <string name="title_bluetooth_permission_required">ต้องการสิทธิ์บลูทูธ</string>
     <string name="description_bluetooth_permission_required">แอปนี้ต้องการสิทธิ์บลูทูธเพื่อจัดการระดับเสียงของอุปกรณ์</string>
     <string name="action_grant_permission">อนุญาตสิทธิ์</string>
@@ -339,36 +327,31 @@
     <string name="review_app_body">คุณต้องการให้คะแนน BVM หรือไม่? ❤️</string>
     <string name="review_app_review_action">รีวิว</string>
     <string name="review_app_dismiss_action">อาจในคราวหน้า</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">ไม่มีอุปกรณ์</string>
     <string name="bluemusic_mascot_description">ไอคอนแอป</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">เลือกแอป</string>
     <string name="devices_app_selection_search_hint">ค้นหาแอป…</string>
     <string name="devices_app_selection_selected_count">เลือกแอป %d แอป</string>
     <string name="general_navigate_back_action">นำทางย้อนกลับ</string>
     <string name="general_reset_action">รีเซ็ต</string>
     <string name="general_clear_action">ล้าง</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">ล็อก</string>
     <string name="devices_indicator_awake">ตื่น</string>
     <string name="devices_indicator_nudge">กระตุ้น</string>
     <string name="devices_indicator_observe">สังเกต</string>
     <string name="devices_indicator_disconnect">ตัดการเชื่อมต่อ</string>
     <string name="devices_indicator_limit">จำกัด</string>
+    <string name="devices_indicator_volume_range">ช่วง</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">เพิ่มเสียง</string>
     <string name="devices_indicator_home">หน้าหลัก</string>
     <string name="devices_indicator_dnd">ห้ามรบกวน</string>
     <string name="devices_indicator_alert">แจ้งเตือน</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">ระดับเสียง (0–100)</string>
     <string name="devices_volume_input_error">ป้อนค่าระหว่าง %1$d และ %2$d</string>
     <string name="devices_volume_input_caption">ระดับเสียงจริงอาจปัดเป็นขั้นที่ใกล้ที่สุดที่อุปกรณ์ของคุณรองรับ</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">ล็อก</string>
     <string name="devices_unlock_sliders_action">ปลดล็อก</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">แสดงสถานะการล็อกระดับเสียงสำหรับอุปกรณ์บลูทูธ์ที่ใช้งานอยู่</string>
     <string name="widget_no_device_label">ไม่มีอุปกรณ์ที่เชื่อมต่อ</string>
     <string name="widget_bluetooth_off_label">บลูทูธ์ปิดอยู่</string>
@@ -385,7 +368,6 @@
     <string name="widget_config_theme_green_label">เขียว</string>
     <string name="widget_config_theme_red_label">แดง</string>
     <string name="widget_config_theme_custom_label">กำหนดเอง</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">อีควอไลเซอร์</string>
     <string name="eq_bands_label">แถบความถี่</string>
     <string name="eq_mini_graph_desc">แถบอีควอไลเซอร์ที่ตั้งค่าไว้</string>

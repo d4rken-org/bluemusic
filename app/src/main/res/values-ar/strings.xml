@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">مدير صوت البلوتوث</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">خطأ</string>
     <string name="general_error_no_compatible_app_found_msg">لم يتم العثور على تطبيق متوافق للتعامل مع هذا الطلب.</string>
     <string name="general_share_action">مشاركة</string>
     <string name="general_back_action">رجوع</string>
     <string name="general_show_details_action">عرض التفاصيل</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">مرحباً بك في BVM</string>
     <string name="onboarding_welcome_message">مدير صوت البلوتوث يسمح لك بإدارة مستويات صوت أجهزة البلوتوث تلقائياً.</string>
     <string name="onboarding_welcome_action">هيا بنا نبدأ</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">لقد قمت بإعادة بناء مدير صوت البلوتوث بالكامل من البداية بسبب تغييرات أندرويد ومتطلبات جوجل لضمان استمرار عمل التطبيق بشكل موثوق.</string>
     <string name="onboarding_rewrite_features">قد تكون بعض إعدادات الجهاز قد تم إعادة تعيينها أثناء هذا التحديث. يرجى فحص إعدادات جهازك.</string>
     <string name="onboarding_rewrite_action">متابعة</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">جميع أجهزتك المقترنة مُدارة! هل تحتاج لجهاز جديد؟</string>
     <string name="discover_pair_new_device_action">اقتران جهاز جديد</string>
     <string name="discover_device_speaker_desc">مكبر الصوت الخاص بهذا الهاتف. يتم تطبيق مستويات الصوت الخاصة به عندما ينتقل الصوت مرة أخرى إلى الهاتف، على سبيل المثال بعد قطع اتصال جهاز Bluetooth الخاص بك.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">إعدادات الجهاز</string>
     <string name="devices_device_config_remove_device_label">نسيان الجهاز</string>
     <string name="devices_device_config_remove_device_action">نسيان</string>
@@ -156,10 +151,8 @@
     <string name="devices_currently_connected_label">متصل حالياً</string>
     <string name="devices_device_disabled_label">الجهاز معطل</string>
     <string name="devices_no_volumes_configured">لم يتم تهيئة مستويات صوت لهذا الجهاز. اضغط على تهيئة لضبط تفضيلات الصوت.</string>
-    <!-- Settings-->
     <string name="settings_label">الإعدادات</string>
     <string name="settings_category_other_label">أخرى</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">عام</string>
     <string name="general_settings_desc">تعديلات عامة تؤثر على التطبيق بأكمله.</string>
     <string name="settings_category_ui_label">واجهة المستخدم</string>
@@ -181,7 +174,6 @@
     <string name="ui_theme_color_sunset_label">غروب الشمس</string>
     <string name="ui_language_override_label">لغة التطبيق</string>
     <string name="ui_language_override_desc">اختر لغة مختلفة لـ BVM، بشكل منفصل عن اللغة الافتراضية لنظامك.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">الأجهزة</string>
     <string name="devices_settings_desc">إعدادات تؤثر على جميع الأجهزة المُدارة.</string>
     <string name="label_app_enabled">التطبيق مشغل</string>
@@ -189,7 +181,6 @@
     <string name="label_volume_listener">ملاحظة التغييرات</string>
     <string name="label_boot_restore">الإستعادة عند تشغيل الجهاز</string>
     <string name="description_boot_restore">استعادة حجم الصوت بعد التشغيل/إعادة التشغيل إذا كان جهاز بلوتوث متصلا.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">الدعم</string>
     <string name="settings_support_description">قراءة الوثائق، والإبلاغ عن المشاكل، والدردشة مع الآخرين أو تسجيل سجلات التشخيص.</string>
     <string name="settings_support_wiki_label">الوثائق</string>
@@ -203,7 +194,6 @@
     <string name="settings_support_debuglog_short_recording_stop">أوقف على أي حال</string>
     <string name="settings_support_discord_label">ديسكورد</string>
     <string name="settings_support_discord_description">مكان للتسكع وطرح الأسئلة.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">الشكر والتقدير</string>
     <string name="settings_acknowledgements_description">الاعتمادات، والتراخيص، وشكر خاص</string>
     <string name="settings_acks_translation_header">الترجمة</string>
@@ -218,7 +208,6 @@
     <string name="settings_privacy_policy_label">سياسة الخصوصية</string>
     <string name="settings_privacy_policy_desc">التعامل مع البيانات بمسؤولية.</string>
     <string name="changelog_label">سجل التغييرات</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">النسخ الاحتياطي والاستعادة</string>
     <string name="backup_restore_settings_desc">احتفظ بنسخة احتياطية واستعد تهيئات الجهاز والإعدادات.</string>
     <string name="backup_restore_screen_title">النسخ الاحتياطي والاستعادة</string>
@@ -235,7 +224,6 @@
     <string name="backup_restore_success_backup">تم إنشاء النسخة الاحتياطية — تم حفظ %1$d جهاز.</string>
     <string name="backup_restore_success_restore">اكتملت الاستعادة — تم استعادة %1$d جهاز، تم تخطي %2$d.</string>
     <string name="backup_restore_version_warning">تم إنشاء هذه النسخة الاحتياطية بالإصدار %1$s. أنت تشغّل %2$s. قد لا تُستعاد بعض الإعدادات بشكل صحيح.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">سجل التشخيص</string>
     <string name="debug_log_consent_explanation">هذه الميزة تسجّل كل ما يفعله التطبيق في ملف قابل للمشاركة. الملف المُنشأ يحتوي على معلومات حسّاسة (مثل أسماء الملفات والتطبيقات المثبتة). شاركه فقط مع أطراف موثوقة (مثل مطور يحل مشكلة).</string>
     <string name="debug_log_record_action">تسجيل</string>
@@ -257,7 +245,6 @@
     <string name="debug_log_screen_discard_action">تجاهل</string>
     <string name="debug_log_screen_keep_action">احتفظ</string>
     <string name="debug_log_file_label">ملف سجل مُسجّل</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">تم إرسال السجل؟</string>
     <string name="support_debuglog_sent_message">إذا كنت قد أرسلت سجل التشخيص، يمكن حذفه من الجهاز. هل تريد إزالته؟</string>
     <string name="support_debuglog_session_delete_title">حذف سجل التشخيص؟</string>
@@ -270,7 +257,6 @@
     <string name="support_debuglog_failed_zip_failed">فشل ZIP</string>
     <string name="support_debuglog_clear_title">حذف كل سجلات التشخيص؟</string>
     <string name="support_debuglog_clear_message">سيتم حذف جميع جلسات سجل التشخيص المخزنة بشكل دائم.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">تواصل مع المطور</string>
     <string name="settings_support_contact_desc">املأ نموذجاً لإرسال بريد إلكتروني للمطور.</string>
     <string name="contact_screen_title">تواصل مع المطور</string>
@@ -300,7 +286,6 @@
     <string name="contact_welcome_msg">أقرأ كل رسالة بنفسي وأبذل قصارى جهدي للرد، لكن بما أنني أعمل على هذا وحدي، قد يستغرق الأمر بعض الوقت. شكراً لصبرك.</string>
     <string name="contact_footer_msg">ستُرسل رسالتك عبر البريد الإلكتروني. يتم إرفاق معلومات الجهاز والإعداد تلقائياً.</string>
     <string name="contact_no_email_app_msg">لم يتم العثور على تطبيق بريد إلكتروني على هذا الجهاز.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">سجلات التشخيص المخزنة</string>
     <string name="settings_support_stored_logs_desc">%1$d جلسات (%2$s)</string>
     <string name="settings_support_stored_logs_empty">لا توجد سجلات تشخيص مخزنة</string>
@@ -318,6 +303,9 @@
     <string name="description_bluetooth_is_disabled">البلوتوث غير مفعل.</string>
     <string name="title_bluetooth_is_off">البلوتوث مغلق</string>
     <string name="action_enable_bluetooth">تفعيل البلوتوث</string>
+    <string name="title_monitoring_is_off">المراقبة متوقفة</string>
+    <string name="description_monitoring_is_disabled">لا يستجيب BlueMusic لاتصالات البلوتوث أو تغييرات مستوى الصوت. لا يتم تطبيق مستويات الصوت والحدود والأقفال المحفوظة تلقائيًا.</string>
+    <string name="action_enable_monitoring">تفعيل المراقبة</string>
     <string name="title_bluetooth_permission_required">مطلوب إذن البلوتوث</string>
     <string name="description_bluetooth_permission_required">يحتاج هذا التطبيق إذن البلوتوث لإدارة مستويات صوت جهازك.</string>
     <string name="action_grant_permission">منح الإذن</string>
@@ -359,36 +347,31 @@
     <string name="review_app_body">هل ترغب في ترك تعليق لـ BVM؟ ❤️</string>
     <string name="review_app_review_action">مراجعة</string>
     <string name="review_app_dismiss_action">ربما لاحقًا</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">لا توجد أجهزة</string>
     <string name="bluemusic_mascot_description">أيقونة التطبيق</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">اختيار التطبيقات</string>
     <string name="devices_app_selection_search_hint">البحث عن التطبيقات…</string>
     <string name="devices_app_selection_selected_count">%d تطبيق محدد</string>
     <string name="general_navigate_back_action">العودة</string>
     <string name="general_reset_action">إعادة تعيين</string>
     <string name="general_clear_action">مسح</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">قفل</string>
     <string name="devices_indicator_awake">يقظ</string>
     <string name="devices_indicator_nudge">دفعة</string>
     <string name="devices_indicator_observe">مراقبة</string>
     <string name="devices_indicator_disconnect">قطع</string>
     <string name="devices_indicator_limit">حد</string>
+    <string name="devices_indicator_volume_range">النطاق</string>
     <string name="devices_indicator_eq">موازن</string>
     <string name="devices_indicator_boost">تعزيز</string>
     <string name="devices_indicator_home">الرئيسية</string>
     <string name="devices_indicator_dnd">عدم الإزعاج</string>
     <string name="devices_indicator_alert">تنبيه</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">مستوى الصوت (0–100)</string>
     <string name="devices_volume_input_error">أدخل قيمة بين %1$d و %2$d</string>
     <string name="devices_volume_input_caption">قد يُقرَّب مستوى الصوت الفعلي إلى أقرب خطوة يدعمها جهازك.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">قفل</string>
     <string name="devices_unlock_sliders_action">فتح القفل</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">يعرض حالة قفل الصوت لجهاز البلوتوث النشط</string>
     <string name="widget_no_device_label">لا يوجد جهاز متصل</string>
     <string name="widget_bluetooth_off_label">البلوتوث متوقف</string>
@@ -405,7 +388,6 @@
     <string name="widget_config_theme_green_label">أخضر</string>
     <string name="widget_config_theme_red_label">أحمر</string>
     <string name="widget_config_theme_custom_label">مخصص</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">المعادل الصوتي</string>
     <string name="eq_bands_label">النطاقات</string>
     <string name="eq_mini_graph_desc">نطاقات الموازن المضبوطة</string>

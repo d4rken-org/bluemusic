@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Error</string>
     <string name="general_error_no_compatible_app_found_msg">No s\'ha trobat cap aplicació compatible per gestionar aquesta sol·licitud.</string>
     <string name="general_share_action">Comparteix</string>
     <string name="general_back_action">Enrere</string>
     <string name="general_show_details_action">Mostra els detalls</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Benvingut/da a BVM</string>
     <string name="onboarding_welcome_message">El Gestor de volum Bluetooth et permet gestionar els volums dels dispositius Bluetooth automàticament.</string>
     <string name="onboarding_welcome_action">Endavant</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">He hagut de reescriure l\'aplicació per adaptar-me als canvis d\'Android i als requisits de Google. He modernitzat l\'aplicació on ha estat possible per assegurar que continua funcionant de manera fiable.</string>
     <string name="onboarding_rewrite_features">Algunes funcions han canviat durant l\'actualització. Comprova la configuració del dispositiu per assegurar-te que tot estigui ben configurat.</string>
     <string name="onboarding_rewrite_action">Continua</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">Tots els dispositius emparellats estan gestionats! En necessites un de nou?</string>
     <string name="discover_pair_new_device_action">Emparella un dispositiu nou</string>
     <string name="discover_device_speaker_desc">L\'altaveu propi del telèfon. Els seus volums s\'apliquen quan l\'àudio canvia de nou al telèfon, per exemple, després que es desconnecti el dispositiu Bluetooth.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Configuració del dispositiu</string>
     <string name="devices_device_config_remove_device_label">Oblida el dispositiu</string>
     <string name="devices_device_config_remove_device_action">Oblida</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">Connectat actualment</string>
     <string name="devices_device_disabled_label">Dispositiu desactivat</string>
     <string name="devices_no_volumes_configured">No hi ha volums configurats per a aquest dispositiu. Toca Configura per establir les preferències de volum.</string>
-    <!-- Settings-->
     <string name="settings_label">Configuració</string>
     <string name="settings_category_other_label">Altres</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">General</string>
     <string name="general_settings_desc">Retocs generals que afecten a tota l\'aplicació.</string>
     <string name="settings_category_ui_label">Interfície d\'usuari</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">Posta de sol</string>
     <string name="ui_language_override_label">Idioma de l\'aplicació</string>
     <string name="ui_language_override_desc">Selecciona un idioma diferent per a BVM, independent de l\'idioma predeterminat del sistema.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Dispositius</string>
     <string name="devices_settings_desc">Configuració que afecta tots els dispositius gestionats.</string>
     <string name="label_app_enabled">Aplicació activada</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">Observa els canvis</string>
     <string name="label_boot_restore">Restableix a l\'inici</string>
     <string name="description_boot_restore">Restableix el volum després d\'iniciar/reiniciar si un dispositiu Bluetooth està connectat.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Suport</string>
     <string name="settings_support_description">Llegiu la documentació, informeu de problemes, xategeu amb altres persones o graveu els registres de depuració.</string>
     <string name="settings_support_wiki_label">Documentació</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Atura igualment</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Un lloc on quedar i fer preguntes.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Reconeixements</string>
     <string name="settings_acknowledgements_description">Crèdits, llicències i agraïments especials</string>
     <string name="settings_acks_translation_header">Traducció</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">Política de privadesa</string>
     <string name="settings_privacy_policy_desc">Gestió responsable de dades.</string>
     <string name="changelog_label">Registre de canvis</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Còpia de seguretat i restauració</string>
     <string name="backup_restore_settings_desc">Fes una còpia de seguretat i restaura les configuracions dels dispositius i els paràmetres.</string>
     <string name="backup_restore_screen_title">Còpia de seguretat i restauració</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">Còpia de seguretat creada — %1$d dispositius desats.</string>
     <string name="backup_restore_success_restore">Restauració completa — %1$d dispositius restaurats, %2$d omesos.</string>
     <string name="backup_restore_version_warning">Aquesta còpia de seguretat es va crear amb la versió %1$s. Estàs executant %2$s. Alguns paràmetres potó no es restaurin correctament.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Registre de depuració</string>
     <string name="debug_log_consent_explanation">Aquesta funció enregistra tot el que fa l\'aplicació en un fitxer compartible. El fitxer generat conté informació sensible (p. ex. noms de fitxers i aplicacions instal·lades). Comparteix-lo només amb persones de confiança (p. ex. un desenvolupador resolent un problema).</string>
     <string name="debug_log_record_action">Enregistra</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">Descarta</string>
     <string name="debug_log_screen_keep_action">Conserva</string>
     <string name="debug_log_file_label">Fitxer de registre enregistrat</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Registre enviat?</string>
     <string name="support_debuglog_sent_message">Si has enviat el registre de depuració, es pot eliminar del dispositiu. Vols eliminar-lo?</string>
     <string name="support_debuglog_session_delete_title">Elimina el registre de depuració?</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">Ha fallat el ZIP</string>
     <string name="support_debuglog_clear_title">Elimina tots els registres de depuració?</string>
     <string name="support_debuglog_clear_message">Això eliminarà permanentment totes les sessions de registre de depuració emmagatzemades.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Contacta amb el desenvolupador</string>
     <string name="settings_support_contact_desc">Omple un formulari per enviar un correu electrònic al desenvolupador.</string>
     <string name="contact_screen_title">Contacta amb el desenvolupador</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">Llegeixo tots els missatges personalment i faig tot el possible per respondre, però com que treballo sol, pot trigar una mica. Gràcies per la teva paciència.</string>
     <string name="contact_footer_msg">El teu missatge s\'enviarà per correu electrònic. La informació del dispositiu i la configuració s\'adjunta automàticament.</string>
     <string name="contact_no_email_app_msg">No s\'ha trobat cap aplicació de correu en aquest dispositiu.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Registres de depuració emmagatzemats</string>
     <string name="settings_support_stored_logs_desc">%1$d sessions (%2$s)</string>
     <string name="settings_support_stored_logs_empty">No hi ha registres de depuració emmagatzemats</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">El Bluetooth està desactivat.</string>
     <string name="title_bluetooth_is_off">El Bluetooth està apagat</string>
     <string name="action_enable_bluetooth">Activa el Bluetooth</string>
+    <string name="title_monitoring_is_off">Monitoratge desactivat</string>
+    <string name="description_monitoring_is_disabled">BlueMusic no reacciona a les connexions de Bluetooth ni als canvis de volum. Els volums guardats, límits i bloqueigs no s\'apliquen automàticament.</string>
+    <string name="action_enable_monitoring">Activa el monitoratge</string>
     <string name="title_bluetooth_permission_required">Cal el permís de Bluetooth</string>
     <string name="description_bluetooth_permission_required">Aquesta aplicació necessita el permís de Bluetooth per gestionar els volums del dispositiu.</string>
     <string name="action_grant_permission">Concedeix el permís</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">Voleu deixar una ressenya de BVM? ❤️</string>
     <string name="review_app_review_action">Revisió</string>
     <string name="review_app_dismiss_action">Potser més tard</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">Cap dispositiu</string>
     <string name="bluemusic_mascot_description">Icona de l\'aplicació</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Selecciona aplicacions</string>
     <string name="devices_app_selection_search_hint">Cerca aplicacions…</string>
     <string name="devices_app_selection_selected_count">%d aplicacions seleccionades</string>
     <string name="general_navigate_back_action">Navega enrere</string>
     <string name="general_reset_action">Restableix</string>
     <string name="general_clear_action">Neteja</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Bloqueig</string>
     <string name="devices_indicator_awake">Actiu</string>
     <string name="devices_indicator_nudge">Ajust</string>
     <string name="devices_indicator_observe">Observar</string>
     <string name="devices_indicator_disconnect">Desconnectar</string>
     <string name="devices_indicator_limit">Límit</string>
+    <string name="devices_indicator_volume_range">Interval</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Potència</string>
     <string name="devices_indicator_home">Inici</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Alerta</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volum (0–100)</string>
     <string name="devices_volume_input_error">Introdueix un valor entre %1$d i %2$d</string>
     <string name="devices_volume_input_caption">El volum real pot arrodonir-se al graons més proper que admet el teu dispositiu.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Bloqueja</string>
     <string name="devices_unlock_sliders_action">Desbloqueja</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Mostra l’estat del bloqueig de volum per al dispositiu Bluetooth actiu</string>
     <string name="widget_no_device_label">Cap dispositiu connectat</string>
     <string name="widget_bluetooth_off_label">El Bluetooth està desactivat</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">Verd</string>
     <string name="widget_config_theme_red_label">Vermell</string>
     <string name="widget_config_theme_custom_label">Personalitzat</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">Equalitzador</string>
     <string name="eq_bands_label">Bandes</string>
     <string name="eq_mini_graph_desc">Bandes de l\'equalizador configurades</string>

@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Problema</string>
     <string name="general_error_no_compatible_app_found_msg">Walang katugmang app na makakahandlo ng kahilingang ito.</string>
     <string name="general_share_action">Ibahagi</string>
     <string name="general_back_action">Bumalik</string>
     <string name="general_show_details_action">Ipakita ang detalye</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Maligayang pagdating sa BVM</string>
     <string name="onboarding_welcome_message">Pinahihintulutan ka ng Bluetooth Volume Manager na awtomatikong pamahalaan ang mga volume ng iyong Bluetooth device.</string>
     <string name="onboarding_welcome_action">Tara na</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Kinailangan kong i-rewrite ang app para makaagapay sa mga pagbabago ng Android at mga kinakailangan ng Google. Pina-modernize ko ang app hangga\'t maaari upang matiyak na patuloy itong gagana nang maaasahan.</string>
     <string name="onboarding_rewrite_features">Nagbago ang ilang feature sa panahon ng update. Pakisuri ang iyong mga setting ng device para matiyak na tama ang lahat ng configuration.</string>
     <string name="onboarding_rewrite_action">Ituloy</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">Lahat ng iyong paired na device ay pinamamahalaan na! Kailangan ng bago?</string>
     <string name="discover_pair_new_device_action">Mag-pair ng bagong device</string>
     <string name="discover_device_speaker_desc">Ang sariling speaker ng phone na ito. Ang mga volume nito ay inilalapat kapag bumalik ang audio sa phone, hal. pagkatapos ang iyong Bluetooth device ay nag-disconnect.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Configuration ng device</string>
     <string name="devices_device_config_remove_device_label">Kalimutan ang device</string>
     <string name="devices_device_config_remove_device_action">Kalimutan</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">Kasalukuyang nakakonekta</string>
     <string name="devices_device_disabled_label">Naka-disable na device</string>
     <string name="devices_no_volumes_configured">Walang volume na na-configure para sa device na ito. I-tap ang I-configure para magtakda ng mga kagustuhan sa volume.</string>
-    <!-- Settings-->
     <string name="settings_label">Mga Setting</string>
     <string name="settings_category_other_label">Iba pa</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">Pangkalahatan</string>
     <string name="general_settings_desc">Mga pangkalahatang pagbabago na nakakaapekto sa buong app.</string>
     <string name="settings_category_ui_label">Interface ng user</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">Paglubog ng araw</string>
     <string name="ui_language_override_label">Wika ng app</string>
     <string name="ui_language_override_desc">Pumili ng ibang wika para sa BVM, hiwalay sa default na wika ng iyong system.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Mga Device</string>
     <string name="devices_settings_desc">Mga setting na nakakaapekto sa lahat ng pinamamahalaaang device.</string>
     <string name="label_app_enabled">Pinaganang App</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">Obserbahan ang mga pagbabago</string>
     <string name="label_boot_restore">Ibalik pagkatapos magboot</string>
     <string name="description_boot_restore">Ibalik ang volume pagkatapos magboot/magreboot kung ang isang Bluetooth device ay nakakonekta.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Suporta</string>
     <string name="settings_support_description">Basahin ang dokumentasyon, mag-ulat ng mga isyu, makipag-chat sa iba, o mag-record ng debug logs.</string>
     <string name="settings_support_wiki_label">Dokumentasyon</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Itigil kahit na</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Isang lugar para makipagkita at magtanong.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Mga Pagkilala</string>
     <string name="settings_acknowledgements_description">Mga credit, lisensya, at espesyal na pasasalamat</string>
     <string name="settings_acks_translation_header">Pagsasalin</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">Patakaran sa Privacy</string>
     <string name="settings_privacy_policy_desc">Responsableng pangangasiwa ng data.</string>
     <string name="changelog_label">Talaan ng mga pagbabago</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Backup at Restore</string>
     <string name="backup_restore_settings_desc">I-backup at i-restore ang iyong mga configuration ng device at mga setting.</string>
     <string name="backup_restore_screen_title">Backup at Restore</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">Nagawa ang backup — %1$d mga device ang na-save.</string>
     <string name="backup_restore_success_restore">Kumpleto na ang restore — %1$d mga device ang na-restore, %2$d ang nilaktawan.</string>
     <string name="backup_restore_version_warning">Ang backup na ito ay ginawa sa bersyon %1$s. Nagpapatakbo ka ng %2$s. Maaaring hindi ma-restore nang tama ang ilang mga setting.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Debug log</string>
     <string name="debug_log_consent_explanation">Ini-record ng feature na ito ang lahat ng ginagawa ng app sa isang file na maaaring ibahagi. Ang nabuong file ay naglalaman ng sensitibong impormasyon (hal. mga pangalan ng file at mga naka-install na app). Ibahagi lamang ito sa mga pinagkakatiwalaang tao (hal. isang developer na nag-aayos ng isyu).</string>
     <string name="debug_log_record_action">I-record</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">Itapon</string>
     <string name="debug_log_screen_keep_action">Panatilihin</string>
     <string name="debug_log_file_label">Naka-record na log file</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Naipadala na ang log?</string>
     <string name="support_debuglog_sent_message">Kung naipadala mo na ang debug log, maaari itong burahin mula sa device. Gusto mo bang alisin ito?</string>
     <string name="support_debuglog_session_delete_title">Burahin ang debug log?</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">Nabigo ang ZIP</string>
     <string name="support_debuglog_clear_title">Burahin ang lahat ng debug log?</string>
     <string name="support_debuglog_clear_message">Permanenteng mabubura ang lahat ng nakaimbak na debug log session.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Makipag-ugnayan sa developer</string>
     <string name="settings_support_contact_desc">Punan ang isang form para magpadala ng email sa developer.</string>
     <string name="contact_screen_title">Makipag-ugnayan sa developer</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">Binabasa ko ang bawat mensahe nang personal at ginagawa ko ang lahat para sumagot, ngunit dahil nagtatrabaho ako nang mag-isa, maaaring tumagal ng kaunti. Salamat sa iyong pasensya.</string>
     <string name="contact_footer_msg">Ang iyong mensahe ay ipapadala sa pamamagitan ng email. Ang impormasyon ng device at setup ay awtomatikong naka-attach.</string>
     <string name="contact_no_email_app_msg">Walang nahanap na email app sa device na ito.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Nakaimbak na mga debug log</string>
     <string name="settings_support_stored_logs_desc">%1$d mga sesyon (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Walang nakaimbak na debug log</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">Hindi pinagana ang bluetooth.</string>
     <string name="title_bluetooth_is_off">Naka-off ang Bluetooth</string>
     <string name="action_enable_bluetooth">I-enable ang Bluetooth</string>
+    <string name="title_monitoring_is_off">Naka-off ang Monitoring</string>
+    <string name="description_monitoring_is_disabled">Ang BlueMusic ay hindi tumutugon sa mga koneksyon sa Bluetooth o pagbabago ng volume. Ang mga nakaimbak na volume, limitasyon, at lock ay hindi awtomatikong inilalapat.</string>
+    <string name="action_enable_monitoring">Paganahin ang Monitoring</string>
     <string name="title_bluetooth_permission_required">Kailangan ng Bluetooth Permission</string>
     <string name="description_bluetooth_permission_required">Kailangan ng app na ito ng Bluetooth permission para pamahalaan ang mga volume ng iyong device.</string>
     <string name="action_grant_permission">Bigyan ng Permission</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">Gusto ba ninyong mag-iwan ng review para sa BVM? ❤️</string>
     <string name="review_app_review_action">Pagsusuri</string>
     <string name="review_app_dismiss_action">Siguro mamaya</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">Walang Device</string>
     <string name="bluemusic_mascot_description">Icon ng App</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Piliin ang mga App</string>
     <string name="devices_app_selection_search_hint">Maghanap ng mga app…</string>
     <string name="devices_app_selection_selected_count">%d mga app na napili</string>
     <string name="general_navigate_back_action">Bumalik</string>
     <string name="general_reset_action">I-reset</string>
     <string name="general_clear_action">I-clear</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Naka-lock</string>
     <string name="devices_indicator_awake">Gising</string>
     <string name="devices_indicator_nudge">Nudge</string>
     <string name="devices_indicator_observe">Obserbahan</string>
     <string name="devices_indicator_disconnect">I-disconnect</string>
     <string name="devices_indicator_limit">Limitado</string>
+    <string name="devices_indicator_volume_range">Hanay</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Boost</string>
     <string name="devices_indicator_home">Home</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Alerto</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volume (0–100)</string>
     <string name="devices_volume_input_error">Maglagay ng value sa pagitan ng %1$d at %2$d</string>
     <string name="devices_volume_input_caption">Ang aktwal na volume ay maaaring mag-round sa pinakamalapit na hakbang na sinusuportahan ng iyong device.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">I-lock</string>
     <string name="devices_unlock_sliders_action">I-unlock</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Nagpapakita ng katayuan ng volume lock para sa aktibong Bluetooth device</string>
     <string name="widget_no_device_label">Walang nakakonektang device</string>
     <string name="widget_bluetooth_off_label">Naka-off ang Bluetooth</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">Berde</string>
     <string name="widget_config_theme_red_label">Pula</string>
     <string name="widget_config_theme_custom_label">Custom</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">Equalizer</string>
     <string name="eq_bands_label">Mga Band</string>
     <string name="eq_mini_graph_desc">Mga naka-configure na band ng equalizer</string>
