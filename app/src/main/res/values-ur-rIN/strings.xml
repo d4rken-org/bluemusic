@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">غلطی</string>
     <string name="general_error_no_compatible_app_found_msg">اس درخواست کو سنبھالنے کے لیے کوئی مطابقت پزیر ایپ نہیں ملا۔</string>
     <string name="general_share_action">شیئر کریں</string>
     <string name="general_back_action">واپس</string>
     <string name="general_show_details_action">تفصیلات دکھائیں</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">BVM میں خوش آمدید</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager آپ کو بلوٹوتھ ڈیوائس کی آوازوں کو خودکار طریقے سے منظم کرنے کی اجازت دیتا ہے۔</string>
     <string name="onboarding_welcome_action">چلتے ہیں</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">مجھے اینڈرائیڈ تبدیلیوں اور گوگل کی ضروریات کے ساتھ ہم آہنگ رہنے کے لیے ایپ کو دوبارہ لکھنا پڑا۔ میں نے ایپ کو جہاں ممکن ہو جدید بنایا ہے تاکہ یہ قابل اعتماد طریقے سے کام کرتی رہے۔</string>
     <string name="onboarding_rewrite_features">اپڈیٹ کے دوران کچھ خصوصیات تبدیل ہو گئی ہیں۔ براہ کرم اپنی ڈیوائس کی ترتیبات چیک کریں تاکہ یقین ہو کہ سب کچھ درست طریقے سے ترتیب دیا گیا ہے۔</string>
     <string name="onboarding_rewrite_action">جاری رکھیں</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">آپ کی تمام جوڑی گئی ڈیوائسیں منظم ہیں! کوئی نئی ڈیوائس چاہیے؟</string>
     <string name="discover_pair_new_device_action">نئی ڈیوائس جوڑیں</string>
     <string name="discover_device_speaker_desc">یہ فون کا اپنا اسپیکر۔ جب آڈیو فون پر واپس آتا ہے تو اس کے حجم کو لاگو کیا جاتا ہے، مثال کے طور پر آپ کے Bluetooth ڈیوائس کے منقطع ہونے کے بعد۔</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">ڈیوائس کی ترتیب</string>
     <string name="devices_device_config_remove_device_label">ڈیوائس بھول جائیں</string>
     <string name="devices_device_config_remove_device_action">بھول جائیں</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">ابھی منسلک ہے</string>
     <string name="devices_device_disabled_label">ڈیوائس معطل</string>
     <string name="devices_no_volumes_configured">اس ڈیوائس کے لیے کوئی والیوم ترتیب نہیں دی گئی۔ والیوم ترجیحات سیٹ کرنے کے لیے Configure ٹیپ کریں۔</string>
-    <!-- Settings-->
     <string name="settings_label">سیٹنگز</string>
     <string name="settings_category_other_label">دیگر</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">عمومی</string>
     <string name="general_settings_desc">عمومی تبدیلیاں جو پوری ایپ کو متاثر کرتی ہیں۔</string>
     <string name="settings_category_ui_label">یوزر انٹرفیس</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">غروب</string>
     <string name="ui_language_override_label">ایپ کی زبان</string>
     <string name="ui_language_override_desc">سسٹم کی ڈیفالٹ زبان سے آزاد، BVM کے لیے الگ زبان منتخب کریں۔</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">ڈیوائسیز</string>
     <string name="devices_settings_desc">تمام منظم ڈیوائسز کو متاثر کرنے والی ترتیبات۔</string>
     <string name="label_app_enabled">ایپ فعال</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">تبدیلیاں مشاہدہ کریں</string>
     <string name="label_boot_restore">بوٹ پر بحال کریں</string>
     <string name="description_boot_restore">اگر بلوٹوتھ ڈیوائس منسلک ہو تو بوٹینگ/ریبوٹینگ کے بعد والیوم بحال کریں۔</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">سپورٹ</string>
     <string name="settings_support_description">دستاویزات پڑھیں، مسائل کی اطلاع دیں، دوسروں کے ساتھ بات چیت کریں یا ڈیبگ لاگز ریکارڈ کریں۔</string>
     <string name="settings_support_wiki_label">دستاویزات</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">بہرحال روکیں</string>
     <string name="settings_support_discord_label">ڈسکارڈ</string>
     <string name="settings_support_discord_description">گفتگو کرنے اور سوالات پوچھنے کی جگہ۔</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">تسلیم و تشکر</string>
     <string name="settings_acknowledgements_description">کریڈٹس، لائسنسز، اور خصوصی شکریہ</string>
     <string name="settings_acks_translation_header">ترجمہ</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">پرائیویسی پالیسی</string>
     <string name="settings_privacy_policy_desc">ڈیٹا کو ذمہ داری سے سنبھالنا۔</string>
     <string name="changelog_label">تبدیلیوں کی فہرست</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">بیک اپ اور ریسٹور</string>
     <string name="backup_restore_settings_desc">اپنے ڈیوائس کنفیگریشنز اور سیٹنگز کا بیک اپ لیں اور بحال کریں۔</string>
     <string name="backup_restore_screen_title">بیک اپ اور ریسٹور</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">بیک اپ بنایا گیا — %1$d ڈیوائسز محفوظ کیے گیے۔</string>
     <string name="backup_restore_success_restore">بحالی مکمل — %1$d ڈیوائسز بحال کیے گیے، %2$d چھوڑ دیے گیے۔</string>
     <string name="backup_restore_version_warning">یہ بیک اپ ورژن %1$s سے بنایا گیا تھا۔ آپ %2$s چلا رہے ہیں۔ کچھ سیٹنگز صحیح طریقے سے بحال نہیں ہو سکتیں۔</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">ڈیبگ لاگ</string>
     <string name="debug_log_consent_explanation">یہ فیچر ایپ کی تمام کارروائیوں کو ایک شیئر کرنے والی فائل میں ریکارڈ کرتا ہے۔ بنایا گیا فائل حساس معلومات پر مشتمل ہے (جیسے فائل نام اور انسٹال شدہ ایپس)۔ صرف قابل اعتماد افراد کے ساتھ شیئر کریں (جیسے کسی مسئلے کو حل کرنے والا ڈیولپر)۔</string>
     <string name="debug_log_record_action">ریکارڈ</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">رد کریں</string>
     <string name="debug_log_screen_keep_action">رکھیں</string>
     <string name="debug_log_file_label">ریکارڈ شدہ لاگ فائل</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">لاگ بھیجی؟</string>
     <string name="support_debuglog_sent_message">اگر آپ نے ڈیبگ لاگ بھیج دی ہے، تو اسے ڈیوائس سے حذف کیا جا سکتا ہے۔ کیا آپ اسے ہٹانا چاہیں گے؟</string>
     <string name="support_debuglog_session_delete_title">ڈیبگ لاگ حذف کریں؟</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP ناکام</string>
     <string name="support_debuglog_clear_title">تمام ڈیبگ لاگز حذف کریں؟</string>
     <string name="support_debuglog_clear_message">یہ تمام محفوظ ڈیبگ لاگ سیشنز مستقل طور پر حذف کر دے گا۔</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">ڈیولپر سے رابطہ کریں</string>
     <string name="settings_support_contact_desc">ڈیولپر کو ایمیل بھیجنے کے لیے فارم بھریں۔</string>
     <string name="contact_screen_title">ڈیولپر سے رابطہ کریں</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">میں ہر پیغام خود پڑھتا ہےں اور جواب دینے کی بہترین کوشش کرتا ہے، لیکن کیونکہ میں اکیلا کام کرتا ہےں، تھوڑا وقت لگ سکتا ہے۔ آپ کی صبر کا شکریہ۔</string>
     <string name="contact_footer_msg">آپ کا پیغام ایمیل کے ذریعے بھیجا جائے گا۔ ڈیوائس اور سیٹاپ کی معلومات خودکار منسلک ہو جاتی ہے۔</string>
     <string name="contact_no_email_app_msg">اس ڈیوائس پر کوئی ایمیل ایپ نہیں ملی۔</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">محفوظ ڈیبگ لاگز</string>
     <string name="settings_support_stored_logs_desc">%1$d سیشنز (%2$s)</string>
     <string name="settings_support_stored_logs_empty">کوئی محفوظ ڈیبگ لاگز نہیں</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">بلوٹوتھ غیر فعال ہے.</string>
     <string name="title_bluetooth_is_off">بلوٹوتھ بند ہے</string>
     <string name="action_enable_bluetooth">بلوٹوتھ فعال کریں</string>
+    <string name="title_monitoring_is_off">نگرانی بند ہے</string>
+    <string name="description_monitoring_is_disabled">بلیو میوزک بلوٹوتھ کنکشن یا صوت کی سطح میں تبدیلیوں کے لیے رد عمل نہیں دے رہا ہے۔ محفوظ شدہ صوت کی سطحیں، حدود اور قفل خود کار طور پر لاگو نہیں ہو رہے ہیں۔</string>
+    <string name="action_enable_monitoring">نگرانی کو فعال کریں</string>
     <string name="title_bluetooth_permission_required">بلوٹوتھ کی اجازت ضروری ہے</string>
     <string name="description_bluetooth_permission_required">اس ایپ کو آپ کی ڈیوائس والیوم منظم کرنے کے لیے بلوٹوتھ کی اجازت کی ضرورت ہے۔</string>
     <string name="action_grant_permission">اجازت دیں</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">کیا آپ BVM کے لیے ریویو چھوڑنا چاہیں گے؟️ ❤️</string>
     <string name="review_app_review_action">ریویو</string>
     <string name="review_app_dismiss_action">شاید بعد میں</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">کوئی ڈیوائس نہیں</string>
     <string name="bluemusic_mascot_description">ایپ آئیکن</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">ایپس منتخب کریں</string>
     <string name="devices_app_selection_search_hint">ایپس تلاش کریں…</string>
     <string name="devices_app_selection_selected_count">%d ایپس منتخب</string>
     <string name="general_navigate_back_action">واپس نیویگیٹ کریں</string>
     <string name="general_reset_action">ری سیٹ کریں</string>
     <string name="general_clear_action">صاف کریں</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">لاک</string>
     <string name="devices_indicator_awake">جگا</string>
     <string name="devices_indicator_nudge">ہلکانا</string>
     <string name="devices_indicator_observe">نگرانی</string>
     <string name="devices_indicator_disconnect">ڈسکنیکٹ</string>
     <string name="devices_indicator_limit">حد</string>
+    <string name="devices_indicator_volume_range">رینج</string>
     <string name="devices_indicator_eq">ای کیو</string>
     <string name="devices_indicator_boost">بوسٹ</string>
     <string name="devices_indicator_home">ہوم</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">الرٹ</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">والیوم (0–100)</string>
     <string name="devices_volume_input_error">%1$d اور %2$d کے درمیان قدر درج کریں</string>
     <string name="devices_volume_input_caption">اصل والیوم آپ کے ڈیوائس کے قریب ترین اسٹیپ پر گول ہو سکتا ہے۔</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">لاک</string>
     <string name="devices_unlock_sliders_action">انلاک</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">فعال بلوٹوتھ ڈیوائس کے لیے والیوم لاک اسٹیٹس دکھاتا ہے</string>
     <string name="widget_no_device_label">کوئی ڈیوائس منسلک نہیں</string>
     <string name="widget_bluetooth_off_label">بلوٹوتھ بند ہے</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">سبز</string>
     <string name="widget_config_theme_red_label">سرخ</string>
     <string name="widget_config_theme_custom_label">کسٹم</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">ایکولائزر</string>
     <string name="eq_bands_label">بینڈز</string>
     <string name="eq_mini_graph_desc">کنفیگر شدہ ایکولائزر بینڈز</string>

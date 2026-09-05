@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Διαχειριστής Έντασης Bluetooth</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Σφάλμα</string>
     <string name="general_error_no_compatible_app_found_msg">Δεν βρέθηκε συμβατή εφαρμογή να χειριστεί αυτό το αίτημα.</string>
     <string name="general_share_action">Κοινοποίηση</string>
     <string name="general_back_action">Πίσω</string>
     <string name="general_show_details_action">Εμφάνιση λεπτομερειών</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Καλώς ήρθατε στο BVM</string>
     <string name="onboarding_welcome_message">Ο Διαχειριστής Έντασης Bluetooth σας επιτρέπει να διαχειριστείτε αυτόματα τις εντάσεις των συσκευών Bluetooth.</string>
     <string name="onboarding_welcome_action">Πάμε</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Ξαναέφτιαξα εντελώς τον Διαχειριστή Έντασης Bluetooth από την αρχή λόγω αλλαγών του Android και απαιτήσεων της Google για να διασφαλίσω ότι η εφαρμογή θα συνεχίσει να λειτουργεί αξιόπιστα.</string>
     <string name="onboarding_rewrite_features">Κάποιες ρυθμίσεις συσκευών μπορεί να επαναφέρθηκαν κατά τη διάρκεια αυτής της ενημέρωσης. Παρακαλώ ελέγξτε τις διαμορφώσεις των συσκευών σας.</string>
     <string name="onboarding_rewrite_action">Συνέχεια</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">Όλες οι συζευγμένες συσκευές σας διαχειρίζονται ήδη! Χρειάζεστε κάποια καινούρια;</string>
     <string name="discover_pair_new_device_action">Σύζευξη νέας συσκευής</string>
     <string name="discover_device_speaker_desc">Το ηχείο του τηλεφώνου. Οι εντάσεις του εφαρμόζονται όταν ο ήχος επιστρέφει στο τηλέφωνο, π.χ. μετά την αποσύνδεση της συσκευής Bluetooth σας.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Διαμόρφωση συσκευής</string>
     <string name="devices_device_config_remove_device_label">Λήθη συσκευής</string>
     <string name="devices_device_config_remove_device_action">Λήθη</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">Συνδεδεμένη τώρα</string>
     <string name="devices_device_disabled_label">Συσκευή απενεργοποιημένη</string>
     <string name="devices_no_volumes_configured">Δεν έχουν ρυθμιστεί εντάσεις για αυτή τη συσκευή. Πατήστε Διαμόρφωση για να ορίσετε τις προτιμήσεις έντασης.</string>
-    <!-- Settings-->
     <string name="settings_label">Ρυθμίσεις</string>
     <string name="settings_category_other_label">Άλλο</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">Γενικά</string>
     <string name="general_settings_desc">Γενικές τροποποιήσεις που επηρεάζουν ολόκληρη την εφαρμογή.</string>
     <string name="settings_category_ui_label">Περιβάλλον χρήστη</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">Ηλιοβασίλεμα</string>
     <string name="ui_language_override_label">Γλώσσα εφαρμογής</string>
     <string name="ui_language_override_desc">Επιλέξτε διαφορετική γλώσσα για το BVM, ανεξάρτητα από την προεπιλεγμένη γλώσσα του συστήματός σας.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Συσκευές</string>
     <string name="devices_settings_desc">Ρυθμίσεις που επηρεάζουν όλες τις διαχειρισμένες συσκευές.</string>
     <string name="label_app_enabled">Ενεργοποίηση Εφαρμογής</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">Παρατήρηση αλλαγών</string>
     <string name="label_boot_restore">Επαναφορά κατά την εκκίνηση</string>
     <string name="description_boot_restore">Αποκατάσταση της έντασης μετά την εκκίνηση/επανεκκίνηση αν είναι συνδεδεμένη μια συσκευή Bluetooth.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Υποστήριξη</string>
     <string name="settings_support_description">Διαβάστε τεκμηρίωση, αναφέρετε προβλήματα, συνομιλήστε με άλλους ή κάντε εγγραφές debug.</string>
     <string name="settings_support_wiki_label">Τεκμηρίωση</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Σταμάτα ούτως ή άλλως</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Ένα μέρος να συναναστρέφεστε και να κάνετε ερωτήσεις.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Αναγνωρίσεις</string>
     <string name="settings_acknowledgements_description">Αναγνωρίσεις, άδειες και ιδιαίτερες ευχαριστίες</string>
     <string name="settings_acks_translation_header">Μετάφραση</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">Πολιτική απορρήτου</string>
     <string name="settings_privacy_policy_desc">Διαχείριση δεδομένων με υπευθυνότητα.</string>
     <string name="changelog_label">Αρχείο αλλαγών</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Δημιουργία αντιγράφων &amp; Επαναφορά</string>
     <string name="backup_restore_settings_desc">Δημιουργήστε αντίγραφα ασφαλείας και επαναφέρετε τις ρυθμίσεις και τις διαμορφώσεις της συσκευής σας.</string>
     <string name="backup_restore_screen_title">Δημιουργία αντιγράφων &amp; Επαναφορά</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">Αντίγραφο ασφαλείας δημιουργήθηκε — %1$d συσκευές αποθηκεύτηκαν.</string>
     <string name="backup_restore_success_restore">Επαναφορά ολοκληρώθηκε — %1$d συσκευές επαναφέρθηκαν, %2$d παραλείφθηκαν.</string>
     <string name="backup_restore_version_warning">Αυτό το αντίγραφο ασφαλείας δημιουργήθηκε με την έκδοση %1$s. Χρησιμοποιείτε την %2$s. Ορισμένες ρυθμίσεις ενδέχεται να μην επαναφερθούν σωστά.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Αρχείο debug</string>
     <string name="debug_log_consent_explanation">Αυτό το χαρακτηριστικό καταγράφει όλα όσα κάνει η εφαρμογή σε ένα αρχείο που μπορεί να μοιραστεί. Το αρχείο που δημιουργείται περιέχει ευαίσθητες πληροφορίες (π.χ. ονόματα αρχείων και εγκατεστημένες εφαρμογές). Μοιραστείτε το μόνο με έμπιστα άτομα (π.χ. ένα προγραμματιστή που επιλύει ένα πρόβλημα).</string>
     <string name="debug_log_record_action">Καταγραφή</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">Απόρριψη</string>
     <string name="debug_log_screen_keep_action">Διατήρηση</string>
     <string name="debug_log_file_label">Καταγεγραμμένο αρχείο καταγραφής</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Αρχείο απεστάλη;</string>
     <string name="support_debuglog_sent_message">Εάν έχετε στείλει το αρχείο debug, μπορεί να διαγραφεί από τη συσκευή. Θέλετε να το αφαιρέσετε;</string>
     <string name="support_debuglog_session_delete_title">Διαγραφή αρχείου debug;</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">Αποτυχία ZIP</string>
     <string name="support_debuglog_clear_title">Διαγραφή όλων των αρχείων debug;</string>
     <string name="support_debuglog_clear_message">Αυτό θα διαγράψει μόνιμα όλες τις αποθηκευμένες συνεδρίες αρχείων debug.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Επικοινωνία με τον προγραμματιστή</string>
     <string name="settings_support_contact_desc">Συμπληρώστε φόρμα για να στείλετε email στον προγραμματιστή.</string>
     <string name="contact_screen_title">Επικοινωνία με τον προγραμματιστή</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">Διαβάζω κάθε μήνυμα μόνος μου και κάνω ό,τι μπορώ για να απαντήσω, αλλά επειδή εργάζομαι μόνος μου, μπορεί να πάρει λίγο χρόνο. Ευχαριστώ για την υπομονή σας.</string>
     <string name="contact_footer_msg">Το μήνυμά σας θα αποσταλεί μέσω email. Οι πληροφορίες συσκευής και ρύθμισης επισυνάπτονται αυτόματα.</string>
     <string name="contact_no_email_app_msg">Δεν βρέθηκε εφαρμογή email σε αυτή τη συσκευή.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Αποθηκευμένα αρχεία debug</string>
     <string name="settings_support_stored_logs_desc">%1$d συνεδρίες (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Δεν υπάρχουν αποθηκευμένα αρχεία debug</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">Το Bluetooth είναι απενεργοποιημένο.</string>
     <string name="title_bluetooth_is_off">Το Bluetooth είναι απενεργοποιημένο</string>
     <string name="action_enable_bluetooth">Ενεργοποίηση Bluetooth</string>
+    <string name="title_monitoring_is_off">Η παρακολούθηση είναι απενεργοποιημένη</string>
+    <string name="description_monitoring_is_disabled">Το BlueMusic δεν ανταποκρίνεται σε συνδέσεις Bluetooth ή αλλαγές έντασης. Τα αποθηκευμένα επίπεδα έντασης, όρια και κλειδώματα δεν εφαρμόζονται αυτόματα.</string>
+    <string name="action_enable_monitoring">Ενεργοποίηση παρακολούθησης</string>
     <string name="title_bluetooth_permission_required">Απαιτείται Άδεια Bluetooth</string>
     <string name="description_bluetooth_permission_required">Αυτή η εφαρμογή χρειάζεται άδεια Bluetooth για να διαχειρίζεται τις εντάσεις των συσκευών σας.</string>
     <string name="action_grant_permission">Χορήγηση Άδειας</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">Θα ήθελες να αφήσεις μια αξιολόγηση για το BVM; ❤️</string>
     <string name="review_app_review_action">Αξιολόγηση</string>
     <string name="review_app_dismiss_action">Ίσως αργότερα</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">Καμία Συσκευή</string>
     <string name="bluemusic_mascot_description">Εικονίδιο Εφαρμογής</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Επιλογή Εφαρμογών</string>
     <string name="devices_app_selection_search_hint">Αναζήτηση εφαρμογών…</string>
     <string name="devices_app_selection_selected_count">%d εφαρμογές επιλέχθηκαν</string>
     <string name="general_navigate_back_action">Πλοήγηση πίσω</string>
     <string name="general_reset_action">Επαναφορά</string>
     <string name="general_clear_action">Εκκαθάριση</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Κλείδωμα</string>
     <string name="devices_indicator_awake">Ενεργό</string>
     <string name="devices_indicator_nudge">Ώθηση</string>
     <string name="devices_indicator_observe">Παρακολούθηση</string>
     <string name="devices_indicator_disconnect">Αποσύνδεση</string>
     <string name="devices_indicator_limit">Όριο</string>
+    <string name="devices_indicator_volume_range">Εύρος</string>
     <string name="devices_indicator_eq">Εξισωτής</string>
     <string name="devices_indicator_boost">Ενίσχυση</string>
     <string name="devices_indicator_home">Αρχική</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Ειδοποίηση</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Ένταση (0–100)</string>
     <string name="devices_volume_input_error">Εισάγετε τιμή μεταξύ %1$d και %2$d</string>
     <string name="devices_volume_input_caption">Η πραγματική ένταση ενδέχεται να στρογγυλοποιηθεί στο πλησιέστερο βήμα που υποστηρίζει η συσκευή σας.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Κλείδωμα</string>
     <string name="devices_unlock_sliders_action">Ξεκλείδωμα</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Εμφανίζει την κατάσταση κλειδώματος έντασης για την ενεργή συσκευή Bluetooth</string>
     <string name="widget_no_device_label">Δεν υπάρχει συνδεδεμένη συσκευή</string>
     <string name="widget_bluetooth_off_label">Το Bluetooth είναι απενεργοποιημένο</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">Πράσινο</string>
     <string name="widget_config_theme_red_label">Κόκκινο</string>
     <string name="widget_config_theme_custom_label">Προσαρμοσμένο</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">Ισοσταθμιστής</string>
     <string name="eq_bands_label">Ζώνες</string>
     <string name="eq_mini_graph_desc">Ρυθμισμένες ζώνες εξισωτή</string>

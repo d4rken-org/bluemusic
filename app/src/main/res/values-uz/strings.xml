@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Xato</string>
     <string name="general_error_no_compatible_app_found_msg">Ushbu so\'rovni amalga oshirish uchun mos dastur topilmadi.</string>
     <string name="general_share_action">Ulashish</string>
     <string name="general_back_action">Orqaga</string>
     <string name="general_show_details_action">Tafsilotlarni ko\'rsatish</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">BVM ga xush kelibsiz</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager Bluetooth qurilmalar ovozini avtomatik boshqarish imkonini beradi.</string>
     <string name="onboarding_welcome_action">Boshlaylik</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Android o\'zgarishlari va Google talablariga moslashish uchun ilovani qayta yozishga to\'g\'ri keldi. Ilovani ishonchli ishlashda davom etishi uchun iloji boricha zamonaviylashtirdim.</string>
     <string name="onboarding_rewrite_features">Yangilanish jarayonida ba\'zi funksiyalar o\'zgardi. Hamma narsa to\'g\'ri sozlanganligini tekshirish uchun qurilma sozlamalarini ko\'rib chiqing.</string>
     <string name="onboarding_rewrite_action">Davom etish</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">Barcha juftlashtirilgan qurilmalaringiz boshqarilmoqda! Yangi qurilma kerakmi?</string>
     <string name="discover_pair_new_device_action">Yangi qurilma juftlashtirish</string>
     <string name="discover_device_speaker_desc">Telefonning o\'z karnaysi. Uning ovoz darajalari audio telefonga qaytganda qo\'llaniladi, masalan, Bluetooth qurilmangiz uzilgandan keyin.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Qurilma sozlamalari</string>
     <string name="devices_device_config_remove_device_label">Qurilmani unutish</string>
     <string name="devices_device_config_remove_device_action">Unutish</string>
@@ -37,6 +32,7 @@
     <string name="devices_device_config_rename_device_action">Qayta nomlash</string>
     <string name="devices_device_config_enabled_label">Yoqilgan</string>
     <string name="devices_device_config_enabled_desc">Bu qurilma ulanganda munosabat bildirish</string>
+    <string name="devices_device_config_equalizer_label">Ekvalayzer</string>
     <string name="devices_device_config_equalizer_desc">Ushbu qurilma uchun ekvalayzer diapazonlari va tovush balandligini oshirishni sozlang. Faqat Android tizim ekvalayzerini qo\'llab-quvvatlaydigan musiqa ilovalarida ishlaydi.</string>
     <string name="devices_device_config_equalizer_boost_label">Tovushni kuchaytirish: %1$s</string>
     <string name="devices_device_config_section_timing_label">Vaqt</string>
@@ -151,10 +147,8 @@
     <string name="devices_currently_connected_label">Hozirda ulangan</string>
     <string name="devices_device_disabled_label">Qurilma o\'chirilgan</string>
     <string name="devices_no_volumes_configured">Bu qurilma uchun ovoz sozlanmagan. Ovoz parametrlarini o\'rnatish uchun Sozlash tugmasini bosing.</string>
-    <!-- Settings-->
     <string name="settings_label">Sozlamalar</string>
     <string name="settings_category_other_label">Boshqa</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">Umumiy</string>
     <string name="general_settings_desc">Butun ilovaga ta\'sir qiladigan umumiy sozlamalar.</string>
     <string name="settings_category_ui_label">Foydalanuvchi interfeysi</string>
@@ -176,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">Quyosh botishi</string>
     <string name="ui_language_override_label">Ilova tili</string>
     <string name="ui_language_override_desc">BVM uchun tizim standart tilidan mustaqil ravishda boshqa til tanlash.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Qurilmalar</string>
     <string name="devices_settings_desc">Barcha boshqariladigan qurilmalarga ta\'sir qiluvchi sozlamalar.</string>
     <string name="label_app_enabled">Ilova yoqilgan</string>
@@ -184,7 +177,6 @@
     <string name="label_volume_listener">O\'zgarishlarni kuzatish</string>
     <string name="label_boot_restore">Yuklanganda tiklash</string>
     <string name="description_boot_restore">Bluetooth qurilma ulangan bo\'lsa, yuklash/qayta yuklashdan keyin ovozni tiklash.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Qo\'llab-quvvatlash</string>
     <string name="settings_support_description">Hujjatlarni o\'qish, muammolarni xabar qilish, boshqalar bilan suhbatlashish yoki debug jurnallarini yozish.</string>
     <string name="settings_support_wiki_label">Hujjatlar</string>
@@ -198,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Baribir to\'xtatish</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Muloqot qilish va savollar berish uchun joy.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Minnatdorchilik</string>
     <string name="settings_acknowledgements_description">Tegishlilik, litsenziyalar va maxsus minnatdorchiliklar</string>
     <string name="settings_acks_translation_header">Tarjima</string>
@@ -213,7 +204,6 @@
     <string name="settings_privacy_policy_label">Maxfiylik siyosati</string>
     <string name="settings_privacy_policy_desc">Ma\'lumotlar bilan mas\'uliyat bilan ishlash.</string>
     <string name="changelog_label">O\'zgarishlar jurnali</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Zaxira nusxa va Tiklash</string>
     <string name="backup_restore_settings_desc">Qurilma konfiguratsiyalari va sozlamalaringizni zaxiralang va tiklang.</string>
     <string name="backup_restore_screen_title">Zaxira nusxa va Tiklash</string>
@@ -230,7 +220,6 @@
     <string name="backup_restore_success_backup">Zaxira yaratildi — %1$d ta qurilma saqlandi.</string>
     <string name="backup_restore_success_restore">Tiklash tugadi — %1$d ta qurilma tiklandi, %2$d tasi o\'tkazib yuborildi.</string>
     <string name="backup_restore_version_warning">Bu zaxira %1$s versiyasida yaratilgan. Siz %2$s versiyasini ishlatyapsiz. Ba\'zi sozlamalar to\'g\'ri tiklanmasligi mumkin.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Debug jurnal</string>
     <string name="debug_log_consent_explanation">Bu xususiyat ilovaning barcha faoliyatini baham ko\'rish mumkin bo\'lgan faylga yozadi. Yaratilgan fayl maxfiy ma\'lumotlarni o\'z ichiga oladi (masalan, fayl nomlari va o\'rnatilgan ilovalar). Uni faqat ishonchli tomonlar bilan baham ko\'ring (masalan, muammoni hal qilayotgan ishlab chiqaruvchi).</string>
     <string name="debug_log_record_action">Yozish</string>
@@ -248,7 +237,6 @@
     <string name="debug_log_screen_discard_action">Rad etish</string>
     <string name="debug_log_screen_keep_action">Saqlash</string>
     <string name="debug_log_file_label">Yozib olingan jurnal fayli</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Jurnal yuborildi?</string>
     <string name="support_debuglog_sent_message">Agar nosozlik jurnalini yuborgansiz bo\'lsangiz, uni qurilmadan o\'chirish mumkin. O\'chirmoqchimisiz?</string>
     <string name="support_debuglog_session_delete_title">Nosozlik jurnalini o\'chirasizmi?</string>
@@ -261,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP muvaffaqiyatsiz</string>
     <string name="support_debuglog_clear_title">Barcha nosozlik jurnallarini o\'chirasizmi?</string>
     <string name="support_debuglog_clear_message">Bu barcha saqlangan nosozlik jurnal sessiyalarini doimiy ravishda o\'chiradi.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Dasturchi bilan bog\'lanish</string>
     <string name="settings_support_contact_desc">Dasturchi bilan elektron pochta orqali bog\'lanish uchun forma to\'ldirish.</string>
     <string name="contact_screen_title">Dasturchi bilan bog\'lanish</string>
@@ -287,7 +274,6 @@
     <string name="contact_welcome_msg">Har bir xabarni o\'zim o\'qiyman va javob berishga harakat qilaman, lekin bu ishni yolg\'iz qilayotganimda, biroz vaqt ketishi mumkin. Sabringiz uchun rahmat.</string>
     <string name="contact_footer_msg">Xabaringiz elektron pochta orqali yuboriladi. Qurilma va sozlash ma\'lumotlari avtomatik biriktiriladi.</string>
     <string name="contact_no_email_app_msg">Bu qurilmada elektron pochta ilovasi topilmadi.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Saqlangan nosozlik jurnallari</string>
     <string name="settings_support_stored_logs_desc">%1$d ta sessiya (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Saqlangan nosozlik jurnallari yo\'q</string>
@@ -305,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">Bluetooth o\'chirilgan.</string>
     <string name="title_bluetooth_is_off">Bluetooth o\'chiq</string>
     <string name="action_enable_bluetooth">Bluetoothni yoqish</string>
+    <string name="title_monitoring_is_off">Kuzatuv o\'chiq</string>
+    <string name="description_monitoring_is_disabled">BlueMusic Bluetooth ulanishlari yoki ovoz balandligi o\'zgarishlariga javob bermayapti. Saqlangan ovoz balandliklari, chegaralar va qulflar avtomatik qo\'llanilmaydi.</string>
+    <string name="action_enable_monitoring">Kuzatuvni yoqish</string>
     <string name="title_bluetooth_permission_required">Bluetooth ruxsati talab qilinadi</string>
     <string name="description_bluetooth_permission_required">Bu ilova qurilma ovozlarini boshqarish uchun Bluetooth ruxsatiga muhtoj.</string>
     <string name="action_grant_permission">Ruxsat berish</string>
@@ -342,36 +331,31 @@
     <string name="review_app_body">BVM ga sharh qoldirishni xohlaysizmi? ❤️</string>
     <string name="review_app_review_action">Ko\'rib chiqish</string>
     <string name="review_app_dismiss_action">Balki keyinroq</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">Qurilmalar yo\'q</string>
     <string name="bluemusic_mascot_description">Ilova belgisi</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Ilovalarni tanlash</string>
     <string name="devices_app_selection_search_hint">Ilovalarni qidirish…</string>
     <string name="devices_app_selection_selected_count">%d ta ilova tanlangan</string>
     <string name="general_navigate_back_action">Orqaga o\'tish</string>
     <string name="general_reset_action">Qayta o\'rnatish</string>
     <string name="general_clear_action">Tozalash</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Qulflash</string>
     <string name="devices_indicator_awake">Uyg\'oq</string>
     <string name="devices_indicator_nudge">Turtish</string>
     <string name="devices_indicator_observe">Kuzatish</string>
     <string name="devices_indicator_disconnect">Uzilish</string>
     <string name="devices_indicator_limit">Cheklash</string>
+    <string name="devices_indicator_volume_range">Diapazon</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Kuchaytirish</string>
     <string name="devices_indicator_home">Uy</string>
     <string name="devices_indicator_dnd">BQQ</string>
     <string name="devices_indicator_alert">Ogohlantirish</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Ovoz (0–100)</string>
     <string name="devices_volume_input_error">%1$d va %2$d orasida qiymat kiriting</string>
     <string name="devices_volume_input_caption">Haqiqiy ovoz darajasi qurilmangiz qo\'llab-quvvatlaydigan eng yaqin qadamga yaxlitlanishi mumkin.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Qulflash</string>
     <string name="devices_unlock_sliders_action">Qulfni ochish</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Faol Bluetooth qurilmasi uchun ovoz qulfi holatini ko\'rsatadi</string>
     <string name="widget_no_device_label">Hech qanday qurilma ulanmagan</string>
     <string name="widget_bluetooth_off_label">Bluetooth o\'chirilgan</string>
@@ -388,7 +372,7 @@
     <string name="widget_config_theme_green_label">Yashil</string>
     <string name="widget_config_theme_red_label">Qizil</string>
     <string name="widget_config_theme_custom_label">Maxsus</string>
-    <!-- Equalizer -->
+    <string name="eq_screen_title">Ekvalayzer</string>
     <string name="eq_bands_label">Diapazonlar</string>
     <string name="eq_mini_graph_desc">Sozlangan ekvalayzer diapazonlari</string>
     <string name="eq_enable_label">Ekvalayzerdan foydalanish</string>

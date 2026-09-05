@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">蓝牙音量管理器</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">错误</string>
     <string name="general_error_no_compatible_app_found_msg">没有找到能处理此请求的兼容应用。</string>
     <string name="general_share_action">分享</string>
     <string name="general_back_action">返回</string>
     <string name="general_show_details_action">显示详情</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">欢迎使用 BVM</string>
     <string name="onboarding_welcome_message">蓝牙音量管理器让你能够自动管理蓝牙设备的音量。</string>
     <string name="onboarding_welcome_action">开始使用</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">由于Android的变化和Google的要求，我从头开始完全重建了蓝牙音量管理器，以确保应用程序继续可靠地工作。</string>
     <string name="onboarding_rewrite_features">在此更新过程中，某些设备设置可能已被重置。请检查您的设备配置。</string>
     <string name="onboarding_rewrite_action">继续</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">你所有配对的设备都已管理！需要新的吗？</string>
     <string name="discover_pair_new_device_action">配对新设备</string>
     <string name="discover_device_speaker_desc">此手机自己的扬声器。当音频切换回手机时（例如蓝牙设备断开连接后），将应用其音量。</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">设备配置</string>
     <string name="devices_device_config_remove_device_label">忘记设备</string>
     <string name="devices_device_config_remove_device_action">忘记</string>
@@ -151,10 +146,8 @@
     <string name="devices_currently_connected_label">当前已连接</string>
     <string name="devices_device_disabled_label">设备已禁用</string>
     <string name="devices_no_volumes_configured">此设备未配置音量。点击配置以设置音量偏好。</string>
-    <!-- Settings-->
     <string name="settings_label">设置</string>
     <string name="settings_category_other_label">其他</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">常规</string>
     <string name="general_settings_desc">影响整个应用的常规设置。</string>
     <string name="settings_category_ui_label">用户界面</string>
@@ -176,7 +169,6 @@
     <string name="ui_theme_color_sunset_label">日落</string>
     <string name="ui_language_override_label">应用语言</string>
     <string name="ui_language_override_desc">为 BVM 选择不同的语言，独立于系统默认语言。</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">设备</string>
     <string name="devices_settings_desc">影响所有管理设备的设置。</string>
     <string name="label_app_enabled">应用已启用</string>
@@ -184,7 +176,6 @@
     <string name="label_volume_listener">监听变化</string>
     <string name="label_boot_restore">开机恢复</string>
     <string name="description_boot_restore">开机/重启后如果蓝牙设备已连接，则恢复音量。</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">支持</string>
     <string name="settings_support_description">阅读文档、报告问题、与他人聊天或记录调试日志。</string>
     <string name="settings_support_wiki_label">文档</string>
@@ -198,7 +189,6 @@
     <string name="settings_support_debuglog_short_recording_stop">仍然停止</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">一个闲逛和提问的地方。</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">致谢</string>
     <string name="settings_acknowledgements_description">致谢、许可证和特别感谢</string>
     <string name="settings_acks_translation_header">翻译</string>
@@ -213,7 +203,6 @@
     <string name="settings_privacy_policy_label">隐私政策</string>
     <string name="settings_privacy_policy_desc">负责任地处理数据。</string>
     <string name="changelog_label">更新日志</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">备份与恢复</string>
     <string name="backup_restore_settings_desc">备份和恢复您的设备配置和设置。</string>
     <string name="backup_restore_screen_title">备份与恢复</string>
@@ -230,7 +219,6 @@
     <string name="backup_restore_success_backup">备份已创建 — 已保存 %1$d 台设备。</string>
     <string name="backup_restore_success_restore">恢复完成 — 已恢复 %1$d 台设备，跳过 %2$d 台。</string>
     <string name="backup_restore_version_warning">此备份是使用版本 %1$s 创建的。您当前运行的是 %2$s。部分设置可能无法正确恢复。</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">调试日志</string>
     <string name="debug_log_consent_explanation">此功能将应用的所有操作记录到可分享的文件中。生成的文件包含敏感信息（例如文件名和安装的应用）。仅与信任的方分享（例如正在解决问题的开发人员）。</string>
     <string name="debug_log_record_action">记录</string>
@@ -247,7 +235,6 @@
     <string name="debug_log_screen_discard_action">丢弃</string>
     <string name="debug_log_screen_keep_action">保留</string>
     <string name="debug_log_file_label">已记录的日志文件</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">日志已发送？</string>
     <string name="support_debuglog_sent_message">如果您已发送调试日志，可以从设备中删除它。您想删除吗？</string>
     <string name="support_debuglog_session_delete_title">删除调试日志？</string>
@@ -260,7 +247,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP 失败</string>
     <string name="support_debuglog_clear_title">删除所有调试日志？</string>
     <string name="support_debuglog_clear_message">这将永久删除所有已存储的调试日志会话。</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">联系开发者</string>
     <string name="settings_support_contact_desc">填写表单向开发者发送电子邮件。</string>
     <string name="contact_screen_title">联系开发者</string>
@@ -285,7 +271,6 @@
     <string name="contact_welcome_msg">我亲自阅读每条消息并尽力回复，但由于我是一个人在做这件事，可能需要一点时间。感谢您的耐心。</string>
     <string name="contact_footer_msg">您的消息将通过电子邮件发送。设备和设置信息会自动附加。</string>
     <string name="contact_no_email_app_msg">此设备上未找到电子邮件应用。</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">已存储的调试日志</string>
     <string name="settings_support_stored_logs_desc">%1$d 个会话 (%2$s)</string>
     <string name="settings_support_stored_logs_empty">没有已存储的调试日志</string>
@@ -303,6 +288,9 @@
     <string name="description_bluetooth_is_disabled">蓝牙已禁用。</string>
     <string name="title_bluetooth_is_off">蓝牙已关闭</string>
     <string name="action_enable_bluetooth">启用蓝牙</string>
+    <string name="title_monitoring_is_off">监控已关闭</string>
+    <string name="description_monitoring_is_disabled">BlueMusic 不响应蓝牙连接或音量变化。已保存的音量、限制和锁定不会自动应用。</string>
+    <string name="action_enable_monitoring">启用监控</string>
     <string name="title_bluetooth_permission_required">需要蓝牙权限</string>
     <string name="description_bluetooth_permission_required">此应用需要蓝牙权限来管理您的设备音量。</string>
     <string name="action_grant_permission">授予权限</string>
@@ -339,36 +327,31 @@
     <string name="review_app_body">想给 BVM 写一条评论吗？❤️</string>
     <string name="review_app_review_action">评论</string>
     <string name="review_app_dismiss_action">稍后再说</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">没有设备</string>
     <string name="bluemusic_mascot_description">应用图标</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">选择应用</string>
     <string name="devices_app_selection_search_hint">搜索应用…</string>
     <string name="devices_app_selection_selected_count">已选择 %d 个应用</string>
     <string name="general_navigate_back_action">返回</string>
     <string name="general_reset_action">重置</string>
     <string name="general_clear_action">清除</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">锁定</string>
     <string name="devices_indicator_awake">唤醒</string>
     <string name="devices_indicator_nudge">轻推</string>
     <string name="devices_indicator_observe">监听</string>
     <string name="devices_indicator_disconnect">断开</string>
     <string name="devices_indicator_limit">限制</string>
+    <string name="devices_indicator_volume_range">范围</string>
     <string name="devices_indicator_eq">均衡器</string>
     <string name="devices_indicator_boost">增强</string>
     <string name="devices_indicator_home">主页</string>
     <string name="devices_indicator_dnd">勿扰</string>
     <string name="devices_indicator_alert">提醒</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">音量（0–100）</string>
     <string name="devices_volume_input_error">请输入 %1$d 到 %2$d 之间的值</string>
     <string name="devices_volume_input_caption">实际音量可能会四舍五入到您设备支持的最近档位。</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">锁定</string>
     <string name="devices_unlock_sliders_action">解锁</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">显示当前连接蓝牙设备的音量锁定状态</string>
     <string name="widget_no_device_label">未连接设备</string>
     <string name="widget_bluetooth_off_label">蓝牙已关闭</string>
@@ -385,7 +368,6 @@
     <string name="widget_config_theme_green_label">绿色</string>
     <string name="widget_config_theme_red_label">红色</string>
     <string name="widget_config_theme_custom_label">自定义</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">均衡器</string>
     <string name="eq_bands_label">频段</string>
     <string name="eq_mini_graph_desc">已配置的均衡器频段</string>

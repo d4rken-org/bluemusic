@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Eraro</string>
     <string name="general_error_no_compatible_app_found_msg">Neniu kongrua apo trovita por trakti ĉi tiun peton.</string>
     <string name="general_share_action">Dividi</string>
     <string name="general_back_action">Reen</string>
     <string name="general_show_details_action">Montri detalojn</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Bonvenon al BVM</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager ebligas al vi administri Bluetooth-aparatajn volumojn aŭtomate.</string>
     <string name="onboarding_welcome_action">Ni iru</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Mi devis reskribi la apon por konserviĝi kun Android-ŝanĝoj kaj Google-postuloj. Mi modernigis la apon kie eble por certigi ke ĝi daŭras funkcii fidinde.</string>
     <string name="onboarding_rewrite_features">Kelkaj funkcioj ŝanĝiĝis dum la ĝisdatigo. Bonvolu kontroli viajn aparatajn agordojn por certigi ke ĉio estas ĝjuste agordita.</string>
     <string name="onboarding_rewrite_action">Daŭrigi</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">Ĉiuj viaj parigitaj aparatoj estas administrataj! Bezonas novan?</string>
     <string name="discover_pair_new_device_action">Pari novan aparaton</string>
     <string name="discover_device_speaker_desc">La propra son-aparato de ĉi tiu telefono. Ĝia sonlaŭto estas aplikata kiam la sono revenas al la telefono, ekz. post kiam via Bluetooth-aparato malkonektiĝas.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Aparata agordo</string>
     <string name="devices_device_config_remove_device_label">Forgesi aparaton</string>
     <string name="devices_device_config_remove_device_action">Forgesi</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">Nuntempe konektita</string>
     <string name="devices_device_disabled_label">Aparato malŝaltita</string>
     <string name="devices_no_volumes_configured">Neniuj volumenoj agordita por ĉi tiu aparato. Tuŝu Agordi por starigi volumenprioritatojn.</string>
-    <!-- Settings-->
     <string name="settings_label">Agordoj</string>
     <string name="settings_category_other_label">Alia</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">Ĝeneralaj</string>
     <string name="general_settings_desc">Ĝeneralaj ĝustigoj kiuj influas la tutan apon.</string>
     <string name="settings_category_ui_label">Uzantinterfaco</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">Sunsubiro</string>
     <string name="ui_language_override_label">Lingvo de la apo</string>
     <string name="ui_language_override_desc">Elekti malsaman lingvon por BVM, sendepende de la implicita lingvo de via sistemo.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Aparatoj</string>
     <string name="devices_settings_desc">Agordoj kiuj influas ĉiujn administritajn aparatojn.</string>
     <string name="label_app_enabled">Apo ebligita</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">Observi ŝanĝojn</string>
     <string name="label_boot_restore">Restarigi ĉe ekfunkciigo</string>
     <string name="description_boot_restore">Restarigi volumenon post ekfunkciigo/reekfunkciigo se Bluetooth-aparato estas konektita.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Subteno</string>
     <string name="settings_support_description">Legi dokumentadon, raporti problemojn, babilaci kun aliaj aŭ registri senararigajn protokolojn.</string>
     <string name="settings_support_wiki_label">Dokumentado</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Halti tamen</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Loko por kolektiĝi kaj demandi.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Agnoskoj</string>
     <string name="settings_acknowledgements_description">Kreditoj, licencoj, kaj specialaj dankoj</string>
     <string name="settings_acks_translation_header">Tradukado</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">Privateca politiko</string>
     <string name="settings_privacy_policy_desc">Traktante datumojn respondece.</string>
     <string name="changelog_label">Ŝanĝoregistro</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Sekurkopio kaj Restaŭro</string>
     <string name="backup_restore_settings_desc">Sekurkopiu kaj restaŭru viajn aparatajn agordojn kaj aplikaĵajn agordojn.</string>
     <string name="backup_restore_screen_title">Sekurkopio kaj Restaŭro</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">Sekurkopio kreita — %1$d aparatoj konservita.</string>
     <string name="backup_restore_success_restore">Restaŭro kompleta — %1$d aparatoj restaŭrita, %2$d preterpasita.</string>
     <string name="backup_restore_version_warning">Ĉi tiu sekurkopio estis kreita kun versio %1$s. Vi uzas %2$s. Kelkaj agordoj eble ne restaŭros ĝuste.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Senarariga protokolo</string>
     <string name="debug_log_consent_explanation">Ĉi tiu funkcio registras ĉion kion la apo faras en divideblan dosieron. La generita dosiero enhavas sentemajn informojn (ekz. dosieronomojn kaj instalitajn apojn). Dividu ĝin nur kun fidindaj partioj (ekz. programisto solvanta problemon).</string>
     <string name="debug_log_record_action">Registri</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">Forĵeti</string>
     <string name="debug_log_screen_keep_action">Konservi</string>
     <string name="debug_log_file_label">Registrita protokola dosiero</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Protokolo sendita?</string>
     <string name="support_debuglog_sent_message">Se vi sendis la senararigan protokolon, ĝi povas esti forigita el la aparato. Ĉu vi volas forigi ĝin?</string>
     <string name="support_debuglog_session_delete_title">Forigi senararigan protokolon?</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP malsukcesis</string>
     <string name="support_debuglog_clear_title">Forigi ĉiujn senararigajn protokolojn?</string>
     <string name="support_debuglog_clear_message">Ĉi tio permanente forigos ĉiujn konservitajn senararigajn protokolajn seancojn.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Kontakti programiston</string>
     <string name="settings_support_contact_desc">Plenigi formularon por sendi al la programisto retpoŝton.</string>
     <string name="contact_screen_title">Kontakti programiston</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">Mi mem legas ĉiun mesaĝon kaj klopodas respondi, sed ĉar mi laboras ĉi tie sola, tio povas preni iom da tempo. Dankon pro via pacienco.</string>
     <string name="contact_footer_msg">Via mesaĝo estos sendita per retpoŝto. Aparataj kaj agordaj informoj estas alfikstitaj aŭtomate.</string>
     <string name="contact_no_email_app_msg">Neniu retpoŝta apo trovita sur ĉi tiu aparato.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Konservitaj senararigaj protokoloj</string>
     <string name="settings_support_stored_logs_desc">%1$d seancoj (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Neniuj konservitaj senararigaj protokoloj</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">Bluetooth estas malŝaltita.</string>
     <string name="title_bluetooth_is_off">Bluetooth estas Malŝaltita</string>
     <string name="action_enable_bluetooth">Ebligi Bluetooth</string>
+    <string name="title_monitoring_is_off">Monitorado estas malŝaltita</string>
+    <string name="description_monitoring_is_disabled">BlueMusic ne reagas al Bluetooth-konektoj aŭ ŝanĝoj de sonforteco. Konservitaj sonfortecoj, limoj kaj ŝlosoj ne estas aŭtomate aplikataj.</string>
+    <string name="action_enable_monitoring">Ŝalti monitoradon</string>
     <string name="title_bluetooth_permission_required">Bluetooth-permeso Bezonata</string>
     <string name="description_bluetooth_permission_required">Ĉi tiu apo bezonas Bluetooth-permeson por administri viajn aparatajn volumenojn.</string>
     <string name="action_grant_permission">Doni Permeson</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">Ĉu vi ŝatus lasi al BVM recenzon? ❤️</string>
     <string name="review_app_review_action">Recenzo</string>
     <string name="review_app_dismiss_action">Eble poste</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">Neniuj Aparatoj</string>
     <string name="bluemusic_mascot_description">Apo-Ikono</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Elekti Apojn</string>
     <string name="devices_app_selection_search_hint">Serĉi apojn…</string>
     <string name="devices_app_selection_selected_count">%d apoj elektitaj</string>
     <string name="general_navigate_back_action">Navigaci reen</string>
     <string name="general_reset_action">Restarigi</string>
     <string name="general_clear_action">Purigi</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Ŝlosi</string>
     <string name="devices_indicator_awake">Veka</string>
     <string name="devices_indicator_nudge">Puŝeti</string>
     <string name="devices_indicator_observe">Observi</string>
     <string name="devices_indicator_disconnect">Malkonekti</string>
     <string name="devices_indicator_limit">Limigi</string>
+    <string name="devices_indicator_volume_range">Intervalo</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Pliigaĵo</string>
     <string name="devices_indicator_home">Hejmo</string>
     <string name="devices_indicator_dnd">NĜ</string>
     <string name="devices_indicator_alert">Averto</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volumeno (0–100)</string>
     <string name="devices_volume_input_error">Enigu valoron inter %1$d kaj %2$d</string>
     <string name="devices_volume_input_caption">La reala volumo eble arogdigos al la plej proksima stupeto kiun via aparato subtenas.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Ŝlosi</string>
     <string name="devices_unlock_sliders_action">Malŝlosi</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Montras la staton de volumsloso por la aktiva Bludenta aparato</string>
     <string name="widget_no_device_label">Neniu aparato konektita</string>
     <string name="widget_bluetooth_off_label">Blodento estas malaktiva</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">Verda</string>
     <string name="widget_config_theme_red_label">Rugxa</string>
     <string name="widget_config_theme_custom_label">Propra</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">Egalizilo</string>
     <string name="eq_bands_label">Bendoj</string>
     <string name="eq_mini_graph_desc">Agordataj egalizilan bendoj</string>

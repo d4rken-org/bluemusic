@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Ses Kontrolü</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Hata</string>
     <string name="general_error_no_compatible_app_found_msg">Bu isteği karşılamak için uygun uygulama bulunamadı.</string>
     <string name="general_share_action">Paylaş</string>
     <string name="general_back_action">Geri</string>
     <string name="general_show_details_action">Detayları göster</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">BVM\'e Hoş Geldin</string>
     <string name="onboarding_welcome_message">Bluetooth Ses Kontrolü, Bluetooth cihazlarının seslerini otomatik olarak yönetmeni sağlar.</string>
     <string name="onboarding_welcome_action">Hadi başlayalım</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Android değişiklikleri ve Google gereksinimlerinden dolayı uygulamanın güvenilir şekilde çalışmaya devam etmesi için Bluetooth Ses Kontrolü\'nü sıfırdan yeniden inşa ettim.</string>
     <string name="onboarding_rewrite_features">Bu güncelleme sırasında bazı cihaz ayarları sıfırlanmış olabilir. Lütfen cihaz yapılandırmalarını kontrol et.</string>
     <string name="onboarding_rewrite_action">Devam Et</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">Tüm eşleştirilmiş cihazların yönetiliyor! Yeni bir tane mi lazım?</string>
     <string name="discover_pair_new_device_action">Yeni cihaz eşleştir</string>
     <string name="discover_device_speaker_desc">Telefonun kendi hoparlörü. Ses telefona geri döndüğünde (örneğin Bluetooth cihazınızın bağlantısı kesildiğinde) ses seviyeleri uygulanır.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Cihaz yapılandırması</string>
     <string name="devices_device_config_remove_device_label">Cihazı unut</string>
     <string name="devices_device_config_remove_device_action">Unut</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">Şu anda bağlı</string>
     <string name="devices_device_disabled_label">Cihaz devre dışı</string>
     <string name="devices_no_volumes_configured">Bu cihaz için ses ayarı yapılandırılmamış. Ses tercihlerini ayarlamak için Yapılandır\'a dokun.</string>
-    <!-- Settings-->
     <string name="settings_label">Ayarlar</string>
     <string name="settings_category_other_label">Diğer</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">Genel</string>
     <string name="general_settings_desc">Tüm uygulamayı etkileyen genel ayarlar.</string>
     <string name="settings_category_ui_label">Kullanıcı arayüzü</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">Gün batımı</string>
     <string name="ui_language_override_label">Uygulama dili</string>
     <string name="ui_language_override_desc">Sisteminizin varsayılan dilinden bağımsız olarak BVM için farklı bir dil seçin.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Cihazlar</string>
     <string name="devices_settings_desc">Tüm yönetilen cihazları etkileyen ayarlar.</string>
     <string name="label_app_enabled">Uygulama aktif</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">Değişiklikleri gözlemle</string>
     <string name="label_boot_restore">Cihaz açılırken başlat</string>
     <string name="description_boot_restore">Bluetooth cihazı bağlıysa, önyükleme / yeniden başlatma sonrasında sesi geri yükleyin.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Destek</string>
     <string name="settings_support_description">Dokümantasyon oku, sorun bildir, diğerleriyle sohbet et veya hata ayıklama kaydı al.</string>
     <string name="settings_support_wiki_label">Dokümantasyon</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Yine de durdur</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Takılıp soru sorabileceğin bir yer.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Teşekkürler</string>
     <string name="settings_acknowledgements_description">Krediler, lisanslar ve özel teşekkürler</string>
     <string name="settings_acks_translation_header">Çeviri</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">Gizlilik politikası</string>
     <string name="settings_privacy_policy_desc">Verileri sorumlu bir şekilde işleme.</string>
     <string name="changelog_label">Değişiklik günlüğü</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Yedekle ve Geri Yükle</string>
     <string name="backup_restore_settings_desc">Cihaz yapılandırmalarınızı ve ayarlarınızı yedekleyin ve geri yükleyin.</string>
     <string name="backup_restore_screen_title">Yedekle ve Geri Yükle</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">Yedek oluşturuldu — %1$d cihaz kaydedildi.</string>
     <string name="backup_restore_success_restore">Geri yükleme tamamlandı — %1$d cihaz geri yüklendi, %2$d atlandı.</string>
     <string name="backup_restore_version_warning">Bu yedek %1$s sürümüyle oluşturuldu. Siz %2$s çalıştırıyorsunuz. Bazı ayarlar doğru geri yüklenmeyebilir.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Hata ayıklama kayıtı</string>
     <string name="debug_log_consent_explanation">Bu özellik uygulamanın yaptığı her şeyi paylaşılabilir bir dosyaya kaydeder. Oluşturulan dosya hassas bilgiler içerir (dosya adları ve yüklü uygulamalar gibi). Sadece güvenilir kişilerle paylaş (sorun gidermesi yapan geliştirici gibi).</string>
     <string name="debug_log_record_action">Kaydet</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">Vazgeç</string>
     <string name="debug_log_screen_keep_action">Sakla</string>
     <string name="debug_log_file_label">Kaydedilen kayıt dosyası</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Günlük gönderildi mi?</string>
     <string name="support_debuglog_sent_message">Hata ayıklama günlüğünü gönderdiysen, cihazdan silinebilir. Kaldırmak ister misin?</string>
     <string name="support_debuglog_session_delete_title">Hata ayıklama günlüğü silinsin mi?</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP başarısız</string>
     <string name="support_debuglog_clear_title">Tüm hata ayıklama günlükleri silinsin mi?</string>
     <string name="support_debuglog_clear_message">Bu işlem tüm saklanan hata ayıklama günlüğü oturumlarını kalıcı olarak siler.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Geliştiriciyle iletişime geç</string>
     <string name="settings_support_contact_desc">Geliştiriciye e-posta göndermek için bir form doldur.</string>
     <string name="contact_screen_title">Geliştiriciyle iletişime geç</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">Her mesajı kendim okuyorum ve elimden geldiğince cevaplamaya çalışıyorum, ancak bunu tek başıma yaptığım için biraz zaman alabilir. Sabrın için teşekkürler.</string>
     <string name="contact_footer_msg">Mesajın e-posta ile gönderilecek. Cihaz ve kurulum bilgileri otomatik olarak eklenir.</string>
     <string name="contact_no_email_app_msg">Bu cihazda e-posta uygulaması bulunamadı.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Saklanan hata ayıklama günlükleri</string>
     <string name="settings_support_stored_logs_desc">%1$d oturum (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Saklanan hata ayıklama günlüğü yok</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">Bluetooth devre dışı.</string>
     <string name="title_bluetooth_is_off">Bluetooth Kapalı</string>
     <string name="action_enable_bluetooth">Bluetooth\'u Etkinleştir</string>
+    <string name="title_monitoring_is_off">İzleme Kapalı</string>
+    <string name="description_monitoring_is_disabled">BlueMusic, Bluetooth bağlantılarına veya ses değişikliklerine tepki vermiyor. Kaydedilen ses seviyeleri, limitler ve kilitlemeler otomatik olarak uygulanmıyor.</string>
+    <string name="action_enable_monitoring">İzlemeyi etkinleştir</string>
     <string name="title_bluetooth_permission_required">Bluetooth İzni Gerekli</string>
     <string name="description_bluetooth_permission_required">Bu uygulamanın cihaz seslerini yönetmek için Bluetooth iznine ihtiyacı var.</string>
     <string name="action_grant_permission">İzin Ver</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">BVM\'e bir inceleme bırakmak ister misin? ❤️</string>
     <string name="review_app_review_action">Değerlendir</string>
     <string name="review_app_dismiss_action">Belki daha sonra</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">Cihaz Yok</string>
     <string name="bluemusic_mascot_description">Uygulama Simgesi</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Uygulamaları Seç</string>
     <string name="devices_app_selection_search_hint">Uygulamaları ara…</string>
     <string name="devices_app_selection_selected_count">%d uygulama seçildi</string>
     <string name="general_navigate_back_action">Geri git</string>
     <string name="general_reset_action">Sıfırla</string>
     <string name="general_clear_action">Temizle</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Kilit</string>
     <string name="devices_indicator_awake">Uyanık</string>
     <string name="devices_indicator_nudge">Dürt</string>
     <string name="devices_indicator_observe">Gözlemle</string>
     <string name="devices_indicator_disconnect">Bağlantıyı kes</string>
     <string name="devices_indicator_limit">Sınır</string>
+    <string name="devices_indicator_volume_range">Aralık</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Yükseltme</string>
     <string name="devices_indicator_home">Ana sayfa</string>
     <string name="devices_indicator_dnd">RE</string>
     <string name="devices_indicator_alert">Uyarı</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Ses düzeyi (0–100)</string>
     <string name="devices_volume_input_error">%1$d ile %2$d arasında bir değer girin</string>
     <string name="devices_volume_input_caption">Gerçek ses seviyesi, cihazınızın desteklediği en yakın adıma yuvarlanabilir.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Kilitle</string>
     <string name="devices_unlock_sliders_action">Kilidi aç</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Aktif Bluetooth cihazının ses kilidi durumunu gösterir</string>
     <string name="widget_no_device_label">Bağlı cihaz yok</string>
     <string name="widget_bluetooth_off_label">Bluetooth kapalı</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">Yeşil</string>
     <string name="widget_config_theme_red_label">Kırmızı</string>
     <string name="widget_config_theme_custom_label">Özel</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">Ekolayzer</string>
     <string name="eq_bands_label">Bantlar</string>
     <string name="eq_mini_graph_desc">Yapılandırılmış ekolayzer bantları</string>

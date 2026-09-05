@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Ката</string>
     <string name="general_error_no_compatible_app_found_msg">Бул өтүнүчтү аткаруу үчүн шайкеш колдонмо табылган жок.</string>
     <string name="general_share_action">Бөлүшүү</string>
     <string name="general_back_action">Артка</string>
     <string name="general_show_details_action">Чоо-жайын көрсөтүү</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">BVM-ге кош келдиңиз</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager Bluetooth түзмөктөрүнүн үн деңгээлдерин автоматтык түрдө башкарууга мүмкүндүк берет.</string>
     <string name="onboarding_welcome_action">Баштайлы</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Android өзгөрүүлөрүнө жана Google талаптарына жооп берүү үчүн колдонмону кайра жазууга туура келди. Ишенимдүү иштешин камсыз кылуу үчүн мүмкүн болушунча колдонмону заманбапташтырдым.</string>
     <string name="onboarding_rewrite_features">Жаңыртуу учурунда кээ бир функциялар өзгөрдү. Баардыгы туура конфигурацияланганын текшерүү үчүн түзмөктүн жөндөөлөрүн текшериңиз.</string>
     <string name="onboarding_rewrite_action">Улантуу</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">Бардык жупташтырылган түзмөктөрүңүз башкарылууда! Жаңы бирин кошосузбу?</string>
     <string name="discover_pair_new_device_action">Жаңы түзмөктү жупташтыруу</string>
     <string name="discover_device_speaker_desc">Телефондун өзүнүн докладчы. Анын үндөрү аудио телефонго артка кайтканда колдонулат, мисалы Bluetooth түзмөгүңүз ажыратылгандан кийин.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Түзмөктүн конфигурациясы</string>
     <string name="devices_device_config_remove_device_label">Түзмөктү унутуу</string>
     <string name="devices_device_config_remove_device_action">Унутуу</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">Учурда туташкан</string>
     <string name="devices_device_disabled_label">Түзмөк өчүрүлгөн</string>
     <string name="devices_no_volumes_configured">Бул түзмөк үчүн үндөр конфигурацияланган жок. Үн артыкчылыктарын орнотуу үчүн Конфигурациялоо дегенди басыңыз.</string>
-    <!-- Settings-->
     <string name="settings_label">Орнотуулар</string>
     <string name="settings_category_other_label">Башка</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">Жалпы</string>
     <string name="general_settings_desc">Бүткүл колдонмого таасир этүүчү жалпы оңдоолор.</string>
     <string name="settings_category_ui_label">Колдонуучу интерфейси</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">Батыш</string>
     <string name="ui_language_override_label">Колдонмонун тили</string>
     <string name="ui_language_override_desc">Системаңыздын демейки тилинен көз карандысыз BVM үчүн башка тил тандаңыз.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Түзмөктөр</string>
     <string name="devices_settings_desc">Бардык башкарылган түзмөктөргө таасир этүүчү жөндөөлөр.</string>
     <string name="label_app_enabled">Колдонмо иштетилген</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">Өзгөрүүлөрдү байкоо</string>
     <string name="label_boot_restore">Жүктөөдө калыбына келтирүү</string>
     <string name="description_boot_restore">Bluetooth түзмөк туташкан болсо, жүктөп/кайра жүктөп алгандан кийин үндү калыбына келтирүү.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Колдоо</string>
     <string name="settings_support_description">Документацияны окуу, маселелерди кабарлоо, башкалар менен сүйлөшүү же мүчүлүштүктөрдү оңдоо журналдарын жазуу.</string>
     <string name="settings_support_wiki_label">Документация</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Баары бир токтотуу</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Эс алуу жана суроолорду берүү үчүн жай.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Ыраазычылыктар</string>
     <string name="settings_acknowledgements_description">Авторлор, лицензиялар жана өзгөчө ыраазычылык</string>
     <string name="settings_acks_translation_header">Котормо</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">Купуялык саясаты</string>
     <string name="settings_privacy_policy_desc">Маалыматтарды жоопкерчилик менен иштетүү.</string>
     <string name="changelog_label">Өзгөртүүлөр журналы</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Камдык көчүрмө жана калыбына келтирүү</string>
     <string name="backup_restore_settings_desc">Түзмөгүңүздүн конфигурацияларын жана жөндөөлөрүн камдык көчүрмөгө сактаңыз жана калыбына келтириңиз.</string>
     <string name="backup_restore_screen_title">Камдык көчүрмө жана калыбына келтирүү</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">Камдык көчүрмө жасалды — %1$d түзмөк сакталды.</string>
     <string name="backup_restore_success_restore">Калыбына келтирүү аякталды — %1$d түзмөк калыбына келтирилди, %2$d өткөрүлдү.</string>
     <string name="backup_restore_version_warning">Бул камдык көчүрмө %1$s нүскасы менен жасалды. Сиз %2$s нүскасын колдонудасыз. Кэйбир жөндөөлөр туура калыбына келтирилбашы мүмкүн.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Мүчүлүштүктөрдү оңдоо журналы</string>
     <string name="debug_log_consent_explanation">Бул функция колдонмонун жасап жаткан бардык нерсесин бөлүшүүгө болгон файлга жазып турат. Жаратылган файл купуя маалыматты камтыйт (мис., файл аттары жана орнотулган колдонмолор). Аны ишенимдүү тараптар менен гана бөлүшүңүз (мис., маселени чечүүчү иштеп чыгуучу).</string>
     <string name="debug_log_record_action">Жазуу</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">Ыргытуу</string>
     <string name="debug_log_screen_keep_action">Сактоо</string>
     <string name="debug_log_file_label">Жазылган журнал файлы</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Журнал жөнөтүлдүбү?</string>
     <string name="support_debuglog_sent_message">Эгер мүчүлүштүктөрдү оңдоо журналын жөнөткөн болсоңуз, аны түзмөктөн жок кылса болот. Аны жок кылгыңыз келеби?</string>
     <string name="support_debuglog_session_delete_title">Мүчүлүштүктөрдү оңдоо журналын жок кылуу керекпи?</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP ийгиликсиз</string>
     <string name="support_debuglog_clear_title">Бардык мүчүлүштүктөрдү оңдоо журналдарын жок кылуу керекпи?</string>
     <string name="support_debuglog_clear_message">Бул сакталган бардык мүчүлүштүктөрдү оңдоо журнал сессияларын биротоло жок кылат.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Иштеп чыгуучу менен байланышуу</string>
     <string name="settings_support_contact_desc">Иштеп чыгуучуга электрондук кат жөнөтүү үчүн форманы толтуруңуз.</string>
     <string name="contact_screen_title">Иштеп чыгуучу менен байланышуу</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">Ар бир билдирүүнү өзүм окуйм жана жооп берүүгө аракет кылам, бирок муну жалгыз жасагандыктан, бир аз убакыт кетиши мүмкүн. Чыдамкайлыгыңыз үчүн ыракмат.</string>
     <string name="contact_footer_msg">Билдирүүңүз электрондук кат аркылуу менен жөнөтүлөт. Түзмөк жана орнотуу маалыматы автоматтык түрдө тиркелет.</string>
     <string name="contact_no_email_app_msg">Бул түзмөктө электрондук почта колдонмосу табылган жок.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Сакталган мүчүлүштүктөрдү оңдоо журналдары</string>
     <string name="settings_support_stored_logs_desc">%1$d сессия (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Сакталган мүчүлүштүктөрдү оңдоо журналдары жок</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">Bluetooth өчүрүлгөн.</string>
     <string name="title_bluetooth_is_off">Bluetooth өчүк</string>
     <string name="action_enable_bluetooth">Bluetooth иштетүү</string>
+    <string name="title_monitoring_is_off">Мониторинг өчүк</string>
+    <string name="description_monitoring_is_disabled">BlueMusic Bluetooth байланышына жана үндүн өзгөртүүсүнө жооп бербейт. Сакталган үндөр, чектемелер жана блокировкалар автоматтык түрдө колдонулбайт.</string>
+    <string name="action_enable_monitoring">Мониторингди жандыруу</string>
     <string name="title_bluetooth_permission_required">Bluetooth Уруксаты Талап Кылынат</string>
     <string name="description_bluetooth_permission_required">Бул колдонмо түзмөгүңүздүн үн деңгээлдерин башкаруу үчүн Bluetooth уруксатын талап кылат.</string>
     <string name="action_grant_permission">Уруксат берүү</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">BVM үчүн рецензия жазасыңарбы? ❤️</string>
     <string name="review_app_review_action">Рецензия</string>
     <string name="review_app_dismiss_action">Кийин</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">Түзмөктөр жок</string>
     <string name="bluemusic_mascot_description">Колдонмо сүрөтү</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Колдонмолорду тандоо</string>
     <string name="devices_app_selection_search_hint">Колдонмолорду издөө…</string>
     <string name="devices_app_selection_selected_count">%d колдонмо тандалды</string>
     <string name="general_navigate_back_action">Артка кайтуу</string>
     <string name="general_reset_action">Баштан баштоо</string>
     <string name="general_clear_action">Тазалоо</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Күлүп</string>
     <string name="devices_indicator_awake">Уюктанбай</string>
     <string name="devices_indicator_nudge">Титкилөө</string>
     <string name="devices_indicator_observe">Бакылоо</string>
     <string name="devices_indicator_disconnect">Үзүп кетүү</string>
     <string name="devices_indicator_limit">Чектөө</string>
+    <string name="devices_indicator_volume_range">Диапазон</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Көтөрүү</string>
     <string name="devices_indicator_home">Баш бет</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Деңгюул</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Үн деңгели (0–100)</string>
     <string name="devices_volume_input_error">%1$d менен %2$d аралыҕындагы мааны киргизиңиз</string>
     <string name="devices_volume_input_caption">Нактыы үн түзмөгүңүз колдогон жакын кадамга дүңдөлүшү мүмкүн.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Күлүптүү</string>
     <string name="devices_unlock_sliders_action">Күлүптү ачуу</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Активдүү Bluetooth түзмөгүнүн үн кулпусунун бүрдүгүн көрсөтөт</string>
     <string name="widget_no_device_label">Түзмөк кошулулган жок</string>
     <string name="widget_bluetooth_off_label">Bluetooth өчүп турат</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">Жашыл</string>
     <string name="widget_config_theme_red_label">Кызыл</string>
     <string name="widget_config_theme_custom_label">Озгөчөлүклөштүрүлган</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">Эквалайзер</string>
     <string name="eq_bands_label">Тилкелер</string>
     <string name="eq_mini_graph_desc">Туураланган эквалайзер тилкелери</string>

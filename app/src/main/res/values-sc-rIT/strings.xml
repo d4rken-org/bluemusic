@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Errore</string>
     <string name="general_error_no_compatible_app_found_msg">Nessuna app compatibile trovata per gestire questa richiesta.</string>
     <string name="general_share_action">Condividi</string>
     <string name="general_back_action">Indietru</string>
     <string name="general_show_details_action">Amostra detàllios</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Bènnidu in BVM</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager ti permìttit de gestire automàticament su volume de sos dispositivos Bluetooth.</string>
     <string name="onboarding_welcome_action">Andamus</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Appo dèvidu riscrìere s\'app pro stare a pàssu cun sos cambios de Android e sos rechisitos de Google. Appo modernizàdu s\'app addú est pòssibile pro assicurare chi còntinuat a funtzionare in manera affidàbbile.</string>
     <string name="onboarding_rewrite_features">Calicuna funtzionalidade est cambiàda durante s\'aggiornamentu. Controlla sos configuraziònis de su dispositivu tuo pro assicurare chi totu siat configuràdu bene.</string>
     <string name="onboarding_rewrite_action">Còntinuat</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">Totu sos dispositivos accoppiàdos tuos sunt gestidos! Bi cheres unu nou?</string>
     <string name="discover_pair_new_device_action">Accòppia nou dispositivu</string>
     <string name="discover_device_speaker_desc">Su parlante de sa tua telefonada. Sos volmenes sunt aplicados cuan su sonu cambiat in sa telefonada, p.e. dae su disconnect de su tuo dispositivu Bluetooth.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Configuratzione de su dispositivu</string>
     <string name="devices_device_config_remove_device_label">Ismentica su dispositivu</string>
     <string name="devices_device_config_remove_device_action">Ismentica</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">Attualmènte connètidu</string>
     <string name="devices_device_disabled_label">Dispositivu disabilitàdu</string>
     <string name="devices_no_volumes_configured">Nessun volume configuràdu pro custu dispositivu. Toca Configura pro impostare sas preferèntzias de volume.</string>
-    <!-- Settings-->
     <string name="settings_label">Impostatziones</string>
     <string name="settings_category_other_label">Àteru</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">Generali</string>
     <string name="general_settings_desc">Aggiustamentos generales chi inflùint subra s\'app ìntrea.</string>
     <string name="settings_category_ui_label">Interfàccia utente</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">Tramuntu</string>
     <string name="ui_language_override_label">Lìngua de s\'app</string>
     <string name="ui_language_override_desc">Selètziona una lìngua diferente pro BVM, indipendènte dae sa lìngua predefinìda de su sistema tuo.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Dispositivos</string>
     <string name="devices_settings_desc">Impostatziones chi inflùint subra tùdos sos dispositivos gestidos.</string>
     <string name="label_app_enabled">App abilitàda</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">Osserva sos cambios</string>
     <string name="label_boot_restore">Ripristina a s\'avvio</string>
     <string name="description_boot_restore">Ripristina su volume dòpo s\'avvio/riavvio se unu dispositivu Bluetooth est connètidu.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Suporte</string>
     <string name="settings_support_description">Lège sa documentatzione, segnala problemas, chàttia cun àteros o registra logs de debug.</string>
     <string name="settings_support_wiki_label">Documentatzione</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Para a su matessi modu</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Un postu addú istare e fàghere dòmandas.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Ringraziamentos</string>
     <string name="settings_acknowledgements_description">Creditos, litzèntzias e ringraziamentos spetziales</string>
     <string name="settings_acks_translation_header">Tradutzione</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">Política de privatesa</string>
     <string name="settings_privacy_policy_desc">Gestire sos datos in manera responsàbbile.</string>
     <string name="changelog_label">Registro de cambios</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Backup &amp; Restauratzione</string>
     <string name="backup_restore_settings_desc">Fai su backup e restaura is configuratziones e impostatziones de su dispositivu tuo.</string>
     <string name="backup_restore_screen_title">Backup &amp; Restauratzione</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">Backup creadu — %1$d dispositivus salvaus.</string>
     <string name="backup_restore_success_restore">Restauratzione compia — %1$d dispositivus restauraus, %2$d saltaus.</string>
     <string name="backup_restore_version_warning">Custu backup est istadu creadu cun sa versione %1$s. Ses impreende %2$s. Calecuna impostazione poderet non si restaurare bene.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Log de debug</string>
     <string name="debug_log_consent_explanation">Cussa funtzionalidade registrat tùtu chello chi s\'app est fachèndende in unu file cumunicàbbile. Su file generàdu cuntenet informatzione sensìbbile (p.e. nòmines de file e apps instalàdas). Cumunicalu solu a persones de fidùcia (p.e. unu sviluppatore chi est solutzionende unu problema).</string>
     <string name="debug_log_record_action">Registra</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">Iscarta</string>
     <string name="debug_log_screen_keep_action">Mantèni</string>
     <string name="debug_log_file_label">File de log registràdu</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Log mandàdu?</string>
     <string name="support_debuglog_sent_message">Si as mandàdu su log de debug, podet essere cancelàdu dae su dispositivu. Boles nche lu retirare?</string>
     <string name="support_debuglog_session_delete_title">Càncella su log de debug?</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP fallìdu</string>
     <string name="support_debuglog_clear_title">Càncella tùdos sos logs de debug?</string>
     <string name="support_debuglog_clear_message">Custu càncellat permanèntement tùdas sas sessiones de logs de debug immagatzinàdas.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Contàtta su sviluppatore</string>
     <string name="settings_support_contact_desc">Ìmbia unu formulàriu pro mandare una email a su sviluppatore.</string>
     <string name="contact_screen_title">Contàtta su sviluppatore</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">Lègio ogni messàgiu personalmènte e fàzo su mèglius pro rispòndere, ma poiché traballio a custu a su solu, podet impiegare unu pagu de tempus. Gràtzias pro sa patièntzia tua.</string>
     <string name="contact_footer_msg">Su messàgiu tuo serrà mandàdu via email. Informatzione de su dispositivu e de sa configuratzione est allegàda automàticament.</string>
     <string name="contact_no_email_app_msg">Nessuna app de email agatàda in custu dispositivu.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Logs de debug immagatzinàdos</string>
     <string name="settings_support_stored_logs_desc">%1$d sessiones (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Nessun log de debug immagatzinàdu</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">Su Bluetooth est disabilitàdu.</string>
     <string name="title_bluetooth_is_off">Su Bluetooth est isgèliu</string>
     <string name="action_enable_bluetooth">Abìlita su Bluetooth</string>
+    <string name="title_monitoring_is_off">Monitoralzu spentidu</string>
+    <string name="description_monitoring_is_disabled">BlueMusic no reatzit a connessionis Bluetooth o a mudamientos de volume. Is volumes salvados, is limites e is bloccos no sunt aplicados automaticamente.</string>
+    <string name="action_enable_monitoring">Abilita monitoralzu</string>
     <string name="title_bluetooth_permission_required">Permissu Bluetooth richièstu</string>
     <string name="description_bluetooth_permission_required">S\'app richièdet su permissu Bluetooth pro gestire sos volumes de su dispositivu tuo.</string>
     <string name="action_grant_permission">Contzèddi su permissu</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">Boles làssare una revisione a BVM? ❤️</string>
     <string name="review_app_review_action">Revisione</string>
     <string name="review_app_dismiss_action">Forsis più in antis</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">Nessun dispositivu</string>
     <string name="bluemusic_mascot_description">Icona de s\'app</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Selètziona Apps</string>
     <string name="devices_app_selection_search_hint">Cerca apps…</string>
     <string name="devices_app_selection_selected_count">%d apps seletziòndas</string>
     <string name="general_navigate_back_action">Torra a nàrrere</string>
     <string name="general_reset_action">Resètta</string>
     <string name="general_clear_action">Imbòida</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Bloccu</string>
     <string name="devices_indicator_awake">In veglia</string>
     <string name="devices_indicator_nudge">Impùlsa</string>
     <string name="devices_indicator_observe">Osserva</string>
     <string name="devices_indicator_disconnect">Disconnètti</string>
     <string name="devices_indicator_limit">Limita</string>
+    <string name="devices_indicator_volume_range">Intervalu</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Aumento</string>
     <string name="devices_indicator_home">Pantalla printzipale</string>
     <string name="devices_indicator_dnd">SND</string>
     <string name="devices_indicator_alert">Avisu</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volume (0–100)</string>
     <string name="devices_volume_input_error">Inseri unu valore intre %1$d e %2$d</string>
     <string name="devices_volume_input_caption">Su volume efettivu podet arrotundare a su passu prus prochimanu chi su dispositivu tue sotennet.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Blocca</string>
     <string name="devices_unlock_sliders_action">Sblocca</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Mustra su stadu de su blocu de volume pro su dispositivu Bluetooth ativu</string>
     <string name="widget_no_device_label">Perunu dispositivu connetu</string>
     <string name="widget_bluetooth_off_label">Su Bluetooth est ispintu</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">Birde</string>
     <string name="widget_config_theme_red_label">Ruggiu</string>
     <string name="widget_config_theme_custom_label">Personalizadu</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">Equalizadore</string>
     <string name="eq_bands_label">Bandas</string>
     <string name="eq_mini_graph_desc">Bandas de s\'equalizadore cunfiguradas</string>

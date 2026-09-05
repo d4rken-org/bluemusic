@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Errorea</string>
     <string name="general_error_no_compatible_app_found_msg">Ez da eskaera hau kudeatzeko aplikazio bateragarririk aurkitu.</string>
     <string name="general_share_action">Partekatu</string>
     <string name="general_back_action">Atzera</string>
     <string name="general_show_details_action">Xehetasunak erakutsi</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Ongi etorri BVM-era</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager-ek Bluetooth gailuen bolumenak automatikoki kudeatzeko aukera ematen dizu.</string>
     <string name="onboarding_welcome_action">Goazen</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Aplikazioa berriro idatzi behar izan nuen Android aldaketekin eta Googleren eskakizunekin jarraitzeko. Aplikazioa modernizatu dut posible den tokietan, fidagarritasunez funtzionatzen jarraitu dezan.</string>
     <string name="onboarding_rewrite_features">Zenbait ezaugarri aldatu dira eguneratzean. Mesedez, egiaztatu zure gailuaren ezarpenak dena behar bezala konfiguratuta dagoela ziurtatzeko.</string>
     <string name="onboarding_rewrite_action">Jarraitu</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">Zure emparejatutako gailu guztiak kudeatuta daude! Berri bat behar duzu?</string>
     <string name="discover_pair_new_device_action">Gailu berria emparejatu</string>
     <string name="discover_device_speaker_desc">Telefonoaren besteriko altabotzaile. Bere bolumenak aplikatzen dira entzungarria telefonora itzultzen denean, adibidez Bluetooth gailua deskonektatzen denean.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Gailuaren konfigurazioa</string>
     <string name="devices_device_config_remove_device_label">Ahaztu gailua</string>
     <string name="devices_device_config_remove_device_action">Ahaztu</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">Une honetan konektatuta</string>
     <string name="devices_device_disabled_label">Gailua desgaituta</string>
     <string name="devices_no_volumes_configured">Ez dago bolumenik konfiguratuta gailu honetarako. Sakatu Konfiguratu bolumen hobespenak ezartzeko.</string>
-    <!-- Settings-->
     <string name="settings_label">Ezarpenak</string>
     <string name="settings_category_other_label">Bestelakoak</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">Orokorra</string>
     <string name="general_settings_desc">Aplikazio osoa eragiten duten doikuntza orokorrak.</string>
     <string name="settings_category_ui_label">Erabiltzaile-interfazea</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">Ilunabarra</string>
     <string name="ui_language_override_label">Aplikazioaren hizkuntza</string>
     <string name="ui_language_override_desc">Hautatu BVM-rako hizkuntza ezberdin bat, zure sistemaren hizkuntza lehenetsia kontuan hartu gabe.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Gailuak</string>
     <string name="devices_settings_desc">Kudeatutako gailu guztiei eragiten dieten ezarpenak.</string>
     <string name="label_app_enabled">Aplikazioa gaituta</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">Aldaketak behatu</string>
     <string name="label_boot_restore">Berrezarri abiatzean</string>
     <string name="description_boot_restore">Berrezarri bolumena abiarazi/berrabiarazi ondoren Bluetooth gailu bat konektatuta badago.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Laguntza</string>
     <string name="settings_support_description">Irakurri dokumentazioa, eman arazoen berri, txateatu beste batzuekin edo grabatu arazketa-erregistroak.</string>
     <string name="settings_support_wiki_label">Dokumentazioa</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Gelditu hala ere</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Ibiltzeko eta galderak egiteko lekua.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Aitorpenak</string>
     <string name="settings_acknowledgements_description">Kredituak, lizentziak eta esker bereziak</string>
     <string name="settings_acks_translation_header">Itzulpena</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">Pribatutasun-politika</string>
     <string name="settings_privacy_policy_desc">Datuak erantzunkidetasunez kudeatzea.</string>
     <string name="changelog_label">Aldaketa-erregistroa</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Babeskopia eta leheneratzea</string>
     <string name="backup_restore_settings_desc">Zure gailuen konfigurazioak eta ezarpenak babeskopian gorde eta leheneratu.</string>
     <string name="backup_restore_screen_title">Babeskopia eta leheneratzea</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">Babeskopia sortua — %1$d gailu gordeta.</string>
     <string name="backup_restore_success_restore">Leheneratzea osatuta — %1$d gailu leheneratuta, %2$d saltatuta.</string>
     <string name="backup_restore_version_warning">Babeskopia hau %1$s bertsioarekin sortu zen. %2$s exekutatzen ari zara. Baliteke ezarpen batzuk ez leheneratzea zuzen.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Arazketa-erregistroa</string>
     <string name="debug_log_consent_explanation">Eginbide honek aplikazioak egiten dituen guztiak partekagarria den fitxategi batean grabatzen ditu. Sortutako fitxategiak informazio sentikorra dauka (adib. fitxategi-izenak eta instalatutako aplikazioak). Soilik pertsona fidagarriekin partekatu (adib. arazo bat konpontzen ari den garatzaile batekin).</string>
     <string name="debug_log_record_action">Grabatu</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">Baztertu</string>
     <string name="debug_log_screen_keep_action">Mantendu</string>
     <string name="debug_log_file_label">Erregistratutako erregistro-fitxategia</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Erregistroa bidali da?</string>
     <string name="support_debuglog_sent_message">Arazketa erregistroa bidali baduzu, gailutik ezaba daiteke. Ezabatu nahi duzu?</string>
     <string name="support_debuglog_session_delete_title">Arazketa erregistroa ezabatu?</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP huts egin du</string>
     <string name="support_debuglog_clear_title">Ezabatu arazketa erregistro guztiak?</string>
     <string name="support_debuglog_clear_message">Honek gordeta dauden arazketa erregistro saio guztiak betirako ezabatuko ditu.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Jarri harremanetan garatzailearekin</string>
     <string name="settings_support_contact_desc">Bete formulario bat garatzaileari mezu elektronikoa bidaltzeko.</string>
     <string name="contact_screen_title">Jarri harremanetan garatzailearekin</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">Mezu bakoitza nik neuk irakurtzen dut eta erantzuten saiatzen naiz, baina bakarrik lan egiten dudanez, denbora pixka bat behar izaten da. Eskerrik asko zure pazientziagatik.</string>
     <string name="contact_footer_msg">Zure mezua mezu elektronikoaren bidez bidaliko da. Gailuen eta konfigurazio informazioa automatikoki eransten da.</string>
     <string name="contact_no_email_app_msg">Ez da mezu elektronikoa aplikaziorik aurkitu gailu honetan.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Gordetako arazketa erregistroak</string>
     <string name="settings_support_stored_logs_desc">%1$d saio (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Ez dago gordetako arazketa erregistrorik</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">Bluetooth desgaituta dago.</string>
     <string name="title_bluetooth_is_off">Bluetooth itzalita dago</string>
     <string name="action_enable_bluetooth">Gaitu Bluetooth</string>
+    <string name="title_monitoring_is_off">Monitortzea desaktibatuta</string>
+    <string name="description_monitoring_is_disabled">BlueMusic ez da Bluetooth konexioei edo bolumen-aldaketei erantzuten. Gordutako bolumenak, mugak eta blokeoak ez dira automatikoki aplikatzen.</string>
+    <string name="action_enable_monitoring">Gaitu monitortzea</string>
     <string name="title_bluetooth_permission_required">Bluetooth baimena beharrezkoa da</string>
     <string name="description_bluetooth_permission_required">Aplikazio honek Bluetooth baimena behar du zure gailuen bolumenak kudeatzeko.</string>
     <string name="action_grant_permission">Eman baimena</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">BVMari berrikuspen bat utzi nahi zenuke? ❤️</string>
     <string name="review_app_review_action">Berrikuspen</string>
     <string name="review_app_dismiss_action">Agian geroago</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">Gailurik ez</string>
     <string name="bluemusic_mascot_description">Aplikazioaren ikonoa</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Hautatu aplikazioak</string>
     <string name="devices_app_selection_search_hint">Bilatu aplikazioak…</string>
     <string name="devices_app_selection_selected_count">%d aplikazio hautatuta</string>
     <string name="general_navigate_back_action">Atzera nabigatu</string>
     <string name="general_reset_action">Berrezarri</string>
     <string name="general_clear_action">Garbitu</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Blokeoa</string>
     <string name="devices_indicator_awake">Esnai</string>
     <string name="devices_indicator_nudge">Kitzikatze</string>
     <string name="devices_indicator_observe">Behatu</string>
     <string name="devices_indicator_disconnect">Deskonektatu</string>
     <string name="devices_indicator_limit">Muga</string>
+    <string name="devices_indicator_volume_range">Barrutia</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Indarra</string>
     <string name="devices_indicator_home">Hasiera</string>
     <string name="devices_indicator_dnd">EMN</string>
     <string name="devices_indicator_alert">Alerta</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Bolumena (0–100)</string>
     <string name="devices_volume_input_error">Sartu %1$d eta %2$d arteko balio bat</string>
     <string name="devices_volume_input_caption">Benetako bolumena zure gailuak onartzen duen urrats hurbilenera biribildu daiteke.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Blokeatu</string>
     <string name="devices_unlock_sliders_action">Desblokeatu</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Aktibo dagoen Bluetooth gailuaren bolumen blokearen egoera erakusten du</string>
     <string name="widget_no_device_label">Ez dago gailurik konektatuta</string>
     <string name="widget_bluetooth_off_label">Bluetooth-a itzalita dago</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">Berdea</string>
     <string name="widget_config_theme_red_label">Gorria</string>
     <string name="widget_config_theme_custom_label">Pertsonalizatua</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">Ekualizatzailea</string>
     <string name="eq_bands_label">Bandak</string>
     <string name="eq_mini_graph_desc">Konfiguratutako ekualizatzailearen bandak</string>

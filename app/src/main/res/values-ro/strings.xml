@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Eroare</string>
     <string name="general_error_no_compatible_app_found_msg">Nicio aplicație compatibilă găsită pentru această cerere.</string>
     <string name="general_share_action">Distribuie</string>
     <string name="general_back_action">Înapoi</string>
     <string name="general_show_details_action">Afișează detalii</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Bun venit în BVM</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager îți permite să gestionezi volumul dispozitivelor Bluetooth automat.</string>
     <string name="onboarding_welcome_action">Să mergem</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Am reconstruit complet Bluetooth Volume Manager de la zero din cauza schimbărilor Android și a cerințelor Google pentru a mă asigura că aplicația continuă să funcționeze în mod fiabil.</string>
     <string name="onboarding_rewrite_features">Unele setări ale dispozitivului s-ar putea să fi fost resetate în timpul acestei actualizări. Te rog să verifici configurațiile dispozitivelor tale.</string>
     <string name="onboarding_rewrite_action">Continuă</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">Toate dispozitivele tale asociate sunt gestionate! Ai nevoie de unul nou?</string>
     <string name="discover_pair_new_device_action">Asociază dispozitiv nou</string>
     <string name="discover_device_speaker_desc">Difuzorul propriu al telefonului. Volumele sale sunt aplicate când audio se comută înapoi la telefon, de exemplu după ce dispozitivul Bluetooth se deconectează.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Configurația dispozitivului</string>
     <string name="devices_device_config_remove_device_label">Uită dispozitivul</string>
     <string name="devices_device_config_remove_device_action">Uită</string>
@@ -153,10 +148,8 @@
     <string name="devices_currently_connected_label">Conectat în prezent</string>
     <string name="devices_device_disabled_label">Dispozitiv dezactivat</string>
     <string name="devices_no_volumes_configured">Niciun volum configurat pentru acest dispozitiv. Atinge Configurează pentru a seta preferințele de volum.</string>
-    <!-- Settings-->
     <string name="settings_label">Setări</string>
     <string name="settings_category_other_label">Altele</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">General</string>
     <string name="general_settings_desc">Ajustări generale care afectează întreaga aplicație.</string>
     <string name="settings_category_ui_label">Interfață utilizator</string>
@@ -178,7 +171,6 @@
     <string name="ui_theme_color_sunset_label">Apus de soare</string>
     <string name="ui_language_override_label">Limba aplicației</string>
     <string name="ui_language_override_desc">Selectează o limbă diferită pentru BVM, independent de limba implicită a sistemului tău.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Dispozitive</string>
     <string name="devices_settings_desc">Setări care afectează toate dispozitivele gestionate.</string>
     <string name="label_app_enabled">Aplicație activată</string>
@@ -186,7 +178,6 @@
     <string name="label_volume_listener">Observă schimbările</string>
     <string name="label_boot_restore">Restaurează la pornire</string>
     <string name="description_boot_restore">Restaurează volumul după pornire/repornire dacă un dispozitiv Bluetooth este conectat.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Suport</string>
     <string name="settings_support_description">Citește documentația, raportează probleme, vorbește cu alții sau înregistrează jurnale de depanare.</string>
     <string name="settings_support_wiki_label">Documentație</string>
@@ -200,7 +191,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Oprește oricum</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Un loc unde să petreci timp și să pui întrebări.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Mulțumiri</string>
     <string name="settings_acknowledgements_description">Credite, licențe și mulțumiri speciale</string>
     <string name="settings_acks_translation_header">Traducere</string>
@@ -215,7 +205,6 @@
     <string name="settings_privacy_policy_label">Politica de confidențialitate</string>
     <string name="settings_privacy_policy_desc">Gestionarea datelor în mod responsabil.</string>
     <string name="changelog_label">Jurnalul de modificari</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Backup &amp; Restaurare</string>
     <string name="backup_restore_settings_desc">Faceți backup și restaurați configurațiile dispozitivului și setările.</string>
     <string name="backup_restore_screen_title">Backup &amp; Restaurare</string>
@@ -232,7 +221,6 @@
     <string name="backup_restore_success_backup">Backup creat — %1$d dispozitive salvate.</string>
     <string name="backup_restore_success_restore">Restaurare completă — %1$d dispozitive restaurate, %2$d omise.</string>
     <string name="backup_restore_version_warning">Acest backup a fost creat cu versiunea %1$s. Rulați versiunea %2$s. Unele setări s-ar putea să nu fie restaurate corect.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Jurnal de depanare</string>
     <string name="debug_log_consent_explanation">Această funcționalitate înregistrează tot ce face aplicația într-un fișier ce poate fi distribuit. Fișierul generat conține informații sensibile (de ex. nume de fișiere și aplicații instalate). Distribuie-l doar cu părți de încredere (de ex. un dezvoltator care rezolvă o problemă).</string>
     <string name="debug_log_record_action">Înregistrează</string>
@@ -251,7 +239,6 @@
     <string name="debug_log_screen_discard_action">Anulează</string>
     <string name="debug_log_screen_keep_action">Păstrează</string>
     <string name="debug_log_file_label">Fișier jurnal înregistrat</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Jurnal trimis?</string>
     <string name="support_debuglog_sent_message">Dacă ai trimis jurnalul de depanare, acesta poate fi șters de pe dispozitiv. Vrei să îl elimini?</string>
     <string name="support_debuglog_session_delete_title">Ștergi jurnalul de depanare?</string>
@@ -264,7 +251,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP eșuat</string>
     <string name="support_debuglog_clear_title">Ștergi toate jurnalele de depanare?</string>
     <string name="support_debuglog_clear_message">Aceasta va șterge permanent toate sesiunile de jurnale de depanare stocate.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Contactează dezvoltatorul</string>
     <string name="settings_support_contact_desc">Completează un formular pentru a trimite un e-mail dezvoltatorului.</string>
     <string name="contact_screen_title">Contactează dezvoltatorul</string>
@@ -291,7 +277,6 @@
     <string name="contact_welcome_msg">Citesc fiecare mesaj personal și fac tot posibilul să răspund, dar deoarece lucrez singur la asta, poate dura puțin. Mulțumesc pentru răbdare.</string>
     <string name="contact_footer_msg">Mesajul tău va fi trimis prin e-mail. Informațiile despre dispozitiv și configurație sunt atașate automat.</string>
     <string name="contact_no_email_app_msg">Nu s-a găsit nicio aplicație de e-mail pe acest dispozitiv.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Jurnale de depanare stocate</string>
     <string name="settings_support_stored_logs_desc">%1$d sesiuni (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Nu există jurnale de depanare stocate</string>
@@ -309,6 +294,9 @@
     <string name="description_bluetooth_is_disabled">Bluetooth este dezactivat.</string>
     <string name="title_bluetooth_is_off">Bluetooth este Oprit</string>
     <string name="action_enable_bluetooth">Activează Bluetooth</string>
+    <string name="title_monitoring_is_off">Monitorizarea este dezactivată</string>
+    <string name="description_monitoring_is_disabled">BlueMusic nu reacționează la conexiunile Bluetooth sau la modificări de volum. Volumele, limitele și blocările salvate nu sunt aplicate automat.</string>
+    <string name="action_enable_monitoring">Activează monitorizarea</string>
     <string name="title_bluetooth_permission_required">Permisiune Bluetooth Necesară</string>
     <string name="description_bluetooth_permission_required">Această aplicație are nevoie de permisiunea Bluetooth pentru a gestiona volumele dispozitivelor tale.</string>
     <string name="action_grant_permission">Acordă Permisiunea</string>
@@ -347,36 +335,31 @@
     <string name="review_app_body">Doriți să lăsați aplicației BVM o recenzie? ❤️</string>
     <string name="review_app_review_action">Revizuire</string>
     <string name="review_app_dismiss_action">Poate mai târziu</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">Niciun Dispozitiv</string>
     <string name="bluemusic_mascot_description">Icona Aplicației</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Selectează aplicații</string>
     <string name="devices_app_selection_search_hint">Caută aplicații…</string>
     <string name="devices_app_selection_selected_count">%d aplicații selectate</string>
     <string name="general_navigate_back_action">Navighează înapoi</string>
     <string name="general_reset_action">Resetează</string>
     <string name="general_clear_action">Șterge</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Blocare</string>
     <string name="devices_indicator_awake">Activ</string>
     <string name="devices_indicator_nudge">Împingere</string>
     <string name="devices_indicator_observe">Observare</string>
     <string name="devices_indicator_disconnect">Deconectare</string>
     <string name="devices_indicator_limit">Limită</string>
+    <string name="devices_indicator_volume_range">Interval</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Amplificare</string>
     <string name="devices_indicator_home">Acasă</string>
     <string name="devices_indicator_dnd">DNT</string>
     <string name="devices_indicator_alert">Alertă</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volum (0–100)</string>
     <string name="devices_volume_input_error">Introdu o valoare între %1$d și %2$d</string>
     <string name="devices_volume_input_caption">Volumul real se poate rotunji la cel mai apropiat pas acceptat de dispozitivul tău.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Blochează</string>
     <string name="devices_unlock_sliders_action">Deblochează</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Afișează starea de blocare a volumului pentru dispozitivul Bluetooth activ</string>
     <string name="widget_no_device_label">Niciun dispozitiv conectat</string>
     <string name="widget_bluetooth_off_label">Bluetooth-ul este oprit</string>
@@ -393,7 +376,6 @@
     <string name="widget_config_theme_green_label">Verde</string>
     <string name="widget_config_theme_red_label">Roșu</string>
     <string name="widget_config_theme_custom_label">Personalizat</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">Egalizator</string>
     <string name="eq_bands_label">Benzi</string>
     <string name="eq_mini_graph_desc">Benzi de egalizator configurate</string>

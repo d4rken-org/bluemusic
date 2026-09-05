@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Errore</string>
     <string name="general_error_no_compatible_app_found_msg">Nessuna app compatibile trovata per gestire questa richiesta.</string>
     <string name="general_share_action">Condividi</string>
     <string name="general_back_action">Indietro</string>
     <string name="general_show_details_action">Mostra dettagli</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Benvenuto in BVM</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager ti permette di gestire automaticamente i volumi dei dispositivi Bluetooth.</string>
     <string name="onboarding_welcome_action">Andiamo</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Ho completamente ricostruito Bluetooth Volume Manager da zero a causa dei cambiamenti di Android e dei requisiti di Google per garantire che l\'app continui a funzionare in modo affidabile.</string>
     <string name="onboarding_rewrite_features">Alcune impostazioni dei dispositivi potrebbero essere state reimpostate durante questo aggiornamento. Si prega di controllare le configurazioni dei dispositivi.</string>
     <string name="onboarding_rewrite_action">Continua</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">Tutti i tuoi dispositivi accoppiati sono gestiti! Te ne serve uno nuovo?</string>
     <string name="discover_pair_new_device_action">Accoppia nuovo dispositivo</string>
     <string name="discover_device_speaker_desc">L\'altoparlante del telefono stesso. I suoi volumi vengono applicati quando l\'audio torna al telefono, ad es. dopo che il dispositivo Bluetooth si disconnette.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Configurazione dispositivo</string>
     <string name="devices_device_config_remove_device_label">Dimentica dispositivo</string>
     <string name="devices_device_config_remove_device_action">Dimentica</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">Attualmente connesso</string>
     <string name="devices_device_disabled_label">Dispositivo disabilitato</string>
     <string name="devices_no_volumes_configured">Nessun volume configurato per questo dispositivo. Tocca Configura per impostare le preferenze del volume.</string>
-    <!-- Settings-->
     <string name="settings_label">Impostazioni</string>
     <string name="settings_category_other_label">Altro</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">Generale</string>
     <string name="general_settings_desc">Modifiche generali che influenzano tutta l\'app.</string>
     <string name="settings_category_ui_label">Interfaccia utente</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">Tramonto</string>
     <string name="ui_language_override_label">Lingua app</string>
     <string name="ui_language_override_desc">Seleziona una lingua diversa per BVM, indipendente dalla lingua predefinita del sistema.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Dispositivi</string>
     <string name="devices_settings_desc">Impostazioni che influenzano tutti i dispositivi gestiti.</string>
     <string name="label_app_enabled">Attivazione app</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">Rilevamento modifiche</string>
     <string name="label_boot_restore">Ripristino all\'avvio</string>
     <string name="description_boot_restore">Ripristina i volumi dopo un avvio o un riavvio se un dispositivo Bluetooth è connesso.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Supporto</string>
     <string name="settings_support_description">Leggi la documentazione, segnala problemi, chatta con altri o registra log di debug.</string>
     <string name="settings_support_wiki_label">Documentazione</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Ferma comunque</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Un posto dove stare insieme e fare domande.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Ringraziamenti</string>
     <string name="settings_acknowledgements_description">Crediti, licenze e ringraziamenti speciali</string>
     <string name="settings_acks_translation_header">Traduzione</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">Informativa sulla privacy</string>
     <string name="settings_privacy_policy_desc">Gestire i dati responsabilmente.</string>
     <string name="changelog_label">Registro modifiche</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Backup e ripristino</string>
     <string name="backup_restore_settings_desc">Esegui il backup e ripristina le configurazioni e le impostazioni del dispositivo.</string>
     <string name="backup_restore_screen_title">Backup e ripristino</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">Backup creato — %1$d dispositivi salvati.</string>
     <string name="backup_restore_success_restore">Ripristino completato — %1$d dispositivi ripristinati, %2$d saltati.</string>
     <string name="backup_restore_version_warning">Questo backup è stato creato con la versione %1$s. Stai usando la versione %2$s. Alcune impostazioni potrebbero non essere ripristinate correttamente.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Log debug</string>
     <string name="debug_log_consent_explanation">Questa funzione registra tutto quello che fa l\'app in un file condivisibile. Il file generato contiene informazioni sensibili (es. nomi file e app installate). Condividilo solo con parti fidate (es. uno sviluppatore che risolve un problema).</string>
     <string name="debug_log_record_action">Registra</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">Scarta</string>
     <string name="debug_log_screen_keep_action">Conserva</string>
     <string name="debug_log_file_label">File log registrato</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Log inviato?</string>
     <string name="support_debuglog_sent_message">Se hai inviato il log di debug, può essere eliminato dal dispositivo. Vuoi rimuoverlo?</string>
     <string name="support_debuglog_session_delete_title">Eliminare il log di debug?</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP fallito</string>
     <string name="support_debuglog_clear_title">Eliminare tutti i log di debug?</string>
     <string name="support_debuglog_clear_message">Tutte le sessioni di log di debug salvate verranno eliminate definitivamente.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Contatta lo sviluppatore</string>
     <string name="settings_support_contact_desc">Compila un modulo per inviare un\'email allo sviluppatore.</string>
     <string name="contact_screen_title">Contatta lo sviluppatore</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">Leggo ogni messaggio personalmente e cerco di rispondere nel miglior modo possibile, ma dato che lavoro da solo, potrebbe volerci un po\'. Grazie per la pazienza.</string>
     <string name="contact_footer_msg">Il tuo messaggio sarà inviato tramite email. Le informazioni sul dispositivo e sulla configurazione vengono allegate automaticamente.</string>
     <string name="contact_no_email_app_msg">Nessuna app email trovata su questo dispositivo.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Log di debug salvati</string>
     <string name="settings_support_stored_logs_desc">%1$d sessioni (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Nessun log di debug salvato</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">Il Bluetooth è disattivato.</string>
     <string name="title_bluetooth_is_off">Bluetooth è spento</string>
     <string name="action_enable_bluetooth">Abilita Bluetooth</string>
+    <string name="title_monitoring_is_off">Monitoraggio disattivato</string>
+    <string name="description_monitoring_is_disabled">BlueMusic non risponde alle connessioni Bluetooth o ai cambiamenti di volume. I volumi, i limiti e i blocchi salvati non vengono applicati automaticamente.</string>
+    <string name="action_enable_monitoring">Abilita monitoraggio</string>
     <string name="title_bluetooth_permission_required">Permesso Bluetooth richiesto</string>
     <string name="description_bluetooth_permission_required">Questa app ha bisogno del permesso Bluetooth per gestire i volumi dei tuoi dispositivi.</string>
     <string name="action_grant_permission">Concedi permesso</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">Vuoi lasciare una recensione su BVM? ❤️</string>
     <string name="review_app_review_action">Recensione</string>
     <string name="review_app_dismiss_action">Forse più tardi</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">Nessun dispositivo</string>
     <string name="bluemusic_mascot_description">Icona App</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Seleziona App</string>
     <string name="devices_app_selection_search_hint">Cerca app…</string>
     <string name="devices_app_selection_selected_count">%d app selezionate</string>
     <string name="general_navigate_back_action">Torna indietro</string>
     <string name="general_reset_action">Ripristina</string>
     <string name="general_clear_action">Cancella</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Blocco</string>
     <string name="devices_indicator_awake">Attivo</string>
     <string name="devices_indicator_nudge">Spinta</string>
     <string name="devices_indicator_observe">Osserva</string>
     <string name="devices_indicator_disconnect">Scollega</string>
     <string name="devices_indicator_limit">Limite</string>
+    <string name="devices_indicator_volume_range">Intervallo</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Boost</string>
     <string name="devices_indicator_home">Home</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Avviso</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volume (0–100)</string>
     <string name="devices_volume_input_error">Inserisci un valore tra %1$d e %2$d</string>
     <string name="devices_volume_input_caption">Il volume effettivo potrebbe essere arrotondato al passo più vicino supportato dal tuo dispositivo.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Blocca</string>
     <string name="devices_unlock_sliders_action">Sblocca</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Mostra lo stato del blocco volume per il dispositivo Bluetooth attivo</string>
     <string name="widget_no_device_label">Nessun dispositivo connesso</string>
     <string name="widget_bluetooth_off_label">Bluetooth disattivato</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">Verde</string>
     <string name="widget_config_theme_red_label">Rosso</string>
     <string name="widget_config_theme_custom_label">Personalizzato</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">Equalizzatore</string>
     <string name="eq_bands_label">Bande</string>
     <string name="eq_mini_graph_desc">Bande dell\'equalizzatore configurate</string>

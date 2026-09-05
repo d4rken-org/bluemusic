@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">កម្មវិធីគ្រប់គ្រងកម្រិតសំឡេង Bluetooth</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">កំហុស</string>
     <string name="general_error_no_compatible_app_found_msg">រកមិនឃើញកម្មវិធីដែលឆបគ្នាក្នុងការដោះស្រាយសំណើនេះទេ។</string>
     <string name="general_share_action">ចែករំលែក</string>
     <string name="general_back_action">ត្រឡប់ក្រោយ</string>
     <string name="general_show_details_action">បង្ហាញព័ត៌មានលម្អិត</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">សូមស្វាគមន៍មក BVM</string>
     <string name="onboarding_welcome_message">កម្មវិធីគ្រប់គ្រងកម្រិតសំឡេង Bluetooth អនុញ្ញាតឱ្យអ្នកគ្រប់គ្រងកម្រិតសំឡេងឧបករណ៍ Bluetooth ដោយស្វ័យប្រវត្តិ។</string>
     <string name="onboarding_welcome_action">តោះទៅ</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">ខ្ញុំត្រូវតែសរសេរកម្មវិធីឡើងវិញ ដើម្បីបន្តស្របទៅនឹងការផ្លាស់ប្តូររបស់ Android និងតម្រូវការរបស់ Google។ ខ្ញុំបានធ្វើទំនើបកម្មកម្មវិធីតាមដែលអាចធ្វើទៅបាន ដើម្បីធានាថាវានឹងបន្តដំណើរការបានយ៉ាងជឿជាក់។</string>
     <string name="onboarding_rewrite_features">មុខងារខ្លះបានផ្លាស់ប្តូរក្នុងអំឡុងពេលធ្វើបច្ចុប្បន្នភាព។ សូមពិនិត្យការកំណត់ឧបករណ៍របស់អ្នក ដើម្បីធានាថាអ្វីៗទាំងអស់ត្រូវបានកំណត់យ៉ាងត្រឹមត្រូវ។</string>
     <string name="onboarding_rewrite_action">បន្ត</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">ឧបករណ៍ដែលបានផ្សារភ្ជាប់ទាំងអស់របស់អ្នកត្រូវបានគ្រប់គ្រង! ត្រូវការឧបករណ៍ថ្មីទេ?</string>
     <string name="discover_pair_new_device_action">ផ្សារភ្ជាប់ឧបករណ៍ថ្មី</string>
     <string name="discover_device_speaker_desc">ស្ពីករ​របស់​ទូរស័ព្ទ។ កម្រិត​សម្លេង​របស់វា​ត្រូវ​បាន​ប្រើ​នៅ​ពេល​សម្លេង​ប្តូរ​ត្រឡប់​ទៅ​ទូរស័ព្ទ ដូច​ជា​បន្ទាប់​ពី​ឧបករណ៍​ប៊ុលធូស​របស់​អ្នក​ផ្ដាច់។</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">ការកំណត់ឧបករណ៍</string>
     <string name="devices_device_config_remove_device_label">ភ្លេចឧបករណ៍</string>
     <string name="devices_device_config_remove_device_action">ភ្លេច</string>
@@ -37,6 +32,7 @@
     <string name="devices_device_config_rename_device_action">ប្តូរឈ្មោះ</string>
     <string name="devices_device_config_enabled_label">បានបើក</string>
     <string name="devices_device_config_enabled_desc">ប្រតិកម្មទៅកាន់ឧបករណ៍នេះពេលភ្ជាប់</string>
+    <string name="devices_device_config_equalizer_label">តម្រង់ស្វនិង</string>
     <string name="devices_device_config_equalizer_desc">កែសម្រួលបន្ទះ equalizer និងការបង្កើនកម្រិតសំឡេងសម្រាប់ឧបករណ៍នេះ។ ដំណើរការតែជាមួយកម្មវិធីតន្ត្រីដែលគាំទ្រ equalizer ប្រព័ន្ធរបស់ Android ប៉ុណ្ណោះ។</string>
     <string name="devices_device_config_equalizer_boost_label">ការបង្កើនកម្រិតសំឡេង៖ %1$s</string>
     <string name="devices_device_config_section_timing_label">ពេលវេលា</string>
@@ -150,10 +146,8 @@
     <string name="devices_currently_connected_label">កំពុងភ្ជាប់</string>
     <string name="devices_device_disabled_label">ឧបករណ៍ត្រូវបានបិត</string>
     <string name="devices_no_volumes_configured">គ្មានកម្រិតសំឡេងណាត្រូវបានកំណត់សម្រាប់ឧបករណ៍នេះ។ ចុច \"កំណត់\" ដើម្បីកំណត់ចំណូលចិត្តកម្រិតសំឡេង។</string>
-    <!-- Settings-->
     <string name="settings_label">ការកំណត់</string>
     <string name="settings_category_other_label">ដទៃ</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">ជាទូទៅ</string>
     <string name="general_settings_desc">ការកែតម្រូវទូទៅដែលប៉ះពាល់ដល់កម្មវិធីទាំងមូល។</string>
     <string name="settings_category_ui_label">អន្តរមុខអ្នកប្រើ</string>
@@ -175,7 +169,6 @@
     <string name="ui_theme_color_sunset_label">ថ្ងាយលិច</string>
     <string name="ui_language_override_label">ភាសាកម្មវិធី</string>
     <string name="ui_language_override_desc">ជ្រើសរើសភាសាផ្សើតឹតសម្រាប់ BVM ដោយឯករាជ្យពីភាសាលំនាំដើមរបស់ប្រព័ន្ធ។</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">ឧបករណ៍</string>
     <string name="devices_settings_desc">ការកំណត់ដែលប័តិផលដល់ឧបករណ៍ដែលបានគ្រប់គ្រងតាំងអស់។</string>
     <string name="label_app_enabled">កម្មវិធីបានបើក</string>
@@ -183,7 +176,6 @@
     <string name="label_volume_listener">ត្រួតពិនិត្យការផ្លាស់ប្តូរ</string>
     <string name="label_boot_restore">ស្តារពេលចាប់ផ្តើម</string>
     <string name="description_boot_restore">ស្តារកម្រិតសំឡេងបន្តាប់ពីចាប់ផ្តើម/ចាប់ផ្តើមឡើងវិញ ប្រសិនបើឧបករណ៍ Bluetooth ភ្ជាប់។</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">ផ្នែកជំនួយ</string>
     <string name="settings_support_description">អានកម្រងឯកសារ របាយការណ៍ចេញផ្សាយ ឆាតជាមួយអ្នកដទៃ ឬកត់ត្រាកំណត់ហេតុកំហុស។</string>
     <string name="settings_support_wiki_label">កម្រងឯកសារ</string>
@@ -197,7 +189,6 @@
     <string name="settings_support_debuglog_short_recording_stop">ឨបត្តោះជាយ៉ាងណា</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">កន្លែងសម្រាប់ជជែកកំសាន្ត និងសួរសំណួរ។</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">ការទទួលស្គាល់</string>
     <string name="settings_acknowledgements_description">កិត្តិយស អាជ្ញាបណ្ណ និងអរគុណពិសេស</string>
     <string name="settings_acks_translation_header">ការបកប្រែ</string>
@@ -212,7 +203,6 @@
     <string name="settings_privacy_policy_label">គោលការណ៍ឯកជនភាព</string>
     <string name="settings_privacy_policy_desc">ការដោះស្រាយទិន្នន័យដោយមានការទទួលខុសត្រូវ។</string>
     <string name="changelog_label">កំណត់ហេតុផ្លាស់ប្ដូរ</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">បម្រុងទុក &amp; ស្តារ</string>
     <string name="backup_restore_settings_desc">បម្រុងទុក និងស្តារការកំណត់រចនាសម្ព័ន្ធ និងការកំណត់ឧបករណ៍របស់អ្នក។</string>
     <string name="backup_restore_screen_title">បម្រុងទុក &amp; ស្តារ</string>
@@ -229,7 +219,6 @@
     <string name="backup_restore_success_backup">បម្រុងទុកបានបង្កើត — ឧបករណ៍ %1$d ត្រូវបានរក្សាទុក។</string>
     <string name="backup_restore_success_restore">ការស្តារបានបញ្ចប់ — ឧបករណ៍ %1$d ត្រូវបានស្តារ, %2$d ត្រូវបានរំលង។</string>
     <string name="backup_restore_version_warning">ការបម្រុងទុកនេះត្រូវបានបង្កើតជាមួយកំណែ %1$s។ អ្នកកំពុងដំណើរការ %2$s។ ការកំណត់ខ្លះអាចមិនស្តារបានត្រឹមត្រូវ។</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">កំណត់ហេតុកំហុស</string>
     <string name="debug_log_consent_explanation">លក្ខណៈពិសេសនេះកត់ត្រារាល់អ្វីដែលកម្មវិធីកំពុងធ្វើទៅក្នុងឯកសារដែលអាចចែករំលែកបាន។ ឯកសារដែលបានបង្កើតមានព័ត៌មានរសើប (ឧ. ឈ្មោះឯកសារ និងកម្មវិធីដែលបានដំឡើង)។ សូមចែករំលែកជាមួយភាគីដែលអាចជឿទុកចិត្តបានតែប៉ុណ្ណោះ (ឧ. អ្នកអភិវឌ្ឍន៍ដែលកំពុងដោះស្រាយបញ្ហា)។</string>
     <string name="debug_log_record_action">កត់ត្រា</string>
@@ -246,7 +235,6 @@
     <string name="debug_log_screen_discard_action">លះបង់</string>
     <string name="debug_log_screen_keep_action">រក្សា</string>
     <string name="debug_log_file_label">ឯកសារកំណត់ហេតុដែលត្រូវបានកត់ត្រា</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">កំណត់ហេតុបានផ្ញើរ?</string>
     <string name="support_debuglog_sent_message">ប្រសិនបើអ្នកបានផ្ញើរកំណត់ហេតុបំបាត់កំហុស វាអាចត្រូវបានលប់ចេញពិឧបករណ៍។ តើលអ្នកចង់លប់វាចេញ?</string>
     <string name="support_debuglog_session_delete_title">លប់កំណត់ហេតុបំបាត់កំហុស?</string>
@@ -259,7 +247,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP បរាជ័យ</string>
     <string name="support_debuglog_clear_title">លប់កំណត់ហេតុបំបាត់កំហុសតាំងអស់?</string>
     <string name="support_debuglog_clear_message">វានឹងលប់ជាអចិន្ត្រ័យ៍នូវវគ្គកំណត់ហេតុបំបាត់កំហុសដែលបានរក្សាតុកតាំងអស់។</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">តំនាក់តំនងអ្នកអភិវឌ្ញន៍</string>
     <string name="settings_support_contact_desc">បំពើញតម្រង់ដើម្បីផ្ញើរអឺម័លតៅអ្នកអភិវឌ្ញន៍។</string>
     <string name="contact_screen_title">តំនាក់តំនងអ្នកអភិវឌ្ញន៍</string>
@@ -284,7 +271,6 @@
     <string name="contact_welcome_msg">ខ្ញុំអានសារជាច្រើននោះខ្លួនឯង ហើយព្យាយាមឆ្លើយឡើយអស់ពិលត្ធភាព ប័ះន្តែចាប់ពីខ្ញុំធ្វើការម្នាក់ឯង វាអាចចំណាយពេលបន្តិច។ សូមអរគុណចំពោះការអត់ធ្មត់របស់អ្នក។</string>
     <string name="contact_footer_msg">សាររបស់អ្នកនឹងត្រូវបានផ្ញើរតាមរយៈអឺម័ល។ ព័ត្តមានឧបករណ៍ និងការតំលើងត្រូវបានភ្ជាប់ស័យប្រវត្តិ។</string>
     <string name="contact_no_email_app_msg">រកមិនឃើញកម្មវិធីអឺម័លលើឧបករណ៍នេះ។</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">កំណត់ហេតុបំបាត់កំហុសដែលបានរក្សាតុក</string>
     <string name="settings_support_stored_logs_desc">%1$d វគ្គ (%2$s)</string>
     <string name="settings_support_stored_logs_empty">គ្មានកំណត់ហេតុបំបាត់កំហុសដែលបានរក្សាតុក</string>
@@ -302,6 +288,9 @@
     <string name="description_bluetooth_is_disabled">ប៊្លូធូសត្រូវបានបិទ.</string>
     <string name="title_bluetooth_is_off">Bluetooth ត្រូវបានបិត</string>
     <string name="action_enable_bluetooth">បើក Bluetooth</string>
+    <string name="title_monitoring_is_off">ការត្រួតពិនិត្យបានបិទ</string>
+    <string name="description_monitoring_is_disabled">BlueMusic មិនកំពុងឆ្លើយតប ចំពោះការតភ្ជាប់ Bluetooth ឬការផ្លាស់ប្តូរកម្រិតសម្រើង។ កម្រិតសម្រើង ដែនកំណត់ និងការចាក់សោ ដែលបានរក្សាទុក មិនត្រូវបានអនុវត្ត ដោយស្វយ័ប្រវត្តិទេ។</string>
+    <string name="action_enable_monitoring">បើកការត្រួតពិនិត្យ</string>
     <string name="title_bluetooth_permission_required">តម្រូវការអនុញ្ញាត Bluetooth</string>
     <string name="description_bluetooth_permission_required">កម្មវិធីនេះត្រូវការអនុញ្ញាត Bluetooth ដើម្បីគ្រប់គ្រងកម្រិតសំឡេងឧបករណ៍របស់អ្នក។</string>
     <string name="action_grant_permission">ផ្តល់ការអនុញ្ញាត</string>
@@ -338,36 +327,31 @@
     <string name="review_app_body">តើ​អ្នក​ចង់​វាយតម្លៃ BVM មែនទេ? ❤️</string>
     <string name="review_app_review_action">វាយតម្លៃ</string>
     <string name="review_app_dismiss_action">ប្រហែលពេលក្រោយ</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">គ្មានឧបករណ៍</string>
     <string name="bluemusic_mascot_description">រូបតំណាងកម្មវិធី</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">ជ្រើសរើសកម្មវិធី</string>
     <string name="devices_app_selection_search_hint">ស្វែងរកកម្មវិធី…</string>
     <string name="devices_app_selection_selected_count">បានជ្រើសរើស %d កម្មវិធី</string>
     <string name="general_navigate_back_action">ត្រឡប់ក្រោយ</string>
     <string name="general_reset_action">កំណត់ឡើងវិញ</string>
     <string name="general_clear_action">សម្អាត</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">ចាក់សោ</string>
     <string name="devices_indicator_awake">តើក</string>
     <string name="devices_indicator_nudge">ប័កដំណើរ</string>
     <string name="devices_indicator_observe">សង្កេត</string>
     <string name="devices_indicator_disconnect">ដកច្សក្ត</string>
     <string name="devices_indicator_limit">កម្រិត</string>
+    <string name="devices_indicator_volume_range">ជួរ</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">បង្កើន</string>
     <string name="devices_indicator_home">ទ័ពត្រឹម</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">ជូនដំណឹង</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">សង្កេតសម្លេង (0–10​0)</string>
     <string name="devices_volume_input_error">ប័កដំលែកត្រងលេខ %1$d ណិង %2$d</string>
     <string name="devices_volume_input_caption">កម្រិតសំឡេងជាក់ស្តែងអាចបង្គត់ទៅជំហានដែលនៅជិតបំផុតដែលឧបករណ៍របស់អ្នកគាំទ្រ។</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">ចាក់សោ</string>
     <string name="devices_unlock_sliders_action">ដកច្សក់សោ</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">បង្ហាញស្ថានភាពការចាកសោសំឡេងសម្រាប់ឧបករណ៍ Bluetooth សក្ម</string>
     <string name="widget_no_device_label">គ្មានឧបករណ៍ភ្ជាប់</string>
     <string name="widget_bluetooth_off_label">Bluetooth បិត</string>
@@ -384,7 +368,7 @@
     <string name="widget_config_theme_green_label">បួតង</string>
     <string name="widget_config_theme_red_label">ក្រហម</string>
     <string name="widget_config_theme_custom_label">ផ្តាលខ្លួន</string>
-    <!-- Equalizer -->
+    <string name="eq_screen_title">តម្រង់ស្វនិង</string>
     <string name="eq_bands_label">បន្ទះ</string>
     <string name="eq_mini_graph_desc">បន្ទះ equalizer ដែលបានកំណត់</string>
     <string name="eq_enable_label">ប្រើ equalizer</string>

@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Iphutha</string>
     <string name="general_error_no_compatible_app_found_msg">Akukho nhlelo yokusebenza evumelana nayo etholakele ukuze isingatha lesisicelo.</string>
     <string name="general_share_action">Yabelana</string>
     <string name="general_back_action">Emuva</string>
     <string name="general_show_details_action">Bonisa imininingwane</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Wamukelwa ku-BVM</string>
     <string name="onboarding_welcome_message">I-Bluetooth Volume Manager ikuvumela ukuphatha amavolumu amadivayisi e-Bluetooth ngokuzenzakalelayo.</string>
     <string name="onboarding_welcome_action">Asiqale</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Ngadinga ukubhala kabusha uhlelo ukuze ngilandele izinguquko ze-Android nezidingo ze-Google. Ngenzelwe kabusha uhlelo lapho kunokwenzeka ukuqinisekisa ukuthi luqhubeka lusebenza ngokwethembeka.</string>
     <string name="onboarding_rewrite_features">Ezinye izici ziguqukile ngesikhathi sokubuyekeza. Sicela uhlole izilungiselelo zedivayisi yakho ukuqinisekisa ukuthi konke kulungiselwe ngendlela efanele.</string>
     <string name="onboarding_rewrite_action">Qhubeka</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">Wonke amadivayisi akho asebenzisana nawo aphathwa! Udinga elisha?</string>
     <string name="discover_pair_new_device_action">Hlanganisa idivayisi entsha</string>
     <string name="discover_device_speaker_desc">Isahluko sefowuni sayo. Umthwali waso usetshenziswa lapho umsindo ubuya efowunini, isibonelo, emva kokuthi isixwayiso sakho se-Bluetooth siqedele ukunxibelelana.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Ukucwaninga kwedivayisi</string>
     <string name="devices_device_config_remove_device_label">Libale idivayisi</string>
     <string name="devices_device_config_remove_device_action">Libala</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">Ixhunyiwe manje</string>
     <string name="devices_device_disabled_label">Idivayisi ivaliwe</string>
     <string name="devices_no_volumes_configured">Awekho amavolumu alungiselwe le divayisi. Thepha i-Configure ukusetha izintandokazi zamavolumu.</string>
-    <!-- Settings-->
     <string name="settings_label">Izilungiselelo</string>
     <string name="settings_category_other_label">Okunye</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">Okujwayelekile</string>
     <string name="general_settings_desc">Izilungiso ezijwayelekile ezithinta uhlelo lonke.</string>
     <string name="settings_category_ui_label">Isixhumi somsebenzisi</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">Ukushona kwelanga</string>
     <string name="ui_language_override_label">Ulimi lohlelo</string>
     <string name="ui_language_override_desc">Khetha ulimi oluhlukile lwe-BVM, oluzimele kulimi olukhokhelayo lesistem sakho.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Amadivayisi</string>
     <string name="devices_settings_desc">Izilungiselelo ezithinta wonke amadivayisi aphathwayo.</string>
     <string name="label_app_enabled">Uhlelo lukhona</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">Buka izinguquko</string>
     <string name="label_boot_restore">Buyisela ekuqaleni uma kuvulwa</string>
     <string name="description_boot_restore">Buyisela ivolumu ngemuva kokuqala/ukuqala kabusha uma idivayisi ye-Bluetooth ixhunyiwe.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Ukusekela</string>
     <string name="settings_support_description">Funda imibhalo, bika izinkinga, xoxa nabanye noma rekhoda amalogi okuphephisa iziphazamiso.</string>
     <string name="settings_support_wiki_label">Imibhalo</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Misa noma kunjalo</string>
     <string name="settings_support_discord_label">I-Discord</string>
     <string name="settings_support_discord_description">Indawo yokuzijabulisa futhi ubuze imibuzo.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Ukubonga</string>
     <string name="settings_acknowledgements_description">Izimvume, amalasensi, nezibongo ezikhethekile</string>
     <string name="settings_acks_translation_header">Ukuhumusha</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">Inqubomgomo yobumfihlo</string>
     <string name="settings_privacy_policy_desc">Ukuphatha idatha ngokufanele.</string>
     <string name="changelog_label">Uhlu lwezinguquko</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Ukuhlela Ngokusemva &amp; Ukubuyisela</string>
     <string name="backup_restore_settings_desc">Hlela ngokusemva bese ubuyisela izilungiselelo zedivayisi yakho nezilungiselelo.</string>
     <string name="backup_restore_screen_title">Ukuhlela Ngokusemva &amp; Ukubuyisela</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">Isipele sidalwe — amadivayisi angu-%1$d asindiswe.</string>
     <string name="backup_restore_success_restore">Ukubuyisela kuqediwe — amadivayisi angu-%1$d abuyiselwe, angu-%2$d agcagcwe.</string>
     <string name="backup_restore_version_warning">Lesi sipele sidalwe ngoguqulo lwa-%1$s. Usebenzisa inguqulo %2$s. Ezinye izilungiselelo zingeke zibuyiselwe kahle.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Ilogi lokuphephisa iziphazamiso</string>
     <string name="debug_log_consent_explanation">Lesi sici sirekhoda konke okwenziwa yi-app kufayela elingabelwana. Ifayela elenziwe liqukethe ulwazi olubucayi (isib. amagama amafayela nezinhlelo zokusebenza ezifakiwe). Yabelane nalo kuphela nezinhlangothi ezithembekile (isib. umthuthukisi oxazulula inkinga).</string>
     <string name="debug_log_record_action">Qopha</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">Lahla</string>
     <string name="debug_log_screen_keep_action">Gcina</string>
     <string name="debug_log_file_label">Ifayela lomvala olurekhodewe</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">I-log ithunyelwe?</string>
     <string name="support_debuglog_sent_message">Uma uthumele i-debug log, ingasuswa kudivayisi. Ungathanda ukuyisusa?</string>
     <string name="support_debuglog_session_delete_title">Susa i-debug log?</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">I-ZIP yehlulekile</string>
     <string name="support_debuglog_clear_title">Susa wonke ama-debug log?</string>
     <string name="support_debuglog_clear_message">Lokhu kuzosusa ngokuphelele zonke izingxenye ze-debug log ezigcinwe.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Xhumana nomthuthuki</string>
     <string name="settings_support_contact_desc">Gcwalisa ifomu ukuthumela umthuthuki i-imeyili.</string>
     <string name="contact_screen_title">Xhumana nomthuthuki</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">Ngifunda wonke umyalezo mina ngokwami futhi ngizama kakhulu ukuphendula, kodwa ngoba ngisebenza ngokuwodwa, kungathatha isikhathi esincane. Ngiyabonga ngesineke sakho.</string>
     <string name="contact_footer_msg">Umyalezo wakho uzothumelwa nge-imeyili. Ulwazi lwedivayisi nokusethwa kunamathiselwa ngokuzenzakalelayo.</string>
     <string name="contact_no_email_app_msg">Akukho uhlelo lwe-imeyili oLutholakele kule divayisi.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Ama-debug log agcinwe</string>
     <string name="settings_support_stored_logs_desc">Izingxenye %1$d (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Awekho ama-debug log agcinwe</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">I-Bluetooth ikhubaziwe.</string>
     <string name="title_bluetooth_is_off">I-Bluetooth ivaliwe</string>
     <string name="action_enable_bluetooth">Vula i-Bluetooth</string>
+    <string name="title_monitoring_is_off">Umonithoring Uvaliwe</string>
+    <string name="description_monitoring_is_disabled">I-BlueMusic ayilingani ekuxhunyaniseni kwe-Bluetooth noma ekushintsheni komthwalo wezwi. Amavoli alilondolozwe, imikhawulo kanye nezikhali akusetshenziswa ngokuzenzakalelayo.</string>
+    <string name="action_enable_monitoring">Vula imonithori</string>
     <string name="title_bluetooth_permission_required">Kudingeka Imvume ye-Bluetooth</string>
     <string name="description_bluetooth_permission_required">Lolu hlelo ludinga imvume ye-Bluetooth ukuphatha amavolumu edivayisi yakho.</string>
     <string name="action_grant_permission">Nikeza Imvume</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">Ungathanda ukushiyela i-BVM ukubuyekeza? ❤️</string>
     <string name="review_app_review_action">Buyekeza</string>
     <string name="review_app_dismiss_action">Mhlawumbe kamuva</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">Azikho Izidivayisi</string>
     <string name="bluemusic_mascot_description">Isithonjana Sohlelo</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Khetha Izinhlelo</string>
     <string name="devices_app_selection_search_hint">Sesha izinhlelo...</string>
     <string name="devices_app_selection_selected_count">Izinhlelo ezikhethi %d</string>
     <string name="general_navigate_back_action">Buyela emuva</string>
     <string name="general_reset_action">Setha kabusha</string>
     <string name="general_clear_action">Sula</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Vala</string>
     <string name="devices_indicator_awake">Phapheme</string>
     <string name="devices_indicator_nudge">Chukumisa</string>
     <string name="devices_indicator_observe">Buka</string>
     <string name="devices_indicator_disconnect">Nqamula</string>
     <string name="devices_indicator_limit">Maweza</string>
+    <string name="devices_indicator_volume_range">Ibanga</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Ukukhulisa</string>
     <string name="devices_indicator_home">Ikhaya</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Isaziso</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Ivolumu (0–100)</string>
     <string name="devices_volume_input_error">Faka inani phakathi kuka-%1$d no-%2$d</string>
     <string name="devices_volume_input_caption">Umsindo wangempela ungakhethwa kusigaba esiseduze kakhulu idivayisi yakho esisekela sona.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Vala</string>
     <string name="devices_unlock_sliders_action">Vula</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Ibonisa isimo sokukhiya kwamazwi sedivayisi ye-Bluetooth esebenzayo</string>
     <string name="widget_no_device_label">Akukho divayisi exhunyiwe</string>
     <string name="widget_bluetooth_off_label">I-Bluetooth ivaliwe</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">Uhlaza</string>
     <string name="widget_config_theme_red_label">Obomvu</string>
     <string name="widget_config_theme_custom_label">Okulungiswe ngokwezifiso</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">I-Equalizer</string>
     <string name="eq_bands_label">Ibhendi</string>
     <string name="eq_mini_graph_desc">Ibhendi ye-equalizer elungiselele</string>

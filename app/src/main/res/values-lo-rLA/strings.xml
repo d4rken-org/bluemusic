@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">ຜິດພາດ</string>
     <string name="general_error_no_compatible_app_found_msg">ບໍ່ພົບແອັບທີ່ເຂົ້າກັນໄດ້ເພື່ອຈັດການຄຳຮ້ອງຂໍນີ້.</string>
     <string name="general_share_action">ແບ່ງປັນ</string>
     <string name="general_back_action">ກັບຄືນ</string>
     <string name="general_show_details_action">ສະແດງລາຍລະອຽດ</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">ຍິນດີຕ້ອນຮັບສູ່ BVM</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager ຊ່ວຍໃຫ້ທ່ານຈັດການລະດັບສຽງຂອງອຸປະກອນ Bluetooth ໂດຍອັດຕະໂນມັດ.</string>
     <string name="onboarding_welcome_action">ໄປເລີຍ</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">ຂ້ອຍຕ້ອງຂຽນແອັບໃໝ່ເພື່ອຮອງຮັບການປ່ຽນແປງຂອງ Android ແລະ ຂໍ້ກຳນົດຂອງ Google. ຂ້ອຍໄດ້ປັບໃຫ້ທັນສະໄໝທຸກຈຸດທີ່ເປັນໄປໄດ້ ເພື່ອໃຫ້ແອັບຍັງໃຊ້ງານໄດ້ຢ່າງໝັ້ນໃຈ.</string>
     <string name="onboarding_rewrite_features">ບາງຟີເຈີໄດ້ປ່ຽນແປງໃນລະຫວ່າງການອັບເດດ. ກະລຸນາກວດສອບການຕັ້ງຄ່າອຸປະກອນຂອງທ່ານເພື່ອໃຫ້ທຸກຢ່າງຖືກຕັ້ງຄ່າຢ່າງຖືກຕ້ອງ.</string>
     <string name="onboarding_rewrite_action">ສືບຕໍ່</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">ອຸປະກອນທີ່ຈັບຄູ່ທັງໝົດຂອງທ່ານຖືກຈັດການແລ້ວ! ຕ້ອງການໃໝ່ບໍ?</string>
     <string name="discover_pair_new_device_action">ຈັບຄູ່ອຸປະກອນໃໝ່</string>
     <string name="discover_device_speaker_desc">ລຳໂພງຂອງໂທລະສັບນີ້ເອງ. ລະດັບສຽງຂອງມັນຖືກໃຊ້ໃນເວລາທີ່ສຽງກັບຄືນສູ່ໂທລະສັບ, ຕົວຍ່າງ ໜຼັງຈາກທີ່ອຸປະກອນ Bluetooth ຂອງທ່ານຕັດການເຊື່ອມຕໍ່.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">ການຕັ້ງຄ່າອຸປະກອນ</string>
     <string name="devices_device_config_remove_device_label">ລືມອຸປະກອນ</string>
     <string name="devices_device_config_remove_device_action">ລືມ</string>
@@ -37,6 +32,7 @@
     <string name="devices_device_config_rename_device_action">ເປລີ່ຍຊື່</string>
     <string name="devices_device_config_enabled_label">ເອີນໃຊ້ງານ</string>
     <string name="devices_device_config_enabled_desc">ຕອບສນອງຕ່ອອຸປະກອນນີ້ເມື່ອຕ່ອ</string>
+    <string name="devices_device_config_equalizer_label">ອີຄວາໄລເຊີ</string>
     <string name="devices_device_config_equalizer_desc">ປັບແຕ່ງແຖບອີຄິວອລາຍເຊີ ແລະ ການເພີ່ມສຽງດັງສຳລັບອຸປະກອນນີ້. ໃຊ້ໄດ້ສະເພາະກັບແອັບເພງທີ່ຮອງຮັບອີຄິວອລາຍເຊີລະບົບຂອງ Android ເທົ່ານັ້ນ.</string>
     <string name="devices_device_config_equalizer_boost_label">ການເພີ່ມສຽງດັງ: %1$s</string>
     <string name="devices_device_config_section_timing_label">ເວລາ</string>
@@ -150,10 +146,8 @@
     <string name="devices_currently_connected_label">ຕ່ອອຍູ່ໃນຂະນີ້</string>
     <string name="devices_device_disabled_label">ອຸປະກອນຖືກປິດໃຊ້ງານ</string>
     <string name="devices_no_volumes_configured">ບໍ່ມີລະດັບສຽງທີ່ຕັ້ງຄ່າສຳຫລັບອຸປະກອນນີ້. ກດ ຕັ້ງຄ່າ ເພື່ອຕັ້ງຄ່າຕາມຕ້ອງການຂອງລະດັບສຽງ.</string>
-    <!-- Settings-->
     <string name="settings_label">ການຕັ້ງຄ່າ</string>
     <string name="settings_category_other_label">ອື່ນໆ</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">ທົ່ວໄປ</string>
     <string name="general_settings_desc">ການປັບຕົວທົ່ວໄປທີ່ສົ່ງຜົນຕໍ່ແອັບທັງຫມົດ.</string>
     <string name="settings_category_ui_label">ການໂຕ້ຕອບຜູ້ໃຊ້</string>
@@ -175,7 +169,6 @@
     <string name="ui_theme_color_sunset_label">ສີຕະວັນຕົກ</string>
     <string name="ui_language_override_label">ພາສາແອັບ</string>
     <string name="ui_language_override_desc">ເລືອກພາສາອື່ນສଳຫລັບ BVM ໂດຍອິສສະຂອງພາສາເຣີ່ມຕ້ນແບບມັກຂອງລະບົບຂອງທ່ານ.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">ອຸປະກອນ</string>
     <string name="devices_settings_desc">ການຕັ້ງຄ່າທີ່ສ່ງຜລຕ່ອທຸກອຸປະກອນທີ່ຈັດການ.</string>
     <string name="label_app_enabled">ເອີນໃຊ້ງານແອັບ</string>
@@ -183,7 +176,6 @@
     <string name="label_volume_listener">ສັງເກດການປ່ຽນແປງ</string>
     <string name="label_boot_restore">ຄືນຄ່າຕອນເປີດເຣືອນ</string>
     <string name="description_boot_restore">ຄືນຄ່າລະດັບສຽງຫລັງຈາກການເປີດເຣືອນ/ເປີດເຣືອນໃໝ່ ຖ້າອຸປະກອນ Bluetooth ຕ່ອອຍູ່.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">ການສະໜັບສະໜູນ</string>
     <string name="settings_support_description">ອ່ານເອກະສານ, ລາຍງານບັນຫາ, ສົນທະນາກັບຄົນອື່ນ ຫຼື ບັນທຶກບັນທຶກ debug.</string>
     <string name="settings_support_wiki_label">ເອກະສານ</string>
@@ -197,7 +189,6 @@
     <string name="settings_support_debuglog_short_recording_stop">ຢຸດເທົ່ານັ້ນ</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">ສະຖານທີ່ສໍາລັບພັກຜ່ອນແລະຖາມຄໍາຖາມ.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">ການຮັບຮູ້</string>
     <string name="settings_acknowledgements_description">ເຄຣດິດ ໃບອະນຸຍາດໃຊ້ ແລະຂອບຄຸນພິເສດ</string>
     <string name="settings_acks_translation_header">ການແປພາສາ</string>
@@ -212,7 +203,6 @@
     <string name="settings_privacy_policy_label">ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ</string>
     <string name="settings_privacy_policy_desc">ການຈັດການຂໍ້ມູນຢ່າງມີຄວາມຮັບຜິດຊອບ.</string>
     <string name="changelog_label">ບັນຊີການປ່ຽນແປງ</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">ສຳຮອງ &amp; ກູ້ຄືນ</string>
     <string name="backup_restore_settings_desc">ສຳຮອງ ແລະ ກູ້ຄືນການຕັ້ງຄ່າ ແລະ ການຕັ້ງຄ່າອຸປະກອນຂອງທ່ານ.</string>
     <string name="backup_restore_screen_title">ສຳຮອງ &amp; ກູ້ຄືນ</string>
@@ -229,7 +219,6 @@
     <string name="backup_restore_success_backup">ສ້າງການສຳຮອງສຳເລັດ — ບັນທຶກ %1$d ອຸປະກອນແລ້ວ.</string>
     <string name="backup_restore_success_restore">ກູ້ຄືນສຳເລັດ — ກູ້ %1$d ອຸປະກອນ, ຂ້າມ %2$d.</string>
     <string name="backup_restore_version_warning">ການສຳຮອງນີ້ຖືກສ້າງດ້ວຍເວີຊັນ %1$s. ທ່ານກຳລັງໃຊ້ %2$s. ການຕັ້ງຄ່າບາງຢ່າງອາດກູ້ຄືນໄດ້ບໍ່ຖືກຕ້ອງ.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">ບັນທຶກ debug</string>
     <string name="debug_log_consent_explanation">ຄຸນສົມບັດນີ້ບັນທຶກທຸກສິ່ງທີ່ແອັບກຳລັງເຮັດໃສ່ໄຟລ໌ທີ່ສາມາດແບ່ງປັນໄດ້. ໄຟລ໌ທີ່ສ້າງຂຶ້ນມີຂໍ້ມູນທີ່ລະອຽດອ່ອນ (ເຊັ່ນ: ຊື່ໄຟລ໌ ແລະ ແອັບທີ່ຕິດຕັ້ງ). ແບ່ງປັນກັບພາກສ່ວນທີ່ເຊື່ອຖືໄດ້ເທົ່ານັ້ນ (ເຊັ່ນ: ນັກພັດທະນາທີ່ແກ້ໄຂບັນຫາ).</string>
     <string name="debug_log_record_action">ບັນທຳ6ກ</string>
@@ -246,7 +235,6 @@
     <string name="debug_log_screen_discard_action">ທິ້ງ</string>
     <string name="debug_log_screen_keep_action">ເກັບໄວ້</string>
     <string name="debug_log_file_label">ໄຟລ໌ບັນທຶກທີ່ບັນທຶກໄວ້</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">ສ່ງລຳ6ກແລ້ວບໍ?</string>
     <string name="support_debuglog_sent_message">ຖ້າທ່ານສ່ງລຳ6ກ debug ແລ້ວ ສາມາຖລົບມັນອອກຈາກອຸປະກອນໄດ້. ທ່ານຕ້ອງການລົບມັນບໍ?</string>
     <string name="support_debuglog_session_delete_title">ລົບລຳ6ກ debug ບໍ?</string>
@@ -259,7 +247,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP ລົ້ມເຫລວ</string>
     <string name="support_debuglog_clear_title">ລົບລຳ6ກ debug ທັງໝົດບໍ?</string>
     <string name="support_debuglog_clear_message">ອັນນີ້ຈະລົບລຳ0ບົບລຳ6ກ debug ทີ່ຖຳ6ກບັນທຳ6ກໄ4ວ້ທຳ1ງໝົດຢ່າງຖຳ2ວອນ.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">ຕິດຕ່ອຜູ້ພັດທນາ</string>
     <string name="settings_support_contact_desc">ກລອກແບົບແລ້ວສ່ງອີເມລໄປຫາຜູ້ພັດທນາ.</string>
     <string name="contact_screen_title">ຕິດຕ່ອຜູ້ພັດທນາ</string>
@@ -284,7 +271,6 @@
     <string name="contact_welcome_msg">ຂ້ອຍອ່ານທຸກຂໍ້ຄວາມດ້ວຍຕັວເອງ ແລະພະຍາຍຕອບສນອງເທົາທີ່ເປັນໄປໄດ້ ແຕ່เນື່ອງຂ້ອຍທຳງານຜູ້ເດີຍວ ມັນອາດໃຊ້ເວລາພອສມ. ຂອບຄຸນສଳຫລັບຄວາມເຂົ້າໃຈຂອງທ່ານ.</string>
     <string name="contact_footer_msg">ຂໍ້ຄວາມຂອງທ່ານຈະຖືກສ່ງຜ່ານອີເມລ. ຂໍ້ມູນອຸປະກອນແລະການຕັ້ງຄ່າຖືກແນບອັດຕາ.</string>
     <string name="contact_no_email_app_msg">ບໍ່ພົບແອັບອີເມລບນອຸປະກອນນີ້.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">ລຳ6ກ debug ทີ່ບັນທຳ6ກໄ4ວ້</string>
     <string name="settings_support_stored_logs_desc">%1$d ເຊດຊັ່ນ (%2$s)</string>
     <string name="settings_support_stored_logs_empty">ບໍ່ມີລຳ6ກ debug ທີ່ບັນທຳ6ກໄ4ວ້</string>
@@ -302,6 +288,9 @@
     <string name="description_bluetooth_is_disabled">Bluetooth ຖືກປິດ.</string>
     <string name="title_bluetooth_is_off">Bluetooth ປິດອຍູ່</string>
     <string name="action_enable_bluetooth">ໄ0ອີນ Bluetooth</string>
+    <string name="title_monitoring_is_off">ການກວດເບິ່ງປິດ</string>
+    <string name="description_monitoring_is_disabled">BlueMusic ບໍ່ຕອບສະໜອງຕໍ່ການເຊື່ອມຕໍ່ Bluetooth ຫຼືການປ່ຽນແປງລະດັບສຽງ. ລະດັບສຽງ, ຂີດຈໍາກັດ ແລະ ການລັອກທີ່ບັນທຶກໄວ້ຈະບໍ່ຖືກນໍາໃຊ້ອັດຕະໂນມັດ.</string>
+    <string name="action_enable_monitoring">ເປີດການກວດເບິ່ງ</string>
     <string name="title_bluetooth_permission_required">ຕ້ອງການສິດທິ່ Bluetooth</string>
     <string name="description_bluetooth_permission_required">ແອັບນີ້ຕ້ອງການສິດທິ່ Bluetooth ໄ0ພື່ອຈັດການລະດັບສຽງຂອງອຸປະກອນຂອງທ່ານ.</string>
     <string name="action_grant_permission">ມອບສິດທິ່</string>
@@ -338,36 +327,31 @@
     <string name="review_app_body">ທ່ານຈະໃຫ້ຄຳເຫັນໃຫ້ BVM ບໍ? ❤️</string>
     <string name="review_app_review_action">ຄຳເຫັນ</string>
     <string name="review_app_dismiss_action">ບາງທີພາຍຫຼັງ</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">ບໍ່ມີອຸປະກອນ</string>
     <string name="bluemusic_mascot_description">ໄອຄອນແອັບ</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">ໄ0ລືອກໄ1ອັບ</string>
     <string name="devices_app_selection_search_hint">ຄ້ນຫາໄ1ອັບ...</string>
     <string name="devices_app_selection_selected_count">ໄ0ລືອກ %d ໄ1ອັບໄ1ລ້ວ</string>
     <string name="general_navigate_back_action">ນຳທາງກັບຄືນ</string>
     <string name="general_reset_action">ຣີເຊັດ</string>
     <string name="general_clear_action">ລົບລ້າງ</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">ຖົງ</string>
     <string name="devices_indicator_awake">ຕື່ນຕ຺ພົນ</string>
     <string name="devices_indicator_nudge">ນຸດ</string>
     <string name="devices_indicator_observe">ສັງເກດ</string>
     <string name="devices_indicator_disconnect">ຕັດການຕ່ອ</string>
     <string name="devices_indicator_limit">ຈຳກັດ</string>
+    <string name="devices_indicator_volume_range">ຊ່ວງ</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">ເພີ່ມສຽງ</string>
     <string name="devices_indicator_home">ຫນ້າຫລັກ</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">ການແຈ້ເຕືອນ</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">ລະດັບສຽງ (0–100)</string>
     <string name="devices_volume_input_error">ປ້ອນຄ່າລະຫວ່າງ %1$d ແລະ %2$d</string>
     <string name="devices_volume_input_caption">ລະດັບສຽງຕົວຈິງອາດຈະປັດເປີ່ນເຂ້າໝູ້ຂັ້ນທີ່ໃກ້ທີ່ສຸດທີ່ອຸປະກອນຂອງທ່ານຮອງຮັບ.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">ລັອກ</string>
     <string name="devices_unlock_sliders_action">ປໝດລັອກ</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">ສະແດງສະຖານະການລັອກລະດັບສຽງສຳຫຼັບອຸປະກອນ Bluetooth ທີ່ໃຊ້ງານຢູ່</string>
     <string name="widget_no_device_label">ບໍ່ມີອຸປະກອນເຊື່ອມຕໍ່</string>
     <string name="widget_bluetooth_off_label">Bluetooth ປິດຢູ່</string>
@@ -384,7 +368,7 @@
     <string name="widget_config_theme_green_label">ສີຂຽວ</string>
     <string name="widget_config_theme_red_label">ສີແດງ</string>
     <string name="widget_config_theme_custom_label">ກຳນົດເອງ</string>
-    <!-- Equalizer -->
+    <string name="eq_screen_title">ອີຄວາໄລເຊີ</string>
     <string name="eq_bands_label">ແຖບ</string>
     <string name="eq_mini_graph_desc">ແຖບອີຄິວອລາຍເຊີທີ່ຕັ້ງຄ່າໄວ້</string>
     <string name="eq_enable_label">ໃຊ້ອີຄິວອລາຍເຊີ</string>

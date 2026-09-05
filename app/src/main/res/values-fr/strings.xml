@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Gestionnaire de volume Bluetooth</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Erreur</string>
     <string name="general_error_no_compatible_app_found_msg">Aucune application compatible trouvée pour traiter cette demande.</string>
     <string name="general_share_action">Partager</string>
     <string name="general_back_action">Retour</string>
     <string name="general_show_details_action">Afficher les détails</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Bienvenue dans BVM</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager vous permet de gérer automatiquement les volumes des périphériques Bluetooth.</string>
     <string name="onboarding_welcome_action">C\'est parti</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">J\'ai dû réécrire l\'application pour suivre les changements d\'Android et les exigences de Google. J\'ai modernisé l\'application là où c\'était possible pour garantir qu\'elle continue de fonctionner de manière fiable.</string>
     <string name="onboarding_rewrite_features">Certaines fonctionnalités ont changé pendant la mise à jour. Veuillez vérifier les paramètres de vos appareils pour vous assurer que tout est configuré correctement.</string>
     <string name="onboarding_rewrite_action">Continuer</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">Tous vos appareils appairés sont gérés ! Besoin d\'un nouveau ?</string>
     <string name="discover_pair_new_device_action">Appairer un nouvel appareil</string>
     <string name="discover_device_speaker_desc">Le haut-parleur propre de ce téléphone. Ses volumes sont appliqués lorsque l\'audio revient au téléphone, par exemple après la déconnexion de votre appareil Bluetooth.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Configuration du périphérique</string>
     <string name="devices_device_config_remove_device_label">Oublier le périphérique</string>
     <string name="devices_device_config_remove_device_action">Oublier</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">Actuellement connecté</string>
     <string name="devices_device_disabled_label">Périphérique désactivé</string>
     <string name="devices_no_volumes_configured">Aucun volume configuré pour ce périphérique. Appuyez sur Configurer pour définir les préférences de volume.</string>
-    <!-- Settings-->
     <string name="settings_label">Paramètres</string>
     <string name="settings_category_other_label">Autres</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">Général</string>
     <string name="general_settings_desc">Peaufinages généraux qui affectent l’ensemble de l’appli.</string>
     <string name="settings_category_ui_label">Interface utilisateur</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">Coucher de soleil</string>
     <string name="ui_language_override_label">Langue de l’appli</string>
     <string name="ui_language_override_desc">Sélectionnez une langue différente pour BVM, indépendamment de la langue par défaut de votre système.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Périphériques</string>
     <string name="devices_settings_desc">Paramètres qui affectent tous les périphériques gérés.</string>
     <string name="label_app_enabled">Activation et désactivation de l\'appli</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">Observer les changements</string>
     <string name="label_boot_restore">Restaurer au démarrage</string>
     <string name="description_boot_restore">Restaurer le volume après démarrage ou redémarrage si un périphérique Bluetooth est connecté.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Assistance</string>
     <string name="settings_support_description">Lire la documentation, signaler des problèmes, discuter avec d\'autres ou enregistrer des journaux de débogage.</string>
     <string name="settings_support_wiki_label">Documentation</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Arrêter quand même</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Un endroit pour se retrouver et poser des questions.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Remerciements</string>
     <string name="settings_acknowledgements_description">Crédits, licences et remerciements spéciaux</string>
     <string name="settings_acks_translation_header">Traduction</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">Politique de confidentialité</string>
     <string name="settings_privacy_policy_desc">Gérer les données de manière responsable.</string>
     <string name="changelog_label">Historique des modifications</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Sauvegarde &amp; Restauration</string>
     <string name="backup_restore_settings_desc">Sauvegardez et restaurez les configurations de vos appareils et vos paramètres.</string>
     <string name="backup_restore_screen_title">Sauvegarde &amp; Restauration</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">Sauvegarde créée — %1$d appareils enregistrés.</string>
     <string name="backup_restore_success_restore">Restauration terminée — %1$d appareils restaurés, %2$d ignorés.</string>
     <string name="backup_restore_version_warning">Cette sauvegarde a été créée avec la version %1$s. Vous utilisez la version %2$s. Certains paramètres peuvent ne pas être restaurés correctement.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Journal de débogage</string>
     <string name="debug_log_consent_explanation">Cette fonctionnalité enregistre tout ce que fait l\'application dans un fichier partageable. Le fichier généré contient des informations sensibles (par exemple, noms de fichiers et applications installées). Ne le partagez qu\'avec des parties de confiance (par exemple, un développeur résolvant un problème).</string>
     <string name="debug_log_record_action">Enregistrer</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">Supprimer</string>
     <string name="debug_log_screen_keep_action">Conserver</string>
     <string name="debug_log_file_label">Fichier journal enregistré</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Journal envoyé ?</string>
     <string name="support_debuglog_sent_message">Si vous avez envoyé le journal de débogage, il peut être supprimé de l\'appareil. Voulez-vous le supprimer ?</string>
     <string name="support_debuglog_session_delete_title">Supprimer le journal de débogage ?</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">Échec du ZIP</string>
     <string name="support_debuglog_clear_title">Supprimer tous les journaux de débogage ?</string>
     <string name="support_debuglog_clear_message">Ceci supprimera définitivement toutes les sessions de journaux de débogage enregistrées.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Contacter le développeur</string>
     <string name="settings_support_contact_desc">Remplissez un formulaire pour envoyer un e-mail au développeur.</string>
     <string name="contact_screen_title">Contacter le développeur</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">Je lis chaque message moi-même et fais de mon mieux pour répondre, mais comme je travaille seul, cela peut prendre un peu de temps. Merci de votre patience.</string>
     <string name="contact_footer_msg">Votre message sera envoyé par e-mail. Les informations sur l\'appareil et la configuration sont jointes automatiquement.</string>
     <string name="contact_no_email_app_msg">Aucune application e-mail trouvée sur cet appareil.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Journaux de débogage enregistrés</string>
     <string name="settings_support_stored_logs_desc">%1$d sessions (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Aucun journal de débogage enregistré</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">Bluetooth est désactivé.</string>
     <string name="title_bluetooth_is_off">Bluetooth est désactivé</string>
     <string name="action_enable_bluetooth">Activer Bluetooth</string>
+    <string name="title_monitoring_is_off">Suivi désactivé</string>
+    <string name="description_monitoring_is_disabled">BlueMusic ne réagit pas aux connexions Bluetooth ou aux changements de volume. Les volumes, limites et verrous enregistrés ne sont pas appliqués automatiquement.</string>
+    <string name="action_enable_monitoring">Activer le suivi</string>
     <string name="title_bluetooth_permission_required">Permission Bluetooth requise</string>
     <string name="description_bluetooth_permission_required">Cette application nécessite la permission Bluetooth pour gérer les volumes de vos périphériques.</string>
     <string name="action_grant_permission">Accorder la permission</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">Voudrais-tu évaluer BVM ? ❤️</string>
     <string name="review_app_review_action">Évaluation</string>
     <string name="review_app_dismiss_action">Plus tard, peut-être</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">Aucun périphérique</string>
     <string name="bluemusic_mascot_description">Icône de l\'application</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Sélectionner les applis</string>
     <string name="devices_app_selection_search_hint">Rechercher des applis…</string>
     <string name="devices_app_selection_selected_count">%d applis sélectionnées</string>
     <string name="general_navigate_back_action">Retour</string>
     <string name="general_reset_action">Réinitialiser</string>
     <string name="general_clear_action">Effacer</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Verrouillé</string>
     <string name="devices_indicator_awake">Éveillé</string>
     <string name="devices_indicator_nudge">Ajustement</string>
     <string name="devices_indicator_observe">Observer</string>
     <string name="devices_indicator_disconnect">Déconnecter</string>
     <string name="devices_indicator_limit">Limiter</string>
+    <string name="devices_indicator_volume_range">Plage</string>
     <string name="devices_indicator_eq">ÉQ</string>
     <string name="devices_indicator_boost">Boost</string>
     <string name="devices_indicator_home">Accueil</string>
     <string name="devices_indicator_dnd">NPD</string>
     <string name="devices_indicator_alert">Alerte</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volume (0–100)</string>
     <string name="devices_volume_input_error">Saisissez une valeur entre %1$d et %2$d</string>
     <string name="devices_volume_input_caption">Le volume réel peut être arrondi à l’étape la plus proche que votre appareil prend en charge.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Verrouiller</string>
     <string name="devices_unlock_sliders_action">Déverrouiller</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Affiche l’état du verrou de volume pour l’appareil Bluetooth actif</string>
     <string name="widget_no_device_label">Aucun appareil connecté</string>
     <string name="widget_bluetooth_off_label">Le Bluetooth est désactivé</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">Vert</string>
     <string name="widget_config_theme_red_label">Rouge</string>
     <string name="widget_config_theme_custom_label">Personnalisée</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">Égaliseur</string>
     <string name="eq_bands_label">Bandes</string>
     <string name="eq_mini_graph_desc">Bandes de l\'égaliseur configurées</string>

@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">مدیر صدای بلوتوث</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">خطا</string>
     <string name="general_error_no_compatible_app_found_msg">هیچ برنامه سازگاری برای رسیدگی به این درخواست یافت نشد.</string>
     <string name="general_share_action">اشتراک</string>
     <string name="general_back_action">برگشت</string>
     <string name="general_show_details_action">نمایش جزئیات</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">به BVM خوش آمدید</string>
     <string name="onboarding_welcome_message">مدیر صدای بلوتوث به شما امکان می‌دهد صدای دستگاه‌های بلوتوث را به صورت خودکار مدیریت کنید.</string>
     <string name="onboarding_welcome_action">بزن بریم</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">مجبور شدم برنامه را برای سازگاری با تغییرات اندروید و الزامات گوگل بازنویسی کنم. تا جایی که ممکن بود برنامه را مدرن کردم تا عملکرد پایداری داشته باشد.</string>
     <string name="onboarding_rewrite_features">برخی ویژگی‌ها در طول به‌روزرسانی تغییر کرده‌اند. لطفاً تنظیمات دستگاه خود را بررسی کنید تا همه چیز درست پیکربندی شده باشد.</string>
     <string name="onboarding_rewrite_action">ادامه</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">همه دستگاه‌های جفت‌شده شما مدیریت می‌شوند! به یکی جدید نیاز دارید؟</string>
     <string name="discover_pair_new_device_action">جفت کردن دستگاه جدید</string>
     <string name="discover_device_speaker_desc">بلندگوی خود این تلفن. صدای آن زمانی اعمال می‌شود که صدا به تلفن بازگردد، مثلاً بعد از قطع اتصال دستگاه بلوتوث شما.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">پیکربندی دستگاه</string>
     <string name="devices_device_config_remove_device_label">فراموش کردن دستگاه</string>
     <string name="devices_device_config_remove_device_action">فراموش کن</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">در حال اتصال</string>
     <string name="devices_device_disabled_label">دستگاه غیرفعال</string>
     <string name="devices_no_volumes_configured">هیچ صدایی برای این دستگاه تنظیم نشده. برای تنظیم ترجیحات صدا، روی پیکربندی ضربه بزنید.</string>
-    <!-- Settings-->
     <string name="settings_label">تنظیمات</string>
     <string name="settings_category_other_label">بقیه</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">عمومی</string>
     <string name="general_settings_desc">تغییرات عمومی که بر کل برنامه تأثیر می‌گذارد.</string>
     <string name="settings_category_ui_label">رابط کاربری</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">غروب</string>
     <string name="ui_language_override_label">زبان برنامه</string>
     <string name="ui_language_override_desc">انتخاب زبان دیگری برای BVM، جدا از زبان پیش‌فرض سیستم.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">دستگاه‌ها</string>
     <string name="devices_settings_desc">تنظیماتی که بر همه دستگاه‌های مدیریت‌شده تأثیر می‌گذارد.</string>
     <string name="label_app_enabled">برنامه فعال</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">پایش تغییرات</string>
     <string name="label_boot_restore">بازیابی پس از راه‌اندازی</string>
     <string name="description_boot_restore">بازیابی صدا پس از راه‌اندازی/راه‌اندازی مجدد در صورت اتصال دستگاه بلوتوث.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">پشتیبانی</string>
     <string name="settings_support_description">مطالعه مستندات، گزارش مشکلات، چت با دیگران یا ضبط گزارش‌های اشکال.</string>
     <string name="settings_support_wiki_label">مستندات</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">هرحال توقف</string>
     <string name="settings_support_discord_label">دیسکورد</string>
     <string name="settings_support_discord_description">یک مکان برای وقت گذرانی و پرسش سوالات.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">سپاسگزاری‌ها</string>
     <string name="settings_acknowledgements_description">اعتبارات، مجوزها و تشکر ویژه</string>
     <string name="settings_acks_translation_header">ترجمه</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">سیاست حفظ حریم خصوصی</string>
     <string name="settings_privacy_policy_desc">رعایت مسئولانه داده‌ها.</string>
     <string name="changelog_label">گزارش تغییرات</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">پشتیبان‌گیری و بازیابی</string>
     <string name="backup_restore_settings_desc">از تنظیمات و پیکربندی‌های دستگاه‌هایتان پشتیبان بگیرید و آن‌ها را بازیابی کنید.</string>
     <string name="backup_restore_screen_title">پشتیبان‌گیری و بازیابی</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">پشتیبان ایجاد شد — %1$d دستگاه ذخیره شد.</string>
     <string name="backup_restore_success_restore">بازیابی کامل شد — %1$d دستگاه بازیابی شد، %2$d نادیده گرفته شد.</string>
     <string name="backup_restore_version_warning">این پشتیبان با نسخه %1$s ایجاد شده. شما نسخه %2$s را اجرا می‌کنید. ممکن است برخی تنظیمات به درستی بازیابی نشوند.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">گزارش خطاء</string>
     <string name="debug_log_consent_explanation">این ویژگی هر کاری را که برنامه انجام می دهد در یک فایل قابل اشتراک گذاری ثبت می کند. فایل تولید شده حاوی اطلاعات حساس است (مانند نام فایل ها و برنامه های نصب شده). آن را فقط با اشخاص مورد اعتماد به اشتراک بگذارید (مثلاً برنامه‌نویسی که در حال عیب‌یابی یک مشکل است).</string>
     <string name="debug_log_record_action">یادداشت</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">صرف‌نظر کردن</string>
     <string name="debug_log_screen_keep_action">نگه دار</string>
     <string name="debug_log_file_label">فایل گزارش خطا ظبط شده</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">گزارش فرستاده شد؟</string>
     <string name="support_debuglog_sent_message">اگر گزارش باگشناسی را فرستادید، از دستگاه حذف شود. آیا می‌خواهید آن را حذف کنید؟</string>
     <string name="support_debuglog_session_delete_title">حذف گزارش باگشناسی؟</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP ناموفق</string>
     <string name="support_debuglog_clear_title">حذف همه گزارش‌های باگشناسی؟</string>
     <string name="support_debuglog_clear_message">این کار همه جلسات گزارش باگشناسی ذخیره‌شده را به طور دائمی حذف خواهد کرد.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">تماس با دولوپر</string>
     <string name="settings_support_contact_desc">پر کردن یک فرم برای ارسال ایمیل به دولوپر.</string>
     <string name="contact_screen_title">تماس با دولوپر</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">هر پیامی را خودم می‌خوانم و تمام تلاشم را می‌کنم جواب بدهم، اما چون تنها کار می‌کنم، ممکنه کمی طول بکشه. ممنون صبرت.</string>
     <string name="contact_footer_msg">پیام شما از طریق ایمیل فرستاده خواهد شد. اطلاعات دستگاه و تنظیمات به صورت خودکار پیوست می‌شوند.</string>
     <string name="contact_no_email_app_msg">هیچ برنامه ایمیلی روی این دستگاه یافت نشد.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">گزارش‌های باگشناسی ذخیره‌شده</string>
     <string name="settings_support_stored_logs_desc">%1$d جلسه (%2$s)</string>
     <string name="settings_support_stored_logs_empty">گزارش باگشناسی ذخیره‌شده‌ای وجود ندارد</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">بلوتوث غیرفعال است.</string>
     <string name="title_bluetooth_is_off">بلوتوث خاموش است</string>
     <string name="action_enable_bluetooth">فعال‌سازی بلوتوث</string>
+    <string name="title_monitoring_is_off">نظارت خاموش است</string>
+    <string name="description_monitoring_is_disabled">بلوماسیک به اتصالات بلوتوث یا تغییرات صدا واکنشی نشان نمی‌دهد. سطح صدای ذخیره‌شده، محدودیت‌ها و قفل‌ها به‌طور خودکار اعمال نمی‌شوند.</string>
+    <string name="action_enable_monitoring">فعال‌کردن نظارت</string>
     <string name="title_bluetooth_permission_required">نیاز به مجوز بلوتوث</string>
     <string name="description_bluetooth_permission_required">این برنامه برای مدیریت صدای دستگاه‌ها به مجوز بلوتوث نیاز دارد.</string>
     <string name="action_grant_permission">اعطای مجوز</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">آیا می خواهید نظری برای BVM بگذارید؟ ❤️</string>
     <string name="review_app_review_action">مرور</string>
     <string name="review_app_dismiss_action">شاید بعداً</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">هیچ دستگاهی</string>
     <string name="bluemusic_mascot_description">آیکون برنامه</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">انتخاب برنامه‌ها</string>
     <string name="devices_app_selection_search_hint">جستجوی برنامه‌ها…</string>
     <string name="devices_app_selection_selected_count">%d برنامه انتخاب شده</string>
     <string name="general_navigate_back_action">بازگشت</string>
     <string name="general_reset_action">بازنشانی</string>
     <string name="general_clear_action">پاک کردن</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">قفل</string>
     <string name="devices_indicator_awake">بیدار</string>
     <string name="devices_indicator_nudge">تنظیم لمسی</string>
     <string name="devices_indicator_observe">نظارت</string>
     <string name="devices_indicator_disconnect">قطع اتصال</string>
     <string name="devices_indicator_limit">محدودیت</string>
+    <string name="devices_indicator_volume_range">محدوده</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">افزایش</string>
     <string name="devices_indicator_home">خانه</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">هشدار</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">صدا (0–100)</string>
     <string name="devices_volume_input_error">یک مقدار بین %1$d و %2$d وارد کنید</string>
     <string name="devices_volume_input_caption">میزان واقعی صدا ممکن است به نزدیک‌ترین گام پشتیبانی‌شده توسط دستگاهتان گرد شود.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">قفل کن</string>
     <string name="devices_unlock_sliders_action">باز کن</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">وضعیت قفل صدا برای دستگاه بلوتوث فعال را نشان می‌دهد</string>
     <string name="widget_no_device_label">هیچ دستگاهی متصل نیست</string>
     <string name="widget_bluetooth_off_label">بلوتوث خاموش است</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">سبز</string>
     <string name="widget_config_theme_red_label">قرمز</string>
     <string name="widget_config_theme_custom_label">سفارشی</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">اکوالایزر</string>
     <string name="eq_bands_label">باندها</string>
     <string name="eq_mini_graph_desc">باندهای پیکربندی‌شده اکولایزر</string>

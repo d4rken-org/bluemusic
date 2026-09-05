@@ -2,15 +2,12 @@
 <resources>
     <string name="app_name">Bluetooth Volumbehandler</string>
     <string name="app_name_short">BVM</string>
-    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
-    <!-- General -->
     <string name="general_error_label">Feil</string>
     <string name="general_error_no_compatible_app_found_msg">Ingen kompatibel app funnet for å håndtere denne forespørselen.</string>
     <string name="general_share_action">Del</string>
     <string name="general_back_action">Tilbake</string>
     <string name="general_show_details_action">Vis detaljer</string>
-    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Velkommen til BVM</string>
     <string name="onboarding_welcome_message">Bluetooth Volumbehandler lar deg administrere Bluetooth-enhetsvolumet automatisk.</string>
     <string name="onboarding_welcome_action">La oss begynne</string>
@@ -25,11 +22,9 @@
     <string name="onboarding_rewrite_message">Jeg har fullstendig bygd om Bluetooth Volumbehandler fra bunnen av på grunn av Android-endringer og Google-krav for å sikre at appen fortsetter å fungere pålitelig.</string>
     <string name="onboarding_rewrite_features">Noen enhetsinnstillinger kan ha blitt tilbakestilt under denne oppdateringen. Sjekk enhetskonfigurasjonene dine.</string>
     <string name="onboarding_rewrite_action">Fortsett</string>
-    <!-- Discover -->
     <string name="discover_all_devices_managed_msg">Alle de parkoblede enhetene dine håndteres allerede! Trenger du en ny en?</string>
     <string name="discover_pair_new_device_action">Koble til ny enhet</string>
     <string name="discover_device_speaker_desc">Denne telefonens egen høyttaler. Volumene brukes når lyden byttes tilbake til telefonen, f.eks. etter at Bluetooth-enheten din kobles fra.</string>
-    <!-- Devices -->
     <string name="devices_device_config_label">Enhetskonfigurasjon</string>
     <string name="devices_device_config_remove_device_label">Glem enhet</string>
     <string name="devices_device_config_remove_device_action">Glem</string>
@@ -152,10 +147,8 @@
     <string name="devices_currently_connected_label">Nå tilkoblet</string>
     <string name="devices_device_disabled_label">Enhet deaktivert</string>
     <string name="devices_no_volumes_configured">Ingen volumer konfigurert for denne enheten. Trykk Konfigurer for å sette opp voluminnstillinger.</string>
-    <!-- Settings-->
     <string name="settings_label">Innstillinger</string>
     <string name="settings_category_other_label">Annet</string>
-    <!-- Settings/General-->
     <string name="general_settings_label">Generelt</string>
     <string name="general_settings_desc">Generelle justeringer som påvirker hele appen.</string>
     <string name="settings_category_ui_label">Brukergrensesnitt</string>
@@ -177,7 +170,6 @@
     <string name="ui_theme_color_sunset_label">Solnedgang</string>
     <string name="ui_language_override_label">App-språk</string>
     <string name="ui_language_override_desc">Velg et annet språk for BVM, uavhengig av systemets standardspråk.</string>
-    <!-- Settings/Devices-->
     <string name="devices_settings_label">Enheter</string>
     <string name="devices_settings_desc">Innstillinger som påvirker alle administrerte enheter.</string>
     <string name="label_app_enabled">App aktivert</string>
@@ -185,7 +177,6 @@
     <string name="label_volume_listener">Observer endringer</string>
     <string name="label_boot_restore">Gjenopprett på oppstart</string>
     <string name="description_boot_restore">Gjenopprett volum etter oppstart/omstart hvis en Bluetooth-enhet er tilkoblet.</string>
-    <!-- Settings/Support-->
     <string name="settings_support_label">Støtte</string>
     <string name="settings_support_description">Les dokumentasjon, rapporter problemer, chat med andre eller ta opp feilsøkingslogger.</string>
     <string name="settings_support_wiki_label">Dokumentasjon</string>
@@ -199,7 +190,6 @@
     <string name="settings_support_debuglog_short_recording_stop">Stopp uansett</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Et sted å henge på og stille spørsmål.</string>
-    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Anerkjennelser</string>
     <string name="settings_acknowledgements_description">Kreditter, lisenser og spesiell takk</string>
     <string name="settings_acks_translation_header">Oversettelse</string>
@@ -214,7 +204,6 @@
     <string name="settings_privacy_policy_label">Personvernregler</string>
     <string name="settings_privacy_policy_desc">Håndtere data ansvarlig.</string>
     <string name="changelog_label">Endringslogg</string>
-    <!-- Backup & Restore -->
     <string name="backup_restore_settings_label">Sikkerhetskopi og gjenoppretting</string>
     <string name="backup_restore_settings_desc">Sikkerhetskopier og gjenopprett enhetskonfigurasjoner og innstillinger.</string>
     <string name="backup_restore_screen_title">Sikkerhetskopi og gjenoppretting</string>
@@ -231,7 +220,6 @@
     <string name="backup_restore_success_backup">Sikkerhetskopi opprettet — %1$d enheter lagret.</string>
     <string name="backup_restore_success_restore">Gjenoppretting fullført — %1$d enheter gjenopprettet, %2$d hoppet over.</string>
     <string name="backup_restore_version_warning">Denne sikkerhetskopien ble opprettet med versjon %1$s. Du kjører %2$s. Noen innstillinger gjenopprettes kanskje ikke riktig.</string>
-    <!-- Debug Log -->
     <string name="debug_log_consent_title">Feilsøkingslogg</string>
     <string name="debug_log_consent_explanation">Denne funksjonen registrerer alt appen gjør i en delbar fil. Den genererte filen inneholder sensitiv informasjon (f.eks. filnavn og installerte apper). Del den bare med pålitelige parter (f.eks. en utvikler som feilsøker et problem).</string>
     <string name="debug_log_record_action">Ta opp</string>
@@ -249,7 +237,6 @@
     <string name="debug_log_screen_discard_action">Forkast</string>
     <string name="debug_log_screen_keep_action">Behold</string>
     <string name="debug_log_file_label">Innspilt loggfil</string>
-    <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Logg sendt?</string>
     <string name="support_debuglog_sent_message">Hvis du har sendt feilsøkingsloggen, kan den slettes fra enheten. Vil du fjerne den?</string>
     <string name="support_debuglog_session_delete_title">Slette feilsøkingslogg?</string>
@@ -262,7 +249,6 @@
     <string name="support_debuglog_failed_zip_failed">ZIP mislyktes</string>
     <string name="support_debuglog_clear_title">Slette alle feilsøkingslogger?</string>
     <string name="support_debuglog_clear_message">Dette vil slette alle lagrede feilsøkingslogg-økter permanent.</string>
-    <!-- Support/Contact -->
     <string name="settings_support_contact_label">Kontakt utvikler</string>
     <string name="settings_support_contact_desc">Fyll ut et skjema for å sende utvikleren en e-post.</string>
     <string name="contact_screen_title">Kontakt utvikler</string>
@@ -288,7 +274,6 @@
     <string name="contact_welcome_msg">Jeg leser alle meldinger selv og gjør mitt beste for å svare, men siden jeg jobber alene, kan det ta litt tid. Takk for tålmodigheten.</string>
     <string name="contact_footer_msg">Meldingen din vil bli sendt via e-post. Enhets- og oppsettsinformasjon vedlegges automatisk.</string>
     <string name="contact_no_email_app_msg">Ingen e-postapp funnet på denne enheten.</string>
-    <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Lagrede feilsøkingslogger</string>
     <string name="settings_support_stored_logs_desc">%1$d økter (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Ingen lagrede feilsøkingslogger</string>
@@ -306,6 +291,9 @@
     <string name="description_bluetooth_is_disabled">Bluetooth er deaktivert.</string>
     <string name="title_bluetooth_is_off">Bluetooth er av</string>
     <string name="action_enable_bluetooth">Aktiver Bluetooth</string>
+    <string name="title_monitoring_is_off">Overvåking er av</string>
+    <string name="description_monitoring_is_disabled">BlueMusic reagerer ikke på Bluetooth-tilkoblinger eller volumenendringer. Lagrede volumer, grenser og låser blir ikke brukt automatisk.</string>
+    <string name="action_enable_monitoring">Slå på overvåking</string>
     <string name="title_bluetooth_permission_required">Bluetooth-tillatelse kreves</string>
     <string name="description_bluetooth_permission_required">Denne appen trenger Bluetooth-tillatelse for å administrere enhetsvolumet ditt.</string>
     <string name="action_grant_permission">Gi tillatelse</string>
@@ -343,36 +331,31 @@
     <string name="review_app_body">Vil du gi BVM en anmeldelse? ❤️</string>
     <string name="review_app_review_action">Anmeldelse</string>
     <string name="review_app_dismiss_action">Kanskje senere</string>
-    <!-- IAP Error Messages -->
     <string name="label_no_devices_title">Ingen enheter</string>
     <string name="bluemusic_mascot_description">App-ikon</string>
-    <!-- App Selection -->
     <string name="devices_app_selection_title">Velg apper</string>
     <string name="devices_app_selection_search_hint">Søk etter apper…</string>
     <string name="devices_app_selection_selected_count">%d apper valgt</string>
     <string name="general_navigate_back_action">Naviger tilbake</string>
     <string name="general_reset_action">Tilbakestill</string>
     <string name="general_clear_action">Tøm</string>
-    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Lås</string>
     <string name="devices_indicator_awake">Våken</string>
     <string name="devices_indicator_nudge">Dytt</string>
     <string name="devices_indicator_observe">Observer</string>
     <string name="devices_indicator_disconnect">Koble fra</string>
     <string name="devices_indicator_limit">Begrens</string>
+    <string name="devices_indicator_volume_range">Område</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Forsterkning</string>
     <string name="devices_indicator_home">Hjem</string>
     <string name="devices_indicator_dnd">IF</string>
     <string name="devices_indicator_alert">Varsel</string>
-    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volum (0–100)</string>
     <string name="devices_volume_input_error">Skriv inn en verdi mellom %1$d og %2$d</string>
     <string name="devices_volume_input_caption">Det faktiske volumet kan rundes av til nærmeste trinn enheten din støtter.</string>
-    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Lås</string>
     <string name="devices_unlock_sliders_action">Lås opp</string>
-    <!-- Widget -->
     <string name="widget_volume_lock_description">Viser volumlåsstatus for den aktive Bluetooth-enheten</string>
     <string name="widget_no_device_label">Ingen enhet tilkoblet</string>
     <string name="widget_bluetooth_off_label">Bluetooth er av</string>
@@ -389,7 +372,6 @@
     <string name="widget_config_theme_green_label">Grønn</string>
     <string name="widget_config_theme_red_label">Rød</string>
     <string name="widget_config_theme_custom_label">Egendefinert</string>
-    <!-- Equalizer -->
     <string name="eq_screen_title">Equalizer</string>
     <string name="eq_bands_label">Bånd</string>
     <string name="eq_mini_graph_desc">Konfigurerte equalizerbånd</string>
