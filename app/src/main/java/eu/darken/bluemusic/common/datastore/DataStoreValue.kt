@@ -10,6 +10,7 @@ import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import eu.darken.bluemusic.common.debug.Bugs
 import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.first
@@ -24,9 +25,7 @@ class DataStoreValue<T : Any?>(
     val reader: (Any?) -> T,
     val writer: (T) -> Any?
 ) {
-    private val dataStoreTag by lazy {
-        "DataStore-${dataStore.file?.name?.removeSuffix(".preferences_pb")}"
-    }
+    private val dataStoreTag = logTag("DataStore", key.name)
 
     val keyName: String
         get() = key.name
