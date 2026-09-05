@@ -6,6 +6,7 @@ import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.*
 import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.flow.setupCommonEventHandlers
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -59,6 +60,6 @@ abstract class ViewModel2(
     )
 
     companion object {
-        private fun defaultTag(): String = this::class.simpleName ?: "VM2"
+        private fun defaultTag(): String = logTag("ViewModel")
     }
 }

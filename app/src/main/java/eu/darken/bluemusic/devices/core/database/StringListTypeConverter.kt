@@ -3,9 +3,12 @@ package eu.darken.bluemusic.devices.core.database
 import androidx.room.TypeConverter
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.json.Json
+
+private val TAG = logTag("Database", "StringListTypeConverter")
 
 class StringListTypeConverter {
     private val json = Json { ignoreUnknownKeys = true }
@@ -20,7 +23,7 @@ class StringListTypeConverter {
         try {
             json.decodeFromString(ListSerializer(String.serializer()), value)
         } catch (e: Exception) {
-            log(ERROR) { "Failed to decode $value" }
+            log(TAG, ERROR) { "Failed to decode $value" }
             emptyList()
         }
     }

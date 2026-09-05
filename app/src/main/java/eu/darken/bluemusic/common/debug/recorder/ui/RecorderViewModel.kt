@@ -31,7 +31,7 @@ class RecorderViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val sessionManager: DebugSessionManager,
     private val webpageTool: WebpageTool,
-) : ViewModel3(dispatcherProvider) {
+) : ViewModel3(dispatcherProvider, logTag("Debug", "Recorder", "VM")) {
 
     data class LogEntry(
         val file: File,

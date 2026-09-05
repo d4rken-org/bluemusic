@@ -54,7 +54,7 @@ class MainViewModel @Inject constructor(
             },
         )
     }
-        .onEach { log(VERBOSE) { "New state: $it" } }
+        .onEach { log(tag, VERBOSE) { "New state: $it" } }
         .asStateFlow()
 
     fun checkUpgrades() = launch {

@@ -94,21 +94,6 @@ object Logging {
     }
 }
 
-inline fun Any.log(
-    priority: Logging.Priority = Logging.Priority.DEBUG,
-    metaData: Map<String, Any>? = null,
-    message: () -> String,
-) {
-    if (Logging.hasReceivers) {
-        Logging.logInternal(
-            tag = logTag(logTagViaCallSite()),
-            priority = priority,
-            metaData = metaData,
-            message = message(),
-        )
-    }
-}
-
 inline fun log(
     tag: String,
     priority: Logging.Priority = Logging.Priority.DEBUG,
@@ -131,19 +116,6 @@ fun Throwable.asLog(): String {
     printStackTrace(printWriter)
     printWriter.flush()
     return stringWriter.toString()
-}
-
-@PublishedApi
-internal fun Any.logTagViaCallSite(): String {
-    val javaClass = this::class.java
-    val fullClassName = javaClass.name
-    val outerClassName = fullClassName.substringBefore('$')
-    val simplerOuterClassName = outerClassName.substringAfterLast('.')
-    return if (simplerOuterClassName.isEmpty()) {
-        fullClassName
-    } else {
-        simplerOuterClassName.removeSuffix("Kt")
-    }
 }
 
 private val TAG = logTag("Logging", Bugs.processTag)

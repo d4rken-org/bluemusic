@@ -4,6 +4,7 @@ import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.navigation.NavigationDestination
 import kotlinx.coroutines.CancellationException
@@ -62,6 +63,6 @@ abstract class ViewModel4(
         )
 
     companion object {
-        private fun defaultTag(): String = this::class.simpleName ?: "VM3"
+        private fun defaultTag(): String = logTag("ViewModel")
     }
 }

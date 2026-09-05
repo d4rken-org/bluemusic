@@ -8,6 +8,7 @@ import dagger.Reusable
 import dagger.hilt.android.qualifiers.ApplicationContext
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
 import javax.inject.Inject
 
 @Reusable
@@ -20,6 +21,8 @@ class WebpageTool @Inject constructor(
     fun open(address: String): Boolean = open(context, address)
 
     companion object {
+        private val TAG = logTag("WebpageTool")
+
         fun open(context: Context, address: String): Boolean {
             val intent = Intent(Intent.ACTION_VIEW, address.toUri()).apply {
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -28,12 +31,12 @@ class WebpageTool @Inject constructor(
                 context.startActivity(intent)
                 true
             } catch (e: ActivityNotFoundException) {
-                log(ERROR) { "Failed to launch. No compatible activity!" }
+                log(TAG, ERROR) { "Failed to launch. No compatible activity!" }
                 false
             } catch (e: SecurityException) {
                 // Permission Denial: starting Intent { act=android.intent.action.VIEW dat=https://github.com/...
                 // flg=0x10000000 cmp=com.mxtech.videoplayer.pro/com.mxtech.videoplayer.ActivityWebBrowser }
-                log(ERROR) { "Failed to launch activity due to $e" }
+                log(TAG, ERROR) { "Failed to launch activity due to $e" }
                 false
             }
         }
