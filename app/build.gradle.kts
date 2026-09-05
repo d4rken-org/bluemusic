@@ -58,6 +58,7 @@ configure<ApplicationExtension> {
         create("foss") {
             dimension = "version"
             signingConfig = signingConfigs["releaseFoss"]
+            proguardFiles("proguard-rules-foss.pro")
             // The info block is encrypted and can only be read by google
             dependenciesInfo {
                 includeInApk = false
@@ -67,6 +68,7 @@ configure<ApplicationExtension> {
         create("gplay") {
             dimension = "version"
             signingConfig = signingConfigs["releaseGplay"]
+            proguardFiles("proguard-rules-gplay.pro")
         }
     }
 
