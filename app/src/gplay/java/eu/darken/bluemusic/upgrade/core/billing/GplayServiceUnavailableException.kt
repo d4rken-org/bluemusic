@@ -8,6 +8,7 @@ import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.ca.toCaString
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.*
 import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.error.HasLocalizedError
 import eu.darken.bluemusic.common.error.LocalizedError
 
@@ -44,10 +45,11 @@ class GplayServiceUnavailableException(cause: Throwable) :
     )
 
     private fun onLaunchFailed(e: Exception) {
-        log(ERROR) { "Can't launch settings intent for Google Play: $e" }
+        log(TAG, ERROR) { "Can't launch settings intent for Google Play: $e" }
     }
 
     companion object {
         private const val GPLAY_PKG = "com.android.vending"
+        private val TAG = logTag("Upgrade", "Gplay", "ServiceUnavailable")
     }
 }

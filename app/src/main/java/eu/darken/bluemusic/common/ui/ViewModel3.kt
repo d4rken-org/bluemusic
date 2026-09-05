@@ -3,6 +3,7 @@ package eu.darken.bluemusic.common.ui
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.error.ErrorEventSource
 import eu.darken.bluemusic.common.flow.SingleEventFlow
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -20,6 +21,6 @@ abstract class ViewModel3(
     }
 
     companion object {
-        private fun defaultTag(): String = this::class.simpleName ?: "VM3"
+        private fun defaultTag(): String = logTag("ViewModel")
     }
 }
