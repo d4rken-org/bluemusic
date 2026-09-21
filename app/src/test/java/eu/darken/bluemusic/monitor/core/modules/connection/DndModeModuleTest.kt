@@ -27,13 +27,6 @@ import testhelpers.BaseTest
 class DndModeModuleTest : BaseTest() {
 
     private val testAddress = "AA:BB:CC:DD:EE:FF"
-    private val testSourceDevice = SourceDeviceWrapper(
-        address = testAddress,
-        alias = "TestDevice",
-        name = "TestDevice",
-        deviceType = SourceDevice.Type.HEADPHONES,
-        isConnected = true,
-    )
 
     private lateinit var dndTool: DndTool
     private lateinit var permissionHelper: PermissionHelper
@@ -54,9 +47,18 @@ class DndModeModuleTest : BaseTest() {
         unmockkObject(BuildWrap.VERSION)
     }
 
-    private fun device(dndMode: DndMode? = DndMode.PRIORITY_ONLY): ManagedDevice = ManagedDevice(
+    private fun device(
+        dndMode: DndMode? = DndMode.PRIORITY_ONLY,
+        deviceType: SourceDevice.Type = SourceDevice.Type.HEADPHONES,
+    ): ManagedDevice = ManagedDevice(
         isConnected = true,
-        device = testSourceDevice,
+        device = SourceDeviceWrapper(
+            address = testAddress,
+            alias = "TestDevice",
+            name = "TestDevice",
+            deviceType = deviceType,
+            isConnected = true,
+        ),
         config = DeviceConfigEntity(
             address = testAddress,
             isEnabled = true,
@@ -98,11 +100,10 @@ class DndModeModuleTest : BaseTest() {
     }
 
     @Test
-    fun `appliesTo OFF on API 35+ is false`() {
-        // Apps can't turn DND off on Android 15+ (discussion #230); a stale OFF config must
-        // not drag the dispatcher through the settle barrier for a guaranteed no-op.
+    fun `appliesTo OFF on API 35+ is true`() {
+        // An app can always deactivate its own DND contribution, on every API level.
         every { BuildWrap.VERSION.SDK_INT } returns 35
-        module().appliesTo(DeviceEvent.Connected(device(dndMode = DndMode.OFF))) shouldBe false
+        module().appliesTo(DeviceEvent.Connected(device(dndMode = DndMode.OFF))) shouldBe true
     }
 
     @Test
@@ -117,6 +118,16 @@ class DndModeModuleTest : BaseTest() {
         module().handle(DeviceEvent.Connected(device(dndMode = DndMode.PRIORITY_ONLY)))
 
         coVerify(exactly = 1) { dndTool.setDndMode(DndMode.PRIORITY_ONLY) }
+    }
+
+    @Test
+    fun `handle sets OFF for the phone speaker on API 35+`() = runTest(UnconfinedTestDispatcher()) {
+        every { BuildWrap.VERSION.SDK_INT } returns 35
+        val speaker = device(dndMode = DndMode.OFF, deviceType = SourceDevice.Type.PHONE_SPEAKER)
+
+        module().handle(DeviceEvent.Connected(speaker))
+
+        coVerify(exactly = 1) { dndTool.setDndMode(DndMode.OFF) }
     }
 
     @Test

@@ -1,12 +1,18 @@
 package eu.darken.bluemusic.monitor.core.service
 
+import android.app.NotificationManager
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
+import eu.darken.bluemusic.common.BuildWrap
+import eu.darken.bluemusic.common.permissions.PermissionHelper
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.DndMode
+import eu.darken.bluemusic.monitor.core.audio.DndTool
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
+import eu.darken.bluemusic.monitor.core.modules.connection.DndModeModule
 import eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
 import eu.darken.bluemusic.monitor.core.service.BluetoothEventQueue.Event.Type.CONNECTED
 import eu.darken.bluemusic.monitor.core.service.BluetoothEventQueue.Event.Type.DISCONNECTED
@@ -15,6 +21,9 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
+import io.mockk.mockkObject
+import io.mockk.unmockkObject
+import io.mockk.verify
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -100,10 +109,12 @@ class EventDispatcherTest : BaseTest() {
         connected: Boolean = true,
         deviceType: SourceDevice.Type = SourceDevice.Type.HEADPHONES,
         actionDelay: java.time.Duration = java.time.Duration.ZERO,
+        dndMode: DndMode? = null,
     ): ManagedDevice = mockk(relaxed = true) {
         every { this@mockk.address } returns address
         every { isConnected } returns connected
         every { this@mockk.actionDelay } returns actionDelay
+        every { this@mockk.dndMode } returns dndMode
         every { device } returns mockk(relaxed = true) {
             every { this@mockk.deviceType } returns deviceType
         }
@@ -128,12 +139,14 @@ class EventDispatcherTest : BaseTest() {
         )
     }
 
-    private fun TestScope.createDispatcher() = EventDispatcher(
+    private fun TestScope.createDispatcher(
+        modules: Set<ConnectionModule> = setOf(module1, module2),
+    ) = EventDispatcher(
         appScope = this,
         dispatcherProvider = asDispatcherProvider(),
         deviceRepo = deviceRepo,
         devicesSettings = devicesSettings,
-        connectionModuleMap = setOf(module1, module2),
+        connectionModuleMap = modules,
         eventTypeDedupTracker = tracker,
         ownerRegistry = AudioStreamOwnerRegistry(),
     )
@@ -226,6 +239,38 @@ class EventDispatcherTest : BaseTest() {
 
         coVerify(exactly = 1) { module1.handle(any<DeviceEvent.Connected>()) }
         coVerify(exactly = 1) { module2.handle(any<DeviceEvent.Connected>()) }
+    }
+
+    @Test
+    fun `speaker connect with DND OFF configured clears DND on API 35+`() = runTest {
+        mockkObject(BuildWrap.VERSION)
+        try {
+            every { BuildWrap.VERSION.SDK_INT } returns 35
+            val notificationManager = mockk<NotificationManager>(relaxed = true)
+            every { notificationManager.isNotificationPolicyAccessGranted } returns true
+            every { notificationManager.currentInterruptionFilter } returns NotificationManager.INTERRUPTION_FILTER_PRIORITY
+            val permissionHelper = mockk<PermissionHelper>(relaxed = true)
+            every { permissionHelper.hasNotificationPolicyAccess() } returns true
+            val dndModule = DndModeModule(DndTool(notificationManager), permissionHelper)
+
+            val speaker = managedDevice(
+                speakerAddress,
+                connected = true,
+                deviceType = SourceDevice.Type.PHONE_SPEAKER,
+                dndMode = DndMode.OFF,
+            )
+            devicesFlow.value = listOf(speaker)
+            val dispatcher = createDispatcher(modules = setOf(module1, dndModule))
+
+            dispatcher.dispatch(event(speakerAddress, CONNECTED, SourceDevice.Type.PHONE_SPEAKER))
+            advanceUntilIdle()
+
+            verify(exactly = 1) {
+                notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+            }
+        } finally {
+            unmockkObject(BuildWrap.VERSION)
+        }
     }
 
     @Test

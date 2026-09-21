@@ -35,10 +35,20 @@ class DndToolTest : BaseTest() {
     private fun tool() = DndTool(notificationManager)
 
     @Test
-    fun `setDndMode OFF on API 35+ is a no-op`() {
+    fun `setDndMode OFF on API 35+ turns DND off`() {
         every { BuildWrap.VERSION.SDK_INT } returns 35
-        // Pretend DND is currently on so only the OFF-guard could suppress the call.
         every { notificationManager.currentInterruptionFilter } returns NotificationManager.INTERRUPTION_FILTER_PRIORITY
+
+        tool().setDndMode(DndMode.OFF) shouldBe true
+        verify(exactly = 1) { notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL) }
+    }
+
+    @Test
+    fun `setDndMode OFF with an unknown current filter is skipped as already-off`() {
+        every { BuildWrap.VERSION.SDK_INT } returns 35
+        // fromInterruptionFilter maps unrecognised values to OFF, so the already-in-mode
+        // short-circuit suppresses the call.
+        every { notificationManager.currentInterruptionFilter } returns NotificationManager.INTERRUPTION_FILTER_UNKNOWN
 
         tool().setDndMode(DndMode.OFF) shouldBe false
         verify(exactly = 0) { notificationManager.setInterruptionFilter(any()) }
