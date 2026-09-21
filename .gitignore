@@ -44,3 +44,5 @@ fastlane/.upload/
 # en-US is the exception because README.md hotlinks it from the default branch.
 fastlane/metadata/android/*/images/
 !fastlane/metadata/android/en-US/images/
+/.pi/*
+!/.pi/settings.json
