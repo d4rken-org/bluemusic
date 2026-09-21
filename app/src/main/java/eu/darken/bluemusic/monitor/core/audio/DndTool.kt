@@ -32,11 +32,6 @@ class DndTool @Inject constructor(
         val currentMode = DndMode.fromInterruptionFilter(rawFilter)
         log(TAG, VERBOSE) { "setDndMode(mode=$mode, currentMode=$currentMode, rawFilter=$rawFilter, sdk=${Build.VERSION.SDK_INT})" }
 
-        if (mode == DndMode.OFF && !DndMode.canTurnDndOff()) {
-            log(TAG, WARN) { "Ignoring DndMode.OFF: apps can't turn DND off on API ${Build.VERSION.SDK_INT} (discussion #230). currentMode=$currentMode rawFilter=$rawFilter" }
-            return false
-        }
-
         if (currentMode == mode) {
             log(TAG, VERBOSE) { "DND mode already set to $mode (rawFilter=$rawFilter)" }
             return false
