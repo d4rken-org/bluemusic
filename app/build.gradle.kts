@@ -272,7 +272,7 @@ dependencies {
     implementation("androidx.annotation:annotation:1.9.1")
 
     implementation("androidx.preference:preference-ktx:1.2.1")
-    implementation("androidx.datastore:datastore-preferences:1.2.0")
+    implementation("androidx.datastore:datastore-preferences:1.3.0")
 
     implementation("androidx.glance:glance-appwidget:1.2.0-rc01")
     implementation("androidx.glance:glance-material3:1.2.0-rc01")
