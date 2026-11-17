@@ -1366,8 +1366,8 @@ class EventDispatcherTest : BaseTest() {
         dispatcher.dispatch(event(carAddress, DISCONNECTED, SourceDevice.Type.CAR_AUDIO))
         advanceUntilIdle()
 
-        coVerify(exactly = 1) { module1.handle(match<DeviceEvent.OwnershipRegained> { it.address == budsAddress }) }
-        coVerify(exactly = 1) { module1.handle(match<DeviceEvent.Disconnected> { it.address == carAddress }) }
+        coVerify(exactly = 1) { module1.handle(match<DeviceEvent.OwnershipRegained> { it.device === buds }) }
+        coVerify(exactly = 1) { module1.handle(match<DeviceEvent.Disconnected> { it.device === car }) }
     }
 
     @Test
