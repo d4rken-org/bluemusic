@@ -41,7 +41,8 @@ abstract class BaseVolumeModule(
     open suspend fun unmetRequirement(): String? = null
 
     private fun isApplicable(event: DeviceEvent): Boolean =
-        event is DeviceEvent.Connected && fromFloat(event.device.getVolume(type)) != null
+        (event is DeviceEvent.Connected || event is DeviceEvent.OwnershipRegained) &&
+            fromFloat(event.device.getVolume(type)) != null
 
     override fun appliesTo(event: DeviceEvent): Boolean = isApplicable(event)
 

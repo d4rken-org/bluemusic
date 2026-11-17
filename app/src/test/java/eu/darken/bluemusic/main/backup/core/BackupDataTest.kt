@@ -23,7 +23,7 @@ class BackupDataTest : BaseTest() {
     }
 
     private fun createMaximalFixture() = AppBackup(
-        formatVersion = 5,
+        formatVersion = 6,
         appVersion = "3.3.1",
         appVersionCode = 33100L,
         createdAt = "2026-04-16T14:30:00Z",
@@ -46,6 +46,7 @@ class BackupDataTest : BaseTest() {
                 volumeRateLimitIncreaseMs = 100L,
                 volumeRateLimitDecreaseMs = 200L,
                 volumeSaveOnDisconnect = true,
+                volumeRestoreOnRegain = true,
                 volumeLimit = true,
                 musicVolumeMin = 0.1f,
                 musicVolumeMax = 0.5f,
@@ -108,7 +109,7 @@ class BackupDataTest : BaseTest() {
 
         actualJson.toComparableJson() shouldBe """
             {
-                "formatVersion": 5,
+                "formatVersion": 6,
                 "appVersion": "3.3.1",
                 "appVersionCode": 33100,
                 "createdAt": "2026-04-16T14:30:00Z",
@@ -131,6 +132,7 @@ class BackupDataTest : BaseTest() {
                         "volumeRateLimitIncreaseMs": 100,
                         "volumeRateLimitDecreaseMs": 200,
                         "volumeSaveOnDisconnect": true,
+                        "volumeRestoreOnRegain": true,
                         "volumeLimit": true,
                         "musicVolumeMin": 0.1,
                         "musicVolumeMax": 0.5,
@@ -172,6 +174,7 @@ class BackupDataTest : BaseTest() {
                         "volumeObserving": false,
                         "volumeRateLimiter": false,
                         "volumeSaveOnDisconnect": false,
+                        "volumeRestoreOnRegain": false,
                         "volumeLimit": false,
                         "keepAwake": false,
                         "nudgeVolume": false,
@@ -395,6 +398,28 @@ class BackupDataTest : BaseTest() {
         restored.deviceConfigs.single().musicVolumeMin shouldBe 0.1f
         restored.deviceConfigs.single().musicVolumeMax shouldBe 0.5f
         restored.deviceConfigs.single().alarmVolumeMin shouldBe null
+    }
+
+    @Test
+    fun `v5 payload without the restore-on-regain field decodes with it off`() {
+        val jsonString = """
+        {
+            "formatVersion": 5,
+            "appVersion": "3.6.0",
+            "createdAt": "2026-04-16T14:30:00Z",
+            "deviceConfigs": [{
+                "address": "AA:BB:CC:DD:EE:FF",
+                "musicVolume": 0.75,
+                "volumeSaveOnDisconnect": true,
+                "volumeLimit": true
+            }]
+        }
+        """.trimIndent()
+
+        val backup = json.decodeFromString(AppBackup.serializer(), jsonString)
+        backup.formatVersion shouldBe 5
+        backup.deviceConfigs.single().volumeSaveOnDisconnect shouldBe true
+        backup.deviceConfigs.single().volumeRestoreOnRegain shouldBe false
     }
 
     @Test

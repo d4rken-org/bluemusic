@@ -32,6 +32,7 @@ class BackupMappersTest : BaseTest() {
             volumeRateLimitIncreaseMs = 100L,
             volumeRateLimitDecreaseMs = 200L,
             volumeSaveOnDisconnect = true,
+            volumeRestoreOnRegain = true,
             keepAwake = true,
             nudgeVolume = true,
             autoplay = true,

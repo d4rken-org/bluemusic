@@ -236,6 +236,49 @@ class DevicesRoomDbMigrationTest {
         }
     }
 
+    @Test
+    fun `migrate 7 to 8 adds the restore-on-regain column switched off and keeps existing config`() {
+        helper.createDatabase(DB_NAME, 7).use { db ->
+            db.execSQL(
+                """
+                INSERT INTO device_configs (
+                    address, custom_name, last_connected, music_volume,
+                    volume_lock, volume_observing, volume_rate_limiter, volume_save_on_disconnect,
+                    volume_limit, music_volume_max, keep_awake, nudge_volume, autoplay,
+                    launch_pkgs, autoplay_keycodes, is_enabled, connection_alert_type, eq_enabled, eq_boost_gain
+                ) VALUES (
+                    'AA:BB:CC:DD:EE:FF', 'My Headphones', 1713270600000, 0.75,
+                    0, 1, 0, 1,
+                    1, 0.5, 1, 0, 1,
+                    '["com.spotify.music"]', '[126,85]', 1, 'sound', 1, 400
+                )
+                """.trimIndent()
+            )
+        }
+
+        val migrated = helper.runMigrationsAndValidate(DB_NAME, 8, true)
+
+        migrated.query("SELECT * FROM device_configs").use { cursor ->
+            cursor.moveToFirst() shouldBe true
+            cursor.count shouldBe 1
+
+            cursor.getInt(cursor.getColumnIndexOrThrow("volume_restore_on_regain")) shouldBe 0
+
+            cursor.getString(cursor.getColumnIndexOrThrow("address")) shouldBe "AA:BB:CC:DD:EE:FF"
+            cursor.getString(cursor.getColumnIndexOrThrow("custom_name")) shouldBe "My Headphones"
+            cursor.getLong(cursor.getColumnIndexOrThrow("last_connected")) shouldBe 1713270600000L
+            cursor.getFloat(cursor.getColumnIndexOrThrow("music_volume")) shouldBe 0.75f
+            cursor.getInt(cursor.getColumnIndexOrThrow("volume_save_on_disconnect")) shouldBe 1
+            cursor.getInt(cursor.getColumnIndexOrThrow("volume_limit")) shouldBe 1
+            cursor.getFloat(cursor.getColumnIndexOrThrow("music_volume_max")) shouldBe 0.5f
+            cursor.getInt(cursor.getColumnIndexOrThrow("keep_awake")) shouldBe 1
+            cursor.getString(cursor.getColumnIndexOrThrow("launch_pkgs")) shouldBe """["com.spotify.music"]"""
+            cursor.getString(cursor.getColumnIndexOrThrow("connection_alert_type")) shouldBe "sound"
+            cursor.getInt(cursor.getColumnIndexOrThrow("eq_enabled")) shouldBe 1
+            cursor.getInt(cursor.getColumnIndexOrThrow("eq_boost_gain")) shouldBe 400
+        }
+    }
+
     companion object {
         private const val DB_NAME = "migration-test-devices"
     }
