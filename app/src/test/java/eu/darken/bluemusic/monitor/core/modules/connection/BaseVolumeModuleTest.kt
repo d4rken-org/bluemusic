@@ -285,6 +285,29 @@ class BaseVolumeModuleTest : BaseTest() {
         }
 
         @Test
+        fun `ownership regain applies the saved volume like a connect`() = runTest(UnconfinedTestDispatcher()) {
+            val devicesFlow = MutableStateFlow<List<ManagedDevice>>(emptyList())
+            val registry = AudioStreamOwnerRegistry()
+            val (mod, _) = createModuleWithDeps(registry, devicesFlow)
+            val dev = realDevice(actionDelayMs = 0L)
+            devicesFlow.value = listOf(dev)
+
+            registry.onDeviceConnected(testAddress, "TestDevice", SourceDevice.Type.HEADPHONES, 1000L, 0L)
+
+            every { volumeTool.getMaxVolume(streamId) } returns maxLevel
+            every { volumeTool.hasRecentTarget(streamId, any()) } returns true
+            coEvery { volumeTool.changeVolume(streamId, any<Int>(), any(), any()) } returns true
+
+            mod.appliesTo(DeviceEvent.OwnershipRegained(dev)) shouldBe true
+
+            val job = launch { mod.handle(DeviceEvent.OwnershipRegained(dev)) }
+            advanceTimeBy(5000) // past monitoring
+            job.join()
+
+            coVerify(atLeast = 1) { volumeTool.changeVolume(streamId, any<Int>(), any(), any()) }
+        }
+
+        @Test
         fun `generation changes during monitor - yields early`() = runTest(UnconfinedTestDispatcher()) {
             val devicesFlow = MutableStateFlow<List<ManagedDevice>>(emptyList())
             val registry = AudioStreamOwnerRegistry()

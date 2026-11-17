@@ -28,7 +28,8 @@ class KeepAwakeModule @Inject internal constructor(
 
     override val priority: Int = 3
 
-    override fun appliesTo(event: DeviceEvent): Boolean = event.device.keepAwake
+    override fun appliesTo(event: DeviceEvent): Boolean =
+        (event is DeviceEvent.Connected || event is DeviceEvent.Disconnected) && event.device.keepAwake
 
     /**
      * On Connected: wake the screen immediately, before the settle barrier — the user

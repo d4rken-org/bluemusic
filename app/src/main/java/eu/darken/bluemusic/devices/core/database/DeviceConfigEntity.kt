@@ -61,6 +61,9 @@ data class DeviceConfigEntity(
     @ColumnInfo(name = "volume_save_on_disconnect", defaultValue = "false")
     val volumeSaveOnDisconnect: Boolean = false,
 
+    @ColumnInfo(name = "volume_restore_on_regain", defaultValue = "false")
+    val volumeRestoreOnRegain: Boolean = false,
+
     @ColumnInfo(name = "volume_limit", defaultValue = "false")
     val volumeLimit: Boolean = false,
 
@@ -158,6 +161,7 @@ data class DeviceConfigEntity(
         if (volumeObserving) append(", observing")
         if (volumeRateLimiter) append(", rateLimiter")
         if (volumeSaveOnDisconnect) append(", saveOnDisconnect")
+        if (volumeRestoreOnRegain) append(", restoreOnRegain")
         if (volumeLimit) append(", limit")
         if (musicVolumeMin != null || musicVolumeMax != null) append(", musicLimit=$musicVolumeMin..$musicVolumeMax")
         if (callVolumeMin != null || callVolumeMax != null) append(", callLimit=$callVolumeMin..$callVolumeMax")

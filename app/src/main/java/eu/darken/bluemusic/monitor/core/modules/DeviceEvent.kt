@@ -25,4 +25,14 @@ interface DeviceEvent {
     ) : DeviceEvent {
         override fun toString(): String = "Disconnected(${device.toCompactString()}, disconnectResult=$disconnectResult)"
     }
+
+    /**
+     * [device] stayed connected and owns the audio streams again because the device that took
+     * them over has disconnected. Only volume modules react to it.
+     */
+    data class OwnershipRegained(
+        override val device: ManagedDevice,
+    ) : DeviceEvent {
+        override fun toString(): String = "OwnershipRegained(${device.toCompactString()})"
+    }
 }

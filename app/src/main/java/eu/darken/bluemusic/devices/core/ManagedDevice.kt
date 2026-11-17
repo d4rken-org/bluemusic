@@ -60,6 +60,8 @@ data class ManagedDevice(
         get() = config.volumeRateLimitDecreaseMs ?: 500L
     val volumeSaveOnDisconnect: Boolean
         get() = config.volumeSaveOnDisconnect
+    val volumeRestoreOnRegain: Boolean
+        get() = config.volumeRestoreOnRegain
     val volumeLimit: Boolean
         get() = config.volumeLimit
     val autoplay: Boolean

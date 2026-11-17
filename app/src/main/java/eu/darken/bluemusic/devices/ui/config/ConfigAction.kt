@@ -16,6 +16,7 @@ sealed interface ConfigAction {
     data object OnToggleVolumeLock : ConfigAction
     data object OnToggleVolumeObserving : ConfigAction
     data object OnToggleVolumeSaveOnDisconnect : ConfigAction
+    data object OnToggleVolumeRestoreOnRegain : ConfigAction
     data object OnToggleVolumeRateLimiter : ConfigAction
     data object OnToggleVolumeLimit : ConfigAction
     data object OnVolumeLimitClicked : ConfigAction
