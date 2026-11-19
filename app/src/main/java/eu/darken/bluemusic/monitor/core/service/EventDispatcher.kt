@@ -18,6 +18,7 @@ import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
 import eu.darken.bluemusic.monitor.core.modules.SettlePolicy
 import eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
+import eu.darken.bluemusic.monitor.core.ownership.DisconnectResult
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
@@ -139,6 +140,7 @@ class EventDispatcher @Inject constructor(
             // --- Fast acceptance lane: ownership + state updates (synchronous) ---
 
             var displacedOwnerAddresses: List<String> = emptyList()
+            var regainedEvents: List<DeviceEvent.OwnershipRegained> = emptyList()
 
             val deviceEvent = when (bluetoothEvent.type) {
                 BluetoothEventQueue.Event.Type.CONNECTED -> {
@@ -160,6 +162,7 @@ class EventDispatcher @Inject constructor(
                         address = managedDevice.address,
                         receivedAtElapsedMs = bluetoothEvent.receivedAtElapsedMs,
                     )
+                    regainedEvents = regainedOwnerEvents(disconnectResult)
                     DeviceEvent.Disconnected(
                         device = managedDevice,
                         volumeSnapshot = bluetoothEvent.volumeSnapshot,
@@ -227,7 +230,42 @@ class EventDispatcher @Inject constructor(
                 job.invokeOnCompletion { activeJobs.remove(address, job) }
                 trackJob(job)
             }
+
+            // Keyed by the regaining device, so a reconnect of either device cancels the restore
+            // like any other connect work (superseded or displaced-owner path above).
+            for (regainedEvent in regainedEvents) {
+                val regainedAddress = regainedEvent.address
+                val previousJob = activeJobs[regainedAddress]
+                if (previousJob != null && previousJob.isActive) {
+                    log(TAG, INFO) { "dispatch: Cancelling superseded cancellable job for $regainedAddress" }
+                    previousJob.cancel(CancellationException("Superseded by $regainedEvent"))
+                }
+                log(TAG) { "dispatch: Launching module work for $regainedEvent" }
+                activeJobs[regainedAddress] = appScope.launch(dispatcherProvider.IO) {
+                    executeModules(regainedEvent, cancellableModules)
+                }.also { job ->
+                    job.invokeOnCompletion { activeJobs.remove(regainedAddress, job) }
+                    trackJob(job)
+                }
+            }
         }
+    }
+
+    /**
+     * Devices that stayed connected and take the audio streams back from the device that just
+     * disconnected. A group that shares a member with the previous owner group is the same owner
+     * losing one of its members (e.g. one earbud of a pair), not a regain.
+     */
+    private suspend fun regainedOwnerEvents(result: DisconnectResult): List<DeviceEvent.OwnershipRegained> {
+        if (!result.wasInOwnerGroup) return emptyList()
+        val ownerGroupAfter = result.ownerGroupAfter
+        if (ownerGroupAfter.isNullOrEmpty()) return emptyList()
+        if (ownerGroupAfter.any { it in result.ownerGroupBefore }) return emptyList()
+
+        return ownerGroupAfter
+            .mapNotNull { deviceRepo.getDevice(it) }
+            .filter { it.type != SourceDevice.Type.PHONE_SPEAKER && it.isEnabled && it.volumeRestoreOnRegain }
+            .map { DeviceEvent.OwnershipRegained(it) }
     }
 
     /**

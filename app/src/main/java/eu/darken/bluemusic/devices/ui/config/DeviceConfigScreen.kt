@@ -31,6 +31,7 @@ import androidx.compose.material.icons.twotone.Lock
 import androidx.compose.material.icons.twotone.Notifications
 import androidx.compose.material.icons.twotone.PlayArrow
 import androidx.compose.material.icons.twotone.PowerOff
+import androidx.compose.material.icons.twotone.Restore
 import androidx.compose.material.icons.twotone.Schedule
 import androidx.compose.material.icons.twotone.Speed
 import androidx.compose.material.icons.twotone.Timer
@@ -576,6 +577,14 @@ fun DeviceConfigScreen(
                                 }
                             }
                         }
+
+                        SwitchPreference(
+                            title = stringResource(R.string.devices_device_config_volume_restore_on_regain_label),
+                            description = stringResource(R.string.devices_device_config_volume_restore_on_regain_desc),
+                            isChecked = device.volumeRestoreOnRegain,
+                            icon = Icons.TwoTone.Restore,
+                            onCheckedChange = { onAction(ConfigAction.OnToggleVolumeRestoreOnRegain) }
+                        )
 
                         SwitchPreference(
                             title = stringResource(R.string.devices_device_config_volume_rate_limiter_label),

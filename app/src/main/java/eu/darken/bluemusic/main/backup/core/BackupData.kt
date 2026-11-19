@@ -32,6 +32,7 @@ data class DeviceConfigBackup(
     val volumeRateLimitIncreaseMs: Long? = null,
     val volumeRateLimitDecreaseMs: Long? = null,
     val volumeSaveOnDisconnect: Boolean = false,
+    val volumeRestoreOnRegain: Boolean = false,
     val volumeLimit: Boolean = false,
     val musicVolumeMin: Float? = null,
     val musicVolumeMax: Float? = null,

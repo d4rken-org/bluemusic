@@ -34,6 +34,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.currentTime
+import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
@@ -1333,6 +1334,131 @@ class EventDispatcherTest : BaseTest() {
 
         coVerify(exactly = 0) { thrower.handle(any()) }
         coVerify(exactly = 1) { survivor.handle(any()) }
+    }
+
+    // endregion
+
+    // region Ownership regain
+
+    private val carAddress = "AA:BB:CC:DD:EE:01"
+
+    private fun labeledDevice(
+        address: String,
+        label: String,
+        deviceType: SourceDevice.Type = SourceDevice.Type.HEADPHONES,
+        restoreOnRegain: Boolean = false,
+    ): ManagedDevice = managedDevice(address, connected = true, deviceType = deviceType).also {
+        every { it.label } returns label
+        every { it.type } returns deviceType
+        every { it.isEnabled } returns true
+        every { it.volumeRestoreOnRegain } returns restoreOnRegain
+    }
+
+    @Test
+    fun `owner disconnect restores the remaining device with the switch on`() = runTest {
+        val buds = labeledDevice(budsAddress, label = "Buds", restoreOnRegain = true)
+        val car = labeledDevice(carAddress, label = "Car", deviceType = SourceDevice.Type.CAR_AUDIO)
+        devicesFlow.value = listOf(buds, car)
+        val dispatcher = createDispatcher()
+
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        dispatcher.dispatch(event(carAddress, CONNECTED, SourceDevice.Type.CAR_AUDIO))
+        dispatcher.dispatch(event(carAddress, DISCONNECTED, SourceDevice.Type.CAR_AUDIO))
+        advanceUntilIdle()
+
+        coVerify(exactly = 1) { module1.handle(match<DeviceEvent.OwnershipRegained> { it.device === buds }) }
+        coVerify(exactly = 1) { module1.handle(match<DeviceEvent.Disconnected> { it.device === car }) }
+    }
+
+    @Test
+    fun `owner disconnect does not restore the remaining device with the switch off`() = runTest {
+        val buds = labeledDevice(budsAddress, label = "Buds", restoreOnRegain = false)
+        val car = labeledDevice(carAddress, label = "Car", deviceType = SourceDevice.Type.CAR_AUDIO)
+        devicesFlow.value = listOf(buds, car)
+        val dispatcher = createDispatcher()
+
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        dispatcher.dispatch(event(carAddress, CONNECTED, SourceDevice.Type.CAR_AUDIO))
+        dispatcher.dispatch(event(carAddress, DISCONNECTED, SourceDevice.Type.CAR_AUDIO))
+        advanceUntilIdle()
+
+        coVerify(exactly = 0) { module1.handle(any<DeviceEvent.OwnershipRegained>()) }
+    }
+
+    @Test
+    fun `disconnect of a device that was not the owner restores nothing`() = runTest {
+        val buds = labeledDevice(budsAddress, label = "Buds", restoreOnRegain = true)
+        val car = labeledDevice(carAddress, label = "Car", deviceType = SourceDevice.Type.CAR_AUDIO)
+        devicesFlow.value = listOf(buds, car)
+        val dispatcher = createDispatcher()
+
+        dispatcher.dispatch(event(carAddress, CONNECTED, SourceDevice.Type.CAR_AUDIO))
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        dispatcher.dispatch(event(carAddress, DISCONNECTED, SourceDevice.Type.CAR_AUDIO))
+        advanceUntilIdle()
+
+        coVerify(exactly = 0) { module1.handle(any<DeviceEvent.OwnershipRegained>()) }
+    }
+
+    @Test
+    fun `speaker taking the streams back is not restored`() = runTest {
+        val speaker = labeledDevice(
+            speakerAddress,
+            label = "Speaker",
+            deviceType = SourceDevice.Type.PHONE_SPEAKER,
+            restoreOnRegain = true,
+        )
+        val car = labeledDevice(carAddress, label = "Car", deviceType = SourceDevice.Type.CAR_AUDIO)
+        devicesFlow.value = listOf(speaker, car)
+        val dispatcher = createDispatcher()
+
+        dispatcher.dispatch(event(speakerAddress, CONNECTED, SourceDevice.Type.PHONE_SPEAKER))
+        dispatcher.dispatch(event(carAddress, CONNECTED, SourceDevice.Type.CAR_AUDIO))
+        dispatcher.dispatch(event(carAddress, DISCONNECTED, SourceDevice.Type.CAR_AUDIO))
+        advanceUntilIdle()
+
+        coVerify(exactly = 0) { module1.handle(any<DeviceEvent.OwnershipRegained>()) }
+    }
+
+    @Test
+    fun `grouped earbud left behind by its sibling is not restored`() = runTest {
+        val leftBud = labeledDevice(budsAddress, label = "Buds", restoreOnRegain = true)
+        val rightBud = labeledDevice(watchAddress, label = "Buds", restoreOnRegain = true)
+        devicesFlow.value = listOf(leftBud, rightBud)
+        val dispatcher = createDispatcher()
+
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        dispatcher.dispatch(event(watchAddress, CONNECTED))
+        dispatcher.dispatch(event(budsAddress, DISCONNECTED))
+        advanceUntilIdle()
+
+        coVerify(exactly = 0) { module1.handle(any<DeviceEvent.OwnershipRegained>()) }
+    }
+
+    @Test
+    fun `reconnect of the departed owner cancels the restore`() = runTest {
+        val buds = labeledDevice(budsAddress, label = "Buds", restoreOnRegain = true)
+        val car = labeledDevice(carAddress, label = "Car", deviceType = SourceDevice.Type.CAR_AUDIO)
+        devicesFlow.value = listOf(buds, car)
+
+        val slowModule = mockConnectionModule(name = "SlowRestore")
+        var restoreCompleted = false
+        coEvery { slowModule.handle(any<DeviceEvent.OwnershipRegained>()) } coAnswers {
+            kotlinx.coroutines.delay(10_000)
+            restoreCompleted = true
+        }
+        val dispatcher = createDispatcher(modules = setOf(slowModule))
+
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        dispatcher.dispatch(event(carAddress, CONNECTED, SourceDevice.Type.CAR_AUDIO))
+        dispatcher.dispatch(event(carAddress, DISCONNECTED, SourceDevice.Type.CAR_AUDIO))
+        runCurrent()
+        coVerify(exactly = 1) { slowModule.handle(any<DeviceEvent.OwnershipRegained>()) }
+
+        dispatcher.dispatch(event(carAddress, CONNECTED, SourceDevice.Type.CAR_AUDIO))
+        advanceUntilIdle()
+
+        restoreCompleted shouldBe false
     }
 
     // endregion

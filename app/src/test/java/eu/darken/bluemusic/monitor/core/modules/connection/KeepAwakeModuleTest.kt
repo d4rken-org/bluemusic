@@ -7,6 +7,7 @@ import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.monitor.core.WakeLockManager
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
+import io.kotest.matchers.shouldBe
 import io.mockk.coVerify
 import io.mockk.coVerifyOrder
 import io.mockk.every
@@ -147,6 +148,18 @@ class KeepAwakeModuleTest : BaseTest() {
         val dev = device(keepAwake = false)
 
         module.handle(DeviceEvent.Disconnected(dev))
+
+        coVerify(exactly = 0) { wakeLockManager.setWakeLock(any()) }
+        coVerify(exactly = 0) { wakeLockManager.wakeScreenNow() }
+    }
+
+    @Test
+    fun `OwnershipRegained is ignored even with keepAwake enabled`() = runTest(UnconfinedTestDispatcher()) {
+        val module = KeepAwakeModule(deviceRepo, wakeLockManager)
+        val event = DeviceEvent.OwnershipRegained(device(keepAwake = true))
+
+        module.appliesTo(event) shouldBe false
+        module.handle(event)
 
         coVerify(exactly = 0) { wakeLockManager.setWakeLock(any()) }
         coVerify(exactly = 0) { wakeLockManager.wakeScreenNow() }
